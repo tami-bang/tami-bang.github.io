@@ -74,7 +74,7 @@ export default function HeroObjectScene() {
       />
 
       <img
-        src="/images/Cone.png"
+        src="/images/Color=Dark, Variant=Metallic.png"
         alt=""
         className="hero-object-main"
         draggable={false}
