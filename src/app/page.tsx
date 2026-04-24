@@ -4,7 +4,7 @@
  */
 
 import Link from "next/link"; // 용도 사이트 내부 페이지 이동
-import HeroObjectScene from "@/components/HeroObjectScene"; // 용도 히어로 3D 오브젝트 마우스 인터랙션 표시
+import HeroObjectScene from "@/components/HeroObjectScene"; // 용도 히어로 3D 오브젝트 인터랙션 표시
 import {
   featuredPosts,
   featuredProjects,
@@ -43,6 +43,7 @@ function GithubProfileLink() {
       rel="noopener noreferrer"
       aria-label="GitHub 프로필 새 창으로 열기"
       className="hero-github-link"
+      draggable={false}
     >
       <GithubIcon />
       <span>GitHub</span>
@@ -74,7 +75,7 @@ function HeroSection() {
             <div className="hero-actions">
               <GithubProfileLink />
 
-              <Link href="/blog" className="hero-primary-link">
+              <Link href="/blog" className="hero-primary-link" draggable={false}>
                 View Study Log
               </Link>
             </div>
