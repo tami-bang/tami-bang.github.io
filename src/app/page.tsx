@@ -34,13 +34,26 @@ function SpaceDots() {
   );
 }
 
-function SpaceObject() {
+function HeroObjectImage() {
   return (
-    <div className="space-object-wrap" aria-hidden="true">
-      <div className="space-ring space-ring--one" />
-      <div className="space-ring space-ring--two" />
-      <div className="space-sphere" />
-      <div className="space-capsule" />
+    <div className="hero-object-wrap" aria-hidden="true">
+      <img
+        src="/images/Cone.png"
+        alt=""
+        className="hero-object-main"
+      />
+
+      <img
+        src="/images/3d_obj1.png"
+        alt=""
+        className="hero-object-sub"
+      />
+
+      <img
+        src="/images/Cat Sitting.png"
+        alt=""
+        className="hero-object-cat"
+      />
     </div>
   );
 }
@@ -75,7 +88,7 @@ function HeroSection() {
             구조를 서비스로.
           </h1>
 
-          <SpaceObject />
+          <HeroObjectImage />
 
           <p className="hero-description">
             Python, C, Network, Backend, Frontend, AI를 공부하며 기록한 내용을
