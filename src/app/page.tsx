@@ -4,6 +4,7 @@
  */
 
 import Link from "next/link"; // 용도 사이트 내부 페이지 이동
+import HeroObjectScene from "@/components/HeroObjectScene"; // 용도 히어로 3D 오브젝트 마우스 인터랙션 표시
 import {
   featuredPosts,
   featuredProjects,
@@ -30,15 +31,6 @@ function SpaceDots() {
       {Array.from({ length: 18 }).map((_, index) => (
         <span key={index} />
       ))}
-    </div>
-  );
-}
-
-function HeroObjectImage() {
-  return (
-    <div className="hero-object-wrap" aria-hidden="true">
-      <img src="/images/Cone.png" alt="" className="hero-object-main" />
-      <img src="/images/3d_obj1.png" alt="" className="hero-object-depth" />
     </div>
   );
 }
@@ -88,7 +80,7 @@ function HeroSection() {
             </div>
           </div>
 
-          <HeroObjectImage />
+          <HeroObjectScene />
         </div>
       </div>
     </section>
