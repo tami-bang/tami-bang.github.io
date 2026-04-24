@@ -1,6 +1,6 @@
 /**
  * 메인 페이지
- * 용도: 기술 공부 기록, GitHub 프로필, 대표 학습글, 대표 프로젝트로 연결되는 블로그 홈 화면
+ * 용도: 우주형 개발 블로그 홈, 공부 기록, 프로젝트, GitHub 프로필 연결
  */
 
 import Link from "next/link"; // 용도 사이트 내부 페이지 이동
@@ -24,12 +24,23 @@ function GithubIcon() {
   );
 }
 
-function PixelRainbow() {
+function SpaceDots() {
   return (
-    <div className="pixel-rainbow" aria-hidden="true">
-      {Array.from({ length: 44 }).map((_, index) => (
+    <div className="space-dots" aria-hidden="true">
+      {Array.from({ length: 56 }).map((_, index) => (
         <span key={index} />
       ))}
+    </div>
+  );
+}
+
+function SpaceObject() {
+  return (
+    <div className="space-object-wrap" aria-hidden="true">
+      <div className="space-ring space-ring--one" />
+      <div className="space-ring space-ring--two" />
+      <div className="space-sphere" />
+      <div className="space-capsule" />
     </div>
   );
 }
@@ -41,7 +52,7 @@ function GithubProfileLink() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="GitHub 프로필 새 창으로 열기"
-      className="mt-7 inline-flex items-center gap-3 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-black text-slate-950 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+      className="hero-github-link"
     >
       <GithubIcon />
       <span>GitHub</span>
@@ -49,51 +60,36 @@ function GithubProfileLink() {
   );
 }
 
-function HeroGraphic() {
-  return (
-    <div className="relative hidden items-center justify-center lg:flex">
-      <div className="absolute right-0 top-12">
-        <PixelRainbow />
-      </div>
-
-      <div className="relative mt-20 flex h-64 w-64 items-center justify-center rounded-full bg-yellow-300 shadow-2xl">
-        <div className="h-44 w-44 rounded-full bg-white shadow-inner" />
-        <div className="absolute top-16 h-24 w-32 rounded-t-full bg-slate-800" />
-        <div className="absolute top-28 flex gap-10">
-          <span className="h-4 w-4 rounded-full bg-black" />
-          <span className="h-4 w-4 rounded-full bg-black" />
-        </div>
-        <div className="absolute top-36 flex gap-16">
-          <span className="h-5 w-5 rounded-full bg-pink-400" />
-          <span className="h-5 w-5 rounded-full bg-pink-400" />
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function HeroSection() {
   return (
-    <section className="hero-sky px-7 pb-6 pt-14">
-      <div className="relative z-10 mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="pt-16">
-          <p className="mb-6 text-sm font-black uppercase tracking-[0.45em] text-pink-600">
-            STUDY LOG + PORTFOLIO
-          </p>
+    <section className="hero-universe">
+      <SpaceDots />
 
-          <h1 className="mb-3 max-w-3xl text-3xl font-black leading-[1.18] tracking-tight text-slate-950 md:text-4xl">
-            기록으로 성장하는 개발자
+      <div className="hero-universe__inner">
+        <div className="hero-universe__content">
+          <p className="section-eyebrow">Study Log + Portfolio</p>
+
+          <h1 className="hero-title">
+            기록을 구조로,
+            <br />
+            구조를 서비스로.
           </h1>
 
-          <p className="max-w-2xl text-lg leading-7 text-slate-700">
-            Python, C, Network, Backend, Frontend, AI를 공부하며 기록한 내용을
-            프로젝트로 연결합니다.
+          <p className="hero-description">
+            Python, C, Network, Backend, Frontend, AI를 공부하며 기록한
+            내용을 실제 프로젝트와 포트폴리오로 연결합니다.
           </p>
 
-          <GithubProfileLink />
+          <div className="hero-actions">
+            <GithubProfileLink />
+
+            <Link href="/blog" className="hero-primary-link">
+              공부 기록 보기
+            </Link>
+          </div>
         </div>
 
-        <HeroGraphic />
+        <SpaceObject />
       </div>
     </section>
   );
@@ -101,31 +97,20 @@ function HeroSection() {
 
 function FeaturedPostsSection() {
   return (
-    <section className="mx-auto grid max-w-7xl gap-16 px-7 pb-20 pt-6 lg:grid-cols-[1.1fr_0.8fr]">
+    <section className="home-section">
       <div>
-        <p className="mb-10 text-sm font-black uppercase tracking-[0.45em] text-pink-600">
-          Articles and Tutorials
-        </p>
+        <p className="section-eyebrow">Articles and Tutorials</p>
 
-        <div className="space-y-14">
+        <div className="post-list">
           {featuredPosts.map((post) => (
-            <article key={post.title}>
-              <p className="mb-3 inline-flex rounded-full bg-sky-200 px-4 py-2 text-sm font-bold text-slate-900">
-                {post.category}
-              </p>
+            <article key={post.title} className="post-card-large">
+              <p className="category-pill">{post.category}</p>
 
-              <h2 className="text-3xl font-black text-slate-950">
-                {post.title}
-              </h2>
+              <h2>{post.title}</h2>
 
-              <p className="mt-4 max-w-3xl text-xl leading-9 text-slate-700">
-                {post.description}
-              </p>
+              <p>{post.description}</p>
 
-              <Link
-                href={post.href}
-                className="mt-5 inline-block text-lg font-black text-slate-950"
-              >
+              <Link href={post.href} className="read-more-link">
                 Read more
               </Link>
             </article>
@@ -133,46 +118,28 @@ function FeaturedPostsSection() {
         </div>
       </div>
 
-      <aside className="space-y-14">
-        <section>
-          <p className="mb-7 text-sm font-black uppercase tracking-[0.45em] text-pink-600">
-            Browse by Category
-          </p>
+      <aside className="home-aside">
+        <section className="glass-panel">
+          <p className="section-eyebrow">Browse by Category</p>
 
-          <div className="flex flex-wrap gap-3">
+          <div className="category-grid">
             {studyCategories.map((category) => (
-              <Link
-                key={category}
-                href="/blog"
-                className="rounded-xl bg-sky-200 px-4 py-3 text-base font-bold text-slate-900 transition hover:bg-sky-300"
-              >
+              <Link key={category} href="/blog" className="category-link">
                 {category}
               </Link>
             ))}
           </div>
         </section>
 
-        <section>
-          <p className="mb-7 text-sm font-black uppercase tracking-[0.45em] text-pink-600">
-            Popular Projects
-          </p>
+        <section className="glass-panel">
+          <p className="section-eyebrow">Popular Projects</p>
 
-          <div className="space-y-6">
+          <div className="project-list">
             {featuredProjects.map((project) => (
-              <Link
-                key={project.title}
-                href={project.href}
-                className="grid grid-cols-[32px_1fr] gap-4 rounded-3xl bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
-              >
-                <span className="pt-1 text-3xl font-black">→</span>
-                <span>
-                  <strong className="block text-xl font-black">
-                    {project.title}
-                  </strong>
-                  <span className="mt-2 block leading-7 text-slate-600">
-                    {project.description}
-                  </span>
-                </span>
+              <Link key={project.title} href={project.href} className="project-card">
+                <span>→</span>
+                <strong>{project.title}</strong>
+                <small>{project.description}</small>
               </Link>
             ))}
           </div>
