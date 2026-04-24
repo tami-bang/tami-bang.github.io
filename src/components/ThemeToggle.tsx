@@ -6,6 +6,10 @@ type ThemeMode = "dark" | "light";
 
 const THEME_STORAGE_KEY = "tami-theme";
 
+function isThemeMode(value: string | null): value is ThemeMode {
+  return value === "light" || value === "dark";
+}
+
 function getInitialTheme(): ThemeMode {
   if (typeof window === "undefined") {
     return "dark";
@@ -13,11 +17,15 @@ function getInitialTheme(): ThemeMode {
 
   const savedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
 
-  if (savedTheme === "light" || savedTheme === "dark") {
+  if (isThemeMode(savedTheme)) {
     return savedTheme;
   }
 
   return "dark";
+}
+
+function getNextTheme(currentTheme: ThemeMode): ThemeMode {
+  return currentTheme === "dark" ? "light" : "dark";
 }
 
 function applyTheme(theme: ThemeMode) {
@@ -30,12 +38,13 @@ export default function ThemeToggle() {
 
   useEffect(() => {
     const initialTheme = getInitialTheme();
+
     setTheme(initialTheme);
     applyTheme(initialTheme);
   }, []);
 
   function handleToggleTheme() {
-    const nextTheme = theme === "dark" ? "light" : "dark";
+    const nextTheme = getNextTheme(theme);
 
     setTheme(nextTheme);
     applyTheme(nextTheme);

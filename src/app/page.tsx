@@ -27,7 +27,7 @@ function GithubIcon() {
 function SpaceDots() {
   return (
     <div className="space-dots" aria-hidden="true">
-      {Array.from({ length: 56 }).map((_, index) => (
+      {Array.from({ length: 36 }).map((_, index) => (
         <span key={index} />
       ))}
     </div>
@@ -75,9 +75,11 @@ function HeroSection() {
             구조를 서비스로.
           </h1>
 
+          <SpaceObject />
+
           <p className="hero-description">
-            Python, C, Network, Backend, Frontend, AI를 공부하며 기록한
-            내용을 실제 프로젝트와 포트폴리오로 연결합니다.
+            Python, C, Network, Backend, Frontend, AI를 공부하며 기록한 내용을
+            실제 프로젝트와 포트폴리오로 연결합니다.
           </p>
 
           <div className="hero-actions">
@@ -88,8 +90,6 @@ function HeroSection() {
             </Link>
           </div>
         </div>
-
-        <SpaceObject />
       </div>
     </section>
   );
@@ -136,7 +136,11 @@ function FeaturedPostsSection() {
 
           <div className="project-list">
             {featuredProjects.map((project) => (
-              <Link key={project.title} href={project.href} className="project-card">
+              <Link
+                key={project.title}
+                href={project.href}
+                className="project-card"
+              >
                 <span>→</span>
                 <strong>{project.title}</strong>
                 <small>{project.description}</small>
