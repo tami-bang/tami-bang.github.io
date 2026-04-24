@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Tami's Dev Blog
 
 기술 공부 기록과 포트폴리오를 정리하기 위한 개인 개발 블로그입니다.
@@ -32,3 +33,7 @@ Josh Comeau 블로그의 밝은 색감, 큰 타이포그래피, 카테고리 중
 ```bash
 npm install
 npm run dev
+=======
+# tami-bang.github.io
+개발 공부 기록과 프로젝트를 정리하는 개인 블로그 &amp; 포트폴리오
+>>>>>>> fee4ca4d063a307281e8381f2bc09ced608de741
