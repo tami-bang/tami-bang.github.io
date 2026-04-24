@@ -27,7 +27,7 @@ function GithubIcon() {
 function SpaceDots() {
   return (
     <div className="space-dots" aria-hidden="true">
-      {Array.from({ length: 24 }).map((_, index) => (
+      {Array.from({ length: 18 }).map((_, index) => (
         <span key={index} />
       ))}
     </div>
@@ -38,7 +38,7 @@ function HeroObjectImage() {
   return (
     <div className="hero-object-wrap" aria-hidden="true">
       <img src="/images/Cone.png" alt="" className="hero-object-main" />
-      <img src="/images/3d_obj1.png" alt="" className="hero-object-sub" />
+      <img src="/images/3d_obj1.png" alt="" className="hero-object-depth" />
     </div>
   );
 }
