@@ -66,8 +66,19 @@ export default function HeroObjectScene() {
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
     >
-      <img src="/images/3d_obj1.png" alt="" className="hero-object-depth" />
-      <img src="/images/Cone.png" alt="" className="hero-object-main" />
+      <img
+        src="/images/3d_obj1.png"
+        alt=""
+        className="hero-object-depth"
+        draggable={false}
+      />
+
+      <img
+        src="/images/Cone.png"
+        alt=""
+        className="hero-object-main"
+        draggable={false}
+      />
     </div>
   );
 }
