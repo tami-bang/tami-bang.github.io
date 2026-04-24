@@ -27,7 +27,7 @@ function GithubIcon() {
 function SpaceDots() {
   return (
     <div className="space-dots" aria-hidden="true">
-      {Array.from({ length: 36 }).map((_, index) => (
+      {Array.from({ length: 32 }).map((_, index) => (
         <span key={index} />
       ))}
     </div>
@@ -37,23 +37,8 @@ function SpaceDots() {
 function HeroObjectImage() {
   return (
     <div className="hero-object-wrap" aria-hidden="true">
-      <img
-        src="/images/Cone.png"
-        alt=""
-        className="hero-object-main"
-      />
-
-      <img
-        src="/images/3d_obj1.png"
-        alt=""
-        className="hero-object-sub"
-      />
-
-      <img
-        src="/images/Cat Sitting.png"
-        alt=""
-        className="hero-object-cat"
-      />
+      <img src="/images/Cone.png" alt="" className="hero-object-main" />
+      <img src="/images/3d_obj1.png" alt="" className="hero-object-sub" />
     </div>
   );
 }
@@ -80,28 +65,30 @@ function HeroSection() {
 
       <div className="hero-universe__inner">
         <div className="hero-universe__content">
-          <p className="section-eyebrow">Study Log + Portfolio</p>
+          <div className="hero-copy">
+            <p className="section-eyebrow">Study Log + Portfolio</p>
 
-          <h1 className="hero-title">
-            기록을 구조로,
-            <br />
-            구조를 서비스로.
-          </h1>
+            <h1 className="hero-title">
+              기록을 구조로,
+              <br />
+              구조를 서비스로.
+            </h1>
+
+            <p className="hero-description">
+              Python, C, Network, Backend, Frontend, AI를 공부하며 기록한
+              내용을 실제 프로젝트와 포트폴리오로 연결합니다.
+            </p>
+
+            <div className="hero-actions">
+              <GithubProfileLink />
+
+              <Link href="/blog" className="hero-primary-link">
+                공부 기록 보기
+              </Link>
+            </div>
+          </div>
 
           <HeroObjectImage />
-
-          <p className="hero-description">
-            Python, C, Network, Backend, Frontend, AI를 공부하며 기록한 내용을
-            실제 프로젝트와 포트폴리오로 연결합니다.
-          </p>
-
-          <div className="hero-actions">
-            <GithubProfileLink />
-
-            <Link href="/blog" className="hero-primary-link">
-              공부 기록 보기
-            </Link>
-          </div>
         </div>
       </div>
     </section>
