@@ -61,9 +61,9 @@ function HeroSection() {
             <p className="section-eyebrow">Study Log + Portfolio</p>
 
             <h1 className="hero-title">
-              기록을 구조로,
+              Design the Logic,
               <br />
-              구조를 서비스로.
+              Build the Future.
             </h1>
 
             <p className="hero-description">
@@ -75,7 +75,7 @@ function HeroSection() {
               <GithubProfileLink />
 
               <Link href="/blog" className="hero-primary-link">
-                공부 기록 보기
+                View Study Log
               </Link>
             </div>
           </div>

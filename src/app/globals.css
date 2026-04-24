@@ -17,14 +17,14 @@
 }
 
 html[data-theme="light"] {
-  --background: #f7f8fc;
-  --foreground: #111827;
-  --muted: #475569;
+  --background: #f8f7fb;
+  --foreground: #151827;
+  --muted: #586174;
   --panel: rgba(255, 255, 255, 0.92);
   --panel-border: rgba(15, 23, 42, 0.12);
-  --brand-accent: #2563eb;
-  --brand-secondary: #db2777;
-  --brand-dot: rgba(37, 99, 235, 0.18);
+  --brand-accent: #e85aa6;
+  --brand-secondary: #7c3aed;
+  --brand-dot: rgba(232, 90, 166, 0.16);
   --header-bg: rgba(255, 255, 255, 0.92);
   --header-border: rgba(15, 23, 42, 0.08);
   --shadow-strong: 0 28px 70px rgba(15, 23, 42, 0.13);
@@ -43,7 +43,7 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    radial-gradient(circle at 84% 18%, color-mix(in srgb, var(--brand-secondary) 10%, transparent), transparent 38%),
+    radial-gradient(circle at 84% 18%, color-mix(in srgb, var(--brand-secondary) 8%, transparent), transparent 40%),
     var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
@@ -136,8 +136,8 @@ a {
 .hero-universe {
   position: relative;
   overflow: hidden;
-  min-height: calc(100vh - 88px);
-  padding: clamp(54px, 7vw, 92px) var(--layout-padding) clamp(48px, 6vw, 76px);
+  min-height: min(760px, calc(100vh - 88px));
+  padding: clamp(54px, 7vw, 92px) var(--layout-padding) clamp(46px, 5vw, 64px);
 }
 
 .hero-universe::before {
@@ -175,18 +175,18 @@ a {
 
 .hero-title {
   margin: 0;
-  font-size: clamp(3.2rem, 7vw, 6.6rem);
+  font-size: clamp(3.1rem, 6.8vw, 6.2rem);
   font-weight: 950;
   line-height: 0.96;
-  letter-spacing: -0.08em;
+  letter-spacing: -0.075em;
   word-break: keep-all;
 }
 
 .hero-description {
   max-width: 720px;
-  margin: clamp(28px, 4vw, 44px) 0 0;
+  margin: clamp(28px, 4vw, 40px) 0 0;
   color: var(--muted);
-  font-size: clamp(1rem, 1.45vw, 1.24rem);
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
   line-height: 1.75;
   word-break: keep-all;
 }
@@ -244,36 +244,36 @@ html[data-theme="dark"] .hero-primary-link {
   height: 4px;
   border-radius: 999px;
   background: var(--brand-dot);
-  opacity: 0.58;
+  opacity: 0.42;
   animation: float-dot 10s ease-in-out infinite;
 }
 
 .space-dots span:nth-child(3n) {
-  background: color-mix(in srgb, var(--brand-secondary) 36%, transparent);
-  opacity: 0.2;
+  background: color-mix(in srgb, var(--brand-secondary) 32%, transparent);
+  opacity: 0.18;
 }
 
 .space-dots span:nth-child(4n) {
-  background: rgba(148, 163, 184, 0.34);
-  opacity: 0.24;
+  background: rgba(148, 163, 184, 0.3);
+  opacity: 0.2;
 }
 
-.space-dots span:nth-child(10n + 1) { left: 8%; top: 22%; animation-delay: -1s; }
-.space-dots span:nth-child(10n + 2) { left: 20%; top: 78%; animation-delay: -2s; }
-.space-dots span:nth-child(10n + 3) { left: 34%; top: 42%; animation-delay: -3s; }
-.space-dots span:nth-child(10n + 4) { left: 48%; top: 72%; animation-delay: -4s; }
-.space-dots span:nth-child(10n + 5) { left: 58%; top: 28%; animation-delay: -5s; }
-.space-dots span:nth-child(10n + 6) { left: 66%; top: 62%; animation-delay: -6s; }
-.space-dots span:nth-child(10n + 7) { left: 76%; top: 36%; animation-delay: -7s; }
-.space-dots span:nth-child(10n + 8) { left: 84%; top: 78%; animation-delay: -8s; }
-.space-dots span:nth-child(10n + 9) { left: 92%; top: 24%; animation-delay: -9s; }
-.space-dots span:nth-child(10n) { left: 6%; top: 88%; animation-delay: -10s; }
+.space-dots span:nth-child(10n + 1) { left: 9%; top: 29%; animation-delay: -1s; }
+.space-dots span:nth-child(10n + 2) { left: 21%; top: 82%; animation-delay: -2s; }
+.space-dots span:nth-child(10n + 3) { left: 36%; top: 46%; animation-delay: -3s; }
+.space-dots span:nth-child(10n + 4) { left: 49%; top: 74%; animation-delay: -4s; }
+.space-dots span:nth-child(10n + 5) { left: 58%; top: 32%; animation-delay: -5s; }
+.space-dots span:nth-child(10n + 6) { left: 68%; top: 66%; animation-delay: -6s; }
+.space-dots span:nth-child(10n + 7) { left: 78%; top: 39%; animation-delay: -7s; }
+.space-dots span:nth-child(10n + 8) { left: 86%; top: 82%; animation-delay: -8s; }
+.space-dots span:nth-child(10n + 9) { left: 93%; top: 28%; animation-delay: -9s; }
+.space-dots span:nth-child(10n) { left: 7%; top: 90%; animation-delay: -10s; }
 
 .hero-object-scene {
   --pointer-x: 0;
   --pointer-y: 0;
   position: relative;
-  min-height: clamp(340px, 40vw, 520px);
+  min-height: clamp(340px, 38vw, 500px);
   isolation: isolate;
   perspective: 900px;
   transform-style: preserve-3d;
@@ -286,12 +286,12 @@ html[data-theme="dark"] .hero-primary-link {
 .hero-object-main {
   position: absolute;
   right: 0;
-  top: 17%;
+  top: 18%;
   z-index: 3;
-  width: clamp(230px, 27vw, 390px);
+  width: clamp(230px, 26vw, 370px);
   height: auto;
   object-fit: contain;
-  opacity: 0.88;
+  opacity: 0.98;
   transform:
     translate3d(
       calc(var(--pointer-x) * 18px),
@@ -302,22 +302,22 @@ html[data-theme="dark"] .hero-primary-link {
     rotateY(calc(var(--pointer-x) * 10deg))
     rotateZ(-12deg);
   filter:
-    saturate(0.76)
-    contrast(0.94)
-    drop-shadow(0 30px 64px rgba(0, 0, 0, 0.32));
+    saturate(1.02)
+    contrast(1.04)
+    drop-shadow(0 30px 64px rgba(0, 0, 0, 0.34));
   transition: transform 180ms ease-out;
   animation: object-float-main 8s ease-in-out infinite;
 }
 
 .hero-object-depth {
   position: absolute;
-  left: -28%;
-  bottom: 6%;
+  left: -38%;
+  bottom: 7%;
   z-index: 1;
-  width: clamp(46px, 5.6vw, 84px);
+  width: clamp(52px, 6.4vw, 96px);
   height: auto;
   object-fit: contain;
-  opacity: 0.045;
+  opacity: 0.16;
   transform:
     translate3d(
       calc(var(--pointer-x) * -9px),
@@ -327,11 +327,11 @@ html[data-theme="dark"] .hero-primary-link {
     rotateX(calc(var(--pointer-y) * 3deg))
     rotateY(calc(var(--pointer-x) * -4deg))
     rotateZ(14deg)
-    scale(0.58);
+    scale(0.62);
   filter:
-    saturate(0.12)
-    contrast(0.58)
-    blur(1.8px);
+    saturate(0.42)
+    contrast(0.74)
+    blur(1px);
   transition: transform 240ms ease-out;
   animation: object-float-depth 11s ease-in-out infinite;
 }
@@ -342,7 +342,8 @@ html[data-theme="dark"] .hero-primary-link {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.72fr);
   gap: clamp(28px, 5vw, 70px);
-  padding: clamp(34px, 5vw, 64px) 0 110px;
+  padding: clamp(34px, 5vw, 58px) 0 110px;
+  animation: content-slide-up 900ms ease-out 900ms both;
 }
 
 .post-list {
@@ -457,6 +458,18 @@ html[data-theme="dark"] .hero-primary-link {
   line-height: 1.6;
 }
 
+@keyframes content-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(72px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(-28px);
+  }
+}
+
 @keyframes float-dot {
   0%,
   100% {
@@ -492,7 +505,7 @@ html[data-theme="dark"] .hero-primary-link {
 
 @media (max-width: 960px) {
   .hero-universe {
-    min-height: calc(100vh - 88px);
+    min-height: min(720px, calc(100vh - 88px));
   }
 
   .hero-universe__content {
@@ -505,20 +518,20 @@ html[data-theme="dark"] .hero-primary-link {
   }
 
   .hero-object-scene {
-    min-height: clamp(300px, 46vw, 420px);
+    min-height: clamp(300px, 44vw, 400px);
   }
 
   .hero-object-main {
     right: 0;
     top: 20%;
-    width: clamp(190px, 35vw, 330px);
+    width: clamp(190px, 34vw, 320px);
   }
 
   .hero-object-depth {
-    left: -42%;
+    left: -50%;
     bottom: 8%;
-    width: clamp(38px, 6vw, 68px);
-    opacity: 0.035;
+    width: clamp(42px, 6.2vw, 72px);
+    opacity: 0.13;
   }
 
   .home-section {
@@ -548,6 +561,7 @@ html[data-theme="dark"] .hero-primary-link {
   }
 
   .hero-universe {
+    min-height: auto;
     padding-inline: 20px;
   }
 
@@ -557,7 +571,7 @@ html[data-theme="dark"] .hero-primary-link {
   }
 
   .hero-title {
-    font-size: clamp(2.7rem, 13vw, 4.2rem);
+    font-size: clamp(2.55rem, 12vw, 4rem);
   }
 
   .hero-description {
@@ -577,19 +591,19 @@ html[data-theme="dark"] .hero-primary-link {
   }
 
   .hero-object-scene {
-    min-height: 260px;
+    min-height: 250px;
   }
 
   .hero-object-main {
     top: 22%;
-    width: clamp(150px, 40vw, 240px);
-    opacity: 0.82;
+    width: clamp(150px, 39vw, 230px);
+    opacity: 0.96;
   }
 
   .hero-object-depth {
-    left: -52%;
-    bottom: 10%;
-    width: 36px;
-    opacity: 0.025;
+    left: -58%;
+    bottom: 9%;
+    width: 42px;
+    opacity: 0.1;
   }
 }
