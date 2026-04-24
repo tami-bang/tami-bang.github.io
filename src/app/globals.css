@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #111827;
+  --brand-blue: #b7e5f7;
+  --brand-pink: #ec4899;
+  --brand-indigo: #4f46e5;
+  --brand-yellow: #fde68a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hero-sky {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #a8dcf3 0%, #bfe9f7 55%, #ffffff 56%);
+}
+
+.hero-sky::before {
+  position: absolute;
+  left: -8%;
+  top: 145px;
+  width: 62%;
+  height: 250px;
+  content: "";
+  border-radius: 0 0 50% 50%;
+  background: rgba(255, 255, 255, 0.38);
+  transform: rotate(8deg);
+}
+
+.hero-sky::after {
+  position: absolute;
+  right: -8%;
+  top: 185px;
+  width: 64%;
+  height: 270px;
+  content: "";
+  border-radius: 50% 50% 0 0;
+  background: rgba(255, 255, 255, 0.55);
+  transform: rotate(-7deg);
+}
+
+.pixel-rainbow {
+  display: grid;
+  grid-template-columns: repeat(11, 18px);
+  gap: 11px;
+  transform: rotate(-15deg);
+}
+
+.pixel-rainbow span {
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+}
+
+.pixel-rainbow span:nth-child(4n + 1) {
+  background: #1e3a8a;
+}
+
+.pixel-rainbow span:nth-child(4n + 2) {
+  background: #4f46e5;
+}
+
+.pixel-rainbow span:nth-child(4n + 3) {
+  background: #9333ea;
+}
+
+.pixel-rainbow span:nth-child(4n) {
+  background: #ec4899;
+}
