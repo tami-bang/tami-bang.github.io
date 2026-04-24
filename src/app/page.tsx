@@ -27,7 +27,7 @@ function GithubIcon() {
 function SpaceDots() {
   return (
     <div className="space-dots" aria-hidden="true">
-      {Array.from({ length: 32 }).map((_, index) => (
+      {Array.from({ length: 24 }).map((_, index) => (
         <span key={index} />
       ))}
     </div>
