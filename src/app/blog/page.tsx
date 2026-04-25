@@ -22,7 +22,11 @@ export default function BlogPage() {
 
         <div className="category-strip">
           {studyCategories.map((category) => (
-            <Link className="category-link" href="/blog" key={category}>
+            <Link 
+              className="category-link"
+              href={`/blog/category/${encodeURIComponent(category)}`}
+               key={category}
+            >
               {category}
             </Link>
           ))}

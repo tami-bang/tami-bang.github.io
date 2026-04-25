@@ -66,7 +66,7 @@ export default async function ProjectDetailPage({
         <p className="project-detail-description">{project.description}</p>
       </section>
 
-      <section className="project-detail-grid page-section--reveal-delayed">
+      <section className="project-detail-section project-detail-grid page-section--reveal-delayed">
         <article className="project-detail-card">
           <h2>Problem</h2>
           <p>{project.problem}</p>
@@ -78,17 +78,19 @@ export default async function ProjectDetailPage({
         </article>
       </section>
 
-      <section className="project-detail-card project-detail-card--wide page-section--reveal">
-        <h2>Architecture Flow</h2>
+      <section className="project-detail-section page-section--reveal">
+        <article className="project-detail-card project-detail-card--wide">
+          <h2>Architecture Flow</h2>
 
-        <ol className="architecture-flow">
-          {project.architecture.map((step) => (
-            <li key={step}>{step}</li>
-          ))}
-        </ol>
+          <ol className="architecture-flow">
+            {project.architecture.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
+        </article>
       </section>
 
-      <section className="project-detail-grid page-section--reveal">
+      <section className="project-detail-section project-detail-grid page-section--reveal">
         <article className="project-detail-card">
           <h2>Technical Highlights</h2>
 
@@ -110,7 +112,7 @@ export default async function ProjectDetailPage({
         </article>
       </section>
 
-      <section className="project-detail-grid page-section--reveal">
+      <section className="project-detail-section project-detail-grid page-section--reveal">
         <article className="project-detail-card">
           <h2>Results</h2>
 

@@ -2,6 +2,8 @@
 
 /* ================================
    Theme Tokens
+   화면 역할:
+   - 사이트 전체 색상, 여백, 그림자, 반응형 기준값 관리
 ================================ */
 :root {
   --background: #050713;
@@ -47,6 +49,8 @@
 
 /* ================================
    Light Theme
+   화면 역할:
+   - 라이트 모드에서 사용하는 색상 토큰 재정의
 ================================ */
 html[data-theme="light"] {
   --background: #f8f7fb;
@@ -74,6 +78,9 @@ html[data-theme="light"] {
 
 /* ================================
    Global Reset
+   화면 역할:
+   - 브라우저 기본 여백 제거
+   - 전체 배경과 기본 텍스트 스타일 설정
 ================================ */
 * {
   box-sizing: border-box;
@@ -113,6 +120,7 @@ body {
   -webkit-user-select: none;
 }
 
+/* 화면 뒤쪽의 은은한 grid 배경 */
 body::before {
   position: fixed;
   inset: 0;
@@ -126,6 +134,7 @@ body::before {
   mask-image: linear-gradient(to bottom, black, transparent 80%);
 }
 
+/* 화면 뒤쪽의 별점 느낌 dot 배경 */
 body::after {
   position: fixed;
   inset: 0;
@@ -154,6 +163,8 @@ button {
 
 /* ================================
    Header
+   화면 역할:
+   - 상단 로고, 메뉴, 다크모드 토글 영역 표시
 ================================ */
 .site-header {
   position: sticky;
@@ -237,6 +248,8 @@ button {
 
 /* ================================
    Hero
+   화면 역할:
+   - 메인 첫 화면 브랜딩, 설명, CTA 버튼 영역 표시
 ================================ */
 .hero-universe {
   position: relative;
@@ -358,6 +371,8 @@ button {
 
 /* ================================
    Background Dots
+   화면 역할:
+   - 히어로 영역의 떠다니는 우주 dot 장식
 ================================ */
 .space-dots {
   position: absolute;
@@ -399,6 +414,8 @@ button {
 
 /* ================================
    Hero Object
+   화면 역할:
+   - 히어로 3D 오브젝트 위치, 깊이감, 커서 반응 제어
 ================================ */
 .hero-object-scene {
   --pointer-x: 0;
@@ -465,6 +482,8 @@ button {
 
 /* ================================
    Layout Shell
+   화면 역할:
+   - 페이지 공통 최대 너비와 좌우 여백 관리
 ================================ */
 .content-shell,
 .page-section,
@@ -498,6 +517,8 @@ button {
 
 /* ================================
    Section Header
+   화면 역할:
+   - 섹션의 eyebrow, 큰 제목, 설명 텍스트 표시
 ================================ */
 .section-header {
   max-width: 820px;
@@ -545,6 +566,8 @@ button {
 
 /* ================================
    Home Section
+   화면 역할:
+   - 홈의 Study Log 목록과 사이드 카테고리 영역 배치
 ================================ */
 .home-section {
   width: 100%;
@@ -567,6 +590,8 @@ button {
 
 /* ================================
    Card Base
+   화면 역할:
+   - 모든 카드의 glass panel, border, hover glow 공통 스타일
 ================================ */
 .post-card-large,
 .glass-panel,
@@ -655,6 +680,8 @@ button {
 
 /* ================================
    Post / Study Cards
+   화면 역할:
+   - 공부 기록 카드, 사이드 패널, About 카드 내부 여백과 제목 표시
 ================================ */
 .post-card-large,
 .study-card,
@@ -734,6 +761,8 @@ button {
 
 /* ================================
    Category
+   화면 역할:
+   - 카테고리 태그와 필터처럼 보이는 링크 버튼 표시
 ================================ */
 .category-grid,
 .category-strip {
@@ -775,24 +804,6 @@ button {
   transform: translateY(-2px);
 }
 
-.read-more-link {
-  position: relative;
-  display: inline-flex;
-  margin-top: 28px;
-  color: var(--brand-accent);
-  font-weight: 950;
-}
-
-.read-more-link::after {
-  content: " →";
-  transform: translateX(2px);
-  transition: transform 160ms ease;
-}
-
-.read-more-link:hover::after {
-  transform: translateX(7px);
-}
-
 .focus-list {
   display: grid;
   gap: 8px;
@@ -806,6 +817,8 @@ button {
 
 /* ================================
    Project List
+   화면 역할:
+   - 프로젝트 목록 2열 grid와 프로젝트 카드 내부 구조 표시
 ================================ */
 .project-story-grid,
 .blog-grid,
@@ -825,9 +838,9 @@ button {
 
 .project-card,
 .project-story-card {
-  min-height: clamp(420px, 32vw, 480px);
+  min-height: auto;
   height: 100%;
-  padding: clamp(26px, 3vw, 34px);
+  padding: clamp(22px, 2.4vw, 30px);
   transition:
     transform 180ms ease,
     border-color 180ms ease,
@@ -839,7 +852,13 @@ button {
   transform: translateY(-6px);
 }
 
-.project-card__content,
+.project-card__content {
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+  gap: 18px;
+  height: 100%;
+}
+
 .project-story-card {
   display: grid;
   grid-template-rows: auto auto auto 1fr auto auto;
@@ -850,8 +869,7 @@ button {
 .project-story-card__meta,
 .project-story-card__stack,
 .project-card__stack,
-.project-detail-meta,
-.project-detail-stack {
+.project-detail-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -861,6 +879,10 @@ button {
 .project-card__footer {
   align-items: center;
   justify-content: space-between;
+}
+
+.project-card__top {
+  margin-bottom: 8px;
 }
 
 .project-story-card__meta {
@@ -887,10 +909,10 @@ button {
 
 .project-card h2,
 .project-story-card h3 {
-  min-height: 2.08em;
+  min-height: auto;
   margin: 0;
   color: var(--foreground);
-  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-size: clamp(1.9rem, 2.8vw, 2.8rem);
   line-height: 1.04;
   letter-spacing: -0.06em;
   word-break: keep-all;
@@ -898,8 +920,8 @@ button {
 
 .project-card__subtitle,
 .project-story-card__subtitle {
-  min-height: 3.2em;
-  margin: 16px 0 0;
+  min-height: auto;
+  margin: 10px 0 0;
   color: var(--foreground);
   font-weight: 800;
   line-height: 1.6;
@@ -908,20 +930,40 @@ button {
 
 .project-card__description,
 .project-story-card__description {
-  margin: 16px 0 0;
+  max-width: 94%;
+  margin: 8px 0 0;
   color: var(--muted);
-  line-height: 1.75;
+  line-height: 1.65;
   word-break: keep-all;
 }
 
 .project-card__stack,
 .project-story-card__stack {
-  align-content: flex-end;
-  min-height: 72px;
-  margin-top: 28px;
+  align-content: flex-start;
+  min-height: auto;
+  margin-top: 4px;
 }
 
-.project-card__footer,
+.project-card__footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  margin-top: 12px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.project-card__footer p {
+  margin: 0;
+  color: var(--brand-accent);
+  font-size: clamp(0.98rem, 1.4vw, 1.15rem);
+  font-weight: 950;
+  line-height: 1.45;
+  word-break: keep-all;
+}
+
 .project-story-card__link {
   width: fit-content;
   margin-top: 20px;
@@ -930,8 +972,15 @@ button {
   font-weight: 900;
 }
 
+.project-card__cta {
+  justify-self: end;
+}
+
 /* ================================
    Detail Page
+   화면 역할:
+   - 프로젝트 상세 페이지 카드, 아키텍처 플로우, 리스트 표시
+   - 상세 카드의 제목과 본문 시작선을 공통 규칙으로 정렬
 ================================ */
 .page-hero,
 .project-detail-hero {
@@ -952,8 +1001,17 @@ button {
 }
 
 .project-detail-card {
+  --detail-content-gap: 22px;
   height: 100%;
   padding: 32px;
+}
+
+.project-detail-card h2 {
+  margin-bottom: var(--detail-content-gap);
+}
+
+.project-detail-card p {
+  margin: 0;
 }
 
 .project-detail-card--wide,
@@ -965,7 +1023,7 @@ button {
 .architecture-flow {
   display: grid;
   gap: 12px;
-  margin: 22px 0 0;
+  margin: 0;
   padding: 0;
   list-style: none;
   counter-reset: flow-step;
@@ -997,18 +1055,117 @@ button {
   font-weight: 950;
 }
 
+/* ================================
+   Detail Content
+   화면 역할:
+   - 상세 카드 내부 본문 콘텐츠의 시작 위치를 통일
+   - paragraph, list, stack, architecture가 h2 아래 같은 간격으로 시작
+================================ */
 .detail-list {
   display: grid;
   gap: 12px;
-  margin: 20px 0 0;
+  margin: 0;
   padding-left: 18px;
   color: var(--muted);
   line-height: 1.75;
   word-break: keep-all;
 }
 
+.project-detail-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-content: flex-start;
+  margin: 0;
+}
+
+/* ================================
+   CTA System
+   화면 역할:
+   - View Case Study, Read more 버튼의 공통 크기, hover, 화살표 UX 관리
+================================ */
+.cta-base,
+.read-more-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 44px;
+  padding: 0 1.1rem;
+  border-radius: 999px;
+  font-weight: 950;
+  white-space: nowrap;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease,
+    border-color 160ms ease,
+    filter 160ms ease;
+}
+
+/* CTA 뒤쪽 화살표를 CSS에서만 표시 */
+.cta-base::after,
+.read-more-link::after {
+  content: " →";
+  display: inline-flex;
+  transform: translateX(2px);
+  transition: transform 160ms ease;
+}
+
+/* hover 시 화살표가 오른쪽으로 이동 */
+.cta-base:hover::after,
+.read-more-link:hover::after {
+  transform: translateX(8px);
+}
+
+/* 강한 CTA: 프로젝트 상세 페이지 이동 */
+.cta-primary {
+  min-width: 190px;
+  min-height: 52px;
+  padding: 0 1.45rem;
+  border: 1px solid color-mix(in srgb, var(--brand-accent) 62%, transparent);
+  background: var(--brand-accent);
+  color: #04110a !important;
+  font-size: 0.98rem;
+  box-shadow:
+    0 0 28px color-mix(in srgb, var(--brand-accent) 30%, transparent),
+    0 14px 34px rgba(0, 0, 0, 0.32);
+}
+
+.cta-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+  box-shadow:
+    0 0 42px color-mix(in srgb, var(--brand-accent) 46%, transparent),
+    0 18px 44px rgba(0, 0, 0, 0.38);
+}
+
+/* CTA: 공부 기록 Read more */
+.cta-ghost,
+.read-more-link {
+  margin-top: 28px;
+  border: 1px solid color-mix(in srgb, var(--brand-accent) 62%, transparent);
+  background: var(--brand-accent);
+  color: #04110a !important;
+  box-shadow:
+    0 0 28px color-mix(in srgb, var(--brand-accent) 30%, transparent),
+    0 14px 34px rgba(0, 0, 0, 0.32);
+}
+
+.cta-ghost:hover,
+.read-more-link:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+  box-shadow:
+    0 0 42px color-mix(in srgb, var(--brand-accent) 46%, transparent),
+    0 18px 44px rgba(0, 0, 0, 0.38);
+}
+
 /* ================================
    Reveal Animation
+   화면 역할:
+   - 섹션이 아래에서 위로 부드럽게 등장하는 효과
 ================================ */
 .page-section--reveal {
   opacity: 0;
@@ -1024,6 +1181,8 @@ button {
 
 /* ================================
    Animations
+   화면 역할:
+   - reveal, dot float, object float keyframes 정의
 ================================ */
 @keyframes reveal-section {
   from {
@@ -1084,6 +1243,8 @@ button {
 
 /* ================================
    Responsive
+   화면 역할:
+   - 태블릿/모바일 화면에서 grid와 버튼 폭 조정
 ================================ */
 @media (min-width: 1200px) {
   :root {
@@ -1179,6 +1340,11 @@ button {
   .project-card__stack {
     min-height: auto;
   }
+
+  .project-card__cta {
+    width: 100%;
+    justify-self: stretch;
+  }
 }
 
 @media (max-width: 720px) {
@@ -1228,7 +1394,9 @@ button {
   }
 
   .hero-github-link,
-  .hero-primary-link {
+  .hero-primary-link,
+  .cta-base,
+  .read-more-link {
     width: 100%;
   }
 
@@ -1265,6 +1433,8 @@ button {
 
 /* ================================
    Reduced Motion
+   화면 역할:
+   - 모션 감소 설정 사용자의 애니메이션 최소화
 ================================ */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -1284,5 +1454,92 @@ button {
   .page-section--reveal-delayed {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* ================================
+   Read More → CTA 스타일 통합
+================================ */
+
+/* 기존 read-more를 CTA 스타일로 승격 */
+.read-more-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 44px;
+  padding: 0 16px;
+
+  border-radius: 999px;
+  background: var(--brand-accent);
+  color: #04110a !important;
+
+  font-size: 0.9rem;
+  font-weight: 950;
+
+  box-shadow:
+    0 0 20px color-mix(in srgb, var(--brand-accent) 30%, transparent),
+    0 10px 26px rgba(0, 0, 0, 0.3);
+
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    filter 160ms ease;
+}
+
+/* 화살표 */
+.read-more-link::after {
+  content: " →";
+  transform: translateX(2px);
+  transition: transform 160ms ease;
+}
+
+/* hover */
+.read-more-link:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.read-more-link:hover::after {
+  transform: translateX(8px);
+}
+
+/* ================================
+   Project Detail Spacing Fix
+   화면 역할:
+   - 프로젝트 상세 페이지의 작은 카드 4개가 붙어 보이는 문제 해결
+   - 상세 페이지 카드 섹션 간격을 section 단위로 관리
+================================ */
+.project-detail-section {
+  margin-top: clamp(32px, 4vw, 52px);
+}
+
+.project-detail-section + .project-detail-section {
+  margin-top: clamp(32px, 4vw, 52px);
+}
+
+.project-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(24px, 3vw, 36px);
+  row-gap: clamp(32px, 4vw, 52px);
+}
+
+.project-detail-card--wide {
+  margin-top: 0;
+}
+
+.project-detail-card {
+  min-height: 100%;
+}
+
+.project-detail-actions {
+  margin-top: clamp(36px, 4vw, 56px);
+}
+
+@media (max-width: 860px) {
+  .project-detail-grid {
+    grid-template-columns: 1fr;
   }
 }

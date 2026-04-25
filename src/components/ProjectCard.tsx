@@ -28,13 +28,13 @@ function updateCardPointer(
   const pointerX = getPointerPosition(event.clientX, rect.left, rect.width);
   const pointerY = getPointerPosition(event.clientY, rect.top, rect.height);
 
-  element.style.setProperty("--card-pointer-x", pointerX);
-  element.style.setProperty("--card-pointer-y", pointerY);
+  element.style.setProperty("--glow-x", pointerX);
+  element.style.setProperty("--glow-y", pointerY);
 }
 
 function resetCardPointer(element: HTMLElement) {
-  element.style.setProperty("--card-pointer-x", POINTER_CENTER_VALUE);
-  element.style.setProperty("--card-pointer-y", POINTER_CENTER_VALUE);
+  element.style.setProperty("--glow-x", POINTER_CENTER_VALUE);
+  element.style.setProperty("--glow-y", POINTER_CENTER_VALUE);
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
@@ -63,32 +63,36 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
     >
-      <div className="project-card__glow" aria-hidden="true" />
-
       <div className="project-card__content">
-        <div className="project-card__top">
+        <header className="project-card__top">
           <p className="section-eyebrow">{project.domain}</p>
           <span>{project.status}</span>
-        </div>
+        </header>
 
-        <div>
+        <section className="project-card__body">
           <h2>{project.title}</h2>
+
           <p className="project-card__subtitle">{project.subtitle}</p>
-        </div>
 
-        <p className="project-card__description">{project.description}</p>
+          <p className="project-card__description">{project.description}</p>
+        </section>
 
-        <div className="project-card__stack">
+        <section className="project-card__stack" aria-label="Project tech stack">
           {project.techStack.slice(0, 5).map((tech) => (
             <span key={tech}>{tech}</span>
           ))}
-        </div>
+        </section>
 
-        <div className="project-card__footer">
-          <span>{project.role}</span>
+        <footer className="project-card__footer">
+          <p>{project.role}</p>
 
-          <Link href={`/projects/${project.slug}`}>View Case Study</Link>
-        </div>
+          <Link
+            className="cta-base cta-primary project-card__cta"
+            href={`/projects/${project.slug}`}
+          >
+            View Case Study
+          </Link>
+        </footer>
       </div>
     </article>
   );

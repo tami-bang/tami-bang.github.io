@@ -102,7 +102,10 @@ function FeaturedPostsSection() {
 
             <div className="category-grid">
               {studyCategories.map((category) => (
-                <Link className="category-link" href="/blog" key={category}>
+                <Link className="category-link"
+                  href={`/blog/category/${encodeURIComponent(category)}`}
+                  key={category}
+                >
                   {category}
                 </Link>
               ))}
