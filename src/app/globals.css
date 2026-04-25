@@ -2,7 +2,6 @@
 
 /* ================================
    Theme Tokens
-   - 사이트 전체 색상/레이아웃 기준값
 ================================ */
 :root {
   --background: #050713;
@@ -16,13 +15,21 @@
   --header-bg: rgba(5, 7, 19, 0.86);
   --header-border: rgba(255, 255, 255, 0.09);
   --shadow-strong: 0 30px 90px rgba(0, 0, 0, 0.42);
+
   --layout-max-width: 1180px;
   --section-max-width: 1240px;
   --layout-padding: clamp(20px, 5vw, 64px);
   --section-padding: clamp(16px, 4vw, 48px);
+
   --hero-min-height: clamp(620px, 78vh, 760px);
-  --next-section-start-y: 72px;
-  --next-section-end-y: -42px;
+
+  --section-gap-large: clamp(72px, 8vw, 112px);
+  --section-gap-medium: clamp(44px, 5vw, 72px);
+  --section-gap-small: clamp(24px, 2.8vw, 40px);
+  --section-header-to-content-gap: clamp(30px, 3.5vw, 44px);
+
+  --section-reveal-start-y: 72px;
+  --section-reveal-end-y: 0px;
 }
 
 /* ================================
@@ -408,16 +415,64 @@ html[data-theme="light"] .hero-object-depth {
 }
 
 /* ================================
+   Page Section
+================================ */
+.page-section {
+  width: min(calc(100% - var(--section-padding) * 2), var(--section-max-width));
+  margin: 0 auto;
+}
+
+.page-section--projects {
+  padding: clamp(32px, 4vw, 56px) 0 0;
+}
+
+.page-section--study {
+  margin-top: var(--section-gap-medium);
+  padding-bottom: 110px;
+}
+
+.page-section--reveal {
+  opacity: 0;
+  transform: translate3d(0, var(--section-reveal-start-y), 0);
+  animation: reveal-section 700ms cubic-bezier(0.22, 1, 0.36, 1) 500ms both;
+}
+
+.page-section--reveal-delayed {
+  opacity: 0;
+  transform: translate3d(0, 44px, 0);
+  animation: reveal-section-soft 720ms cubic-bezier(0.22, 1, 0.36, 1) 720ms both;
+}
+
+.section-header {
+  max-width: 760px;
+  margin-bottom: var(--section-header-to-content-gap);
+}
+
+.section-header h2 {
+  margin: 0;
+  color: var(--foreground);
+  font-size: clamp(2.4rem, 5vw, 4.8rem);
+  line-height: 1;
+  letter-spacing: -0.07em;
+}
+
+.section-header p {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.8;
+  word-break: keep-all;
+}
+
+/* ================================
    Home Section
 ================================ */
 .home-section {
-  width: min(calc(100% - var(--layout-padding) * 2), var(--layout-max-width));
-  margin: 0 auto;
+  width: 100%;
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.72fr);
-  gap: clamp(28px, 5vw, 70px);
-  padding: clamp(34px, 5vw, 58px) 0 110px;
-  animation: content-slide-up 900ms ease-out 900ms both;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.72fr);
+  align-items: start;
+  gap: 24px;
 }
 
 .post-list {
@@ -532,74 +587,20 @@ html[data-theme="light"] .hero-object-depth {
   transform: translateY(-2px);
 }
 
-.project-list {
+.focus-list {
   display: grid;
-  gap: 14px;
-}
-
-.project-card {
-  display: grid;
-  grid-template-columns: 28px 1fr;
-  gap: 8px 12px;
-  border-radius: 22px;
-  border: 1px solid var(--panel-border);
-  padding: 18px;
-  transition:
-    transform 160ms ease,
-    background 160ms ease,
-    border-color 160ms ease,
-    box-shadow 160ms ease;
-}
-
-.project-card:hover {
-  transform: translateY(-2px);
-}
-
-.project-card span {
-  grid-row: span 2;
-  color: var(--brand-accent);
-  font-size: 1.5rem;
-  font-weight: 950;
-}
-
-.project-card small {
+  gap: 8px;
   color: var(--muted);
   line-height: 1.6;
 }
 
-/* ================================
-   Featured Projects
-================================ */
-.featured-projects-section {
-  width: min(calc(100% - var(--section-padding) * 2), var(--section-max-width));
-  margin: 0 auto;
-  padding: clamp(32px, 4vw, 56px) 0 clamp(72px, 8vw, 120px);
-  opacity: 0;
-  transform: translate3d(0, var(--next-section-start-y), 0);
-  animation: reveal-next-section 700ms cubic-bezier(0.22, 1, 0.36, 1) 500ms both;
-}
-
-.section-header {
-  max-width: 760px;
-  margin-bottom: 36px;
-}
-
-.section-header h2 {
+.focus-list p {
   margin: 0;
-  color: var(--foreground);
-  font-size: clamp(2.4rem, 5vw, 4.8rem);
-  line-height: 1;
-  letter-spacing: -0.07em;
 }
 
-.section-header p {
-  margin: 18px 0 0;
-  color: var(--muted);
-  font-size: 1rem;
-  line-height: 1.8;
-  word-break: keep-all;
-}
-
+/* ================================
+   Project Section
+================================ */
 .project-story-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -608,10 +609,10 @@ html[data-theme="light"] .hero-object-depth {
 }
 
 .project-story-card {
-  display: flex;
+  display: grid;
+  grid-template-rows: auto auto auto 1fr auto auto;
   min-height: clamp(420px, 32vw, 480px);
   height: 100%;
-  flex-direction: column;
   border: 1px solid var(--panel-border);
   border-radius: 32px;
   background: var(--panel);
@@ -672,14 +673,16 @@ html[data-theme="light"] .hero-object-depth {
 .project-story-card__stack {
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-end;
   gap: 8px;
-  margin-top: auto;
-  padding-top: 28px;
+  min-height: 72px;
+  margin-top: 28px;
 }
 
 .project-story-card__link {
   width: fit-content;
-  margin-top: 22px;
+  margin-top: 20px;
+  align-self: end;
   color: var(--brand-accent);
   font-weight: 900;
   text-decoration: none;
@@ -841,9 +844,6 @@ html[data-theme="light"] .hero-object-depth {
 
 /* ================================
    Unified Card Neon Glow
-   - 모든 카드에 동일한 hover 네온 효과 적용
-   - 기본 상태에서는 네온 없음
-   - 커서 위치는 NeonCardGlow.tsx에서 --glow-x / --glow-y로 주입
 ================================ */
 .project-story-card,
 .post-card-large,
@@ -856,7 +856,6 @@ html[data-theme="light"] .hero-object-depth {
   overflow: hidden;
 }
 
-/* 카드 내부 커서 추적 하이라이트 */
 .project-story-card::before,
 .post-card-large::before,
 .glass-panel::before,
@@ -877,7 +876,6 @@ html[data-theme="light"] .hero-object-depth {
   pointer-events: none;
 }
 
-/* 카드 hover 시에만 내부 네온 표시 */
 .project-story-card:hover::before,
 .post-card-large:hover::before,
 .glass-panel:hover::before,
@@ -886,7 +884,6 @@ html[data-theme="light"] .hero-object-depth {
   opacity: 1;
 }
 
-/* 카드 hover 테두리 네온 */
 .project-story-card:hover,
 .post-card-large:hover,
 .glass-panel:hover,
@@ -898,7 +895,6 @@ html[data-theme="light"] .hero-object-depth {
     0 0 18px color-mix(in srgb, var(--brand-accent) 7%, transparent);
 }
 
-/* 카드 내부 콘텐츠가 네온 레이어 위에 보이도록 유지 */
 .project-story-card > *,
 .post-card-large > *,
 .glass-panel > *,
@@ -911,27 +907,27 @@ html[data-theme="light"] .hero-object-depth {
 /* ================================
    Animations
 ================================ */
-@keyframes reveal-next-section {
+@keyframes reveal-section {
   from {
     opacity: 0;
-    transform: translate3d(0, var(--next-section-start-y), 0);
+    transform: translate3d(0, var(--section-reveal-start-y), 0);
   }
 
   to {
     opacity: 1;
-    transform: translate3d(0, var(--next-section-end-y), 0);
+    transform: translate3d(0, var(--section-reveal-end-y), 0);
   }
 }
 
-@keyframes content-slide-up {
+@keyframes reveal-section-soft {
   from {
     opacity: 0;
-    transform: translateY(72px);
+    transform: translate3d(0, 44px, 0);
   }
 
   to {
     opacity: 1;
-    transform: translateY(-28px);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -974,21 +970,18 @@ html[data-theme="light"] .hero-object-depth {
 @media (min-width: 1200px) {
   :root {
     --hero-min-height: clamp(680px, 76vh, 780px);
-    --next-section-end-y: -64px;
   }
 }
 
 @media (min-width: 1600px) {
   :root {
     --hero-min-height: 720px;
-    --next-section-end-y: -92px;
   }
 }
 
 @media (max-width: 960px) {
   :root {
     --hero-min-height: clamp(560px, 72vh, 680px);
-    --next-section-end-y: -24px;
   }
 
   .hero-universe__content {
@@ -1029,8 +1022,7 @@ html[data-theme="light"] .hero-object-depth {
 @media (max-width: 860px) {
   :root {
     --hero-min-height: auto;
-    --next-section-start-y: 36px;
-    --next-section-end-y: 0;
+    --section-gap-medium: clamp(36px, 6vw, 56px);
   }
 
   .hero-universe {
@@ -1042,7 +1034,7 @@ html[data-theme="light"] .hero-object-depth {
     min-height: auto;
   }
 
-  .featured-projects-section {
+  .page-section--projects {
     padding-top: 28px;
   }
 
@@ -1052,12 +1044,14 @@ html[data-theme="light"] .hero-object-depth {
   }
 
   .project-story-card {
+    grid-template-rows: auto;
     min-height: auto;
   }
 
   .project-story-card__meta,
   .project-story-card h3,
-  .project-story-card__subtitle {
+  .project-story-card__subtitle,
+  .project-story-card__stack {
     min-height: auto;
   }
 }
@@ -1135,7 +1129,7 @@ html[data-theme="light"] .hero-object-depth {
 }
 
 @media (max-width: 560px) {
-  .featured-projects-section,
+  .page-section,
   .page-shell,
   .project-detail-shell {
     width: min(calc(100% - 32px), var(--section-max-width));
@@ -1157,12 +1151,13 @@ html[data-theme="light"] .hero-object-depth {
   .space-dots span,
   .hero-object-main,
   .hero-object-depth,
-  .home-section,
-  .featured-projects-section {
+  .page-section--reveal,
+  .page-section--reveal-delayed {
     animation: none;
   }
 
-  .featured-projects-section {
+  .page-section--reveal,
+  .page-section--reveal-delayed {
     opacity: 1;
     transform: none;
   }

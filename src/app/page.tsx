@@ -1,6 +1,7 @@
 import Link from "next/link"; // 용도 사이트 내부 페이지 이동
 import HeroObjectScene from "@/components/HeroObjectScene"; // 용도 히어로 3D 오브젝트 인터랙션 표시
 import ProjectCard from "@/components/ProjectCard"; // 용도 프로젝트 카드 표시
+import SectionHeader from "@/components/SectionHeader"; // 용도 공용 섹션 헤더 표시
 import { featuredPosts, studyCategories } from "@/lib/site"; // 용도 메인 화면 학습 콘텐츠 데이터 조회
 import { getFeaturedProjects } from "@/lib/projects"; // 용도 대표 프로젝트 데이터 조회
 
@@ -31,9 +32,9 @@ function HeroSection() {
             </h1>
 
             <p className="hero-description">
-              AI, Backend, Network를 공부하며 얻은 개념을 실제 프로젝트로
-              연결합니다. 이 사이트는 단순 블로그가 아니라 문제 해결 과정,
-              설계 판단, 구현 결과를 정리하는 개인 개발 기록 플랫폼입니다.
+              AI, Backend, Network를 공부하며 얻은 개념을 프로젝트로
+              확장해 나갑니다. 이곳은 단순한 블로그가 아니라,
+              학습 과정과 개발 결과를 함께 기록하는 공간입니다.
             </p>
 
             <div className="hero-actions">
@@ -58,15 +59,12 @@ function FeaturedProjectsSection() {
   const projects = getFeaturedProjects();
 
   return (
-    <section className="featured-projects-section">
-      <div className="section-header">
-        <p className="section-eyebrow">Selected Case Studies</p>
-        <h2>Projects built from real problems</h2>
-        <p>
-          GitHub에는 코드와 실행 방법을 두고, 사이트에서는 왜 만들었고 어떤
-          구조로 해결했는지 중심으로 정리합니다.
-        </p>
-      </div>
+    <section className="page-section page-section--projects page-section--reveal">
+      <SectionHeader
+        eyebrow="Selected Case Studies"
+        title="Projects built from real problems"
+        description="GitHub에는 코드와 실행 방법을 정리하고, 이곳에서는 문제를 어떻게 정의하고 어떤 구조로 해결했는지를 중심으로 기록합니다."
+      />
 
       <div className="project-story-grid">
         {projects.map((project) => (
@@ -79,42 +77,50 @@ function FeaturedProjectsSection() {
 
 function FeaturedPostsSection() {
   return (
-    <section className="home-section">
-      <div className="post-list">
-        {featuredPosts.map((post) => (
-          <Link className="post-card-large" href={post.href} key={post.title}>
-            <p className="category-pill">{post.category}</p>
-            <h2>{post.title}</h2>
-            <p>{post.description}</p>
-            <span className="read-more-link">Read more</span>
-          </Link>
-        ))}
+    <section className="page-section page-section--study page-section--reveal-delayed">
+      <SectionHeader
+        eyebrow="Study Log"
+        title="What I’ve been learning"
+        description="AI, Backend, Network, Frontend를 중심으로 학습한 내용을 개념 정리와 실습 기록 형태로 정리합니다."
+      />
+
+      <div className="home-section">
+        <div className="post-list">
+          {featuredPosts.map((post) => (
+            <Link className="post-card-large" href={post.href} key={post.title}>
+              <p className="category-pill">{post.category}</p>
+              <h2>{post.title}</h2>
+              <p>{post.description}</p>
+              <span className="read-more-link">Read more</span>
+            </Link>
+          ))}
+        </div>
+
+        <aside className="home-aside">
+          <div className="glass-panel">
+            <p className="section-eyebrow">Browse by Category</p>
+
+            <div className="category-grid">
+              {studyCategories.map((category) => (
+                <Link className="category-link" href="/blog" key={category}>
+                  {category}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="glass-panel">
+            <p className="section-eyebrow">Current Focus</p>
+
+            <div className="focus-list">
+              <p>AI Search API</p>
+              <p>Backend Architecture</p>
+              <p>Network Security</p>
+              <p>Portfolio Writing</p>
+            </div>
+          </div>
+        </aside>
       </div>
-
-      <aside className="home-aside">
-        <div className="glass-panel">
-          <p className="section-eyebrow">Browse by Category</p>
-
-          <div className="category-grid">
-            {studyCategories.map((category) => (
-              <Link className="category-link" href="/blog" key={category}>
-                {category}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <div className="glass-panel">
-          <p className="section-eyebrow">Current Focus</p>
-
-          <div className="focus-list">
-            <p>AI Search API</p>
-            <p>Backend Architecture</p>
-            <p>Network Security</p>
-            <p>Portfolio Writing</p>
-          </div>
-        </div>
-      </aside>
     </section>
   );
 }
