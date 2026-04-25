@@ -1,4 +1,4 @@
-import Link from "next/link"; // 용도 게시글 상세 페이지 이동
+import Link from "next/link"; // 용도 게시글 상세 및 카테고리 페이지 이동
 import SectionHeader from "@/components/SectionHeader"; // 용도 공통 섹션 헤더 표시
 import { getAllPosts } from "@/lib/post"; // 용도 로컬 Markdown 게시글 목록 조회
 import { studyCategories } from "@/lib/site"; // 용도 공부 카테고리 데이터 조회
@@ -22,10 +22,10 @@ export default function BlogPage() {
 
         <div className="category-strip">
           {studyCategories.map((category) => (
-            <Link 
+            <Link
               className="category-link"
               href={`/blog/category/${encodeURIComponent(category)}`}
-               key={category}
+              key={category}
             >
               {category}
             </Link>
@@ -47,15 +47,18 @@ export default function BlogPage() {
             <div className="study-card__footer">
               <span>{post.createdAt}</span>
 
-              <Link href={`/blog/${post.slug}`}>Read more</Link>
+              <Link className="read-more-link" href={`/blog/${post.slug}`}>
+                Read more
+              </Link>
             </div>
           </article>
         ))}
       </section>
 
       {posts.length === 0 && (
-        <section className="empty-panel">
+        <section className="empty-panel page-section--reveal-delayed">
           <h2>아직 작성된 글이 없습니다.</h2>
+
           <p>/admin 페이지에서 첫 공부 기록을 작성하면 이곳에 표시됩니다.</p>
         </section>
       )}

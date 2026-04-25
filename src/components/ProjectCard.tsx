@@ -16,6 +16,7 @@ function getPointerPosition(
   elementSize: number,
 ) {
   const ratio = ((pointerPosition - elementPosition) / elementSize) * 100;
+
   return `${ratio.toFixed(2)}%`;
 }
 
@@ -87,7 +88,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           <p>{project.role}</p>
 
           <Link
-            className="cta-base cta-primary project-card__cta"
+            className="project-card__cta cta-base cta-primary"
             href={`/projects/${project.slug}`}
           >
             View Case Study
