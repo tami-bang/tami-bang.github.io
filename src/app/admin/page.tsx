@@ -5,13 +5,22 @@ import { studyCategories } from "@/lib/site"; // 용도 게시글 카테고리 �
 
 type SaveStatus = "idle" | "saving" | "success" | "error";
 
-const DEFAULT_CATEGORY = "Backend/API";
-
 type ApiResponse = {
   success: boolean;
   slug?: string;
+  deployTriggered?: boolean;
   message?: string;
 };
+
+const DEFAULT_CATEGORY = "Backend/API";
+
+function getErrorMessage(error: unknown) {
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  return "알 수 없는 오류가 발생했습니다.";
+}
 
 export default function AdminPage() {
   const [title, setTitle] = useState("");
@@ -63,6 +72,16 @@ export default function AdminPage() {
     setContent("");
   }
 
+  function createSuccessMessage(data: ApiResponse) {
+    const postUrl = `/blog/${data.slug}`;
+
+    if (data.deployTriggered) {
+      return `GitHub 저장 완료. Vercel 자동 배포가 시작되었습니다. 생성된 글 주소: ${postUrl}`;
+    }
+
+    return `GitHub 저장 완료. 로컬에서는 git pull 후 확인하세요. 생성된 글 주소: ${postUrl}`;
+  }
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -76,81 +95,69 @@ export default function AdminPage() {
 
     try {
       setStatus("saving");
-      setMessage("GitHub에 저장 중입니다.");
+      setMessage("GitHub에 게시글을 저장하고 있습니다.");
 
       const data = await requestSavePost();
 
       setStatus("success");
-      setMessage(
-        `GitHub 저장 완료. 생성된 글 주소: /blog/${data.slug}`
-      );
+      setMessage(createSuccessMessage(data));
       resetEditor();
     } catch (error) {
-      const errorMessage =
-        error instanceof Error ? error.message : "알 수 없는 오류가 발생했습니다.";
-
       setStatus("error");
-      setMessage(errorMessage);
+      setMessage(getErrorMessage(error));
     }
   }
 
   return (
-    <main className="mx-auto max-w-5xl px-6 py-16">
-      <p className="mb-5 text-sm font-black uppercase tracking-[0.45em] text-pink-600">
-        Admin Editor
-      </p>
+    <main className="admin-shell">
+      <section className="admin-hero page-section--reveal">
+        <p className="section-eyebrow admin-eyebrow">Admin Editor</p>
 
-      <h1 className="text-fluid-title font-black tracking-tight text-slate-950">
-        공부 기록 작성
-      </h1>
+        <h1>공부 기록 작성</h1>
 
-      <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
-        이 화면에서 작성한 글은 GitHub 저장소의 Markdown 파일로 커밋됩니다.
-      </p>
+        <p>
+          이 화면에서 작성한 글은 GitHub 저장소의 Markdown 파일로 커밋되고,
+          Vercel 자동 배포로 웹에 반영됩니다.
+        </p>
+      </section>
 
       <form
         onSubmit={handleSubmit}
-        className="mt-10 space-y-5 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+        className="admin-form page-section--reveal-delayed"
       >
-        <label className="block">
-          <span className="text-sm font-black text-slate-800">
-            관리자 비밀번호
-          </span>
+        <label className="admin-field">
+          <span>관리자 비밀번호</span>
           <input
             type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
-            className="mt-2 w-full rounded-2xl border border-slate-300 px-4 py-3 outline-none focus:border-indigo-500"
             placeholder="ADMIN_WRITE_PASSWORD 값 입력"
           />
         </label>
 
-        <label className="block">
-          <span className="text-sm font-black text-slate-800">제목</span>
+        <label className="admin-field">
+          <span>제목</span>
           <input
             value={title}
             onChange={(event) => setTitle(event.target.value)}
-            className="mt-2 w-full rounded-2xl border border-slate-300 px-4 py-3 outline-none focus:border-indigo-500"
             placeholder="예: API는 프론트와 백엔드를 어떻게 연결할까?"
           />
         </label>
 
-        <label className="block">
-          <span className="text-sm font-black text-slate-800">요약 설명</span>
+        <label className="admin-field">
+          <span>요약 설명</span>
           <input
             value={description}
             onChange={(event) => setDescription(event.target.value)}
-            className="mt-2 w-full rounded-2xl border border-slate-300 px-4 py-3 outline-none focus:border-indigo-500"
             placeholder="목록 카드에 보일 짧은 설명"
           />
         </label>
 
-        <label className="block">
-          <span className="text-sm font-black text-slate-800">카테고리</span>
+        <label className="admin-field">
+          <span>카테고리</span>
           <select
             value={category}
             onChange={(event) => setCategory(event.target.value)}
-            className="mt-2 w-full rounded-2xl border border-slate-300 px-4 py-3 outline-none focus:border-indigo-500"
           >
             {studyCategories.map((item) => (
               <option key={item} value={item}>
@@ -160,12 +167,11 @@ export default function AdminPage() {
           </select>
         </label>
 
-        <label className="block">
-          <span className="text-sm font-black text-slate-800">본문</span>
+        <label className="admin-field">
+          <span>본문</span>
           <textarea
             value={content}
             onChange={(event) => setContent(event.target.value)}
-            className="mt-2 min-h-[420px] w-full rounded-2xl border border-slate-300 px-4 py-3 leading-7 outline-none focus:border-indigo-500"
             placeholder="# 제목&#10;&#10;공부한 내용을 Markdown 형식으로 작성하세요."
           />
         </label>
@@ -173,19 +179,13 @@ export default function AdminPage() {
         <button
           type="submit"
           disabled={status === "saving"}
-          className="rounded-full bg-slate-950 px-6 py-3 text-sm font-black text-white transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
+          className="admin-submit-button"
         >
           {status === "saving" ? "저장 중..." : "GitHub에 저장"}
         </button>
 
         {message && (
-          <p
-            className={`rounded-2xl px-4 py-3 text-sm font-bold ${
-              status === "error"
-                ? "bg-red-50 text-red-600"
-                : "bg-indigo-50 text-indigo-600"
-            }`}
-          >
+          <p className={`admin-message admin-message--${status}`}>
             {message}
           </p>
         )}

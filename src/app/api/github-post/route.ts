@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"; // 용도 API 요청/응답 처리
-import { commitPostToGithub } from "@/lib/github"; // 용도 GitHub 게시글 커밋 처리
+import { commitPostToGithub } from "@/lib/github"; // 용도 GitHub 게시글 커밋 및 Vercel 자동 배포 요청
 
 type CreatePostRequestBody = {
   title?: string;
@@ -9,20 +9,28 @@ type CreatePostRequestBody = {
   password?: string;
 };
 
-function createSlug(title: string) {
-  const slug = title
+const FALLBACK_SLUG_PREFIX = "post";
+
+function createDateText() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function createSafeSlug(title: string) {
+  const safeSlug = title
     .trim()
     .toLowerCase()
+    .normalize("NFC")
+    .replace(/[^\w\sㄱ-ㅎㅏ-ㅣ가-힣-]/g, "")
     .replace(/\s+/g, "-")
-    .replace(/[^\p{L}\p{N}-]/gu, "")
+    .replace(/_+/g, "-")
     .replace(/-+/g, "-")
     .replace(/^-|-$/g, "");
 
-  if (slug.length > 0) {
-    return slug;
+  if (safeSlug.length > 0) {
+    return safeSlug;
   }
 
-  return `post-${Date.now()}`;
+  return `${FALLBACK_SLUG_PREFIX}-${createDateText()}`;
 }
 
 function validatePassword(password?: string) {
@@ -55,6 +63,14 @@ function validatePostInput(body: CreatePostRequestBody) {
   }
 }
 
+function createSuccessMessage(deployTriggered: boolean) {
+  if (deployTriggered) {
+    return "게시글이 GitHub에 저장되었고 Vercel 자동 배포가 시작되었습니다.";
+  }
+
+  return "게시글이 GitHub에 저장되었습니다. VERCEL_DEPLOY_HOOK_URL이 없어 자동 배포는 건너뛰었습니다.";
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = (await request.json()) as CreatePostRequestBody;
@@ -63,9 +79,9 @@ export async function POST(request: NextRequest) {
     validatePostInput(body);
 
     const title = body.title!.trim();
-    const slug = createSlug(title);
+    const slug = createSafeSlug(title);
 
-    await commitPostToGithub({
+    const result = await commitPostToGithub({
       slug,
       title,
       description: body.description!.trim(),
@@ -76,7 +92,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       slug,
-      message: "게시글이 GitHub에 저장되었습니다.",
+      deployTriggered: result.deployResult.triggered,
+      message: createSuccessMessage(result.deployResult.triggered),
     });
   } catch (error) {
     const message =
@@ -89,7 +106,7 @@ export async function POST(request: NextRequest) {
       },
       {
         status: 400,
-      }
+      },
     );
   }
 }

@@ -11,80 +11,96 @@ export type BlogPost = {
 };
 
 const POSTS_DIRECTORY = path.join(process.cwd(), "src/content/posts");
+const MARKDOWN_EXTENSION = ".md";
+const DEFAULT_CATEGORY = "Study";
 
 function ensurePostsDirectory() {
-  if (!fs.existsSync(POSTS_DIRECTORY)) {
-    fs.mkdirSync(POSTS_DIRECTORY, { recursive: true });
+  if (fs.existsSync(POSTS_DIRECTORY)) {
+    return;
   }
+
+  fs.mkdirSync(POSTS_DIRECTORY, { recursive: true });
+}
+
+function normalizeSlug(slug: string) {
+  return decodeURIComponent(slug).normalize("NFC").trim();
 }
 
 function parseFrontmatterValue(line: string) {
   return line.replace(/^.*?:\s*/, "").replace(/^["']|["']$/g, "").trim();
 }
 
+function getMarkdownFileNames() {
+  ensurePostsDirectory();
+
+  return fs
+    .readdirSync(POSTS_DIRECTORY)
+    .filter((fileName) => fileName.endsWith(MARKDOWN_EXTENSION));
+}
+
+function getSlugFromFileName(fileName: string) {
+  return fileName.replace(/\.md$/, "").normalize("NFC");
+}
+
+function getFrontmatterLine(frontmatter: string, key: string) {
+  return frontmatter.split(/\r?\n/).find((line) => line.startsWith(`${key}:`));
+}
+
+function createFallbackPost(slug: string, rawContent: string): BlogPost {
+  return {
+    slug,
+    title: slug,
+    description: "",
+    category: DEFAULT_CATEGORY,
+    createdAt: "",
+    content: rawContent,
+  };
+}
+
 function parseMarkdownPost(slug: string, rawContent: string): BlogPost {
-  const frontmatterMatch = rawContent.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  const frontmatterMatch = rawContent.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
 
   if (!frontmatterMatch) {
-    return {
-      slug,
-      title: slug,
-      description: "",
-      category: "Study",
-      createdAt: "",
-      content: rawContent,
-    };
+    return createFallbackPost(slug, rawContent);
   }
 
   const frontmatter = frontmatterMatch[1];
   const content = frontmatterMatch[2];
 
-  const titleLine = frontmatter
-    .split("\n")
-    .find((line) => line.startsWith("title:"));
-
-  const descriptionLine = frontmatter
-    .split("\n")
-    .find((line) => line.startsWith("description:"));
-
-  const categoryLine = frontmatter
-    .split("\n")
-    .find((line) => line.startsWith("category:"));
-
-  const createdAtLine = frontmatter
-    .split("\n")
-    .find((line) => line.startsWith("createdAt:"));
+  const titleLine = getFrontmatterLine(frontmatter, "title");
+  const descriptionLine = getFrontmatterLine(frontmatter, "description");
+  const categoryLine = getFrontmatterLine(frontmatter, "category");
+  const createdAtLine = getFrontmatterLine(frontmatter, "createdAt");
 
   return {
     slug,
     title: titleLine ? parseFrontmatterValue(titleLine) : slug,
     description: descriptionLine ? parseFrontmatterValue(descriptionLine) : "",
-    category: categoryLine ? parseFrontmatterValue(categoryLine) : "Study",
+    category: categoryLine ? parseFrontmatterValue(categoryLine) : DEFAULT_CATEGORY,
     createdAt: createdAtLine ? parseFrontmatterValue(createdAtLine) : "",
     content,
   };
 }
 
+function readPostFile(fileName: string) {
+  const slug = getSlugFromFileName(fileName);
+  const filePath = path.join(POSTS_DIRECTORY, fileName);
+  const rawContent = fs.readFileSync(filePath, "utf-8");
+
+  return parseMarkdownPost(slug, rawContent);
+}
+
 export function getAllPosts() {
-  ensurePostsDirectory();
-
-  return fs
-    .readdirSync(POSTS_DIRECTORY)
-    .filter((fileName) => fileName.endsWith(".md"))
-    .map((fileName) => {
-      const slug = fileName.replace(/\.md$/, "");
-      const filePath = path.join(POSTS_DIRECTORY, fileName);
-      const rawContent = fs.readFileSync(filePath, "utf-8");
-
-      return parseMarkdownPost(slug, rawContent);
-    })
+  return getMarkdownFileNames()
+    .map(readPostFile)
     .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 }
 
 export function getPostBySlug(slug: string) {
   ensurePostsDirectory();
 
-  const filePath = path.join(POSTS_DIRECTORY, `${slug}.md`);
+  const normalizedSlug = normalizeSlug(slug);
+  const filePath = path.join(POSTS_DIRECTORY, `${normalizedSlug}${MARKDOWN_EXTENSION}`);
 
   if (!fs.existsSync(filePath)) {
     return null;
@@ -92,5 +108,5 @@ export function getPostBySlug(slug: string) {
 
   const rawContent = fs.readFileSync(filePath, "utf-8");
 
-  return parseMarkdownPost(slug, rawContent);
+  return parseMarkdownPost(normalizedSlug, rawContent);
 }

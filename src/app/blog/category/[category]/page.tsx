@@ -1,7 +1,12 @@
-import Link from "next/link"; // 용도 페이지 이동
+import Link from "next/link"; // 용도 블로그 목록과 게시글 상세 페이지 이동
 import { notFound } from "next/navigation"; // 용도 잘못된 카테고리 404 처리
 import { getAllPosts } from "@/lib/post"; // 용도 전체 게시글 조회
-import { studyCategories } from "@/lib/site"; // 용도 카테고리 목록 기준 검증
+import {
+  getCategoryLabel,
+  getCategorySlug,
+  isValidCategorySlug,
+  studyCategoryItems,
+} from "@/lib/site"; // 용도 카테고리 slug 검증과 표시명 변환
 
 type CategoryPageProps = {
   params: Promise<{
@@ -10,42 +15,31 @@ type CategoryPageProps = {
 };
 
 export function generateStaticParams() {
-  return studyCategories.map((category) => ({
-    category: encodeURIComponent(category),
+  return studyCategoryItems.map((category) => ({
+    category: category.slug,
   }));
 }
 
-function decodeCategory(category: string) {
-  return decodeURIComponent(category);
-}
-
-function isValidCategory(category: string) {
-  const decodedCategory = decodeCategory(category);
-
-  return studyCategories.includes(decodedCategory);
-}
-
-function filterPostsByCategory(category: string) {
-  const decodedCategory = decodeCategory(category);
+function filterPostsByCategory(categorySlug: string) {
   const posts = getAllPosts();
 
-  return posts.filter((post) => post.category === decodedCategory);
+  return posts.filter((post) => getCategorySlug(post.category) === categorySlug);
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const { category } = await params;
 
-  if (!isValidCategory(category)) {
+  if (!isValidCategorySlug(category)) {
     notFound();
   }
 
-  const decodedCategory = decodeCategory(category);
+  const categoryLabel = getCategoryLabel(category);
   const filteredPosts = filterPostsByCategory(category);
 
   return (
     <main className="content-shell">
       <section className="page-hero page-section--reveal">
-        <h1>{decodedCategory}</h1>
+        <h1>{categoryLabel}</h1>
         <p>해당 카테고리의 학습 기록입니다.</p>
 
         <Link href="/blog" className="read-more-link">

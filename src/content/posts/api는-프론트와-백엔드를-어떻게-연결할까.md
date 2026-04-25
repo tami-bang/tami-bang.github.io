@@ -1,136 +1,218 @@
 ---
 title: "API는 프론트와 백엔드를 어떻게 연결할까?"
-description: "HTTP 요청, REST API, OSI 7계층, TCP/IP 흐름을 웹 서비스 기준으로 정리합니다."
+description: "웹 요청이 실제 시스템에서 어떻게 흐르는지, HTTP부터 TCP/IP까지 구조적으로 이해하는 글"
 category: "Backend/API"
 createdAt: "2026-04-25"
 ---
 
-# API + OSI 7계층 기반 웹 서비스 동작 정리
+# API는 프론트와 백엔드를 어떻게 연결할까?
 
-## 1. 개념 정의
+웹 서비스는 단순해 보인다.
 
-### API (Application Programming Interface)
-- 프론트엔드와 백엔드를 연결하는 인터페이스
-- HTTP 기반으로 요청과 응답 수행
-- 데이터 형식은 일반적으로 JSON 사용
+버튼을 누르면 결과가 나온다.
 
-핵심: API는 클라이언트와 서버 간 통신 규칙이다
+하지만 실제로는  
+**여러 계층과 시스템이 동시에 작동하는 구조**다.
 
-## OSI 7계층
-- 네트워크 통신을 7단계로 나눈 모델
+---
 
-| 계층 | 이름 | 역할 |
-|------|------|------|
-| 7 | 응용 계층 | HTTP, API |
-| 6 | 표현 계층 | JSON, 인코딩 |
-| 5 | 세션 계층 | 로그인, 세션 |
-| 4 | 전송 계층 | TCP |
-| 3 | 네트워크 계층 | IP |
-| 2 | 데이터링크 계층 | MAC |
-| 1 | 물리 계층 | 전기 신호 |
+## 먼저, 전체 구조를 한 줄로 보면
 
-## 2. 전체 흐름
+```text
+Client → Request → Transport → Server → Processing → Response → Render
+```
 
-- 사용자 → 프론트 → HTTP 요청 → TCP 연결
-- 네트워크 전송 → 서버 → API 처리
-- DB 또는 AI 처리 → 응답 생성
-- 클라이언트 반환 → 화면 렌더링
+이 흐름 하나로  
+프론트엔드, 백엔드, 네트워크를 모두 설명할 수 있다.
 
-## 3. 단계별 흐름
+---
 
-### 1단계 사용자 인터랙션
-- 사용자가 버튼 클릭
-- 프론트엔드가 API 호출 준비
+## API는 “코드”가 아니라 “인터페이스”다
 
-### 2단계 HTTP 요청 생성
-GET /api/data
-POST /login
-- URL, Header, Body 구성
-- JSON 데이터 생성
+API는 특정 기능이 아니다.
 
-### 3단계 TCP 연결
-- 3-way handshake 수행
-SYN → SYN-ACK → ACK
+**시스템 간 통신을 정의하는 인터페이스**다.
 
-### 4단계 네트워크 전송
-- IP 기반으로 서버 이동
+```text
+Client: 요청 구조 정의
+Server: 응답 구조 정의
+```
 
-### 5단계 서버 도착
-- 물리 → 링크 → IP → TCP → HTTP 순으로 해석
+이 계약(contract)을 기반으로  
+서로 다른 시스템이 결합된다.
 
-### 6단계 API 처리
-- URL 라우팅
-- 요청 데이터 파싱
-- 로직 실행
+---
 
-### 7단계 내부 처리
-- DB 조회
-- AI 모델 호출
-- 외부 API 호출
+## 요청은 어떻게 생성되는가
 
-### 8단계 응답 생성
+사용자 인터랙션은 결국 네트워크 요청으로 변환된다.
+
+```js
+fetch("/api/data")
+```
+
+이 시점부터
+
+- UI 이벤트 → 네트워크 이벤트로 전환되고
+- 브라우저는 통신 스택을 활성화한다
+
+---
+
+## 요청이 실제로 지나가는 경로
+
+이 요청은 단순히 서버로 “전송”되는 것이 아니라  
+**네트워크 스택을 통과하면서 처리된다**
+
+---
+
+## 단계별 흐름 (Execution Flow)
+
+| 단계 | 레이어 | 동작 |
+|------|--------|------|
+| 1 | UI | 사용자 입력 발생 |
+| 2 | Application | HTTP 요청 생성 |
+| 3 | Transport | TCP 연결 수립 |
+| 4 | Network | IP 기반 라우팅 |
+| 5 | Server | 요청 수신 |
+| 6 | Backend | API 라우팅 |
+| 7 | Logic | 비즈니스 처리 |
+| 8 | Data | DB / 외부 시스템 |
+| 9 | Transport | 응답 전송 |
+| 10 | UI | 상태 업데이트 |
+
+---
+
+## 이 흐름을 OSI 관점에서 보면
+
+| 계층 | 역할 |
+|------|------|
+| L7 | HTTP / REST API |
+| L6 | 데이터 포맷 (JSON) |
+| L5 | 세션 관리 |
+| L4 | TCP (신뢰성 보장) |
+| L3 | IP (라우팅) |
+| L2 | MAC (네트워크 인터페이스) |
+| L1 | 물리 신호 |
+
+중요한 포인트:
+
+👉 우리가 작성하는 코드는 L7  
+👉 실제 데이터 흐름은 L1~L7 전체에서 발생
+
+---
+
+## 서버 내부 처리 흐름
+
+요청이 서버에 도착하면 다음 단계로 처리된다.
+
+```text
+1. Endpoint 매칭 (Routing)
+2. Request Parsing
+3. Validation
+4. Business Logic
+5. Data Access (DB / External API)
+6. Response Construction
+```
+
+응답은 일반적으로 JSON 형태로 반환된다.
+
+```json
 {
-  "result": "success",
+  "status": "success",
   "data": {}
 }
+```
 
-### 9단계 응답 전송
-- TCP → IP → 클라이언트
+---
 
-### 10단계 프론트 렌더링
-setState(response.data)
+## 시스템 관점에서 보면
 
-## 4. 핵심 정리
+이 구조는 3가지 역할로 나뉜다.
 
-프론트 역할
-- 사용자 입력 처리
-- API 호출
-- 화면 렌더링
+### Client Layer
 
-백엔드 역할
+- 입력 처리
+- 요청 생성
+- 상태 관리
+- UI 렌더링
+
+### Application Layer (Backend)
+
 - 요청 처리
-- 로직 수행
-- 데이터 반환
+- 로직 실행
+- 데이터 가공
+- 응답 생성
 
-네트워크 역할
-- TCP/IP 기반 데이터 전달
+### Network Layer
 
-## 5. 전체 흐름 암기
+- 데이터 전달
+- 연결 관리
+- 패킷 라우팅
 
-- 사용자 클릭
-- HTTP 요청 생성
-- TCP 연결
-- 서버 전달
-- API 처리
-- DB/AI 처리
-- JSON 응답
-- 클라이언트 반환
-- 화면 렌더링
+---
 
-## 6. 실무 포인트
+## 실무에서는 이 구조가 확장된다
 
-### API는 단순 연결이 아니다
-- 인증 처리
-- 에러 처리
-- 성능 최적화
-- 보안 적용
+실제 서비스에서는 아래 계층이 추가된다.
 
-### 문제 발생 위치
+```text
+Authentication → Authorization → Logging → Monitoring → Security → Caching
+```
 
-| 문제 | 계층 |
-|------|------|
-| CORS | 7계층 |
-| 404 / 500 | 7계층 |
-| Timeout | 4계층 |
-| 연결 실패 | 3계층 |
-| 네트워크 끊김 | 1~2계층 |
+API는 단순한 연결이 아니라  
+**시스템의 중심 진입점(entry point)**이다.
 
-## 7. GateGuard 적용
+---
 
-:::details GateGuard 흐름
-사용자 요청 → HTTP 생성 → 패킷 전달 → Detection Engine → FastAPI → AI 분석 → BLOCK 또는 PASS → 응답 반환
-:::
+## 장애는 어디서 발생하는가
 
-## 8. 최종 정리
+| 증상 | 원인 레이어 |
+|------|------------|
+| CORS | Application / Browser |
+| 404 | Routing |
+| 500 | Server Logic |
+| Timeout | Network / Server |
+| Connection Refused | TCP / Port |
+| Packet Loss | Network Layer |
 
-웹 서비스에서 API는 HTTP 기반으로 동작하며 TCP/IP를 통해 서버로 전달되고 서버 처리 결과는 JSON으로 반환되어 프론트에서 렌더링된다
+---
+
+## GateGuard에 적용하면
+
+이 흐름은 그대로 보인다.
+
+```text
+Client Request
+→ Packet Capture
+→ Policy Engine
+→ AI Analysis
+→ Decision (BLOCK / PASS)
+→ Response Injection
+```
+
+여기서 중요한 점:
+
+- 요청을 HTTP가 아니라 **패킷 레벨(L3~L4)**에서 처리한다
+- API 이전 단계에서 보안 판단이 이루어진다
+
+즉 GateGuard는  
+**Application Layer 이전에서 동작하는 보안 시스템**이다.
+
+---
+
+## 결론
+
+웹 서비스는 복잡해 보이지만  
+구조는 단순하다.
+
+```text
+Request → Process → Response
+```
+
+이 흐름을 이해하면
+
+- API 설계
+- 백엔드 구조
+- 네트워크 동작
+
+을 하나의 관점으로 연결할 수 있다.

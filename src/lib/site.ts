@@ -9,14 +9,32 @@ export const siteConfig = {
   ],
 };
 
-export const studyCategories = [
-  "Python",
-  "C",
-  "Network",
-  "Backend/API",
-  "Frontend",
-  "AI",
+export const studyCategoryItems = [
+  { label: "Python", slug: "python" },
+  { label: "C", slug: "c" },
+  { label: "Network", slug: "network" },
+  { label: "Backend/API", slug: "backend-api" },
+  { label: "Frontend", slug: "frontend" },
+  { label: "AI", slug: "ai" },
 ];
+
+export const studyCategories = studyCategoryItems.map((category) => category.label);
+
+export function getCategorySlug(categoryLabel: string) {
+  const category = studyCategoryItems.find((item) => item.label === categoryLabel);
+
+  return category?.slug ?? categoryLabel.toLowerCase();
+}
+
+export function getCategoryLabel(categorySlug: string) {
+  const category = studyCategoryItems.find((item) => item.slug === categorySlug);
+
+  return category?.label ?? "";
+}
+
+export function isValidCategorySlug(categorySlug: string) {
+  return studyCategoryItems.some((item) => item.slug === categorySlug);
+}
 
 export const featuredPosts = [
   {

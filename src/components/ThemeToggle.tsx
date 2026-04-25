@@ -1,27 +1,36 @@
 "use client";
 
-import { useEffect, useState } from "react"; // 용도 테마 상태 관리와 초기 테마 적용
+import { useState } from "react"; // 용도 테마 상태 관리
 
 type ThemeMode = "dark" | "light";
 
 const THEME_STORAGE_KEY = "tami-theme";
+const DEFAULT_THEME: ThemeMode = "dark";
+
+function isBrowser() {
+  return typeof window !== "undefined";
+}
 
 function isThemeMode(value: string | null): value is ThemeMode {
   return value === "light" || value === "dark";
 }
 
-function getInitialTheme(): ThemeMode {
-  if (typeof window === "undefined") {
-    return "dark";
+function getSavedTheme() {
+  if (!isBrowser()) {
+    return null;
   }
 
-  const savedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+  return window.localStorage.getItem(THEME_STORAGE_KEY);
+}
+
+function getInitialTheme(): ThemeMode {
+  const savedTheme = getSavedTheme();
 
   if (isThemeMode(savedTheme)) {
     return savedTheme;
   }
 
-  return "dark";
+  return DEFAULT_THEME;
 }
 
 function getNextTheme(currentTheme: ThemeMode): ThemeMode {
@@ -29,19 +38,22 @@ function getNextTheme(currentTheme: ThemeMode): ThemeMode {
 }
 
 function applyTheme(theme: ThemeMode) {
+  if (!isBrowser()) {
+    return;
+  }
+
   document.documentElement.dataset.theme = theme;
   window.localStorage.setItem(THEME_STORAGE_KEY, theme);
 }
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<ThemeMode>("dark");
-
-  useEffect(() => {
+  const [theme, setTheme] = useState<ThemeMode>(() => {
     const initialTheme = getInitialTheme();
 
-    setTheme(initialTheme);
     applyTheme(initialTheme);
-  }, []);
+
+    return initialTheme;
+  });
 
   function handleToggleTheme() {
     const nextTheme = getNextTheme(theme);
