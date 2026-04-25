@@ -34,19 +34,11 @@ function EmailIcon() {
 export default function Footer() {
   return (
     <footer className="site-footer">
-      <div className="site-footer__wave" aria-hidden="true" />
-      <div className="site-footer__decor" aria-hidden="true" />
-
       <div className="site-footer__inner">
         <section className="site-footer__brand" aria-label="사이트 소개">
           <Link href="/" className="site-footer__logo">
             Tami<span>.log</span>
           </Link>
-
-          <p>
-            AI, Backend, Network를 공부하고 프로젝트로 연결하는 개발 기록
-            공간입니다.
-          </p>
         </section>
 
         <nav className="site-footer__nav" aria-label="푸터 메뉴">

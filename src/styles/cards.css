@@ -1,5 +1,8 @@
 /* ================================
    Card Base
+   역할:
+   - 사이트 전역 카드형 UI의 공통 외형 관리
+   - hover glow, border, blur, shadow 통일
 ================================ */
 .post-card-large,
 .glass-panel,
@@ -8,6 +11,10 @@
 .project-story-card,
 .project-detail-card,
 .about-card,
+.about-story,
+.about-process-card,
+.about-project-link,
+.about-contact-panel,
 .empty-panel,
 .blog-detail-card {
   --glow-x: 50%;
@@ -25,6 +32,11 @@
     var(--panel);
   box-shadow: var(--shadow-strong);
   backdrop-filter: blur(22px);
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease;
 }
 
 .post-card-large::before,
@@ -34,6 +46,10 @@
 .project-story-card::before,
 .project-detail-card::before,
 .about-card::before,
+.about-story::before,
+.about-process-card::before,
+.about-project-link::before,
+.about-contact-panel::before,
 .empty-panel::before,
 .blog-detail-card::before {
   position: absolute;
@@ -58,6 +74,10 @@
 .project-story-card:hover::before,
 .project-detail-card:hover::before,
 .about-card:hover::before,
+.about-story:hover::before,
+.about-process-card:hover::before,
+.about-project-link:hover::before,
+.about-contact-panel:hover::before,
 .empty-panel:hover::before,
 .blog-detail-card:hover::before {
   opacity: 1;
@@ -70,8 +90,13 @@
 .project-story-card:hover,
 .project-detail-card:hover,
 .about-card:hover,
+.about-story:hover,
+.about-process-card:hover,
+.about-project-link:hover,
+.about-contact-panel:hover,
 .empty-panel:hover,
 .blog-detail-card:hover {
+  transform: translateY(-4px);
   border-color: color-mix(in srgb, var(--brand-accent) 30%, var(--panel-border));
   box-shadow:
     var(--shadow-strong),
@@ -85,6 +110,10 @@
 .project-story-card > *,
 .project-detail-card > *,
 .about-card > *,
+.about-story > *,
+.about-process-card > *,
+.about-project-link > *,
+.about-contact-panel > *,
 .empty-panel > *,
 .blog-detail-card > * {
   position: relative;
@@ -100,17 +129,6 @@
 .about-card,
 .empty-panel {
   padding: clamp(24px, 4vw, 42px);
-}
-
-.post-card-large {
-  transition:
-    transform 220ms ease,
-    border-color 220ms ease,
-    box-shadow 220ms ease;
-}
-
-.post-card-large:hover {
-  transform: translateY(-4px);
 }
 
 .post-card-large h2,
@@ -150,14 +168,6 @@
   grid-template-rows: auto 1fr auto;
   gap: clamp(24px, 3vw, 42px);
   min-height: clamp(360px, 34vw, 520px);
-  transition:
-    transform 220ms ease,
-    border-color 220ms ease,
-    box-shadow 220ms ease;
-}
-
-.study-card:hover {
-  transform: translateY(-4px);
 }
 
 .study-card > div:first-child {
@@ -190,7 +200,351 @@
 }
 
 /* ================================
-   About Cards
+   About Page
+   역할:
+   - 기존 카드 나열형 소개 페이지를 스토리형 랜딩 페이지로 확장
+   - Josh 스타일처럼 문단 흐름, 작업 방식, 프로젝트 연결, CTA를 분리
+================================ */
+.about-page {
+  display: grid;
+  gap: clamp(44px, 7vw, 86px);
+}
+
+.about-story {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.42fr);
+  gap: clamp(28px, 5vw, 72px);
+  padding: clamp(28px, 5vw, 56px);
+}
+
+.about-story__intro {
+  display: grid;
+  gap: 18px;
+}
+
+.about-story__intro p,
+.about-contact-panel p {
+  max-width: 780px;
+  margin: 0;
+  color: var(--text-soft);
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  line-height: 1.85;
+  word-break: keep-all;
+}
+
+.about-story__lead {
+  color: var(--foreground) !important;
+  font-size: clamp(1.25rem, 2.2vw, 1.8rem) !important;
+  font-weight: 850;
+  line-height: 1.55 !important;
+  letter-spacing: -0.04em;
+}
+
+.about-story__note {
+  display: grid;
+  align-content: center;
+  gap: 12px;
+  border-left: 1px solid color-mix(in srgb, var(--brand-accent) 32%, transparent);
+  padding-left: clamp(22px, 3vw, 34px);
+}
+
+.about-story__note p {
+  margin: 0;
+  color: color-mix(in srgb, var(--brand-accent) 72%, var(--muted));
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.about-story__note strong {
+  color: var(--foreground);
+  font-size: clamp(1.6rem, 3vw, 3rem);
+  font-weight: 950;
+  line-height: 1.1;
+  letter-spacing: -0.07em;
+  word-break: keep-all;
+}
+
+.about-section {
+  display: grid;
+  gap: clamp(22px, 4vw, 36px);
+}
+
+.about-section__header {
+  max-width: 840px;
+}
+
+.about-section__header h2,
+.about-contact-panel h2 {
+  margin: 0;
+  color: var(--foreground);
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 950;
+  line-height: 1.02;
+  letter-spacing: -0.07em;
+  word-break: keep-all;
+}
+
+.about-process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.about-process-card {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  min-height: 260px;
+  padding: clamp(22px, 3vw, 32px);
+}
+
+.about-process-card span {
+  color: color-mix(in srgb, var(--brand-accent) 72%, var(--muted));
+  font-family: var(--font-geist-mono);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+}
+
+.about-process-card h3 {
+  margin: 0;
+  color: var(--foreground);
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  font-weight: 950;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+}
+
+.about-process-card p {
+  margin: 0;
+  color: var(--text-soft);
+  line-height: 1.75;
+  word-break: keep-all;
+}
+
+.about-project-list {
+  display: grid;
+  gap: 16px;
+}
+
+.about-project-link {
+  display: grid;
+  gap: 10px;
+  padding: clamp(24px, 3vw, 34px);
+  text-decoration: none;
+}
+
+.about-project-link span {
+  color: var(--foreground);
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  font-weight: 950;
+  letter-spacing: -0.05em;
+}
+
+.about-project-link p {
+  max-width: 820px;
+  margin: 0;
+  color: var(--text-soft);
+  line-height: 1.75;
+  word-break: keep-all;
+}
+
+.about-focus-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.about-focus-list span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  border: 1px solid color-mix(in srgb, var(--brand-accent) 28%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--brand-accent) 10%, transparent);
+  color: var(--brand-accent);
+  padding: 9px 15px;
+  font-size: 0.92rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.about-contact-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: clamp(28px, 5vw, 72px);
+  padding: clamp(28px, 5vw, 56px);
+}
+
+.about-contact-panel > div:first-child {
+  display: grid;
+  gap: 16px;
+}
+
+.about-contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.about-page {
+  position: relative;
+  display: grid;
+  gap: clamp(44px, 7vw, 86px);
+  isolation: isolate;
+}
+
+.about-universe {
+  position: absolute;
+  inset: -120px -6vw -80px;
+  z-index: -1;
+  overflow: hidden;
+  border-radius: 0 0 48px 48px;
+  background:
+    radial-gradient(
+      circle at 18% 10%,
+      color-mix(in srgb, var(--brand-accent) 13%, transparent),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 78% 22%,
+      rgba(125, 211, 252, 0.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 54% 72%,
+      rgba(139, 92, 246, 0.1),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 255, 255, 0.045) 0 1px,
+      transparent 1px
+    );
+  background-size:
+    auto,
+    auto,
+    auto,
+    42px 42px;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+.about-universe::before {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.42) 0 1px, transparent 1.5px),
+    radial-gradient(circle, color-mix(in srgb, var(--brand-accent) 44%, transparent) 0 1px, transparent 1.5px);
+  background-position:
+    0 0,
+    18px 24px;
+  background-size:
+    96px 96px,
+    138px 138px;
+  content: "";
+  opacity: 0.32;
+  animation: about-star-drift 22s linear infinite;
+}
+
+.about-universe::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 7, 19, 0.2),
+      rgba(5, 7, 19, 0.74) 72%,
+      rgba(5, 7, 19, 0.98)
+    );
+  content: "";
+}
+
+.about-glow,
+.about-orbit,
+.shooting-star {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+}
+
+.about-glow {
+  border-radius: 999px;
+  filter: blur(4px);
+}
+
+.about-glow--right {
+  right: 10%;
+  bottom: 18%;
+  width: 260px;
+  height: 260px;
+  background: rgba(125, 211, 252, 0.055);
+  animation: about-soft-float 12s ease-in-out infinite reverse;
+}
+
+.about-orbit {
+  border: 1px solid color-mix(in srgb, var(--brand-accent) 16%, transparent);
+  border-radius: 999px;
+  opacity: 0.42;
+}
+
+.about-orbit--large {
+  top: 120px;
+  right: -120px;
+  width: 420px;
+  height: 420px;
+  animation: about-orbit-spin 38s linear infinite;
+}
+
+.about-orbit--small {
+  left: -80px;
+  bottom: 120px;
+  width: 240px;
+  height: 240px;
+  animation: about-orbit-spin 30s linear infinite reverse;
+}
+
+.shooting-star {
+  top: 14%;
+  left: 72%;
+  width: 140px;
+  height: 1px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.86),
+    color-mix(in srgb, var(--brand-accent) 72%, transparent)
+  );
+  opacity: 0;
+  transform: rotate(-28deg);
+  animation: shooting-star-fall 7s ease-in-out infinite;
+}
+
+.shooting-star--two {
+  top: 42%;
+  left: 80%;
+  width: 110px;
+  animation-delay: 3.2s;
+  animation-duration: 9s;
+}
+
+.shooting-star--three {
+  top: 24%;
+  left: 42%;
+  width: 90px;
+  animation-delay: 6.4s;
+  animation-duration: 11s;
+}
+
+/* ================================
+   Legacy About Cards
+   역할:
+   - 이전 about-card 구조가 남아 있어도 화면이 깨지지 않도록 호환 유지
 ================================ */
 .about-card {
   display: grid;
@@ -231,26 +585,6 @@
   content: "";
 }
 
-.about-focus-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.about-focus-list span {
-  display: inline-flex;
-  align-items: center;
-  min-height: 38px;
-  border: 1px solid color-mix(in srgb, var(--brand-accent) 28%, transparent);
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--brand-accent) 10%, transparent);
-  color: var(--brand-accent);
-  padding: 8px 14px;
-  font-size: 0.9rem;
-  font-weight: 900;
-  line-height: 1;
-}
-
 /* ================================
    Project / Grid Cards
 ================================ */
@@ -269,15 +603,11 @@
   min-height: auto;
   height: 100%;
   padding: clamp(22px, 2.4vw, 30px);
-  transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    box-shadow 180ms ease;
 }
 
 .project-card:hover,
 .project-story-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
 }
 
 .project-card__content {
@@ -402,4 +732,35 @@
 
 .project-card__cta {
   justify-self: end;
+}
+
+/* ================================
+   Responsive
+================================ */
+@media (max-width: 960px) {
+  .about-process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-story,
+  .about-contact-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .about-story__note {
+    border-top: 1px solid color-mix(in srgb, var(--brand-accent) 24%, transparent);
+    border-left: 0;
+    padding-top: 22px;
+    padding-left: 0;
+  }
+
+  .about-contact-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-process-grid {
+    grid-template-columns: 1fr;
+  }
 }

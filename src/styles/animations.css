@@ -40,6 +40,18 @@
   }
 }
 
+@keyframes reveal-about-card {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 64px, 0) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
 @keyframes float-dot {
   0%,
   100% {
@@ -70,5 +82,61 @@
 
   50% {
     margin-bottom: 8px;
+  }
+}
+
+@keyframes about-star-drift {
+  from {
+    background-position:
+      0 0,
+      18px 24px;
+  }
+
+  to {
+    background-position:
+      96px 96px,
+      156px 162px;
+  }
+}
+
+@keyframes about-soft-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(18px, -22px, 0);
+  }
+}
+
+@keyframes about-orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shooting-star-fall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(-28deg);
+  }
+
+  8% {
+    opacity: 0.9;
+  }
+
+  18% {
+    opacity: 0;
+    transform: translate3d(-340px, 180px, 0) rotate(-28deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-340px, 180px, 0) rotate(-28deg);
   }
 }

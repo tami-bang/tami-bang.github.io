@@ -1,0 +1,207 @@
+/* ================================
+   About Page
+================================ */
+.about-page {
+  position: relative;
+  display: grid;
+  gap: clamp(36px, 5vw, 68px);
+  isolation: isolate;
+}
+
+.about-hero {
+  position: relative;
+  margin-bottom: 0;
+}
+
+.about-universe {
+  position: absolute;
+  inset: -120px -6vw -80px;
+  z-index: -1;
+  overflow: hidden;
+  border-radius: 0 0 48px 48px;
+  background:
+    radial-gradient(
+      circle at 18% 10%,
+      color-mix(in srgb, var(--brand-accent) 13%, transparent),
+      transparent 24%
+    ),
+    radial-gradient(circle at 78% 22%, rgba(125, 211, 252, 0.12), transparent 28%),
+    radial-gradient(circle at 54% 72%, rgba(139, 92, 246, 0.1), transparent 34%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px);
+  background-size: auto, auto, auto, 42px 42px;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+.about-universe::before {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.42) 0 1px, transparent 1.5px),
+    radial-gradient(circle, color-mix(in srgb, var(--brand-accent) 44%, transparent) 0 1px, transparent 1.5px);
+  background-position:
+    0 0,
+    18px 24px;
+  background-size:
+    96px 96px,
+    138px 138px;
+  content: "";
+  opacity: 0.32;
+  animation: about-star-drift 22s linear infinite;
+}
+
+.about-universe::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 7, 19, 0.2),
+      rgba(5, 7, 19, 0.74) 72%,
+      rgba(5, 7, 19, 0.98)
+    );
+  content: "";
+}
+
+.about-glow,
+.about-orbit,
+.shooting-star {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+}
+
+.about-glow {
+  border-radius: 999px;
+  filter: blur(4px);
+}
+
+.about-glow--right {
+  right: 10%;
+  bottom: 18%;
+  width: 260px;
+  height: 260px;
+  background: rgba(125, 211, 252, 0.055);
+  animation: about-soft-float 12s ease-in-out infinite reverse;
+}
+
+.about-orbit {
+  border: 1px solid color-mix(in srgb, var(--brand-accent) 16%, transparent);
+  border-radius: 999px;
+  opacity: 0.42;
+}
+
+.about-orbit--large {
+  top: 120px;
+  right: -120px;
+  width: 420px;
+  height: 420px;
+  animation: about-orbit-spin 38s linear infinite;
+}
+
+.about-orbit--small {
+  left: -80px;
+  bottom: 120px;
+  width: 240px;
+  height: 240px;
+  animation: about-orbit-spin 30s linear infinite reverse;
+}
+
+.shooting-star {
+  top: 14%;
+  left: 72%;
+  width: 140px;
+  height: 1px;
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.86),
+      color-mix(in srgb, var(--brand-accent) 72%, transparent)
+    );
+  opacity: 0;
+  transform: rotate(-28deg);
+  animation: shooting-star-fall 7s ease-in-out infinite;
+}
+
+.shooting-star--two {
+  top: 42%;
+  left: 80%;
+  width: 110px;
+  animation-delay: 3.2s;
+  animation-duration: 9s;
+}
+
+.shooting-star--three {
+  top: 24%;
+  left: 42%;
+  width: 90px;
+  animation-delay: 6.4s;
+  animation-duration: 11s;
+}
+
+.about-story {
+  margin-top: clamp(-20px, -1.6vw, -8px);
+}
+
+.about-section {
+  display: grid;
+  gap: clamp(22px, 4vw, 36px);
+}
+
+.about-section__header {
+  max-width: 840px;
+}
+
+.about-section__header h2,
+.about-contact-panel h2 {
+  margin: 0;
+  color: var(--foreground);
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 950;
+  line-height: 1.02;
+  letter-spacing: -0.07em;
+  word-break: keep-all;
+}
+
+.about-section--animated {
+  opacity: 0;
+  transform: translate3d(0, 64px, 0) scale(0.985);
+  animation: reveal-about-card 820ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: opacity, transform;
+}
+
+.about-section--animated:nth-of-type(3) {
+  animation-delay: 980ms;
+}
+
+.about-section--animated:nth-of-type(4) {
+  animation-delay: 1120ms;
+}
+
+.about-section--animated:nth-of-type(5) {
+  animation-delay: 1260ms;
+}
+
+.about-section--animated:nth-of-type(6) {
+  animation-delay: 1400ms;
+}
+
+@media (max-width: 720px) {
+  .about-page {
+    gap: clamp(30px, 8vw, 52px);
+  }
+
+  .about-universe {
+    inset: -80px -10vw -60px;
+  }
+
+  .about-orbit--large {
+    right: -220px;
+  }
+
+  .shooting-star {
+    width: 90px;
+  }
+}

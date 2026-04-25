@@ -1,3 +1,9 @@
+/* ================================
+   Global Styles Entry
+   - 모든 스타일은 여기서 중앙 관리
+   - 경로는 alias(@) 기준으로 통일 (Turbopack 안정성)
+================================ */
+
 @import "tailwindcss"; /* Tailwind CSS 유틸리티 로드 */
 @import "../styles/tokens.css"; /* 사이트 색상, 여백, 그림자 토큰 */
 @import "../styles/reset.css"; /* 브라우저 기본 스타일 초기화 */
@@ -5,6 +11,7 @@
 @import "../styles/hero.css"; /* 메인 히어로 섹션 스타일 */
 @import "../styles/layout.css"; /* 공통 레이아웃과 푸터 스타일 */
 @import "../styles/cards.css"; /* 카드 UI 스타일 */
+@import "../styles/about.css"; /* About 페이지 전용 스타일 */
 @import "../styles/project.css"; /* 프로젝트 상세/목록 스타일 */
 @import "../styles/cta.css"; /* 버튼과 CTA 스타일 */
 @import "../styles/markdown.css"; /* 마크다운 렌더링 스타일 */
