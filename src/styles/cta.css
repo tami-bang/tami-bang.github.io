@@ -1,0 +1,77 @@
+/* ================================
+   CTA System
+================================ */
+.cta-base,
+.read-more-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 44px;
+  padding: 0 1.1rem;
+  border-radius: 999px;
+  font-weight: 950;
+  white-space: nowrap;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease,
+    border-color 160ms ease,
+    filter 160ms ease;
+}
+
+.cta-base::after,
+.read-more-link::after {
+  content: " →";
+  display: inline-flex;
+  transform: translateX(2px);
+  transition: transform 160ms ease;
+}
+
+.cta-base:hover::after,
+.read-more-link:hover::after {
+  transform: translateX(8px);
+}
+
+.cta-primary {
+  min-width: 190px;
+  min-height: 52px;
+  padding: 0 1.45rem;
+  border: 1px solid color-mix(in srgb, var(--brand-accent) 62%, transparent);
+  background: var(--brand-accent);
+  color: #04110a !important;
+  font-size: 0.98rem;
+  box-shadow:
+    0 0 28px color-mix(in srgb, var(--brand-accent) 30%, transparent),
+    0 14px 34px rgba(0, 0, 0, 0.32);
+}
+
+.cta-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+  box-shadow:
+    0 0 42px color-mix(in srgb, var(--brand-accent) 46%, transparent),
+    0 18px 44px rgba(0, 0, 0, 0.38);
+}
+
+.cta-ghost,
+.read-more-link {
+  margin-top: 28px;
+  border: 1px solid color-mix(in srgb, var(--brand-accent) 62%, transparent);
+  background: var(--brand-accent);
+  color: #04110a !important;
+  font-size: 0.9rem;
+  box-shadow:
+    0 0 28px color-mix(in srgb, var(--brand-accent) 30%, transparent),
+    0 14px 34px rgba(0, 0, 0, 0.32);
+}
+
+.cta-ghost:hover,
+.read-more-link:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+  box-shadow:
+    0 0 42px color-mix(in srgb, var(--brand-accent) 46%, transparent),
+    0 18px 44px rgba(0, 0, 0, 0.38);
+}

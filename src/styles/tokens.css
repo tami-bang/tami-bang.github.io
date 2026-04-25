@@ -1,0 +1,71 @@
+/* ================================
+   Theme Tokens
+================================ */
+:root {
+  --background: #050713;
+  --foreground: #f8fafc;
+  --muted: #a8b3cf;
+  --text-soft: #cbd5e1;
+
+  --panel: rgba(15, 23, 42, 0.72);
+  --panel-strong: rgba(15, 23, 42, 0.88);
+  --panel-border: rgba(255, 255, 255, 0.12);
+  --panel-border-strong: rgba(156, 255, 79, 0.34);
+
+  --brand-accent: #9cff4f;
+  --brand-secondary: #8b5cf6;
+  --brand-tertiary: #7dd3fc;
+  --brand-pink: #f0abfc;
+  --brand-dot: rgba(156, 255, 79, 0.22);
+
+  --header-bg: rgba(5, 7, 19, 0.86);
+  --header-border: rgba(255, 255, 255, 0.09);
+
+  --shadow-strong: 0 30px 90px rgba(0, 0, 0, 0.42);
+  --shadow-neon: 0 0 44px rgba(156, 255, 79, 0.16);
+
+  --layout-max-width: 1180px;
+  --section-max-width: 1240px;
+  --layout-padding: clamp(20px, 5vw, 64px);
+  --section-padding: clamp(16px, 4vw, 48px);
+
+  --hero-min-height: clamp(620px, 78vh, 760px);
+
+  --section-gap-large: clamp(72px, 8vw, 112px);
+  --section-gap-medium: clamp(44px, 5vw, 72px);
+  --section-gap-small: clamp(24px, 2.8vw, 40px);
+  --section-header-to-content-gap: clamp(30px, 3.5vw, 44px);
+
+  --section-reveal-start-y: 72px;
+  --section-reveal-end-y: 0px;
+
+  --radius-large: 34px;
+  --radius-medium: 24px;
+}
+
+/* ================================
+   Light Theme
+================================ */
+html[data-theme="light"] {
+  --background: #f8f7fb;
+  --foreground: #151827;
+  --muted: #586174;
+  --text-soft: #334155;
+
+  --panel: rgba(255, 255, 255, 0.92);
+  --panel-strong: rgba(255, 255, 255, 0.96);
+  --panel-border: rgba(15, 23, 42, 0.12);
+  --panel-border-strong: rgba(232, 90, 166, 0.32);
+
+  --brand-accent: #e85aa6;
+  --brand-secondary: #7c3aed;
+  --brand-tertiary: #0284c7;
+  --brand-pink: #c026d3;
+  --brand-dot: rgba(232, 90, 166, 0.16);
+
+  --header-bg: rgba(255, 255, 255, 0.92);
+  --header-border: rgba(15, 23, 42, 0.08);
+
+  --shadow-strong: 0 28px 70px rgba(15, 23, 42, 0.13);
+  --shadow-neon: 0 0 38px rgba(232, 90, 166, 0.14);
+}

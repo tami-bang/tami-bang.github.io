@@ -1,0 +1,227 @@
+/* ================================
+   Hero
+================================ */
+.hero-universe {
+  position: relative;
+  overflow: hidden;
+  min-height: auto;
+  padding: clamp(42px, 5vw, 76px) var(--layout-padding) clamp(28px, 4vw, 48px);
+}
+
+.hero-universe__inner {
+  position: relative;
+  z-index: 2;
+  width: min(100%, var(--layout-max-width));
+  min-height: var(--hero-min-height);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.hero-universe__content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(360px, 0.96fr) minmax(300px, 0.74fr);
+  align-items: center;
+  gap: clamp(56px, 8vw, 128px);
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 4;
+  max-width: 720px;
+}
+
+.section-eyebrow {
+  margin: 0 0 22px;
+  color: var(--brand-accent);
+  font-size: clamp(0.72rem, 1vw, 0.92rem);
+  font-weight: 950;
+  letter-spacing: 0.48em;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  margin: 0;
+  font-size: clamp(3.1rem, 6.8vw, 6.2rem);
+  font-weight: 950;
+  line-height: 0.96;
+  letter-spacing: -0.075em;
+  word-break: keep-all;
+}
+
+.hero-description {
+  max-width: 720px;
+  margin: clamp(24px, 3vw, 36px) 0 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  line-height: 1.75;
+  word-break: keep-all;
+}
+
+.hero-actions,
+.project-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.hero-github-link,
+.hero-primary-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 54px;
+  overflow: hidden;
+  border-radius: 999px;
+  padding: 0 22px;
+  font-weight: 950;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.hero-github-link {
+  border: 1px solid var(--panel-border);
+  background: var(--panel);
+}
+
+.hero-primary-link {
+  background: var(--brand-accent);
+  color: #06110c;
+  box-shadow: 0 0 22px color-mix(in srgb, var(--brand-accent) 18%, transparent);
+}
+
+.hero-primary-link::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.28) 42%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  transition: transform 520ms ease;
+}
+
+.hero-primary-link:hover::after {
+  transform: translateX(120%);
+}
+
+.hero-github-link:hover,
+.hero-primary-link:hover {
+  transform: translateY(-2px);
+}
+
+/* ================================
+   Background Dots
+================================ */
+.space-dots {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.space-dots span {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--brand-dot);
+  opacity: 0.42;
+  animation: float-dot 10s ease-in-out infinite;
+}
+
+.space-dots span:nth-child(3n) {
+  background: color-mix(in srgb, var(--brand-secondary) 32%, transparent);
+  opacity: 0.18;
+}
+
+.space-dots span:nth-child(4n) {
+  background: rgba(148, 163, 184, 0.3);
+  opacity: 0.2;
+}
+
+.space-dots span:nth-child(10n + 1) { left: 9%; top: 29%; animation-delay: -1s; }
+.space-dots span:nth-child(10n + 2) { left: 21%; top: 82%; animation-delay: -2s; }
+.space-dots span:nth-child(10n + 3) { left: 36%; top: 46%; animation-delay: -3s; }
+.space-dots span:nth-child(10n + 4) { left: 49%; top: 74%; animation-delay: -4s; }
+.space-dots span:nth-child(10n + 5) { left: 58%; top: 32%; animation-delay: -5s; }
+.space-dots span:nth-child(10n + 6) { left: 68%; top: 66%; animation-delay: -6s; }
+.space-dots span:nth-child(10n + 7) { left: 78%; top: 39%; animation-delay: -7s; }
+.space-dots span:nth-child(10n + 8) { left: 86%; top: 82%; animation-delay: -8s; }
+.space-dots span:nth-child(10n + 9) { left: 93%; top: 28%; animation-delay: -9s; }
+.space-dots span:nth-child(10n) { left: 7%; top: 90%; animation-delay: -10s; }
+
+/* ================================
+   Hero Object
+================================ */
+.hero-object-scene {
+  --pointer-x: 0;
+  --pointer-y: 0;
+  position: relative;
+  min-height: clamp(340px, 36vw, 480px);
+  isolation: isolate;
+  perspective: 900px;
+  transform-style: preserve-3d;
+}
+
+.hero-object-main {
+  position: absolute;
+  right: -2%;
+  top: 16%;
+  z-index: 3;
+  width: clamp(250px, 28vw, 410px);
+  height: auto;
+  object-fit: contain;
+  opacity: 0.98;
+  transform:
+    translate3d(
+      calc(var(--pointer-x) * 18px),
+      calc(var(--pointer-y) * 16px),
+      80px
+    )
+    rotateX(calc(var(--pointer-y) * -7deg))
+    rotateY(calc(var(--pointer-x) * 10deg))
+    rotateZ(-10deg);
+  filter:
+    saturate(1.05)
+    contrast(1.04)
+    drop-shadow(0 34px 70px rgba(0, 0, 0, 0.34));
+  transition: transform 180ms ease-out;
+  animation: object-float-main 8s ease-in-out infinite;
+}
+
+.hero-object-depth {
+  position: absolute;
+  left: -58%;
+  bottom: -10%;
+  z-index: 1;
+  width: clamp(112px, 9vw, 160px);
+  height: auto;
+  object-fit: contain;
+  opacity: 0.42;
+  transform:
+    translate3d(
+      calc(var(--pointer-x) * -12px),
+      calc(var(--pointer-y) * -8px),
+      -120px
+    )
+    rotateX(calc(var(--pointer-y) * 3deg))
+    rotateY(calc(var(--pointer-x) * -4deg))
+    rotateZ(12deg)
+    scale(0.76);
+  filter:
+    saturate(0.72)
+    contrast(0.82)
+    blur(0.45px);
+  transition: transform 240ms ease-out;
+  animation: object-float-depth 11s ease-in-out infinite;
+}
