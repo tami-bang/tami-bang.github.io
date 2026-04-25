@@ -1,6 +1,7 @@
 import type { NextConfig } from "next"; // 용도 Next.js 설정 타입 정의
 
 const nextConfig: NextConfig = {
+  output: "export",
   trailingSlash: true,
   images: {
     unoptimized: true,
