@@ -1,26 +1,29 @@
 import ProjectCard from "@/components/ProjectCard"; // 용도 프로젝트 카드 표시
-import { getFeaturedProjects } from "@/lib/projects"; // 용도 프로젝트 목록 데이터 조회
+import SectionHeader from "@/components/SectionHeader"; // 용도 공통 섹션 헤더 표시
+import { projects } from "@/lib/projects"; // 용도 전체 프로젝트 데이터 조회
+
+export const metadata = {
+  title: "Projects | Tami.log",
+  description: "AI, Backend, Network 기반 프로젝트 Case Study 목록",
+};
 
 export default function ProjectsPage() {
-  const projects = getFeaturedProjects();
-
   return (
-    <main className="page-shell">
-      <section className="page-hero">
-        <p className="section-eyebrow">Portfolio</p>
-
-        <h1>Projects</h1>
-
-        <p>
-          GitHub와 중복되지 않도록 코드 설명보다 문제 정의, 설계 방향,
-          기술적 판단, 결과 중심으로 정리합니다.
-        </p>
+    <main className="content-shell">
+      <section className="page-hero page-section--reveal">
+        <SectionHeader
+          eyebrow="Case Studies"
+          title="Projects designed from real problems"
+          description="단순히 만든 결과물이 아니라 문제 정의, 설계 판단, 구현 흐름, 결과를 함께 기록합니다."
+        />
       </section>
 
-      <section className="project-story-grid">
-        {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
-        ))}
+      <section className="page-section page-section--reveal-delayed">
+        <div className="project-story-grid">
+          {projects.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))}
+        </div>
       </section>
     </main>
   );

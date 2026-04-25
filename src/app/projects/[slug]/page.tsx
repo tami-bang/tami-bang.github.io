@@ -1,5 +1,6 @@
 import Link from "next/link"; // 용도 사이트 내부 및 외부 링크 이동
 import { notFound } from "next/navigation"; // 용도 존재하지 않는 프로젝트 접근 처리
+import SectionHeader from "@/components/SectionHeader"; // 용도 공통 섹션 헤더 표시
 import {
   getProjectBySlug,
   getProjectSlugs,
@@ -45,16 +46,16 @@ export default async function ProjectDetailPage({
 
   return (
     <main className="project-detail-shell">
-      <section className="project-detail-hero">
+      <section className="project-detail-hero page-section--reveal">
         <Link className="back-link" href="/projects">
-          ← Back to Projects
+          Back to Projects
         </Link>
 
-        <p className="section-eyebrow">{project.domain}</p>
-
-        <h1>{project.title}</h1>
-
-        <p className="project-detail-subtitle">{project.subtitle}</p>
+        <SectionHeader
+          eyebrow={project.domain}
+          title={project.title}
+          description={project.subtitle}
+        />
 
         <div className="project-detail-meta">
           <span>{project.status}</span>
@@ -65,7 +66,7 @@ export default async function ProjectDetailPage({
         <p className="project-detail-description">{project.description}</p>
       </section>
 
-      <section className="project-detail-grid">
+      <section className="project-detail-grid page-section--reveal-delayed">
         <article className="project-detail-card">
           <h2>Problem</h2>
           <p>{project.problem}</p>
@@ -77,7 +78,7 @@ export default async function ProjectDetailPage({
         </article>
       </section>
 
-      <section className="project-detail-card project-detail-card--wide">
+      <section className="project-detail-card project-detail-card--wide page-section--reveal">
         <h2>Architecture Flow</h2>
 
         <ol className="architecture-flow">
@@ -87,7 +88,7 @@ export default async function ProjectDetailPage({
         </ol>
       </section>
 
-      <section className="project-detail-grid">
+      <section className="project-detail-grid page-section--reveal">
         <article className="project-detail-card">
           <h2>Technical Highlights</h2>
 
@@ -109,7 +110,7 @@ export default async function ProjectDetailPage({
         </article>
       </section>
 
-      <section className="project-detail-grid">
+      <section className="project-detail-grid page-section--reveal">
         <article className="project-detail-card">
           <h2>Results</h2>
 
