@@ -46,7 +46,7 @@ export default function AboutPage() {
         <article className="about-card">
           <h2>Strengths</h2>
 
-          <ul className="detail-list">
+          <ul className="about-strength-list">
             {strengths.map((strength) => (
               <li key={strength}>{strength}</li>
             ))}
@@ -56,7 +56,7 @@ export default function AboutPage() {
         <article className="about-card">
           <h2>Current Focus</h2>
 
-          <div className="project-detail-stack">
+          <div className="about-focus-list">
             {focusAreas.map((area) => (
               <span key={area}>{area}</span>
             ))}

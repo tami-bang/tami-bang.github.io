@@ -1,13 +1,12 @@
 @import "tailwindcss"; /* Tailwind CSS 유틸리티 로드 */
-
-@import "../styles/tokens.css";
-@import "../styles/reset.css";
-@import "../styles/header.css";
-@import "../styles/hero.css";
-@import "../styles/layout.css";
-@import "../styles/cards.css";
-@import "../styles/project.css";
-@import "../styles/cta.css";
-@import "../styles/markdown.css";
-@import "../styles/animations.css";
-@import "../styles/responsive.css";
+@import "../styles/tokens.css"; /* 사이트 색상, 여백, 그림자 토큰 */
+@import "../styles/reset.css"; /* 브라우저 기본 스타일 초기화 */
+@import "../styles/header.css"; /* 공통 헤더 스타일 */
+@import "../styles/hero.css"; /* 메인 히어로 섹션 스타일 */
+@import "../styles/layout.css"; /* 공통 레이아웃과 푸터 스타일 */
+@import "../styles/cards.css"; /* 카드 UI 스타일 */
+@import "../styles/project.css"; /* 프로젝트 상세/목록 스타일 */
+@import "../styles/cta.css"; /* 버튼과 CTA 스타일 */
+@import "../styles/markdown.css"; /* 마크다운 렌더링 스타일 */
+@import "../styles/animations.css"; /* 화면 진입 애니메이션 */
+@import "../styles/responsive.css"; /* 반응형 스타일 */

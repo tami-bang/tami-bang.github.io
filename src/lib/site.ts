@@ -2,6 +2,10 @@ export const siteConfig = {
   name: "Tami",
   title: "Tami's Dev Blog",
   description: "기록 → 성장 → 프로젝트",
+  links: {
+    github: "https://github.com/tami-bang",
+    email: "vjihyun.bangv@gmail.com",
+  },
   navItems: [
     { label: "공부기록", href: "/blog" },
     { label: "프로젝트", href: "/projects" },
@@ -65,3 +69,4 @@ export const featuredProjects = [
     href: "/projects",
   },
 ];
+

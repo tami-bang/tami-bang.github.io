@@ -2,8 +2,19 @@ import Link from "next/link"; // 용도 사이트 내부 페이지 이동
 import HeroObjectScene from "@/components/HeroObjectScene"; // 용도 히어로 3D 오브젝트 인터랙션 표시
 import ProjectCard from "@/components/ProjectCard"; // 용도 프로젝트 카드 표시
 import SectionHeader from "@/components/SectionHeader"; // 용도 공용 섹션 헤더 표시
-import { featuredPosts, studyCategories } from "@/lib/site"; // 용도 메인 화면 학습 콘텐츠 데이터 조회
+import { getAllPosts } from "@/lib/post"; // 용도 로컬 Markdown 게시글 목록 조회
 import { getFeaturedProjects } from "@/lib/projects"; // 용도 대표 프로젝트 데이터 조회
+import { studyCategoryItems } from "@/lib/site"; // 용도 학습 카테고리 데이터 조회
+
+const HOME_POST_LIMIT = 3;
+
+function createBlogPostHref(slug: string) {
+  return `/blog/${slug}`;
+}
+
+function getFeaturedStudyPosts() {
+  return getAllPosts().slice(0, HOME_POST_LIMIT);
+}
 
 function SpaceDots() {
   return (
@@ -76,6 +87,8 @@ function FeaturedProjectsSection() {
 }
 
 function FeaturedPostsSection() {
+  const featuredStudyPosts = getFeaturedStudyPosts();
+
   return (
     <section className="page-section page-section--study page-section--reveal-delayed">
       <SectionHeader
@@ -86,8 +99,12 @@ function FeaturedPostsSection() {
 
       <div className="home-section">
         <div className="post-list">
-          {featuredPosts.map((post) => (
-            <Link className="post-card-large" href={post.href} key={post.title}>
+          {featuredStudyPosts.map((post) => (
+            <Link
+              className="post-card-large"
+              href={createBlogPostHref(post.slug)}
+              key={post.slug}
+            >
               <p className="category-pill">{post.category}</p>
               <h2>{post.title}</h2>
               <p>{post.description}</p>
@@ -101,12 +118,13 @@ function FeaturedPostsSection() {
             <p className="section-eyebrow">Browse by Category</p>
 
             <div className="category-grid">
-              {studyCategories.map((category) => (
-                <Link className="category-link"
-                  href={`/blog/category/${encodeURIComponent(category)}`}
-                  key={category}
+              {studyCategoryItems.map((category) => (
+                <Link
+                  className="category-link"
+                  href={`/blog/category/${category.slug}`}
+                  key={category.slug}
                 >
-                  {category}
+                  {category.label}
                 </Link>
               ))}
             </div>
