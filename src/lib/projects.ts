@@ -117,6 +117,56 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/tami-bang",
   },
+  {
+    slug: "jobkorea-job-radar",
+    title: "JobKorea Job Radar",
+    subtitle: "잡코리아 공고 수집부터 개인 맞춤 매칭 리포트까지 자동화한 채용 데이터 파이프라인",
+    domain: "Data Automation / Job Search",
+    description:
+      "잡코리아 채용공고를 수집하고 상세 페이지를 보강한 뒤, 개인 선호 조건 기반 점수화와 CSV/XLSX 리포트 생성을 연결한 Python 크롤링 프로젝트입니다.",
+    status: "Personal Automation MVP",
+    period: "2026",
+    role: "Crawler / Parser / Data Pipeline / Report Automation",
+    problem:
+      "채용 사이트에서 관심 직무, 지역, 경력 조건을 매번 수동으로 확인하면 시간이 많이 들고 좋은 공고를 놓치기 쉽습니다. 특히 목록 페이지 정보만으로는 마감일, 기술 스택, 주요 업무를 충분히 비교하기 어렵습니다.",
+    solution:
+      "목록 수집, 상세 페이지 보강, SQLite 저장, 중복 제거, 지역/마감일 필터링, 개인 기준 매칭 점수 계산, Excel 친화 리포트 생성을 하나의 반복 가능한 파이프라인으로 구성했습니다.",
+    architecture: [
+      "검색 키워드와 사이트 설정 로드",
+      "잡코리아 목록 페이지 수집",
+      "공고 기본 정보 파싱 및 정규화",
+      "상세 페이지에서 기술 스택과 업무 내용 보강",
+      "SQLite 기반 저장 및 중복 업데이트",
+      "개인 선호 조건 기반 매칭 점수 계산",
+      "CSV/XLSX 리포트 생성",
+      "수집 품질과 누락 필드 헬스 체크",
+    ],
+    highlights: [
+      "목록 크롤링과 상세 크롤링을 분리해 실패 지점을 추적하기 쉽게 설계",
+      "마감일, 지역, 경력, 학력, 고용형태를 정규화해 비교 가능한 데이터로 변환",
+      "점수, 매칭 키워드, 부족한 조건, 긍정/부정 사유를 함께 남기는 설명 가능한 매칭 로직 구현",
+      "Excel에서 바로 열기 좋은 UTF-8 BOM CSV와 클릭 가능한 링크가 포함된 XLSX 리포트 생성",
+    ],
+    techStack: [
+      "Python",
+      "Requests",
+      "BeautifulSoup",
+      "Selenium",
+      "SQLite",
+      "Pandas",
+      "XLSX XML",
+    ],
+    results: [
+      "서울, 경기, 인천 중심의 유효 공고를 개인 조건에 맞춰 빠르게 선별할 수 있는 리포트 생성",
+      "수집된 공고를 누적 저장해 오늘 새로 수집된 공고뿐 아니라 아직 마감되지 않은 기존 공고도 후보로 유지",
+      "누락된 마감일과 상세 수집 실패 상태를 헬스 체크로 확인할 수 있어 데이터 신뢰도를 판단 가능",
+    ],
+    retrospective: [
+      "크롤링 프로젝트는 수집 자체보다 데이터 품질 관리와 재실행 가능한 구조가 더 중요하다는 점을 확인했습니다.",
+      "개인 자동화 도구도 결과만 보여주는 것보다 왜 추천됐는지 설명할 수 있어야 실제 의사결정에 도움이 됩니다.",
+    ],
+    githubUrl: "https://github.com/tami-bang/job_crawler",
+  },
 ];
 
 export function getFeaturedProjects() {
