@@ -1,3 +1,11 @@
+export type ProjectVisualHighlight = {
+  title: string;
+  imageSrc: string;
+  alt: string;
+  width: number;
+  height: number;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -22,6 +30,7 @@ export type Project = {
   techStack: string[];
   results: string[];
   retrospective: string[];
+  visualHighlights?: ProjectVisualHighlight[];
   githubUrl: string;
 };
 
@@ -72,6 +81,50 @@ export const projects: Project[] = [
     retrospective: [
       "의료 검색에서는 생성형 응답보다 신뢰 가능한 검색과 우선순위 정렬이 먼저라는 기준을 세웠습니다.",
       "AI는 정체성이 아니라 검색, 재정렬, 판단 흐름을 보조하는 도구로 사용할 때 서비스 가치가 커진다는 점을 확인했습니다.",
+    ],
+    visualHighlights: [
+      {
+        title: "Retrieval-first Architecture",
+        imageSrc: "/images/case-studies/health-ai-search-api-02.webp",
+        alt: "Health AI Search API architecture slide showing query normalization, hybrid retrieval, reranking, triage, and response flow",
+        width: 2592,
+        height: 1458,
+      },
+      {
+        title: "Problem to Action",
+        imageSrc: "/images/case-studies/health-ai-search-api-03.webp",
+        alt: "Health AI Search API slide explaining how search results become actionable medical guidance",
+        width: 2592,
+        height: 1458,
+      },
+      {
+        title: "Service Orchestration",
+        imageSrc: "/images/case-studies/health-ai-search-api-06.webp",
+        alt: "Health AI Search API core implementation slide showing validation, language detection, normalization, retrieval, reranking, triage, and response generation",
+        width: 2592,
+        height: 1458,
+      },
+      {
+        title: "Performance Notes",
+        imageSrc: "/images/case-studies/health-ai-search-api-11.webp",
+        alt: "Health AI Search API performance slide showing endpoint response time and optimization notes",
+        width: 2592,
+        height: 1458,
+      },
+      {
+        title: "Issues and Improvements",
+        imageSrc: "/images/case-studies/health-ai-search-api-12.webp",
+        alt: "Health AI Search API slide summarizing encoding, search relevance, API latency, and multilingual quality issues with improvements",
+        width: 2592,
+        height: 1458,
+      },
+      {
+        title: "System Design Thinking",
+        imageSrc: "/images/case-studies/health-ai-search-api-13.webp",
+        alt: "Health AI Search API final slide summarizing retrieval-first architecture, performance-aware design, and real problem solving",
+        width: 2592,
+        height: 1458,
+      },
     ],
     githubUrl: "https://github.com/tami-bang/health-ai-search-api",
   },
@@ -132,6 +185,36 @@ export const projects: Project[] = [
     retrospective: [
       "보안 프로젝트는 탐지 자체보다 판단, 차단, 기록, 관리자 확인까지 이어지는 운영 흐름이 중요하다는 점을 배웠습니다.",
       "실시간 네트워크 시스템에서는 기능 구현만큼 injection 타이밍, 응답 충돌 제어, 예외 상황 기록이 중요했습니다.",
+    ],
+    visualHighlights: [
+      {
+        title: "Request-level Architecture",
+        imageSrc: "/images/case-studies/gateguard-02.webp",
+        alt: "GateGuard architecture slide showing packet capture, request parsing, policy engine, AI scoring, pass or block decision, log, database, and admin dashboard",
+        width: 1070,
+        height: 616,
+      },
+      {
+        title: "Filtering Problem",
+        imageSrc: "/images/case-studies/gateguard-03.webp",
+        alt: "GateGuard problem slide explaining why traditional filtering fails and why decisions should happen at request level",
+        width: 1070,
+        height: 616,
+      },
+      {
+        title: "Solution Structure",
+        imageSrc: "/images/case-studies/gateguard-06.webp",
+        alt: "GateGuard solution infographic showing policy and AI dual decision structure, HTTP analysis, and injection-based blocking",
+        width: 1070,
+        height: 616,
+      },
+      {
+        title: "Troubleshooting",
+        imageSrc: "/images/case-studies/gateguard-11.webp",
+        alt: "GateGuard troubleshooting slide showing injection timing, response collision control, connection termination changes, and inject structure improvements",
+        width: 1070,
+        height: 616,
+      },
     ],
     githubUrl: "https://github.com/tami-bang",
   },
