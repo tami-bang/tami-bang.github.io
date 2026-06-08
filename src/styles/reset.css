@@ -46,8 +46,8 @@ body::before {
   pointer-events: none;
   content: "";
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(var(--ambient-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--ambient-grid-line) 1px, transparent 1px);
   background-size: 72px 72px;
   mask-image: linear-gradient(to bottom, black, transparent 80%);
 }
@@ -59,7 +59,7 @@ body::after {
   pointer-events: none;
   content: "";
   background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.28) 1px, transparent 1.5px);
+    radial-gradient(circle, var(--ambient-star) 1px, transparent 1.5px);
   background-size: 90px 90px;
   opacity: 0.16;
 }

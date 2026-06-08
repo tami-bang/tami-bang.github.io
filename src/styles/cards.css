@@ -427,17 +427,17 @@
     ),
     radial-gradient(
       circle at 78% 22%,
-      rgba(125, 211, 252, 0.12),
+      color-mix(in srgb, var(--brand-tertiary) 12%, transparent),
       transparent 28%
     ),
     radial-gradient(
       circle at 54% 72%,
-      rgba(139, 92, 246, 0.1),
+      color-mix(in srgb, var(--brand-secondary) 10%, transparent),
       transparent 34%
     ),
     radial-gradient(
       circle at 50% 50%,
-      rgba(255, 255, 255, 0.045) 0 1px,
+      var(--ambient-grid-line) 0 1px,
       transparent 1px
     );
   background-size:
@@ -453,7 +453,7 @@
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.42) 0 1px, transparent 1.5px),
+    radial-gradient(circle, var(--ambient-star) 0 1px, transparent 1.5px),
     radial-gradient(circle, color-mix(in srgb, var(--brand-accent) 44%, transparent) 0 1px, transparent 1.5px);
   background-position:
     0 0,
@@ -469,13 +469,7 @@
 .about-universe::after {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(5, 7, 19, 0.2),
-      rgba(5, 7, 19, 0.74) 72%,
-      rgba(5, 7, 19, 0.98)
-    );
+  background: linear-gradient(180deg, transparent, var(--background) 92%);
   content: "";
 }
 
@@ -497,7 +491,7 @@
   bottom: 18%;
   width: 260px;
   height: 260px;
-  background: rgba(125, 211, 252, 0.055);
+  background: color-mix(in srgb, var(--brand-tertiary) 8%, transparent);
   animation: about-soft-float 12s ease-in-out infinite reverse;
 }
 
@@ -532,7 +526,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.86),
+    color-mix(in srgb, var(--foreground) 72%, transparent),
     color-mix(in srgb, var(--brand-accent) 72%, transparent)
   );
   opacity: 0;
@@ -760,7 +754,7 @@
   width: 100%;
   margin-top: 12px;
   padding-top: 20px;
-  border-top: 1px solid rgba(148, 163, 184, 0.14);
+  border-top: 1px solid color-mix(in srgb, var(--muted) 18%, transparent);
 }
 
 .project-card__footer p {

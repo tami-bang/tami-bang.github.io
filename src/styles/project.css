@@ -114,11 +114,11 @@
   display: block;
   width: 100%;
   height: auto;
-  background: #050713;
+  background: var(--media-surface);
 }
 
 .project-visual-card figcaption {
-  border-top: 1px solid rgba(148, 163, 184, 0.14);
+  border-top: 1px solid color-mix(in srgb, var(--muted) 18%, transparent);
   color: var(--foreground);
   font-weight: 900;
   padding: 14px 16px;

@@ -17,9 +17,17 @@
   --brand-tertiary: #7dd3fc;
   --brand-pink: #f0abfc;
   --brand-dot: rgba(156, 255, 79, 0.22);
+  --ambient-grid-line: rgba(255, 255, 255, 0.035);
+  --ambient-star: rgba(255, 255, 255, 0.28);
+  --ambient-overlay-soft: color-mix(in srgb, var(--background) 20%, transparent);
+  --ambient-overlay-mid: color-mix(in srgb, var(--background) 74%, transparent);
+  --ambient-overlay-strong: color-mix(in srgb, var(--background) 98%, transparent);
 
   --header-bg: rgba(5, 7, 19, 0.86);
   --header-border: rgba(255, 255, 255, 0.09);
+  --footer-bg-start: color-mix(in srgb, var(--background) 96%, transparent);
+  --footer-bg-end: var(--background);
+  --media-surface: var(--background);
 
   --shadow-strong: 0 30px 90px rgba(0, 0, 0, 0.42);
   --shadow-neon: 0 0 44px rgba(156, 255, 79, 0.16);
@@ -62,9 +70,17 @@ html[data-theme="light"] {
   --brand-tertiary: #0284c7;
   --brand-pink: #c026d3;
   --brand-dot: rgba(232, 90, 166, 0.16);
+  --ambient-grid-line: rgba(15, 23, 42, 0.055);
+  --ambient-star: rgba(2, 132, 199, 0.18);
+  --ambient-overlay-soft: color-mix(in srgb, var(--background) 18%, transparent);
+  --ambient-overlay-mid: color-mix(in srgb, var(--background) 78%, transparent);
+  --ambient-overlay-strong: color-mix(in srgb, var(--background) 96%, transparent);
 
   --header-bg: rgba(255, 255, 255, 0.92);
   --header-border: rgba(15, 23, 42, 0.08);
+  --footer-bg-start: color-mix(in srgb, var(--background) 94%, transparent);
+  --footer-bg-end: color-mix(in srgb, var(--background) 98%, white);
+  --media-surface: color-mix(in srgb, var(--background) 72%, white);
 
   --shadow-strong: 0 28px 70px rgba(15, 23, 42, 0.13);
   --shadow-neon: 0 0 38px rgba(232, 90, 166, 0.14);
