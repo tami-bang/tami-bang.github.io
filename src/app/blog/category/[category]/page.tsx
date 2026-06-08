@@ -40,7 +40,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     <main className="content-shell">
       <section className="page-hero page-section--reveal">
         <h1>{categoryLabel}</h1>
-        <p>해당 카테고리의 학습 기록입니다.</p>
+        <p>해당 카테고리의 백엔드 구현 기록입니다.</p>
 
         <Link href="/blog" className="read-more-link">
           전체 보기

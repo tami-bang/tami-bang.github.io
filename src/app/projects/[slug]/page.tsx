@@ -145,7 +145,7 @@ export default async function ProjectDetailPage({
         </a>
 
         <Link className="hero-github-link" href="/blog">
-          Read Study Log
+          Read Backend Notes
         </Link>
       </section>
     </main>

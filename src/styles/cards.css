@@ -16,7 +16,8 @@
 .about-project-link,
 .about-contact-panel,
 .empty-panel,
-.blog-detail-card {
+.blog-detail-card,
+.automation-step-card {
   --glow-x: 50%;
   --glow-y: 50%;
   position: relative;
@@ -51,7 +52,8 @@
 .about-project-link::before,
 .about-contact-panel::before,
 .empty-panel::before,
-.blog-detail-card::before {
+.blog-detail-card::before,
+.automation-step-card::before {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -79,7 +81,8 @@
 .about-project-link:hover::before,
 .about-contact-panel:hover::before,
 .empty-panel:hover::before,
-.blog-detail-card:hover::before {
+.blog-detail-card:hover::before,
+.automation-step-card:hover::before {
   opacity: 1;
 }
 
@@ -95,7 +98,8 @@
 .about-project-link:hover,
 .about-contact-panel:hover,
 .empty-panel:hover,
-.blog-detail-card:hover {
+.blog-detail-card:hover,
+.automation-step-card:hover {
   transform: translateY(-4px);
   border-color: color-mix(in srgb, var(--brand-accent) 30%, var(--panel-border));
   box-shadow:
@@ -115,7 +119,8 @@
 .about-project-link > *,
 .about-contact-panel > *,
 .empty-panel > *,
-.blog-detail-card > * {
+.blog-detail-card > *,
+.automation-step-card > * {
   position: relative;
   z-index: 1;
 }
@@ -292,7 +297,14 @@
   gap: 18px;
 }
 
-.about-process-card {
+.automation-pattern-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.about-process-card,
+.automation-step-card {
   display: grid;
   align-content: start;
   gap: 16px;
@@ -300,7 +312,8 @@
   padding: clamp(22px, 3vw, 32px);
 }
 
-.about-process-card span {
+.about-process-card span,
+.automation-step-card span {
   color: color-mix(in srgb, var(--brand-accent) 72%, var(--muted));
   font-family: var(--font-geist-mono);
   font-size: 0.78rem;
@@ -308,7 +321,8 @@
   letter-spacing: 0.16em;
 }
 
-.about-process-card h3 {
+.about-process-card h3,
+.automation-step-card h3 {
   margin: 0;
   color: var(--foreground);
   font-size: clamp(1.35rem, 2vw, 1.8rem);
@@ -317,7 +331,8 @@
   letter-spacing: -0.05em;
 }
 
-.about-process-card p {
+.about-process-card p,
+.automation-step-card p {
   margin: 0;
   color: var(--text-soft);
   line-height: 1.75;
@@ -643,6 +658,13 @@
   margin-bottom: 8px;
 }
 
+.project-card__badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
 .project-story-card__meta {
   min-height: 58px;
   align-content: flex-start;
@@ -695,6 +717,34 @@
   word-break: keep-all;
 }
 
+.project-card__summary {
+  display: grid;
+  gap: 10px;
+  border: 1px solid color-mix(in srgb, var(--brand-accent) 16%, transparent);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--brand-accent) 6%, transparent);
+  padding: 16px;
+}
+
+.project-card__summary p {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.94rem;
+  line-height: 1.55;
+  word-break: keep-all;
+}
+
+.project-card__summary span {
+  color: var(--brand-accent);
+  font-family: var(--font-geist-mono);
+  font-size: 0.72rem;
+  font-weight: 950;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 .project-card__stack,
 .project-story-card__stack {
   align-content: flex-start;
@@ -738,7 +788,8 @@
    Responsive
 ================================ */
 @media (max-width: 960px) {
-  .about-process-grid {
+  .about-process-grid,
+  .automation-pattern-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -760,7 +811,8 @@
 }
 
 @media (max-width: 640px) {
-  .about-process-grid {
+  .about-process-grid,
+  .automation-pattern-grid {
     grid-template-columns: 1fr;
   }
 }

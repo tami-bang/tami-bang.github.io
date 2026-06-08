@@ -7,6 +7,14 @@ export type Project = {
   status: string;
   period: string;
   role: string;
+  featured?: boolean;
+  featuredOrder?: number;
+  featuredBadge?: string;
+  repeatedProblem?: string;
+  backendFlow?: string;
+  structuredFlow?: string;
+  automationPoint?: string;
+  resultSummary?: string;
   problem: string;
   solution: string;
   architecture: string[];
@@ -76,6 +84,13 @@ export const projects: Project[] = [
     status: "Capstone MVP",
     period: "2026",
     role: "Packet Engine / Backend / Admin Flow / AI Integration",
+    featured: true,
+    featuredOrder: 2,
+    featuredBadge: "Backend Flow",
+    repeatedProblem: "유해 접근 탐지 후 판단과 기록이 운영 흐름으로 이어지지 않는 문제",
+    backendFlow: "패킷 분석 → 정책 조회 → AI 보조 판단 → 로그 저장 → 관리자 확인",
+    automationPoint: "정책 기반 판단과 보조 판단을 연결해 탐지 이후 운영 흐름을 자동화",
+    resultSummary: "탐지, 차단, 기록, 관리자 화면 분석까지 이어지는 서비스 구조 설계",
     problem:
       "유해 웹 접근을 탐지하더라도 운영자가 빠르게 원인을 파악하고 정책으로 연결하지 못하면 보안 대응 흐름이 끊기는 문제가 있었습니다.",
     solution:
@@ -119,7 +134,7 @@ export const projects: Project[] = [
   },
   {
     slug: "jobkorea-job-radar",
-    title: "JobKorea Job Radar",
+    title: "JobRadar",
     subtitle: "잡코리아 공고 수집부터 개인 맞춤 매칭 리포트까지 자동화한 채용 데이터 파이프라인",
     domain: "Data Automation / Job Search",
     description:
@@ -127,6 +142,13 @@ export const projects: Project[] = [
     status: "Personal Automation MVP",
     period: "2026",
     role: "Crawler / Parser / Data Pipeline / Report Automation",
+    featured: true,
+    featuredOrder: 1,
+    featuredBadge: "Automation Core",
+    repeatedProblem: "채용 공고를 매번 직접 확인하고 비교하는 반복 작업",
+    backendFlow: "크롤링 → 상세 파싱 → SQLite 저장 → 매칭 점수 계산 → 리포트 생성",
+    automationPoint: "조건에 맞는 공고를 자동으로 선별하고 CSV/XLSX로 보기 쉽게 정리",
+    resultSummary: "반복 탐색 시간을 줄이고 사용자가 비교하기 쉬운 채용 데이터 리포트 흐름을 확보",
     problem:
       "채용 사이트에서 관심 직무, 지역, 경력 조건을 매번 수동으로 확인하면 시간이 많이 들고 좋은 공고를 놓치기 쉽습니다. 특히 목록 페이지 정보만으로는 마감일, 기술 스택, 주요 업무를 충분히 비교하기 어렵습니다.",
     solution:
@@ -167,10 +189,66 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/tami-bang/job_crawler",
   },
+  {
+    slug: "pcfilter-qa-case-study",
+    title: "PCFILTER QA Case Study",
+    subtitle: "QA 인턴 경험에서 발견한 반복 이슈를 분석하고 기록 체계로 정리한 개선 사례",
+    domain: "QA / Automation",
+    description:
+      "PCFILTER QA 인턴 과정에서 반복되는 검증 흐름과 이슈 재현 과정을 분석하고, 문제 기록과 자동화 관점으로 개선 포인트를 정리한 QA 기반 개발 사례입니다.",
+    status: "QA Case Study",
+    period: "2026",
+    role: "QA Analysis / Issue Documentation / Automation Planning",
+    featured: true,
+    featuredOrder: 3,
+    featuredBadge: "Problem Discovery",
+    repeatedProblem: "반복 검증과 이슈 재현 조건이 흩어져 추적이 어려운 문제",
+    structuredFlow: "재현 조건 → 실제 결과 → 영향 범위 → 자동화 후보",
+    automationPoint: "반복 검증 항목을 자동화 가능한 후보로 분리",
+    resultSummary: "QA 경험을 개발 개선과 자동화 사고로 연결",
+    problem:
+      "QA 과정에서 발견한 문제는 단순히 버그를 찾는 데서 끝나지 않고, 어떤 조건에서 반복되는지와 어떤 흐름을 개선해야 하는지를 함께 남겨야 했습니다.",
+    solution:
+      "재현 조건, 기대 결과, 실제 결과, 영향 범위, 자동화 가능성을 분리해 기록하고, QA 관찰을 백엔드/API와 자동화 개선 과제로 연결하는 방식으로 정리했습니다.",
+    architecture: [
+      "QA 시나리오 실행",
+      "반복 이슈와 예외 흐름 관찰",
+      "재현 조건과 실제 결과 기록",
+      "영향 범위와 우선순위 분류",
+      "자동화 가능한 검증 항목 도출",
+      "개발 개선 과제와 문서로 연결",
+    ],
+    highlights: [
+      "QA 인턴 경험을 단순 테스트 수행이 아닌 문제 분석 역량으로 정리",
+      "이슈 재현 조건과 영향 범위를 분리해 개발자가 이해하기 쉬운 기록 구조 구성",
+      "반복 검증 항목을 자동화 후보로 분류",
+      "AI 활용과 백엔드/API 학습 방향을 QA 문제 해결 경험과 연결",
+    ],
+    techStack: [
+      "QA",
+      "Issue Tracking",
+      "Test Case",
+      "Documentation",
+      "Automation Planning",
+      "AI-assisted Analysis",
+    ],
+    results: [
+      "QA에서 발견한 문제를 개발 관점의 개선 과제로 설명할 수 있는 사례 확보",
+      "문제 분석, 기록, 자동화 후보 도출까지 이어지는 개인 작업 흐름 정리",
+      "성장형 개발자로서 실무 관찰을 백엔드/API와 자동화 학습으로 연결",
+    ],
+    retrospective: [
+      "QA 경험은 오류를 찾는 역할을 넘어 사용 흐름과 시스템 약점을 발견하는 훈련이었습니다.",
+      "좋은 개발자는 문제를 빨리 고치는 것뿐 아니라 재현 가능하게 기록하고 반복을 줄이는 구조를 만든다는 점을 배웠습니다.",
+    ],
+    githubUrl: "https://github.com/tami-bang",
+  },
 ];
 
 export function getFeaturedProjects() {
-  return projects;
+  return projects
+    .filter((project) => project.featured)
+    .sort((a, b) => (a.featuredOrder ?? 99) - (b.featuredOrder ?? 99));
 }
 
 export function getProjectBySlug(slug: string) {

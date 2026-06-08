@@ -1,25 +1,25 @@
 export const siteConfig = {
   name: "Tami",
-  title: "Tami's Dev Blog",
-  description: "기록 → 성장 → 프로젝트",
+  title: "Tami.log",
+  description: "반복 작업을 자동화하고 서비스 흐름으로 구현하는 개발자 포트폴리오",
   links: {
     github: "https://github.com/tami-bang",
     email: "vjihyun.bangv@gmail.com",
   },
   navItems: [
-    { label: "공부기록", href: "/blog" },
+    { label: "Backend Notes", href: "/blog" },
     { label: "프로젝트", href: "/projects" },
     { label: "소개", href: "/about" },
   ],
 };
 
 export const studyCategoryItems = [
-  { label: "Python", slug: "python" },
-  { label: "C", slug: "c" },
-  { label: "Network", slug: "network" },
   { label: "Backend/API", slug: "backend-api" },
-  { label: "Frontend", slug: "frontend" },
-  { label: "AI", slug: "ai" },
+  { label: "Automation", slug: "automation" },
+  { label: "Data Pipeline", slug: "data-pipeline" },
+  { label: "QA Insight", slug: "qa-insight" },
+  { label: "Network", slug: "network" },
+  { label: "AI as Tool", slug: "ai-as-tool" },
 ];
 
 export const studyCategories = studyCategoryItems.map((category) => category.label);
@@ -44,7 +44,7 @@ export const featuredPosts = [
   {
     title: "API는 프론트와 백엔드를 어떻게 연결할까?",
     description:
-      "HTTP 요청, REST API, FastAPI, Swagger의 역할을 서비스 흐름 기준으로 정리합니다.",
+      "HTTP 요청, REST API, FastAPI, Swagger의 역할을 백엔드 흐름 기준으로 정리합니다.",
     category: "Backend/API",
     href: "/blog",
   },
@@ -59,8 +59,8 @@ export const featuredPosts = [
 
 export const featuredProjects = [
   {
-    title: "Health AI Search API",
-    description: "증상 검색, 응급도 판단, 의료 정보 검색을 연결한 AI 검색 API",
+    title: "JobRadar",
+    description: "채용 공고 확인을 수집, 저장, 점수화, 리포트 생성 흐름으로 자동화",
     href: "/projects",
   },
   {

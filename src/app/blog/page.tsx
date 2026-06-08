@@ -4,8 +4,8 @@ import { getAllPosts } from "@/lib/post"; // 용도 로컬 Markdown 게시글 �
 import { getCategorySlug, studyCategoryItems } from "@/lib/site"; // 용도 공부 카테고리 URL 생성
 
 export const metadata = {
-  title: "Study Log | Tami.log",
-  description: "AI, Backend, Network, Frontend 학습 기록",
+  title: "Backend Notes | Tami.log",
+  description: "자동화와 백엔드 구현 과정에서 배운 것을 기록합니다.",
 };
 
 export default function BlogPage() {
@@ -15,9 +15,9 @@ export default function BlogPage() {
     <main className="content-shell">
       <section className="page-hero page-section--reveal">
         <SectionHeader
-          eyebrow="Study Log"
-          title="Learning records connected to projects"
-          description="개념만 정리하지 않고, 배운 내용을 어떤 프로젝트 구조에 적용했는지 함께 기록합니다."
+          eyebrow="Backend Notes"
+          title="자동화와 백엔드 구현 과정에서 배운 것을 기록합니다."
+          description="개념을 따로 정리하기보다, 반복 작업을 줄이거나 API 흐름을 구현하면서 마주친 문제를 중심으로 기록합니다. Python, FastAPI, 데이터 처리, 네트워크, AI 활용은 모두 자동화와 백엔드 구현을 위한 도구로 다룹니다."
         />
 
         <div className="category-strip">
@@ -63,7 +63,7 @@ export default function BlogPage() {
       {posts.length === 0 && (
         <section className="empty-panel page-section--reveal-delayed">
           <h2>아직 작성된 글이 없습니다.</h2>
-          <p>/admin 페이지에서 첫 공부 기록을 작성하면 이곳에 표시됩니다.</p>
+          <p>src/content/posts 폴더에 자동화와 백엔드 구현 기록을 Markdown으로 추가하면 이곳에 표시됩니다.</p>
         </section>
       )}
     </main>
