@@ -7,23 +7,23 @@ export const siteConfig = {
     email: "vjihyun.bangv@gmail.com",
   },
   navItems: [
-    { label: "Backend Notes", href: "/blog" },
+    { label: "공부 기록", href: "/blog" },
     { label: "프로젝트", href: "/projects" },
     { label: "소개", href: "/about" },
   ],
 };
 
 export const studyCategoryItems = [
-  { label: "Backend/API", slug: "backend-api" },
-  { label: "Automation", slug: "automation" },
-  { label: "Data Pipeline", slug: "data-pipeline" },
-  { label: "QA Insight", slug: "qa-insight" },
-  { label: "Linux", slug: "linux" },
-  { label: "Network", slug: "network" },
-  { label: "C", slug: "c" },
-  { label: "HTML/CSS", slug: "html-css" },
-  { label: "Python", slug: "python" },
-  { label: "AI as Tool", slug: "ai-as-tool" },
+  { label: "백엔드/API", slug: "backend-api" },
+  { label: "파이썬/Django", slug: "python" },
+  { label: "리눅스", slug: "linux" },
+  { label: "네트워크", slug: "network" },
+  { label: "C언어", slug: "c" },
+  { label: "HTML/CSS/JS", slug: "html-css" },
+  { label: "자동화", slug: "automation" },
+  { label: "데이터 파이프라인", slug: "data-pipeline" },
+  { label: "QA", slug: "qa-insight" },
+  { label: "AI 활용", slug: "ai-as-tool" },
 ];
 
 export const studyCategories = studyCategoryItems.map((category) => category.label);
@@ -49,14 +49,14 @@ export const featuredPosts = [
     title: "API는 프론트와 백엔드를 어떻게 연결할까?",
     description:
       "HTTP 요청, REST API, FastAPI, Swagger의 역할을 백엔드 흐름 기준으로 정리합니다.",
-    category: "Backend/API",
+    category: "백엔드/API",
     href: "/blog",
   },
   {
     title: "네트워크 7계층과 실제 데이터 흐름",
     description:
       "브라우저 요청이 서버와 DB까지 이동하는 과정을 OSI 7계층과 연결해 이해합니다.",
-    category: "Network",
+    category: "네트워크",
     href: "/blog",
   },
 ];
@@ -73,4 +73,3 @@ export const featuredProjects = [
     href: "/projects",
   },
 ];
-

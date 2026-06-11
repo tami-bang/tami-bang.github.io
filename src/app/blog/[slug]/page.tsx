@@ -28,7 +28,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <main className="content-shell">
       <Link href="/blog" className="back-link">
-        ← Backend Notes로 돌아가기
+        ← 공부 기록으로 돌아가기
       </Link>
 
       <article className="blog-detail-card page-section--reveal">

@@ -189,7 +189,7 @@ export default async function ProjectDetailPage({
         </a>
 
         <Link className="hero-github-link" href="/blog">
-          Read Backend Notes
+          Read Study Log
         </Link>
       </section>
     </main>

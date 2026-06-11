@@ -1,7 +1,7 @@
 ---
 title: "Linux 기초 공부 기록"
 description: "서버 환경에서 프로젝트를 실행하기 위해 정리한 Linux 기본 개념, 명령어, 권한, 프로세스, 네트워크 확인 흐름"
-category: "Linux"
+category: "리눅스"
 createdAt: "2026-06-11"
 ---
 

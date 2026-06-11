@@ -1,7 +1,7 @@
 ---
 title: "API는 프론트와 백엔드를 어떻게 연결할까?"
 description: "웹 요청이 실제 시스템에서 어떻게 흐르는지, HTTP부터 TCP/IP까지 구조적으로 이해하는 글"
-category: "Backend/API"
+category: "백엔드/API"
 createdAt: "2026-04-25"
 ---
 

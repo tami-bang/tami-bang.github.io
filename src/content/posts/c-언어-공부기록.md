@@ -1,7 +1,7 @@
 ---
 title: "C 언어 공부 기록"
 description: "함수, 메모리, 컴파일, 포인터 개념을 보안 탐지엔진 구현 관점에서 정리한 C 언어 학습 기록"
-category: "C"
+category: "C언어"
 createdAt: "2026-06-11"
 ---
 

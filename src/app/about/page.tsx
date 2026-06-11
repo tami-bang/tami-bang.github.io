@@ -1,4 +1,4 @@
-import Link from "next/link"; // 용도 프로젝트, Backend Notes, 외부 연락 링크 이동
+import Link from "next/link"; // 용도 프로젝트, 공부 기록, 외부 연락 링크 이동
 import SectionHeader from "@/components/SectionHeader"; // 용도 공통 섹션 헤더 표시
 import { siteConfig } from "@/lib/site"; // 용도 사이트 공통 링크 정보 조회
 
@@ -179,7 +179,7 @@ export default function AboutPage() {
           </Link>
 
           <Link className="hero-github-link" href="/blog">
-            Read Backend Notes
+            Read Study Log
           </Link>
 
           <a

@@ -1,7 +1,7 @@
 ---
 title: "Python, Django 공부 기록"
 description: "Python 데이터 처리, requests와 BeautifulSoup 크롤링, Django 관리자 웹, 머신러닝 API 연결 흐름을 정리한 학습 기록"
-category: "Python"
+category: "파이썬/Django"
 createdAt: "2026-06-11"
 ---
 

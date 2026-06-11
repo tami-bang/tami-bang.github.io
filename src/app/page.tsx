@@ -74,7 +74,7 @@ function HeroSection() {
               </Link>
 
               <Link className="hero-github-link" href="/blog">
-                Read Backend Notes
+                Read Study Log
               </Link>
             </div>
           </div>
@@ -134,9 +134,9 @@ function FeaturedPostsSection() {
   return (
     <section className="page-section page-section--study page-section--reveal-delayed">
       <SectionHeader
-        eyebrow="Backend Notes"
-        title="자동화와 서비스 구현 기록"
-        description="반복 작업을 줄이거나 UI와 API 흐름을 연결하면서 마주친 문제와 배운 내용을 기록합니다."
+        eyebrow="Study Log"
+        title="과목별 공부 기록"
+        description="리눅스, 네트워크, C언어, HTML/CSS/JS, 파이썬/Django처럼 배운 내용을 과목별로 정리합니다."
       />
 
       <div className="home-section">

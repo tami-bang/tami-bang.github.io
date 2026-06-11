@@ -1,7 +1,7 @@
 ---
 title: "Network 기초 공부 기록"
 description: "IP, subnet mask, gateway, DNS, switch, router를 웹 접근 제어 프로젝트 관점에서 정리한 네트워크 학습 기록"
-category: "Network"
+category: "네트워크"
 createdAt: "2026-06-11"
 ---
 

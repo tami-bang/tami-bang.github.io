@@ -40,7 +40,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     <main className="content-shell">
       <section className="page-hero page-section--reveal">
         <h1>{categoryLabel}</h1>
-        <p>해당 카테고리의 백엔드 구현 기록입니다.</p>
+        <p>공부 기록에서 해당 과목으로 정리한 글입니다.</p>
 
         <Link href="/blog" className="read-more-link">
           전체 보기
@@ -71,7 +71,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
       {filteredPosts.length === 0 && (
         <section className="empty-panel page-section--reveal-delayed">
-          <h2>해당 카테고리에 글이 없습니다.</h2>
+          <h2>해당 카테고리에 작성된 글이 없습니다.</h2>
         </section>
       )}
     </main>
