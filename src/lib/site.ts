@@ -18,7 +18,11 @@ export const studyCategoryItems = [
   { label: "Automation", slug: "automation" },
   { label: "Data Pipeline", slug: "data-pipeline" },
   { label: "QA Insight", slug: "qa-insight" },
+  { label: "Linux", slug: "linux" },
   { label: "Network", slug: "network" },
+  { label: "C", slug: "c" },
+  { label: "HTML/CSS", slug: "html-css" },
+  { label: "Python", slug: "python" },
   { label: "AI as Tool", slug: "ai-as-tool" },
 ];
 

@@ -6,7 +6,7 @@ import { getAllPosts } from "@/lib/post"; // 용도 로컬 Markdown 게시글 �
 import { getFeaturedProjects } from "@/lib/projects"; // 용도 대표 프로젝트 데이터 조회
 import { studyCategoryItems } from "@/lib/site"; // 용도 학습 카테고리 데이터 조회
 
-const HOME_POST_LIMIT = 3;
+const HOME_POST_LIMIT = 5;
 
 const workingPatternSteps = [
   {
