@@ -6,6 +6,21 @@ export type ProjectVisualHighlight = {
   height: number;
 };
 
+export type InternshipStory = {
+  organization: string;
+  duration: string;
+  headline: string;
+  summary: string;
+  goals: string[];
+  journey: {
+    phase: string;
+    title: string;
+    description: string;
+  }[];
+  contributions: string[];
+  growth: string[];
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -31,6 +46,7 @@ export type Project = {
   results: string[];
   retrospective: string[];
   visualHighlights?: ProjectVisualHighlight[];
+  internshipStory?: InternshipStory;
   githubUrl: string;
   githubLabel?: string;
 };
@@ -278,13 +294,13 @@ export const projects: Project[] = [
   },
   {
     slug: "pcfilter-qa-case-study",
-    title: "QA Guide Automation",
-    subtitle: "반복되는 테스트 문서 작성과 화면 탐색을 자동화·구조화한 실무 개선 사례",
+    title: "QA Workflow Automation",
+    subtitle: "2개월간의 QA 인턴 경험을 반복 업무 개선과 지식 자산으로 연결한 실무 프로젝트",
     domain: "Workflow Automation / QA",
     description:
-      "보안 소프트웨어 QA 인턴 과정에서 Jira 요구사항과 Notion 테스트 문서를 연결하는 자동화 도구를 구현하고, 복잡한 제품 화면 경로를 업무 목적별 가이드로 구조화했습니다.",
-    status: "Internal Workflow MVP",
-    period: "2026",
+      "지란지교에서 QA 인턴으로 근무하며 테스트 수행에 그치지 않고, 반복되는 문서 작성과 화면 탐색 문제를 발견해 자동화 도구, 화면 네비게이션, 신입용 스타터 키트로 남겼습니다.",
+    status: "2-Month Internship Project",
+    period: "2026 · 2개월",
     role: "Workflow Analysis / Node.js Automation / Documentation Design",
     featured: true,
     featuredOrder: 3,
@@ -294,9 +310,9 @@ export const projects: Project[] = [
     automationPoint: "문서 초안 생성, 속성 채움, 템플릿 안전 검증을 하나의 실행 흐름으로 자동화",
     resultSummary: "반복 문서 작업과 화면 탐색 과정을 재사용 가능한 도구와 가이드로 전환",
     problem:
-      "QA 업무에서는 이슈 요구사항을 읽고 테스트 목적, 시나리오, 환경 정보를 Notion 문서에 반복해서 옮겨야 했습니다. 제품의 에이전트, 관리자 페이지, 운영 도구에 화면 경로가 흩어져 있어 재현과 정책 확인에 필요한 위치를 찾는 데에도 시간이 들었습니다.",
+      "인턴 초반에는 제품과 업무 흐름을 익히면서 같은 어려움이 반복되는 것을 발견했습니다. 이슈 요구사항을 테스트 문서로 옮기는 과정은 매번 수작업이었고, 제품의 클라이언트·관리자 페이지·운영 도구에 화면 경로와 테스트 지식이 흩어져 있어 필요한 정보를 다시 찾는 시간이 발생했습니다.",
     solution:
-      "Jira와 Notion API를 연결해 요구사항을 테스트 가능한 시나리오와 메타데이터로 변환하는 Node.js 자동화 도구를 구현했습니다. 동시에 화면 경로, 자주 발생하는 이슈, 재현·로그 수집 방법을 업무 목적별 질문에서 찾을 수 있는 화면 네비게이션 가이드로 정리했습니다.",
+      "주어진 테스트를 수행하는 데서 멈추지 않고 반복되는 흐름을 분석해 개선 과제로 정의했습니다. Jira와 Notion API를 연결한 Node.js 자동화 도구를 구현하고, 화면 경로와 재현·로그 수집 방법을 업무 목적별로 찾을 수 있는 가이드와 스타터 키트로 정리했습니다.",
     architecture: [
       "Jira 이슈 또는 작업 문서 조회",
       "요구사항과 진행 단계 파싱",
@@ -323,16 +339,68 @@ export const projects: Project[] = [
       "Documentation",
     ],
     results: [
-      "반복적인 요구사항 해석과 테스트 문서 초안 작성을 재실행 가능한 자동화 흐름으로 전환",
-      "기존 문서 훼손 위험을 줄이면서 상세 내용, 시나리오, 결과 템플릿을 일관된 구조로 생성",
-      "흩어진 제품 화면과 테스트 지식을 화면 네비게이션 및 시작 가이드로 구조화",
-      "자동화 모듈과 검증 테스트를 포함한 재사용 가능한 스타터 키트 구성",
+      "반복적인 요구사항 해석과 테스트 문서 초안 작성을 재실행 가능한 자동화 흐름으로 전환했습니다.",
+      "기존 문서 훼손 위험을 줄이면서 상세 내용, 시나리오, 결과 템플릿을 일관된 구조로 생성하도록 설계했습니다.",
+      "흩어진 제품 화면과 테스트 지식을 화면 네비게이션 및 시작 가이드로 구조화했습니다.",
+      "자동화 코드, 검증 테스트, 설치 가이드를 묶어 다음 사용자가 이어서 활용할 수 있는 스타터 키트로 남겼습니다.",
     ],
     retrospective: [
       "업무 자동화에서는 결과를 생성하는 기능만큼 기존 사용자 데이터를 보호하는 검증 장치가 중요했습니다.",
       "화면 가이드는 경로 목록을 늘어놓는 것보다 사용자가 해결하려는 질문에서 출발할 때 실제 활용도가 높아졌습니다.",
       "실무 자료를 외부에 설명할 때는 내부 정보 대신 문제, 설계 판단, 자동화 흐름과 배운 점을 중심으로 재구성해야 합니다.",
     ],
+    internshipStory: {
+      organization: "지란지교 · QA 인턴",
+      duration: "2개월",
+      headline: "테스트를 수행하는 인턴에서, 반복을 줄이는 결과물을 남기는 인턴으로",
+      summary:
+        "짧은 인턴 기간을 단순한 업무 체험으로 보내기보다, 매일 수행하는 QA 업무에서 불편과 반복을 관찰하고 직접 개선하는 것을 목표로 삼았습니다. 제품을 이해하고 이슈를 재현하는 기본 업무에 충실하면서도, 다음 업무와 다음 사람이 더 수월해질 수 있는 도구와 문서를 만드는 데 시간을 투자했습니다.",
+      goals: [
+        "보안 소프트웨어의 클라이언트, 관리자 페이지, 정책, 로그가 연결되는 구조 이해",
+        "이슈를 재현 가능한 조건과 기대 결과로 정리하는 QA 기본기 습득",
+        "반복 업무를 발견하고 실제 사용 가능한 자동화와 문서로 개선",
+        "인턴 이후에도 팀에서 참고하거나 확장할 수 있는 형태로 결과물 정리",
+      ],
+      journey: [
+        {
+          phase: "01 · Learn",
+          title: "제품과 QA 흐름 이해",
+          description:
+            "화면, 정책, 로그의 연결 관계를 따라가며 테스트를 수행하고, 이슈가 어떤 조건에서 발생하는지 재현 가능한 형태로 기록했습니다.",
+        },
+        {
+          phase: "02 · Observe",
+          title: "반복되는 불편 발견",
+          description:
+            "테스트 문서 초안 작성과 화면 경로 탐색이 반복되고, 업무 지식이 여러 문서와 화면에 흩어져 있다는 점을 개선 대상으로 정의했습니다.",
+        },
+        {
+          phase: "03 · Build",
+          title: "자동화 도구와 가이드 구현",
+          description:
+            "Jira·Notion 기반 테스트 가이드 자동화, 기존 문서 보호 로직, 업무 목적별 화면 네비게이션, 신입용 스타터 키트를 제작했습니다.",
+        },
+        {
+          phase: "04 · Share",
+          title: "재사용 가능한 결과물로 정리",
+          description:
+            "실행 방법, 보안 원칙, 오류 대응, 검증 테스트를 함께 정리해 개인 작업으로 끝나지 않고 다른 사용자가 이어갈 수 있도록 구성했습니다.",
+        },
+      ],
+      contributions: [
+        "반복 문서 작업을 자동화 후보로 정의하고 실제 실행 가능한 Node.js 도구로 구현",
+        "사용자 작성 내용을 보호하는 Dry-run과 템플릿 가드를 넣어 실무 적용 안정성 고려",
+        "화면 경로를 업무 목적별 질문과 연관 흐름으로 재구성해 탐색 가능한 지식으로 정리",
+        "설치·연결·사용·보안 원칙을 하나의 스타터 키트로 묶어 온보딩 기반 마련",
+        "코드와 문서를 테스트 및 가이드와 함께 남겨 유지보수와 확장 가능성 확보",
+      ],
+      growth: [
+        "QA를 기능 확인이 아니라 사용자 흐름과 시스템 연결 관계를 이해하는 과정으로 바라보게 됐습니다.",
+        "불편을 발견했을 때 개인 요령으로 해결하지 않고 반복 가능한 프로세스와 도구로 구조화하는 습관을 얻었습니다.",
+        "자동화는 빠르게 만드는 것보다 기존 데이터를 보호하고 사용자가 신뢰할 수 있게 설계하는 일이 중요하다는 점을 배웠습니다.",
+        "짧은 기간에도 맡은 업무를 충실히 수행하면서 작은 개선을 누적하면 팀에 남는 결과물을 만들 수 있다는 자신감을 얻었습니다.",
+      ],
+    },
     githubUrl:
       "https://github.com/tami-bang/tami-bang.github.io/tree/main/work-samples/qa-guide-automation",
     githubLabel: "View Public Work Sample",

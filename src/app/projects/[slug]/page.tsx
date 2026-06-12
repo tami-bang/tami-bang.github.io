@@ -6,7 +6,10 @@ import {
   getProjectBySlug,
   getProjectSlugs,
 } from "@/lib/projects"; // 용도 프로젝트 상세 데이터 조회
-import type { ProjectVisualHighlight } from "@/lib/projects"; // 용도 포트폴리오 시각 자료 하이라이트 타입 참조
+import type {
+  InternshipStory,
+  ProjectVisualHighlight,
+} from "@/lib/projects"; // 용도 포트폴리오 시각 자료 및 인턴십 스토리 타입 참조
 
 type ProjectDetailPageProps = {
   params: Promise<{
@@ -50,6 +53,69 @@ function ProjectVisualHighlights({
           ))}
         </div>
       </div>
+    </section>
+  );
+}
+
+function InternshipStorySection({ story }: { story?: InternshipStory }) {
+  if (!story) {
+    return null;
+  }
+
+  return (
+    <section className="project-detail-section internship-story page-section--reveal">
+      <header className="internship-story__header">
+        <div>
+          <p className="section-eyebrow">Internship Story</p>
+          <h2>{story.headline}</h2>
+        </div>
+
+        <div className="internship-story__meta">
+          <span>{story.organization}</span>
+          <strong>{story.duration}</strong>
+        </div>
+
+        <p>{story.summary}</p>
+      </header>
+
+      <section className="internship-story__goals">
+        <p className="section-eyebrow">What I Wanted To Achieve</p>
+        <ul className="detail-list">
+          {story.goals.map((goal) => (
+            <li key={goal}>{goal}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="internship-journey" aria-label="2개월 인턴 활동 과정">
+        {story.journey.map((item) => (
+          <article className="internship-journey__item" key={item.phase}>
+            <p>{item.phase}</p>
+            <h3>{item.title}</h3>
+            <span>{item.description}</span>
+          </article>
+        ))}
+      </section>
+
+      <section className="project-detail-grid internship-story__outcomes">
+        <article className="project-detail-card">
+          <h2>Value I Left</h2>
+          <ul className="detail-list">
+            {story.contributions.map((contribution) => (
+              <li key={contribution}>{contribution}</li>
+            ))}
+          </ul>
+        </article>
+
+        <article className="project-detail-card">
+          <h2>How I Grew</h2>
+          <ul className="detail-list">
+            {story.growth.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </article>
+      </section>
     </section>
   );
 }
@@ -107,6 +173,8 @@ export default async function ProjectDetailPage({
 
         <p className="project-detail-description">{project.description}</p>
       </section>
+
+      <InternshipStorySection story={project.internshipStory} />
 
       <section className="project-detail-section project-detail-grid page-section--reveal-delayed">
         <article className="project-detail-card">
