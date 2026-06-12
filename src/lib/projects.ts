@@ -32,6 +32,7 @@ export type Project = {
   retrospective: string[];
   visualHighlights?: ProjectVisualHighlight[];
   githubUrl: string;
+  githubLabel?: string;
 };
 
 export const projects: Project[] = [
@@ -332,7 +333,9 @@ export const projects: Project[] = [
       "화면 가이드는 경로 목록을 늘어놓는 것보다 사용자가 해결하려는 질문에서 출발할 때 실제 활용도가 높아졌습니다.",
       "실무 자료를 외부에 설명할 때는 내부 정보 대신 문제, 설계 판단, 자동화 흐름과 배운 점을 중심으로 재구성해야 합니다.",
     ],
-    githubUrl: "https://github.com/tami-bang",
+    githubUrl:
+      "https://github.com/tami-bang/tami-bang.github.io/tree/main/work-samples/qa-guide-automation",
+    githubLabel: "View Public Work Sample",
   },
 ];
 

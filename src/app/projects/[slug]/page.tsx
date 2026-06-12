@@ -185,7 +185,7 @@ export default async function ProjectDetailPage({
           target="_blank"
           rel="noreferrer"
         >
-          View GitHub
+          {project.githubLabel ?? "View GitHub"}
         </a>
 
         <Link className="hero-github-link" href="/blog">
