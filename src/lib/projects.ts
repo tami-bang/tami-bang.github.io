@@ -21,6 +21,15 @@ export type InternshipStory = {
   growth: string[];
 };
 
+export type ProjectWorkSample = {
+  title: string;
+  label: string;
+  description: string;
+  why: string;
+  details: string[];
+  link?: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -47,6 +56,7 @@ export type Project = {
   retrospective: string[];
   visualHighlights?: ProjectVisualHighlight[];
   internshipStory?: InternshipStory;
+  workSamples?: ProjectWorkSample[];
   githubUrl: string;
   githubLabel?: string;
 };
@@ -300,7 +310,7 @@ export const projects: Project[] = [
     description:
       "지란지교에서 QA 인턴으로 근무하며 개발자들이 유지보수하거나 추가 개발한 PCFILTER 변경점에 대해 사용자 화면, 정책 반영, 로그·리포트 일관성을 검증했습니다. 반복되는 문서 작성과 화면 탐색 문제는 자동화 도구와 가이드로 개선했습니다.",
     status: "2-Month Internship Project",
-    period: "2026 · 2개월",
+    period: "2026.04.27 - 2026.06.19",
     role: "QA Testing / Regression Check / Documentation Automation",
     featured: true,
     featuredOrder: 3,
@@ -351,9 +361,39 @@ export const projects: Project[] = [
       "화면 가이드는 경로 목록을 늘어놓는 것보다 사용자가 해결하려는 질문에서 출발할 때 실제 활용도가 높아졌습니다.",
       "실무 자료를 외부에 설명할 때는 내부 정보 대신 문제, 설계 판단, 자동화 흐름과 배운 점을 중심으로 재구성해야 합니다.",
     ],
+    workSamples: [
+      {
+        title: "화면 네비게이션",
+        label: "QA Navigation",
+        description:
+          "사용자 화면, 관리자 정책, 로그/리포트가 떨어져 있어 테스트할 때 같은 경로를 반복해서 찾는 문제가 있었습니다. 화면 경로를 메뉴 목록이 아니라 QA 질문 기준으로 다시 묶었습니다.",
+        why:
+          "새 테스트를 시작할 때 확인 범위를 빠르게 잡고, 정책 변경이 어느 화면과 기록에 영향을 주는지 놓치지 않기 위해 만들었습니다.",
+        details: [
+          "정책 반영, 검사 결과, 보호조치, 정보유출방지 흐름을 테스트 목적별로 정리",
+          "사용자 화면 확인에서 끝나지 않고 관리자 설정과 로그/리포트 비교까지 연결",
+          "내부 화면 경로는 공개하지 않고 산출물의 구조와 작성 방식을 공개용으로 재구성",
+        ],
+        link: "https://github.com/tami-bang/pcfilter-qa-internship/blob/main/docs/screen-navigation.md",
+      },
+      {
+        title: "테스트 가이드 자동화",
+        label: "Guide Automation",
+        description:
+          "이슈 설명을 읽고 테스트 가이드 초안을 만드는 일이 반복되어, 시나리오 후보 생성과 템플릿 보호 흐름을 작은 Node.js 샘플로 정리했습니다.",
+        why:
+          "문서 초안 작성 시간을 줄이고, 사람이 재현 조건과 실제 결과 판단에 더 집중할 수 있게 하기 위해 만들었습니다.",
+        details: [
+          "이슈 요약과 설명에서 QA 대상과 시나리오 후보 추론",
+          "사용자가 이미 작성한 문서가 있으면 자동 수정을 막는 템플릿 가드 구현",
+          "파싱과 보호 로직을 테스트 코드로 검증해 공개 Work Sample로 정리",
+        ],
+        link: "https://github.com/tami-bang/pcfilter-qa-internship/blob/main/docs/test-guide-automation.md",
+      },
+    ],
     internshipStory: {
       organization: "지란지교 · QA 인턴",
-      duration: "2개월",
+      duration: "2026.04.27 - 2026.06.19",
       headline: "테스트를 수행하는 인턴에서, 반복을 줄이는 결과물을 남기는 인턴으로",
       summary:
         "짧은 인턴 기간을 단순한 업무 체험으로 보내기보다, 매일 수행하는 QA 업무에서 불편과 반복을 관찰하고 직접 개선하는 것을 목표로 삼았습니다. 제품을 이해하고 이슈를 재현하는 기본 업무에 충실하면서도, 다음 업무와 다음 사람이 더 수월해질 수 있는 도구와 문서를 만드는 데 시간을 투자했습니다.",

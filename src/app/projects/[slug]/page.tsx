@@ -8,6 +8,7 @@ import {
 } from "@/lib/projects"; // 용도 프로젝트 상세 데이터 조회
 import type {
   InternshipStory,
+  ProjectWorkSample,
   ProjectVisualHighlight,
 } from "@/lib/projects"; // 용도 포트폴리오 시각 자료 및 인턴십 스토리 타입 참조
 
@@ -120,6 +121,57 @@ function InternshipStorySection({ story }: { story?: InternshipStory }) {
   );
 }
 
+function ProjectWorkSamplesSection({
+  samples,
+}: {
+  samples?: ProjectWorkSample[];
+}) {
+  if (!samples || samples.length === 0) {
+    return null;
+  }
+
+  return (
+    <section className="project-detail-section project-work-samples page-section--reveal">
+      <div className="project-work-samples__header">
+        <p className="section-eyebrow">Work Samples</p>
+        <h2>인턴 기간에 남긴 구체 산출물</h2>
+        <p>
+          실제 업무에서 반복되던 불편을 테스트 기준과 문서 흐름으로 정리한
+          산출물입니다. 내부 정보는 제외하고 구조와 의도를 공개 가능한 형태로
+          재구성했습니다.
+        </p>
+      </div>
+
+      <div className="project-work-samples__grid">
+        {samples.map((sample) => (
+          <article className="project-work-sample-card" key={sample.title}>
+            <p className="section-eyebrow">{sample.label}</p>
+            <h3>{sample.title}</h3>
+            <p>{sample.description}</p>
+
+            <section>
+              <h4>왜 만들었나</h4>
+              <p>{sample.why}</p>
+            </section>
+
+            <ul className="detail-list">
+              {sample.details.map((detail) => (
+                <li key={detail}>{detail}</li>
+              ))}
+            </ul>
+
+            {sample.link && (
+              <a href={sample.link} target="_blank" rel="noreferrer">
+                GitHub 문서 보기
+              </a>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export function generateStaticParams() {
   return getProjectSlugs().map((slug) => ({
     slug,
@@ -175,6 +227,7 @@ export default async function ProjectDetailPage({
       </section>
 
       <InternshipStorySection story={project.internshipStory} />
+      <ProjectWorkSamplesSection samples={project.workSamples} />
 
       <section className="project-detail-section project-detail-grid page-section--reveal-delayed">
         <article className="project-detail-card">
