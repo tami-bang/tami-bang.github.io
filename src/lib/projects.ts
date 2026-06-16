@@ -401,8 +401,7 @@ export const projects: Project[] = [
         "짧은 기간에도 맡은 업무를 충실히 수행하면서 작은 개선을 누적하면 팀에 남는 결과물을 만들 수 있다는 자신감을 얻었습니다.",
       ],
     },
-    githubUrl:
-      "https://github.com/tami-bang/tami-bang.github.io/tree/main/work-samples/qa-guide-automation",
+    githubUrl: "https://github.com/tami-bang/pcfilter-qa-internship",
     githubLabel: "View Public Work Sample",
   },
 ];
