@@ -412,15 +412,16 @@ export const projects: Project[] = [
         title: "업무 도구와 협업 흐름 학습",
         label: "Workflow Learning",
         description:
-          "M-EP Notion에서 팀 가이드와 업무 문서 구조를 익히고, Jira 티켓을 읽으며 변경 이유와 테스트 조건을 파악했습니다. Jenkins는 문서를 통해 빌드 흐름을 간접적으로 경험했습니다.",
+          "M-EP Notion에서 팀 가이드와 업무 문서 구조를 익히고, Jira 티켓을 읽으며 변경 이유와 테스트 조건을 파악했습니다. Jenkins는 문서를 통해 빌드 흐름을 간접적으로 경험했고, 8주 동안 익힌 용어를 QA 흐름 기준으로 정리했습니다.",
         why:
           "QA 결과를 정확히 남기려면 제품 화면만 보는 것이 아니라 어떤 티켓, 어떤 문서, 어떤 빌드 흐름에서 나온 변경인지 함께 이해해야 한다는 점을 배우기 위해 정리했습니다.",
         details: [
           "Notion에서 온보딩, 가이드, 업무 DB, 제품 문서가 연결되는 방식 이해",
           "Jira 티켓의 설명, 재현 조건, 기대 결과를 테스트 시나리오로 바꾸는 연습",
           "Jenkins 문서를 통해 테스트 대상 빌드와 버전 맥락을 QA 관점에서 간접 학습",
+          "PCFILTER, 정책, 로그, 회귀 테스트, MCP 등 자주 쓰는 용어를 실제 테스트 흐름과 연결해 정리",
         ],
-        link: "https://github.com/tami-bang/pcfilter-qa-internship/blob/main/docs/workflow-learning.md",
+        link: "https://github.com/tami-bang/pcfilter-qa-internship/blob/main/docs/terminology.md",
       },
     ],
     internshipStory: {
