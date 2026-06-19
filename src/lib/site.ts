@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Tami",
   title: "Tami.log",
-  description: "반복 작업을 자동화하고 서비스 흐름으로 구현하는 개발자 포트폴리오",
+  description: "데이터, API, 화면 흐름을 연결하는 개발자 포트폴리오",
   links: {
     github: "https://github.com/tami-bang",
     email: "vjihyun.bangv@gmail.com",

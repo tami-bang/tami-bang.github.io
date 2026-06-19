@@ -10,20 +10,20 @@ const HOME_POST_LIMIT = 5;
 
 const workingPatternSteps = [
   {
-    title: "반복 발견",
-    description: "수동으로 반복되는 작업과 비효율적인 흐름을 먼저 찾습니다.",
+    title: "문제 포착",
+    description: "수동 처리와 흩어진 기록에서 개선할 지점을 찾습니다.",
   },
   {
-    title: "흐름 구조화",
-    description: "입력, 처리, 저장, 결과를 나누어 데이터 흐름으로 정리합니다.",
+    title: "흐름 정리",
+    description: "입력, 처리, 저장, 결과를 나누어 구조를 잡습니다.",
   },
   {
-    title: "자동화 구현",
-    description: "크롤링, 리포트, API, DB 구조를 활용해 반복 작업을 줄입니다.",
+    title: "도구 구현",
+    description: "크롤링, API, DB, 리포트로 실제 동작을 만듭니다.",
   },
   {
-    title: "결과 검증",
-    description: "자동화된 결과가 다시 확인 가능하도록 로그와 문서로 남깁니다.",
+    title: "결과 확인",
+    description: "결과를 다시 확인할 수 있게 로그와 문서로 남깁니다.",
   },
 ];
 
@@ -53,27 +53,26 @@ function HeroSection() {
       <div className="hero-universe__inner">
         <div className="hero-universe__content">
           <div className="hero-copy">
-            <p className="section-eyebrow">Automation-minded Service Developer</p>
+            <p className="section-eyebrow">서비스 자동화 개발자</p>
 
             <h1 className="hero-title">
-              반복을 줄이고,
+              흩어진 일을 정리해,
               <br />
               흐름을 서비스로 만듭니다.
             </h1>
 
             <p className="hero-description">
-              흩어진 데이터와 수작업을 정리해 API, 자동화, 관리자 화면으로
-              연결합니다. 사람이 매번 확인하던 과정을 줄이고, 사용자가 이해하기
-              쉬운 서비스 흐름으로 구현하는 데 집중합니다.
+              데이터, API, 관리자 화면을 연결해 사람이 확인하던 과정을 줄입니다.
+              작게 시작한 개선을 사용자가 이해하기 쉬운 서비스 흐름으로 구현합니다.
             </p>
 
             <div className="hero-actions">
               <Link className="hero-primary-link" href="/projects">
-                View Automation Projects
+                프로젝트 보기
               </Link>
 
               <Link className="hero-github-link" href="/blog">
-                Read Study Log
+                공부 기록 보기
               </Link>
             </div>
           </div>
@@ -89,9 +88,9 @@ function WorkingPatternSection() {
   return (
     <section className="page-section page-section--pattern page-section--reveal-delayed">
       <SectionHeader
-        eyebrow="Working Pattern"
-        title="반복을 발견하면 흐름으로 정리합니다"
-        description="작은 자동화라도 입력, 처리, 저장, 화면에 보이는 결과가 다시 확인 가능한 구조를 먼저 생각합니다."
+        eyebrow="작업 방식"
+        title="문제를 흐름으로 정리합니다"
+        description="작은 개선도 입력, 처리, 저장, 화면에 보이는 결과까지 이어지는 구조로 생각합니다."
       />
 
       <div className="automation-pattern-grid">
@@ -113,14 +112,14 @@ function FeaturedProjectsSection() {
   return (
     <section className="page-section page-section--projects page-section--reveal">
       <SectionHeader
-        eyebrow="Featured Projects"
-        title="Automation and Service Flow Case Studies"
-        description="반복 작업을 발견하고, 데이터와 API 흐름을 구조화해 리포트, 관리자 화면, 사용자에게 닿는 서비스 흐름으로 구현한 프로젝트입니다."
+        eyebrow="프로젝트"
+        title="자동화와 서비스 구현"
+        description="데이터 수집, API, 관리자 화면, 리포트로 이어지는 구현 사례를 정리했습니다."
       />
 
       <div className="project-story-grid">
         {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
+          <ProjectCard compact key={project.slug} project={project} />
         ))}
       </div>
     </section>
@@ -133,9 +132,9 @@ function FeaturedPostsSection() {
   return (
     <section className="page-section page-section--study page-section--reveal-delayed">
       <SectionHeader
-        eyebrow="Study Log"
-        title="과목별 공부 기록"
-        description="리눅스, 네트워크, C언어, HTML/CSS/JS, 파이썬/Django처럼 배운 내용을 과목별로 정리합니다."
+        eyebrow="공부 기록"
+        title="배운 것을 기록합니다"
+        description="리눅스, 네트워크, C언어, 웹, 파이썬/Django를 프로젝트와 연결해 정리합니다."
       />
 
       <div className="home-section">
@@ -149,14 +148,14 @@ function FeaturedPostsSection() {
               <p className="category-pill">{post.category}</p>
               <h2>{post.title}</h2>
               <p>{post.description}</p>
-              <span className="read-more-link">Read more</span>
+              <span className="read-more-link">자세히 보기</span>
             </Link>
           ))}
         </div>
 
         <aside className="home-aside">
           <div className="glass-panel">
-            <p className="section-eyebrow">Browse by Category</p>
+            <p className="section-eyebrow">카테고리</p>
 
             <div className="category-grid">
               {studyCategoryItems.map((category) => (
@@ -172,14 +171,14 @@ function FeaturedPostsSection() {
           </div>
 
           <div className="glass-panel">
-            <p className="section-eyebrow">Current Focus</p>
+            <p className="section-eyebrow">현재 관심사</p>
 
             <div className="focus-list">
-              <p>UI and API Flow</p>
-              <p>Data Automation</p>
-              <p>Crawling Pipeline</p>
-              <p>Usable Result Screens</p>
-              <p>AI as a Tool</p>
+              <p>UI와 API 흐름</p>
+              <p>데이터 자동화</p>
+              <p>크롤링 파이프라인</p>
+              <p>결과 화면 설계</p>
+              <p>AI 도구 활용</p>
             </div>
           </div>
         </aside>

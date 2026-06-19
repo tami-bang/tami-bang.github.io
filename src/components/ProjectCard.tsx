@@ -6,6 +6,7 @@ import type { Project } from "@/lib/projects"; // 용도 프로젝트 데이터 
 
 type ProjectCardProps = {
   project: Project;
+  compact?: boolean;
 };
 
 type ProjectSummaryItem = {
@@ -45,13 +46,13 @@ function resetCardPointer(element: HTMLElement) {
 
 function getProjectSummaryItems(project: Project): ProjectSummaryItem[] {
   const flowValue = project.backendFlow ?? project.structuredFlow;
-  const flowLabel = project.backendFlow ? "Backend Flow" : "Structured Flow";
+  const flowLabel = project.backendFlow ? "구현 흐름" : "정리한 흐름";
 
   return [
-    { label: "Repeated Problem", value: project.repeatedProblem ?? "" },
+    { label: "문제", value: project.repeatedProblem ?? "" },
     { label: flowLabel, value: flowValue ?? "" },
-    { label: "Automation Point", value: project.automationPoint ?? "" },
-    { label: "Result", value: project.resultSummary ?? "" },
+    { label: "개선 지점", value: project.automationPoint ?? "" },
+    { label: "결과", value: project.resultSummary ?? "" },
   ].filter((item) => item.value.length > 0);
 }
 
@@ -72,7 +73,7 @@ function ProjectSummary({ items }: { items: ProjectSummaryItem[] }) {
   );
 }
 
-export default function ProjectCard({ project }: ProjectCardProps) {
+export default function ProjectCard({ compact = false, project }: ProjectCardProps) {
   const cardRef = useRef<HTMLElement | null>(null);
   const summaryItems = getProjectSummaryItems(project);
 
@@ -113,10 +114,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
           <p className="project-card__subtitle">{project.subtitle}</p>
 
-          <p className="project-card__description">{project.description}</p>
+          {!compact && <p className="project-card__description">{project.description}</p>}
         </section>
 
-        <ProjectSummary items={summaryItems} />
+        {!compact && <ProjectSummary items={summaryItems} />}
 
         <section className="project-card__stack" aria-label="Project tech stack">
           {project.techStack.slice(0, 5).map((tech) => (
@@ -131,7 +132,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             className="project-card__cta cta-base cta-primary"
             href={`/projects/${project.slug}`}
           >
-            View Case Study
+            자세히 보기
           </Link>
         </footer>
       </div>
