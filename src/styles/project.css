@@ -280,20 +280,7 @@
   border: 1px solid var(--panel-border);
   border-radius: var(--radius-medium);
   background: var(--panel);
-  box-shadow: var(--shadow-strong);
   margin: 0;
-  transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    box-shadow 180ms ease;
-}
-
-.project-visual-card:hover {
-  transform: translateY(-3px);
-  border-color: color-mix(in srgb, var(--brand-accent) 30%, var(--panel-border));
-  box-shadow:
-    var(--shadow-strong),
-    var(--shadow-neon);
 }
 
 .project-visual-card img {

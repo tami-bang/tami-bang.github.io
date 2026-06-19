@@ -18,6 +18,12 @@
 .empty-panel,
 .blog-detail-card,
 .study-list-item,
+.about-flow-board,
+.about-flow-node,
+.internship-story,
+.internship-journey__item,
+.project-work-sample-card,
+.project-visual-card,
 .automation-step-card {
   --glow-x: 50%;
   --glow-y: 50%;
@@ -55,6 +61,12 @@
 .empty-panel::before,
 .blog-detail-card::before,
 .study-list-item::before,
+.about-flow-board::before,
+.about-flow-node::before,
+.internship-story::before,
+.internship-journey__item::before,
+.project-work-sample-card::before,
+.project-visual-card::before,
 .automation-step-card::before {
   position: absolute;
   inset: 0;
@@ -85,6 +97,12 @@
 .empty-panel:hover::before,
 .blog-detail-card:hover::before,
 .study-list-item:hover::before,
+.about-flow-board:hover::before,
+.about-flow-node:hover::before,
+.internship-story:hover::before,
+.internship-journey__item:hover::before,
+.project-work-sample-card:hover::before,
+.project-visual-card:hover::before,
 .automation-step-card:hover::before {
   opacity: 1;
 }
@@ -103,6 +121,12 @@
 .empty-panel:hover,
 .blog-detail-card:hover,
 .study-list-item:hover,
+.about-flow-board:hover,
+.about-flow-node:hover,
+.internship-story:hover,
+.internship-journey__item:hover,
+.project-work-sample-card:hover,
+.project-visual-card:hover,
 .automation-step-card:hover {
   transform: translateY(-4px);
   border-color: color-mix(in srgb, var(--brand-accent) 30%, var(--panel-border));
@@ -125,6 +149,12 @@
 .empty-panel > *,
 .blog-detail-card > *,
 .study-list-item > *,
+.about-flow-board > *,
+.about-flow-node > *,
+.internship-story > *,
+.internship-journey__item > *,
+.project-work-sample-card > *,
+.project-visual-card > *,
 .automation-step-card > * {
   position: relative;
   z-index: 1;
@@ -356,16 +386,9 @@
     ),
     color-mix(in srgb, var(--panel) 72%, transparent);
   padding: clamp(24px, 5vw, 52px);
-  box-shadow: var(--shadow-strong);
-}
-
-.about-flow-board::before {
-  position: absolute;
-  inset: 18px;
-  border: 1px solid color-mix(in srgb, var(--brand-accent) 12%, transparent);
-  border-radius: calc(var(--radius-large) - 12px);
-  content: "";
-  pointer-events: none;
+  box-shadow:
+    var(--shadow-strong),
+    inset 0 0 0 1px color-mix(in srgb, var(--brand-accent) 12%, transparent);
 }
 
 .about-flow-board::after {
@@ -379,6 +402,7 @@
   background: color-mix(in srgb, var(--brand-accent) 8%, transparent);
   box-shadow: 0 0 42px color-mix(in srgb, var(--brand-accent) 18%, transparent);
   content: "";
+  z-index: 0;
   opacity: 0.78;
   pointer-events: none;
   transform: rotate(18deg);
@@ -445,7 +469,7 @@
   padding: 26px 22px 24px;
 }
 
-.about-flow-node::before {
+.about-flow-node::after {
   position: absolute;
   top: 36px;
   left: 22px;
@@ -456,6 +480,8 @@
   background: var(--background);
   box-shadow: 0 0 24px color-mix(in srgb, var(--brand-accent) 42%, transparent);
   content: "";
+  z-index: 1;
+  pointer-events: none;
 }
 
 .about-flow-node span {
@@ -689,11 +715,6 @@
   min-height: auto;
   height: 100%;
   padding: clamp(22px, 2.4vw, 30px);
-}
-
-.project-card:hover,
-.project-story-card:hover {
-  transform: translateY(-4px);
 }
 
 .project-card__content {

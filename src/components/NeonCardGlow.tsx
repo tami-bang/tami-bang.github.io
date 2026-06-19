@@ -18,6 +18,12 @@ const GLOW_CARD_SELECTOR = [
   ".empty-panel",
   ".blog-detail-card",
   ".study-list-item",
+  ".about-flow-board",
+  ".about-flow-node",
+  ".internship-story",
+  ".internship-journey__item",
+  ".project-work-sample-card",
+  ".project-visual-card",
   ".automation-step-card",
 ].join(",");
 
