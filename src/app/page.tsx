@@ -2,30 +2,12 @@ import Link from "next/link"; // 용도 사이트 내부 페이지 이동
 import HeroObjectScene from "@/components/HeroObjectScene"; // 용도 히어로 3D 오브젝트 인터랙션 표시
 import ProjectCard from "@/components/ProjectCard"; // 용도 프로젝트 카드 표시
 import SectionHeader from "@/components/SectionHeader"; // 용도 공용 섹션 헤더 표시
+import { homeFocusItems, homeHero, homeSections, workingPatternSteps } from "@/lib/home"; // 용도 홈 화면 콘텐츠 데이터
 import { getAllPosts } from "@/lib/post"; // 용도 로컬 Markdown 게시글 목록 조회
 import { getFeaturedProjects } from "@/lib/projects"; // 용도 대표 프로젝트 데이터 조회
 import { studyCategoryItems } from "@/lib/site"; // 용도 학습 카테고리 데이터 조회
 
 const HOME_POST_LIMIT = 5;
-
-const workingPatternSteps = [
-  {
-    title: "문제 포착",
-    description: "수동 처리와 흩어진 기록에서 개선할 지점을 찾습니다.",
-  },
-  {
-    title: "흐름 정리",
-    description: "입력, 처리, 저장, 결과를 나누어 구조를 잡습니다.",
-  },
-  {
-    title: "도구 구현",
-    description: "크롤링, API, DB, 리포트로 실제 동작을 만듭니다.",
-  },
-  {
-    title: "결과 확인",
-    description: "결과를 다시 확인할 수 있게 로그와 문서로 남깁니다.",
-  },
-];
 
 function createBlogPostHref(slug: string) {
   return `/blog/${slug}`;
@@ -45,6 +27,63 @@ function SpaceDots() {
   );
 }
 
+function HeroTitle() {
+  return (
+    <h1 className="hero-title">
+      {homeHero.titleLines.map((line, index) => (
+        <span key={line}>
+          {line}
+          {index < homeHero.titleLines.length - 1 && <br />}
+        </span>
+      ))}
+    </h1>
+  );
+}
+
+function HeroDescription() {
+  return (
+    <p className="hero-description">
+      {homeHero.descriptionLines.map((line, index) => (
+        <span key={line}>
+          {line}
+          {index < homeHero.descriptionLines.length - 1 && <br />}
+        </span>
+      ))}
+    </p>
+  );
+}
+
+function HeroSignals() {
+  return (
+    <div className="hero-signal-list" aria-label="작업 방향 요약">
+      {homeHero.signals.map((signal) => (
+        <p key={signal.label}>
+          <span>{signal.label}</span>
+          {signal.value}
+        </p>
+      ))}
+    </div>
+  );
+}
+
+function HeroActions() {
+  return (
+    <div className="hero-actions">
+      {homeHero.actions.map((action) => (
+        <Link
+          className={
+            action.variant === "primary" ? "hero-primary-link" : "hero-github-link"
+          }
+          href={action.href}
+          key={action.href}
+        >
+          {action.label}
+        </Link>
+      ))}
+    </div>
+  );
+}
+
 function HeroSection() {
   return (
     <section className="hero-universe">
@@ -53,29 +92,12 @@ function HeroSection() {
       <div className="hero-universe__inner">
         <div className="hero-universe__content">
           <div className="hero-copy">
-            <p className="section-eyebrow">서비스 자동화 개발자</p>
+            <p className="section-eyebrow">{homeHero.eyebrow}</p>
 
-            <h1 className="hero-title">
-              반복되는 문제를 자동화하고,
-              <br />
-              서비스로 구현합니다.
-            </h1>
-
-            <p className="hero-description">
-              자동화 도구부터 웹 서비스까지,
-              <br />
-              문제를 발견하고 해결하는 과정을 기록합니다.
-            </p>
-
-            <div className="hero-actions">
-              <Link className="hero-primary-link" href="/projects">
-                프로젝트 보기
-              </Link>
-
-              <Link className="hero-github-link" href="/blog">
-                공부 기록 보기
-              </Link>
-            </div>
+            <HeroTitle />
+            <HeroDescription />
+            <HeroSignals />
+            <HeroActions />
           </div>
 
           <HeroObjectScene />
@@ -86,12 +108,14 @@ function HeroSection() {
 }
 
 function WorkingPatternSection() {
+  const section = homeSections.workflow;
+
   return (
     <section className="page-section page-section--pattern page-section--reveal-delayed">
       <SectionHeader
-        eyebrow="WORKFLOW"
-        eyebrowDescription="작은 개선이라도 입력, 처리, 저장, 화면에 보이는 결과까지 이어지는 구조로 생각합니다."
-        title="문제를 흐름으로 정리합니다"
+        eyebrow={section.eyebrow}
+        eyebrowDescription={section.eyebrowDescription}
+        title={section.title}
       />
 
       <div className="automation-pattern-grid">
@@ -109,13 +133,14 @@ function WorkingPatternSection() {
 
 function FeaturedProjectsSection() {
   const projects = getFeaturedProjects();
+  const section = homeSections.projects;
 
   return (
     <section className="page-section page-section--projects page-section--reveal">
       <SectionHeader
-        eyebrow="PROJECTS"
-        eyebrowDescription="데이터 수집, API, 관리자 화면, 리포트로 이어지는 구현 사례를 정리했습니다."
-        title="자동화와 서비스 구현"
+        eyebrow={section.eyebrow}
+        eyebrowDescription={section.eyebrowDescription}
+        title={section.title}
       />
 
       <div className="project-story-grid">
@@ -129,13 +154,14 @@ function FeaturedProjectsSection() {
 
 function FeaturedPostsSection() {
   const featuredStudyPosts = getFeaturedStudyPosts();
+  const section = homeSections.study;
 
   return (
     <section className="page-section page-section--study page-section--reveal-delayed">
       <SectionHeader
-        eyebrow="STUDY LOG"
-        eyebrowDescription="리눅스, 네트워크, C언어, 웹, 파이썬/Django를 프로젝트와 연결해 정리합니다."
-        title="배운 것을 기록합니다"
+        eyebrow={section.eyebrow}
+        eyebrowDescription={section.eyebrowDescription}
+        title={section.title}
       />
 
       <div className="home-section">
@@ -175,11 +201,9 @@ function FeaturedPostsSection() {
             <p className="section-eyebrow">현재 관심사</p>
 
             <div className="focus-list">
-              <p>UI와 API 흐름</p>
-              <p>데이터 자동화</p>
-              <p>크롤링 파이프라인</p>
-              <p>결과 화면 설계</p>
-              <p>AI 도구 활용</p>
+              {homeFocusItems.map((item) => (
+                <p key={item}>{item}</p>
+              ))}
             </div>
           </div>
         </aside>

@@ -22,6 +22,7 @@
 
 .site-logo {
   flex-shrink: 0;
+  font-family: var(--font-display);
   font-size: clamp(1.9rem, 3.4vw, 3rem);
   font-weight: 950;
   letter-spacing: -0.07em;
@@ -40,20 +41,34 @@
 .site-header__links {
   display: flex;
   align-items: center;
-  gap: clamp(14px, 2.5vw, 34px);
-  font-size: clamp(0.82rem, 1.4vw, 1rem);
+  gap: 8px;
+  font-family: var(--font-label);
+  font-size: clamp(0.78rem, 1.2vw, 0.94rem);
   font-weight: 900;
   white-space: nowrap;
 }
 
 .site-nav-link {
-  opacity: 0.9;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  border: 1px solid color-mix(in srgb, var(--panel-border) 78%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--panel) 72%, transparent);
+  padding: 0 15px;
+  color: var(--text-soft);
   transition:
+    background 160ms ease,
+    border-color 160ms ease,
     color 160ms ease,
     transform 160ms ease;
 }
 
-.site-nav-link:hover {
+.site-nav-link:hover,
+.site-nav-link--active {
+  border-color: color-mix(in srgb, var(--brand-accent) 34%, var(--panel-border));
+  background: color-mix(in srgb, var(--brand-accent) 11%, transparent);
   color: var(--brand-accent);
   transform: translateY(-1px);
 }
@@ -67,6 +82,7 @@
   background: var(--panel);
   color: var(--foreground);
   padding: 10px 13px;
+  font-family: var(--font-label);
   font-size: 0.82rem;
   font-weight: 900;
   cursor: pointer;
