@@ -21,10 +21,10 @@ export default function SectionHeader({
       <p className="section-eyebrow">
         {eyebrow}
         {eyebrowDescription && (
-          <span className="section-eyebrow__description">
+          <>
             {" : "}
-            {eyebrowDescription}
-          </span>
+            <span className="section-eyebrow__description">{eyebrowDescription}</span>
+          </>
         )}
       </p>
       <h1>{title}</h1>

@@ -58,13 +58,13 @@
 }
 
 .section-header .section-eyebrow {
-  margin: 0 0 clamp(28px, 3vw, 42px);
+  margin: 0 0 clamp(14px, 1.5vw, 21px);
   color: var(--brand-accent);
   line-height: 1.75;
 }
 
 .section-header .section-eyebrow__description {
-  color: var(--brand-accent);
+  color: var(--text-soft);
 }
 
 .section-header h1,
