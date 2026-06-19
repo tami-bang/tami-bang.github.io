@@ -1,7 +1,4 @@
-"use client";
-
 import Link from "next/link"; // 용도 사이트 내부 프로젝트 상세 페이지 이동
-import { PointerEvent, useRef } from "react"; // 용도 카드 커서 위치 추적 및 DOM 참조 관리
 import type { Project } from "@/lib/projects"; // 용도 프로젝트 데이터 타입 참조
 
 type ProjectCardProps = {
@@ -13,36 +10,6 @@ type ProjectSummaryItem = {
   label: string;
   value: string;
 };
-
-const POINTER_CENTER_VALUE = "50%";
-
-function getPointerPosition(
-  pointerPosition: number,
-  elementPosition: number,
-  elementSize: number,
-) {
-  const ratio = ((pointerPosition - elementPosition) / elementSize) * 100;
-
-  return `${ratio.toFixed(2)}%`;
-}
-
-function updateCardPointer(
-  event: PointerEvent<HTMLElement>,
-  element: HTMLElement,
-) {
-  const rect = element.getBoundingClientRect();
-
-  const pointerX = getPointerPosition(event.clientX, rect.left, rect.width);
-  const pointerY = getPointerPosition(event.clientY, rect.top, rect.height);
-
-  element.style.setProperty("--glow-x", pointerX);
-  element.style.setProperty("--glow-y", pointerY);
-}
-
-function resetCardPointer(element: HTMLElement) {
-  element.style.setProperty("--glow-x", POINTER_CENTER_VALUE);
-  element.style.setProperty("--glow-y", POINTER_CENTER_VALUE);
-}
 
 function getProjectSummaryItems(project: Project): ProjectSummaryItem[] {
   const flowValue = project.backendFlow ?? project.structuredFlow;
@@ -74,32 +41,10 @@ function ProjectSummary({ items }: { items: ProjectSummaryItem[] }) {
 }
 
 export default function ProjectCard({ compact = false, project }: ProjectCardProps) {
-  const cardRef = useRef<HTMLElement | null>(null);
   const summaryItems = getProjectSummaryItems(project);
 
-  function handlePointerMove(event: PointerEvent<HTMLElement>) {
-    if (!cardRef.current) {
-      return;
-    }
-
-    updateCardPointer(event, cardRef.current);
-  }
-
-  function handlePointerLeave() {
-    if (!cardRef.current) {
-      return;
-    }
-
-    resetCardPointer(cardRef.current);
-  }
-
   return (
-    <article
-      ref={cardRef}
-      className="project-card"
-      onPointerMove={handlePointerMove}
-      onPointerLeave={handlePointerLeave}
-    >
+    <article className="project-card">
       <div className="project-card__content">
         <header className="project-card__top">
           <p className="section-eyebrow">{project.domain}</p>

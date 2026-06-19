@@ -2,12 +2,22 @@
 
 import { useEffect } from "react"; // 용도 브라우저 전역 포인터 이벤트 등록 및 해제
 
+// cards.css의 공통 카드 베이스 목록과 맞춰야 네온 위치 추적이 누락되지 않습니다.
 const GLOW_CARD_SELECTOR = [
-  ".project-story-card",
   ".post-card-large",
   ".glass-panel",
   ".project-card",
+  ".study-card",
+  ".project-story-card",
   ".project-detail-card",
+  ".about-card",
+  ".about-story",
+  ".about-process-card",
+  ".about-project-link",
+  ".about-contact-panel",
+  ".empty-panel",
+  ".blog-detail-card",
+  ".automation-step-card",
 ].join(",");
 
 function findGlowCard(target: EventTarget | null) {
@@ -43,6 +53,10 @@ function resetGlowPosition(event: PointerEvent) {
   const glowCard = findGlowCard(event.target);
 
   if (!glowCard) {
+    return;
+  }
+
+  if (event.relatedTarget instanceof Node && glowCard.contains(event.relatedTarget)) {
     return;
   }
 
