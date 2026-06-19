@@ -71,11 +71,6 @@ function InternshipStorySection({ story }: { story?: InternshipStory }) {
           <h2>{story.headline}</h2>
         </div>
 
-        <div className="internship-story__meta">
-          <span>{story.organization}</span>
-          <strong>{story.duration}</strong>
-        </div>
-
         <p>{story.summary}</p>
       </header>
 

@@ -7,8 +7,6 @@ export type ProjectVisualHighlight = {
 };
 
 export type InternshipStory = {
-  organization: string;
-  duration: string;
   headline: string;
   summary: string;
   goals: string[];
@@ -427,8 +425,6 @@ export const projects: Project[] = [
       },
     ],
     internshipStory: {
-      organization: "지란지교 · QA 인턴",
-      duration: "2026.04.27 - 2026.06.19",
       headline: "테스트를 수행하는 인턴에서, 반복을 줄이는 결과물을 남기는 인턴으로",
       summary:
         "짧은 인턴 기간을 단순한 업무 체험으로 보내기보다, 매일 수행하는 QA 업무에서 불편과 반복을 관찰하고 직접 개선하는 것을 목표로 삼았습니다. 제품을 이해하고 이슈를 재현하는 기본 업무에 충실하면서도, 다음 업무와 다음 사람이 더 수월해질 수 있는 도구와 문서를 만드는 데 시간을 투자했습니다.",

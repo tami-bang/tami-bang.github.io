@@ -75,13 +75,13 @@
 
 .internship-story__header {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 18px clamp(24px, 5vw, 72px);
+  grid-template-columns: 1fr;
+  gap: 18px;
   align-items: start;
 }
 
 .internship-story__header h2 {
-  max-width: 820px;
+  max-width: none;
   margin: 10px 0 0;
   color: var(--foreground);
   font-size: clamp(2rem, 4.8vw, 4.8rem);
@@ -93,7 +93,7 @@
 
 .internship-story__header > p {
   grid-column: 1 / -1;
-  max-width: 960px;
+  max-width: none;
   margin: 0;
   color: var(--text-soft);
   font-size: clamp(1rem, 1.6vw, 1.16rem);
@@ -101,27 +101,17 @@
   word-break: keep-all;
 }
 
-.internship-story__meta {
-  display: grid;
-  gap: 7px;
-  min-width: 170px;
-  border-left: 1px solid color-mix(in srgb, var(--brand-accent) 42%, transparent);
-  padding-left: 22px;
-  color: var(--muted);
-  font-weight: 850;
-}
-
-.internship-story__meta strong {
-  color: var(--brand-accent);
-  font-size: clamp(1.6rem, 3vw, 2.6rem);
-  font-weight: 950;
-}
-
 .internship-story__goals {
   display: grid;
   gap: 18px;
   border-top: 1px solid color-mix(in srgb, var(--muted) 20%, transparent);
   padding-top: 28px;
+}
+
+.internship-story__goals .detail-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(28px, 6vw, 84px);
+  row-gap: 14px;
 }
 
 .internship-journey {
@@ -374,19 +364,12 @@
 }
 
 @media (max-width: 860px) {
-  .internship-story__header {
-    grid-template-columns: 1fr;
-  }
-
   .internship-story__header > p {
     grid-column: auto;
   }
 
-  .internship-story__meta {
-    border-left: 0;
-    border-top: 1px solid color-mix(in srgb, var(--brand-accent) 42%, transparent);
-    padding-top: 18px;
-    padding-left: 0;
+  .internship-story__goals .detail-list {
+    grid-template-columns: 1fr;
   }
 
   .internship-journey {
