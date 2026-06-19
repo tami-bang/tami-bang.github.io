@@ -3,19 +3,8 @@ import HeroObjectScene from "@/components/HeroObjectScene"; // 용도 히어로 
 import ProjectCard from "@/components/ProjectCard"; // 용도 프로젝트 카드 표시
 import SectionHeader from "@/components/SectionHeader"; // 용도 공용 섹션 헤더 표시
 import { homeFocusItems, homeHero, homeSections, workingPatternSteps } from "@/lib/home"; // 용도 홈 화면 콘텐츠 데이터
-import { getAllPosts } from "@/lib/post"; // 용도 로컬 Markdown 게시글 목록 조회
 import { getFeaturedProjects } from "@/lib/projects"; // 용도 대표 프로젝트 데이터 조회
 import { studyCategoryItems } from "@/lib/site"; // 용도 학습 카테고리 데이터 조회
-
-const HOME_POST_LIMIT = 5;
-
-function createBlogPostHref(slug: string) {
-  return `/blog/${slug}`;
-}
-
-function getFeaturedStudyPosts() {
-  return getAllPosts().slice(0, HOME_POST_LIMIT);
-}
 
 function SpaceDots() {
   return (
@@ -153,7 +142,6 @@ function FeaturedProjectsSection() {
 }
 
 function FeaturedPostsSection() {
-  const featuredStudyPosts = getFeaturedStudyPosts();
   const section = homeSections.study;
 
   return (
@@ -164,49 +152,32 @@ function FeaturedPostsSection() {
         title={section.title}
       />
 
-      <div className="home-section">
-        <div className="post-list">
-          {featuredStudyPosts.map((post) => (
-            <Link
-              className="post-card-large"
-              href={createBlogPostHref(post.slug)}
-              key={post.slug}
-            >
-              <p className="category-pill">{post.category}</p>
-              <h2>{post.title}</h2>
-              <p>{post.description}</p>
-              <span className="read-more-link">자세히 보기</span>
-            </Link>
-          ))}
+      <div className="home-study-hub">
+        <div className="glass-panel">
+          <p className="section-eyebrow">카테고리</p>
+
+          <div className="category-grid">
+            {studyCategoryItems.map((category) => (
+              <Link
+                className="category-link"
+                href={`/blog/category/${category.slug}`}
+                key={category.slug}
+              >
+                {category.label}
+              </Link>
+            ))}
+          </div>
         </div>
 
-        <aside className="home-aside">
-          <div className="glass-panel">
-            <p className="section-eyebrow">카테고리</p>
+        <div className="glass-panel">
+          <p className="section-eyebrow">현재 관심사</p>
 
-            <div className="category-grid">
-              {studyCategoryItems.map((category) => (
-                <Link
-                  className="category-link"
-                  href={`/blog/category/${category.slug}`}
-                  key={category.slug}
-                >
-                  {category.label}
-                </Link>
-              ))}
-            </div>
+          <div className="focus-list">
+            {homeFocusItems.map((item) => (
+              <p key={item}>{item}</p>
+            ))}
           </div>
-
-          <div className="glass-panel">
-            <p className="section-eyebrow">현재 관심사</p>
-
-            <div className="focus-list">
-              {homeFocusItems.map((item) => (
-                <p key={item}>{item}</p>
-              ))}
-            </div>
-          </div>
-        </aside>
+        </div>
       </div>
     </section>
   );

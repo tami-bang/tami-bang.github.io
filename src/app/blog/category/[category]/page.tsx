@@ -1,5 +1,6 @@
 import Link from "next/link"; // 용도 블로그 목록과 게시글 상세 페이지 이동
 import { notFound } from "next/navigation"; // 용도 잘못된 카테고리 404 처리
+import BlogPostList from "@/components/BlogPostList"; // 용도 공부 기록 목록형 표시
 import { getAllPosts } from "@/lib/post"; // 용도 전체 게시글 조회
 import {
   getCategoryLabel,
@@ -42,32 +43,27 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         <h1>{categoryLabel}</h1>
         <p>공부 기록에서 해당 과목으로 정리한 글입니다.</p>
 
-        <Link href="/blog" className="read-more-link">
-          전체 보기
-        </Link>
+        <div className="category-strip">
+          <Link href="/blog" className="category-link">
+            전체 보기
+          </Link>
+
+          {studyCategoryItems.map((item) => (
+            <Link
+              aria-current={item.slug === category ? "page" : undefined}
+              className={
+                item.slug === category ? "category-link category-link--active" : "category-link"
+              }
+              href={`/blog/category/${item.slug}`}
+              key={item.slug}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
       </section>
 
-      <section className="blog-grid page-section--reveal-delayed">
-        {filteredPosts.map((post) => (
-          <article className="study-card" key={post.slug}>
-            <div>
-              <p className="category-pill">{post.category}</p>
-
-              <h2>{post.title}</h2>
-
-              <p>{post.description}</p>
-            </div>
-
-            <div className="study-card__footer">
-              <span>{post.createdAt}</span>
-
-              <Link href={`/blog/${post.slug}`} className="read-more-link">
-                Read more
-              </Link>
-            </div>
-          </article>
-        ))}
-      </section>
+      <BlogPostList posts={filteredPosts} />
 
       {filteredPosts.length === 0 && (
         <section className="empty-panel page-section--reveal-delayed">

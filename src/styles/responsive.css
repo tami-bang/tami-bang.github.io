@@ -44,7 +44,8 @@
     opacity: 0.38;
   }
 
-  .home-section {
+  .home-section,
+  .home-study-hub {
     grid-template-columns: 1fr;
   }
 }
@@ -99,6 +100,14 @@
   .project-card__cta {
     width: 100%;
     justify-self: stretch;
+  }
+
+  .study-list-item {
+    grid-template-columns: 1fr;
+  }
+
+  .study-list-item__meta {
+    justify-items: start;
   }
 }
 

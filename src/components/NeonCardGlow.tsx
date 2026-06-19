@@ -17,6 +17,7 @@ const GLOW_CARD_SELECTOR = [
   ".about-contact-panel",
   ".empty-panel",
   ".blog-detail-card",
+  ".study-list-item",
   ".automation-step-card",
 ].join(",");
 

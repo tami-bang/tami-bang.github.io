@@ -1,7 +1,8 @@
 import Link from "next/link"; // 용도 게시글 상세 페이지와 카테고리 페이지 이동
+import BlogPostList from "@/components/BlogPostList"; // 용도 공부 기록 목록형 표시
 import SectionHeader from "@/components/SectionHeader"; // 용도 공통 섹션 헤더 표시
 import { getAllPosts } from "@/lib/post"; // 용도 로컬 Markdown 게시글 목록 조회
-import { getCategorySlug, studyCategoryItems } from "@/lib/site"; // 용도 공부 카테고리 URL 생성
+import { studyCategoryItems } from "@/lib/site"; // 용도 공부 카테고리 URL 생성
 
 export const metadata = {
   title: "공부 기록 | Tami.log",
@@ -33,32 +34,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <section className="blog-grid page-section--reveal-delayed">
-        {posts.map((post) => (
-          <article className="study-card" key={post.slug}>
-            <div>
-              <Link
-                className="category-pill"
-                href={`/blog/category/${getCategorySlug(post.category)}`}
-              >
-                {post.category}
-              </Link>
-
-              <h2>{post.title}</h2>
-
-              <p>{post.description}</p>
-            </div>
-
-            <div className="study-card__footer">
-              <span>{post.createdAt}</span>
-
-              <Link href={`/blog/${post.slug}`} className="read-more-link">
-                Read more
-              </Link>
-            </div>
-          </article>
-        ))}
-      </section>
+      <BlogPostList posts={posts} />
 
       {posts.length === 0 && (
         <section className="empty-panel page-section--reveal-delayed">

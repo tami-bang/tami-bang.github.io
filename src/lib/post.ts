@@ -7,6 +7,7 @@ export type BlogPost = {
   description: string;
   category: string;
   createdAt: string;
+  updatedAt: string;
   content: string;
 };
 
@@ -53,6 +54,7 @@ function createFallbackPost(slug: string, rawContent: string): BlogPost {
     description: "",
     category: DEFAULT_CATEGORY,
     createdAt: "",
+    updatedAt: "",
     content: rawContent,
   };
 }
@@ -71,13 +73,16 @@ function parseMarkdownPost(slug: string, rawContent: string): BlogPost {
   const descriptionLine = getFrontmatterLine(frontmatter, "description");
   const categoryLine = getFrontmatterLine(frontmatter, "category");
   const createdAtLine = getFrontmatterLine(frontmatter, "createdAt");
+  const updatedAtLine = getFrontmatterLine(frontmatter, "updatedAt");
+  const createdAt = createdAtLine ? parseFrontmatterValue(createdAtLine) : "";
 
   return {
     slug,
     title: titleLine ? parseFrontmatterValue(titleLine) : slug,
     description: descriptionLine ? parseFrontmatterValue(descriptionLine) : "",
     category: categoryLine ? parseFrontmatterValue(categoryLine) : DEFAULT_CATEGORY,
-    createdAt: createdAtLine ? parseFrontmatterValue(createdAtLine) : "",
+    createdAt,
+    updatedAt: updatedAtLine ? parseFrontmatterValue(updatedAtLine) : createdAt,
     content,
   };
 }

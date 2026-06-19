@@ -17,6 +17,7 @@
 .about-contact-panel,
 .empty-panel,
 .blog-detail-card,
+.study-list-item,
 .automation-step-card {
   --glow-x: 50%;
   --glow-y: 50%;
@@ -53,6 +54,7 @@
 .about-contact-panel::before,
 .empty-panel::before,
 .blog-detail-card::before,
+.study-list-item::before,
 .automation-step-card::before {
   position: absolute;
   inset: 0;
@@ -82,6 +84,7 @@
 .about-contact-panel:hover::before,
 .empty-panel:hover::before,
 .blog-detail-card:hover::before,
+.study-list-item:hover::before,
 .automation-step-card:hover::before {
   opacity: 1;
 }
@@ -99,6 +102,7 @@
 .about-contact-panel:hover,
 .empty-panel:hover,
 .blog-detail-card:hover,
+.study-list-item:hover,
 .automation-step-card:hover {
   transform: translateY(-4px);
   border-color: color-mix(in srgb, var(--brand-accent) 30%, var(--panel-border));
@@ -120,6 +124,7 @@
 .about-contact-panel > *,
 .empty-panel > *,
 .blog-detail-card > *,
+.study-list-item > *,
 .automation-step-card > * {
   position: relative;
   z-index: 1;
@@ -203,6 +208,87 @@
 .study-card__footer a {
   color: var(--brand-accent);
   font-weight: 950;
+}
+
+.study-list {
+  display: grid;
+  gap: 14px;
+}
+
+.study-list-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(18px, 4vw, 42px);
+  padding: clamp(20px, 3vw, 30px);
+}
+
+.study-list-item__main {
+  display: grid;
+  gap: 12px;
+}
+
+.study-list-item__main .category-pill {
+  margin-bottom: 2px;
+}
+
+.study-list-item__title {
+  width: fit-content;
+  color: var(--foreground);
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 3vw, 2.3rem);
+  font-weight: 950;
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+  word-break: keep-all;
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.study-list-item__title:hover {
+  color: var(--brand-accent);
+  transform: translateX(4px);
+}
+
+.study-list-item__main p {
+  max-width: 780px;
+  margin: 0;
+  color: var(--text-soft);
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+.study-list-item__meta {
+  display: grid;
+  justify-items: end;
+  gap: 8px;
+  color: var(--muted);
+  font-family: var(--font-label);
+  font-size: 0.86rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.study-list-item__meta span {
+  color: var(--brand-accent);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.study-list-item__link {
+  width: fit-content;
+  color: var(--foreground);
+  font-weight: 950;
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.study-list-item__link:hover {
+  color: var(--brand-accent);
+  transform: translateX(3px);
 }
 
 /* ================================
