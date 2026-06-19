@@ -342,9 +342,8 @@
   gap: 18px;
 }
 
-.about-story__intro p,
-.about-contact-panel p {
-  max-width: 780px;
+.about-story__intro p {
+  max-width: none;
   margin: 0;
   color: var(--text-soft);
   font-size: clamp(1rem, 1.5vw, 1.15rem);
@@ -628,9 +627,9 @@
 
 .about-contact-panel {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
-  gap: clamp(28px, 5vw, 72px);
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: clamp(22px, 4vw, 34px);
   padding: clamp(28px, 5vw, 56px);
 }
 
@@ -639,10 +638,19 @@
   gap: 16px;
 }
 
+.about-contact-panel p {
+  max-width: none;
+  margin: 0;
+  color: var(--text-soft);
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  line-height: 1.85;
+  word-break: keep-all;
+}
+
 .about-contact-actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 12px;
 }
 
