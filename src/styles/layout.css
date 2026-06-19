@@ -39,7 +39,7 @@
    Section Header
 ================================ */
 .section-header {
-  max-width: 820px;
+  max-width: 100%;
   margin-bottom: clamp(18px, 2.5vw, 28px);
 }
 
@@ -56,6 +56,12 @@
   font-size: clamp(3rem, 7vw, 6rem);
   line-height: 0.95;
   letter-spacing: -0.08em;
+  word-break: keep-all;
+}
+
+.section-header h1 {
+  font-size: clamp(2.7rem, 5vw, 4.8rem);
+  white-space: nowrap;
 }
 
 .section-header h2 {

@@ -41,6 +41,13 @@
   text-transform: uppercase;
 }
 
+.section-eyebrow__description {
+  color: var(--muted);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
 .hero-title {
   margin: 0;
   font-size: clamp(3.1rem, 6.8vw, 6.2rem);

@@ -56,9 +56,11 @@ function HeroSection() {
             <p className="section-eyebrow">서비스 자동화 개발자</p>
 
             <h1 className="hero-title">
-              흩어진 일을 정리해,
+              손이 가던 일을
               <br />
-              흐름을 서비스로 만듭니다.
+              구조로 묶고,
+              <br />
+              서비스로 완성합니다.
             </h1>
 
             <p className="hero-description">
@@ -88,9 +90,9 @@ function WorkingPatternSection() {
   return (
     <section className="page-section page-section--pattern page-section--reveal-delayed">
       <SectionHeader
-        eyebrow="작업 방식"
+        eyebrow="WORKFLOW"
+        eyebrowDescription="작은 개선이라도 입력, 처리, 저장, 화면에 보이는 결과까지 이어지는 구조로 생각합니다."
         title="문제를 흐름으로 정리합니다"
-        description="작은 개선도 입력, 처리, 저장, 화면에 보이는 결과까지 이어지는 구조로 생각합니다."
       />
 
       <div className="automation-pattern-grid">
@@ -112,9 +114,9 @@ function FeaturedProjectsSection() {
   return (
     <section className="page-section page-section--projects page-section--reveal">
       <SectionHeader
-        eyebrow="프로젝트"
+        eyebrow="PROJECTS"
+        eyebrowDescription="데이터 수집, API, 관리자 화면, 리포트로 이어지는 구현 사례를 정리했습니다."
         title="자동화와 서비스 구현"
-        description="데이터 수집, API, 관리자 화면, 리포트로 이어지는 구현 사례를 정리했습니다."
       />
 
       <div className="project-story-grid">
@@ -132,9 +134,9 @@ function FeaturedPostsSection() {
   return (
     <section className="page-section page-section--study page-section--reveal-delayed">
       <SectionHeader
-        eyebrow="공부 기록"
+        eyebrow="STUDY LOG"
+        eyebrowDescription="리눅스, 네트워크, C언어, 웹, 파이썬/Django를 프로젝트와 연결해 정리합니다."
         title="배운 것을 기록합니다"
-        description="리눅스, 네트워크, C언어, 웹, 파이썬/Django를 프로젝트와 연결해 정리합니다."
       />
 
       <div className="home-section">

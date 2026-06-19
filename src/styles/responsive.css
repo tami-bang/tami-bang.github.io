@@ -141,6 +141,13 @@
     font-size: 0.98rem;
   }
 
+  .section-header h1,
+  .page-hero h1,
+  .project-detail-hero h1 {
+    font-size: clamp(2.3rem, 10vw, 3.8rem);
+    white-space: normal;
+  }
+
   .hero-actions,
   .project-detail-actions {
     flex-direction: column;
