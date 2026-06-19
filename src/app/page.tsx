@@ -56,16 +56,15 @@ function HeroSection() {
             <p className="section-eyebrow">서비스 자동화 개발자</p>
 
             <h1 className="hero-title">
-              손이 가던 일을
+              반복되는 문제를 자동화하고,
               <br />
-              구조로 묶고,
-              <br />
-              서비스로 완성합니다.
+              서비스로 구현합니다.
             </h1>
 
             <p className="hero-description">
-              데이터, API, 관리자 화면을 연결해 사람이 확인하던 과정을 줄입니다.
-              작게 시작한 개선을 사용자가 이해하기 쉬운 서비스 흐름으로 구현합니다.
+              자동화 도구부터 웹 서비스까지,
+              <br />
+              문제를 발견하고 해결하는 과정을 기록합니다.
             </p>
 
             <div className="hero-actions">
