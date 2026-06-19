@@ -63,25 +63,9 @@ function createGmailComposeUrl(email: string) {
   return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodedEmail}&su=${subject}`;
 }
 
-function AboutUniverseBackground() {
-  return (
-    <div className="about-universe" aria-hidden="true">
-      <span className="about-orbit about-orbit--large" />
-      <span className="about-orbit about-orbit--small" />
-      <span className="about-glow about-glow--left" />
-      <span className="about-glow about-glow--right" />
-      <span className="shooting-star shooting-star--one" />
-      <span className="shooting-star shooting-star--two" />
-      <span className="shooting-star shooting-star--three" />
-    </div>
-  );
-}
-
 export default function AboutPage() {
   return (
     <main className="content-shell about-page">
-      <AboutUniverseBackground />
-
       <section className="page-hero about-hero page-section--reveal">
         <SectionHeader
           eyebrow="About"

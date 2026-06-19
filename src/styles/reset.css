@@ -61,7 +61,90 @@ body::after {
   background-image:
     radial-gradient(circle, var(--ambient-star) 1px, transparent 1.5px);
   background-size: 90px 90px;
-  opacity: 0.16;
+  opacity: 0.22;
+}
+
+.global-ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.global-ambient__stars span,
+.global-shooting-star {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+}
+
+.global-ambient__stars span {
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--brand-accent) 54%, transparent);
+  opacity: 0.24;
+  animation: global-star-float 8s ease-in-out infinite;
+}
+
+.global-ambient__stars span:nth-child(1) { top: 18%; left: 8%; animation-delay: -1s; }
+.global-ambient__stars span:nth-child(2) { top: 32%; left: 16%; animation-delay: -4s; }
+.global-ambient__stars span:nth-child(3) { top: 14%; left: 27%; animation-delay: -6s; }
+.global-ambient__stars span:nth-child(4) { top: 48%; left: 36%; animation-delay: -2s; }
+.global-ambient__stars span:nth-child(5) { top: 22%; left: 48%; animation-delay: -7s; }
+.global-ambient__stars span:nth-child(6) { top: 64%; left: 56%; animation-delay: -3s; }
+.global-ambient__stars span:nth-child(7) { top: 30%; left: 66%; animation-delay: -5s; }
+.global-ambient__stars span:nth-child(8) { top: 52%; left: 76%; animation-delay: -1.5s; }
+.global-ambient__stars span:nth-child(9) { top: 20%; left: 88%; animation-delay: -6.5s; }
+.global-ambient__stars span:nth-child(10) { top: 72%; left: 12%; animation-delay: -4.5s; }
+.global-ambient__stars span:nth-child(11) { top: 82%; left: 24%; animation-delay: -8s; }
+.global-ambient__stars span:nth-child(12) { top: 76%; left: 42%; animation-delay: -2.5s; }
+.global-ambient__stars span:nth-child(13) { top: 86%; left: 62%; animation-delay: -7.5s; }
+.global-ambient__stars span:nth-child(14) { top: 68%; left: 82%; animation-delay: -3.5s; }
+.global-ambient__stars span:nth-child(15) { top: 42%; left: 92%; animation-delay: -5.5s; }
+.global-ambient__stars span:nth-child(16) { top: 58%; left: 4%; animation-delay: -9s; }
+.global-ambient__stars span:nth-child(17) { top: 10%; left: 72%; animation-delay: -4.8s; }
+.global-ambient__stars span:nth-child(18) { top: 90%; left: 90%; animation-delay: -6.8s; }
+
+.global-shooting-star {
+  top: 18%;
+  left: 82%;
+  width: 128px;
+  height: 1px;
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in srgb, var(--foreground) 68%, transparent),
+      color-mix(in srgb, var(--brand-accent) 70%, transparent)
+    );
+  opacity: 0;
+  transform: rotate(-28deg);
+  animation: shooting-star-fall 8s ease-in-out infinite;
+}
+
+.global-shooting-star--two {
+  top: 44%;
+  left: 90%;
+  width: 104px;
+  animation-delay: 3.4s;
+  animation-duration: 10s;
+}
+
+.global-shooting-star--three {
+  top: 28%;
+  left: 54%;
+  width: 88px;
+  animation-delay: 6.6s;
+  animation-duration: 12s;
+}
+
+main,
+.site-footer {
+  position: relative;
+  z-index: 1;
 }
 
 img,

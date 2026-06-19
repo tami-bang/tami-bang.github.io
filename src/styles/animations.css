@@ -63,6 +63,17 @@
   }
 }
 
+@keyframes global-star-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(18px, -24px, 0) scale(1.2);
+  }
+}
+
 @keyframes object-float-main {
   0%,
   100% {
@@ -82,41 +93,6 @@
 
   50% {
     margin-bottom: 8px;
-  }
-}
-
-@keyframes about-star-drift {
-  from {
-    background-position:
-      0 0,
-      18px 24px;
-  }
-
-  to {
-    background-position:
-      96px 96px,
-      156px 162px;
-  }
-}
-
-@keyframes about-soft-float {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-
-  50% {
-    transform: translate3d(18px, -22px, 0);
-  }
-}
-
-@keyframes about-orbit-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
   }
 }
 
