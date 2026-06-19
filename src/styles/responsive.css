@@ -198,9 +198,12 @@
 @media (max-width: 560px) {
   .page-section,
   .page-shell,
-  .content-shell,
   .project-detail-shell {
     width: min(calc(100% - 32px), var(--section-max-width));
+  }
+
+  .content-shell {
+    width: min(calc(100% - 32px), var(--layout-max-width));
   }
 
   .architecture-flow li {

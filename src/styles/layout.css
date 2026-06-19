@@ -1,7 +1,6 @@
 /* ================================
    Layout Shell
 ================================ */
-.content-shell,
 .page-section,
 .page-shell,
 .project-detail-shell {
@@ -10,7 +9,13 @@
 }
 
 .content-shell {
-  padding-block: clamp(52px, 7vw, 92px) var(--section-gap-large);
+  width: min(calc(100% - var(--layout-padding) * 2), var(--layout-max-width));
+  margin: 0 auto;
+  padding-block: clamp(42px, 5vw, 76px) var(--section-gap-large);
+}
+
+.content-shell .page-section {
+  width: 100%;
 }
 
 .page-shell,
