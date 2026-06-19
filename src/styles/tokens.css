@@ -35,7 +35,7 @@
   --font-display: var(--font-geist-sans), "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
   --font-body: "Apple SD Gothic Neo", "Noto Sans KR", var(--font-geist-sans), sans-serif;
   --font-label: var(--font-geist-mono), "SFMono-Regular", Consolas, monospace;
-  --font-editorial: ui-serif, Georgia, "Times New Roman", serif;
+  --font-greeting: "Apple SD Gothic Neo", "Pretendard", "SUIT", var(--font-geist-sans), sans-serif;
 
   --layout-max-width: 1180px;
   --section-max-width: 1240px;

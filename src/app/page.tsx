@@ -19,12 +19,7 @@ function SpaceDots() {
 function HeroTitle() {
   return (
     <h1 className="hero-title">
-      {homeHero.titleLines.map((line, index) => (
-        <span key={line}>
-          {line}
-          {index < homeHero.titleLines.length - 1 && <br />}
-        </span>
-      ))}
+      {homeHero.titleLines.join(" ")}
     </h1>
   );
 }
@@ -32,12 +27,7 @@ function HeroTitle() {
 function HeroDescription() {
   return (
     <p className="hero-description">
-      {homeHero.descriptionLines.map((line, index) => (
-        <span key={line}>
-          {line}
-          {index < homeHero.descriptionLines.length - 1 && <br />}
-        </span>
-      ))}
+      {homeHero.descriptionLines.join(" ")}
     </p>
   );
 }
