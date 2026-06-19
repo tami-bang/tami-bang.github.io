@@ -162,6 +162,7 @@
 .category-pill,
 .category-link {
   display: inline-flex;
+  flex: 0 0 auto;
   width: fit-content;
   border: 1px solid color-mix(in srgb, var(--brand-accent) 24%, transparent);
   border-radius: 999px;
@@ -171,6 +172,8 @@
   font-family: var(--font-label);
   font-size: 0.9rem;
   font-weight: 950;
+  white-space: nowrap;
+  word-break: keep-all;
 }
 
 .category-link {
