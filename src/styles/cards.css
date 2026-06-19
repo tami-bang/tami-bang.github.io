@@ -373,38 +373,21 @@
   border: 1px solid color-mix(in srgb, var(--brand-accent) 20%, transparent);
   border-radius: var(--radius-large);
   background:
-    radial-gradient(
-      circle at 16% 12%,
-      color-mix(in srgb, var(--brand-accent) 18%, transparent),
-      transparent 24%
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--brand-accent) 9%, transparent),
+      transparent 34%
     ),
-    radial-gradient(
-      circle at 82% 78%,
-      color-mix(in srgb, #7c5cff 18%, transparent),
-      transparent 28%
+    linear-gradient(
+      115deg,
+      transparent 45%,
+      color-mix(in srgb, #7c5cff 10%, transparent)
     ),
     color-mix(in srgb, var(--panel) 72%, transparent);
   padding: clamp(24px, 5vw, 52px);
   box-shadow:
     var(--shadow-strong),
     inset 0 0 0 1px color-mix(in srgb, var(--brand-accent) 12%, transparent);
-}
-
-.about-flow-board::after {
-  position: absolute;
-  right: clamp(20px, 5vw, 60px);
-  top: clamp(20px, 4vw, 42px);
-  width: 94px;
-  height: 94px;
-  border: 1px solid color-mix(in srgb, var(--brand-accent) 28%, transparent);
-  border-radius: 34% 66% 58% 42%;
-  background: color-mix(in srgb, var(--brand-accent) 8%, transparent);
-  box-shadow: 0 0 42px color-mix(in srgb, var(--brand-accent) 18%, transparent);
-  content: "";
-  z-index: 0;
-  opacity: 0.78;
-  pointer-events: none;
-  transform: rotate(18deg);
 }
 
 .about-flow-board__header {
@@ -426,6 +409,7 @@
 
 .about-flow-track {
   --track-line: color-mix(in srgb, var(--brand-accent) 38%, var(--panel-border));
+  --track-y: 37px;
   position: relative;
   z-index: 1;
   display: grid;
@@ -435,24 +419,40 @@
 
 .about-flow-track::before {
   position: absolute;
-  left: 8%;
-  right: 8%;
-  top: 46px;
+  left: 31px;
+  right: 31px;
+  top: var(--track-y);
   height: 2px;
   background:
     linear-gradient(
       90deg,
-      transparent,
       var(--track-line),
       color-mix(in srgb, #ff4fb8 34%, var(--track-line)),
-      transparent
+      var(--track-line)
     );
   content: "";
+  z-index: 0;
+  box-shadow: 0 0 20px color-mix(in srgb, var(--brand-accent) 24%, transparent);
   pointer-events: none;
+}
+
+.about-flow-track::after {
+  position: absolute;
+  right: 23px;
+  top: calc(var(--track-y) - 5px);
+  width: 11px;
+  height: 11px;
+  border-top: 2px solid var(--track-line);
+  border-right: 2px solid var(--track-line);
+  content: "";
+  z-index: 0;
+  pointer-events: none;
+  transform: rotate(45deg);
 }
 
 .about-flow-node {
   position: relative;
+  z-index: 1;
   display: grid;
   align-content: start;
   gap: 12px;
@@ -461,16 +461,21 @@
   border-radius: 26px;
   background:
     linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--brand-accent) 28%, transparent),
+      transparent 26%
+    ) top left / 100% 1px no-repeat,
+    linear-gradient(
       150deg,
-      color-mix(in srgb, var(--panel) 90%, transparent),
-      color-mix(in srgb, var(--background) 58%, transparent)
+      color-mix(in srgb, var(--panel) 88%, transparent),
+      color-mix(in srgb, var(--background) 64%, transparent)
     );
   padding: 26px 22px 24px;
 }
 
 .about-flow-node::after {
   position: absolute;
-  top: 36px;
+  top: 28px;
   left: 22px;
   width: 18px;
   height: 18px;
@@ -894,7 +899,8 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .about-flow-track::before {
+  .about-flow-track::before,
+  .about-flow-track::after {
     display: none;
   }
 
