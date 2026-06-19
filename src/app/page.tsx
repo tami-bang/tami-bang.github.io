@@ -56,16 +56,15 @@ function HeroSection() {
             <p className="section-eyebrow">Automation-minded Service Developer</p>
 
             <h1 className="hero-title">
-              반복 작업을 구조화하고,
+              반복을 줄이고,
               <br />
-              사용자에게 닿는 서비스로 구현합니다.
+              흐름을 서비스로 만듭니다.
             </h1>
 
             <p className="hero-description">
-              반복되는 수작업과 비효율적인 흐름을 발견하면, 데이터를 정리하고
-              API와 화면 흐름으로 연결해 자동화하는 과정을 좋아합니다. 백엔드/API,
-              크롤링, 데이터 처리뿐 아니라 사용자가 이해하기 쉬운 UI 구성에도
-              관심을 두고 있습니다.
+              흩어진 데이터와 수작업을 정리해 API, 자동화, 관리자 화면으로
+              연결합니다. 사람이 매번 확인하던 과정을 줄이고, 사용자가 이해하기
+              쉬운 서비스 흐름으로 구현하는 데 집중합니다.
             </p>
 
             <div className="hero-actions">
