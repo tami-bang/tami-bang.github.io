@@ -1,10 +1,14 @@
 /* ================================
    Layout Shell
 ================================ */
-.page-section,
 .page-shell,
 .project-detail-shell {
   width: min(calc(100% - var(--section-padding) * 2), var(--section-max-width));
+  margin: 0 auto;
+}
+
+.page-section {
+  width: min(calc(100% - var(--layout-padding) * 2), var(--layout-max-width));
   margin: 0 auto;
 }
 
@@ -51,6 +55,16 @@
 .section-header--center {
   margin-inline: auto;
   text-align: center;
+}
+
+.section-header .section-eyebrow {
+  margin: 0 0 clamp(28px, 3vw, 42px);
+  color: var(--brand-accent);
+  line-height: 1.75;
+}
+
+.section-header .section-eyebrow__description {
+  color: var(--brand-accent);
 }
 
 .section-header h1,
