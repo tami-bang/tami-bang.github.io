@@ -56,6 +56,29 @@ const focusAreas = [
   "Documentation",
 ];
 
+const directionSteps = [
+  {
+    label: "Detect",
+    title: "반복 발견",
+    detail: "수동 확인과 흩어진 기록에서 줄일 일을 찾습니다.",
+  },
+  {
+    label: "Map",
+    title: "흐름 구조화",
+    detail: "입력, 처리, 저장, 결과를 한 흐름으로 나눕니다.",
+  },
+  {
+    label: "Automate",
+    title: "자동화",
+    detail: "API, DB, 크롤링으로 반복 동작을 구현합니다.",
+  },
+  {
+    label: "Ship",
+    title: "서비스 구현",
+    detail: "사용자가 확인할 수 있는 화면과 기록으로 완성합니다.",
+  },
+] as const;
+
 function createGmailComposeUrl(email: string) {
   const subject = encodeURIComponent("Tami.log 포트폴리오 문의");
   const encodedEmail = encodeURIComponent(email);
@@ -93,10 +116,22 @@ export default function AboutPage() {
             정리하고 사용자가 이해할 수 있는 결과 화면과 자동화 흐름을 만드는 일입니다.
           </p>
         </div>
+      </section>
 
-        <div className="about-story__note">
-          <p>Core Direction</p>
-          <strong>반복 발견 → 흐름 구조화 → 자동화 → 서비스 구현</strong>
+      <section className="about-flow-board page-section--reveal-delayed" aria-labelledby="core-direction-title">
+        <div className="about-flow-board__header">
+          <p className="section-eyebrow">Core Direction</p>
+          <h2 id="core-direction-title">문제를 서비스 흐름으로 바꾸는 순서</h2>
+        </div>
+
+        <div className="about-flow-track">
+          {directionSteps.map((step, index) => (
+            <article className="about-flow-node" key={step.title}>
+              <span>{String(index + 1).padStart(2, "0")} / {step.label}</span>
+              <strong>{step.title}</strong>
+              <p>{step.detail}</p>
+            </article>
+          ))}
         </div>
       </section>
 
