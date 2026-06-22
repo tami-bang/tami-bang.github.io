@@ -25,6 +25,7 @@ const GLOW_CARD_SELECTOR = [
   ".project-work-sample-card",
   ".project-visual-card",
   ".automation-step-card",
+  ".roadmap-step",
 ].join(",");
 
 function findGlowCard(target: EventTarget | null) {
