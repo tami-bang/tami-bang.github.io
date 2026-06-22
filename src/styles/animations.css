@@ -74,25 +74,46 @@
   }
 }
 
-@keyframes object-float-main {
+@keyframes object-orbit-main {
   0%,
   100% {
-    margin-top: 0;
+    translate: 0 0;
+    rotate: 0 1 0 -7deg;
+    scale: 1;
+  }
+
+  25% {
+    translate: 8px -10px;
+    rotate: 1 1 0 6deg;
   }
 
   50% {
-    margin-top: -12px;
+    translate: -2px -20px;
+    rotate: 0 1 0 13deg;
+    scale: 1.025;
+  }
+
+  75% {
+    translate: -9px -7px;
+    rotate: 1 0 1 -4deg;
   }
 }
 
-@keyframes object-float-depth {
+@keyframes object-orbit-depth {
   0%,
   100% {
-    margin-bottom: 0;
+    translate: 0 0;
+    rotate: 0 1 0 10deg;
   }
 
-  50% {
-    margin-bottom: 8px;
+  33% {
+    translate: -7px 7px;
+    rotate: 1 0 1 -8deg;
+  }
+
+  66% {
+    translate: 6px -6px;
+    rotate: 0 1 0 -12deg;
   }
 }
 
