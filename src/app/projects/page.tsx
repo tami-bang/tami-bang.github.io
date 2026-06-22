@@ -9,8 +9,12 @@ export const metadata = {
 
 function getOrderedProjects() {
   const featuredProjects = getFeaturedProjects();
-  const featuredSlugs = new Set(featuredProjects.map((project) => project.slug));
-  const otherProjects = projects.filter((project) => !featuredSlugs.has(project.slug));
+  const featuredSlugs = new Set(
+    featuredProjects.map((project) => project.slug),
+  );
+  const otherProjects = projects.filter(
+    (project) => !featuredSlugs.has(project.slug),
+  );
 
   return [...featuredProjects, ...otherProjects];
 }

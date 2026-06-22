@@ -46,7 +46,10 @@ export default function Footer() {
             <p>Study</p>
 
             {footerStudyLinks.map((category) => (
-              <Link href={`/blog/category/${category.slug}`} key={category.slug}>
+              <Link
+                href={`/blog/category/${category.slug}`}
+                key={category.slug}
+              >
                 {category.label}
               </Link>
             ))}
@@ -88,7 +91,9 @@ export default function Footer() {
         </nav>
 
         <div className="site-footer__bottom">
-          <p>© {getCurrentYear()} {siteConfig.name}. Built with Next.js.</p>
+          <p>
+            © {getCurrentYear()} {siteConfig.name}. Built with Next.js.
+          </p>
         </div>
       </div>
     </footer>

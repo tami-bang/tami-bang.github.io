@@ -1,0 +1,26 @@
+name: 기능 제안
+description: 새로운 기능이나 콘텐츠 개선을 제안합니다.
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 해결하려는 문제
+      description: 현재 어떤 점이 불편하거나 부족한가요?
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: 제안하는 해결 방법
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: 완료 조건
+      description: 무엇이 확인되면 이 작업이 끝났다고 볼 수 있나요?
+      placeholder: "- [ ] ..."
+    validations:
+      required: true

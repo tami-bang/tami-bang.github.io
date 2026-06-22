@@ -48,7 +48,7 @@ Server: 응답 구조 정의
 사용자 인터랙션은 결국 네트워크 요청으로 변환된다.
 
 ```js
-fetch("/api/data")
+fetch("/api/data");
 ```
 
 이 시점부터
@@ -67,32 +67,32 @@ fetch("/api/data")
 
 ## 단계별 흐름 (Execution Flow)
 
-| 단계 | 레이어 | 동작 |
-|------|--------|------|
-| 1 | UI | 사용자 입력 발생 |
-| 2 | Application | HTTP 요청 생성 |
-| 3 | Transport | TCP 연결 수립 |
-| 4 | Network | IP 기반 라우팅 |
-| 5 | Server | 요청 수신 |
-| 6 | Backend | API 라우팅 |
-| 7 | Logic | 비즈니스 처리 |
-| 8 | Data | DB / 외부 시스템 |
-| 9 | Transport | 응답 전송 |
-| 10 | UI | 상태 업데이트 |
+| 단계 | 레이어      | 동작             |
+| ---- | ----------- | ---------------- |
+| 1    | UI          | 사용자 입력 발생 |
+| 2    | Application | HTTP 요청 생성   |
+| 3    | Transport   | TCP 연결 수립    |
+| 4    | Network     | IP 기반 라우팅   |
+| 5    | Server      | 요청 수신        |
+| 6    | Backend     | API 라우팅       |
+| 7    | Logic       | 비즈니스 처리    |
+| 8    | Data        | DB / 외부 시스템 |
+| 9    | Transport   | 응답 전송        |
+| 10   | UI          | 상태 업데이트    |
 
 ---
 
 ## 이 흐름을 OSI 관점에서 보면
 
-| 계층 | 역할 |
-|------|------|
-| L7 | HTTP / REST API |
-| L6 | 데이터 포맷 (JSON) |
-| L5 | 세션 관리 |
-| L4 | TCP (신뢰성 보장) |
-| L3 | IP (라우팅) |
-| L2 | MAC (네트워크 인터페이스) |
-| L1 | 물리 신호 |
+| 계층 | 역할                      |
+| ---- | ------------------------- |
+| L7   | HTTP / REST API           |
+| L6   | 데이터 포맷 (JSON)        |
+| L5   | 세션 관리                 |
+| L4   | TCP (신뢰성 보장)         |
+| L3   | IP (라우팅)               |
+| L2   | MAC (네트워크 인터페이스) |
+| L1   | 물리 신호                 |
 
 중요한 포인트:
 
@@ -166,14 +166,14 @@ API는 단순한 연결이 아니라
 
 ## 장애는 어디서 발생하는가
 
-| 증상 | 원인 레이어 |
-|------|------------|
-| CORS | Application / Browser |
-| 404 | Routing |
-| 500 | Server Logic |
-| Timeout | Network / Server |
-| Connection Refused | TCP / Port |
-| Packet Loss | Network Layer |
+| 증상               | 원인 레이어           |
+| ------------------ | --------------------- |
+| CORS               | Application / Browser |
+| 404                | Routing               |
+| 500                | Server Logic          |
+| Timeout            | Network / Server      |
+| Connection Refused | TCP / Port            |
+| Packet Loss        | Network Layer         |
 
 ---
 

@@ -19,7 +19,9 @@ export default function HeaderNavLinks() {
         return (
           <Link
             aria-current={isActive ? "page" : undefined}
-            className={isActive ? "site-nav-link site-nav-link--active" : "site-nav-link"}
+            className={
+              isActive ? "site-nav-link site-nav-link--active" : "site-nav-link"
+            }
             href={item.href}
             key={item.href}
           >

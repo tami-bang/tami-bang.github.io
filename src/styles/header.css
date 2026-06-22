@@ -67,7 +67,11 @@
 
 .site-nav-link:hover,
 .site-nav-link--active {
-  border-color: color-mix(in srgb, var(--brand-accent) 34%, var(--panel-border));
+  border-color: color-mix(
+    in srgb,
+    var(--brand-accent) 34%,
+    var(--panel-border)
+  );
   background: color-mix(in srgb, var(--brand-accent) 11%, transparent);
   color: var(--brand-accent);
   transform: translateY(-1px);

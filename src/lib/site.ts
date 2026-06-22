@@ -26,16 +26,22 @@ export const studyCategoryItems = [
   { label: "AI 활용", slug: "ai-as-tool" },
 ];
 
-export const studyCategories = studyCategoryItems.map((category) => category.label);
+export const studyCategories = studyCategoryItems.map(
+  (category) => category.label,
+);
 
 export function getCategorySlug(categoryLabel: string) {
-  const category = studyCategoryItems.find((item) => item.label === categoryLabel);
+  const category = studyCategoryItems.find(
+    (item) => item.label === categoryLabel,
+  );
 
   return category?.slug ?? categoryLabel.toLowerCase();
 }
 
 export function getCategoryLabel(categorySlug: string) {
-  const category = studyCategoryItems.find((item) => item.slug === categorySlug);
+  const category = studyCategoryItems.find(
+    (item) => item.slug === categorySlug,
+  );
 
   return category?.label ?? "";
 }
@@ -64,12 +70,14 @@ export const featuredPosts = [
 export const featuredProjects = [
   {
     title: "JobRadar",
-    description: "채용 공고 확인을 수집, 저장, 점수화, 리포트 생성 흐름으로 자동화",
+    description:
+      "채용 공고 확인을 수집, 저장, 점수화, 리포트 생성 흐름으로 자동화",
     href: "/projects",
   },
   {
     title: "GateGuard",
-    description: "패킷 탐지, URL 분석, 정책 기반 차단을 수행하는 AI 웹 접근 제어 솔루션",
+    description:
+      "패킷 탐지, URL 분석, 정책 기반 차단을 수행하는 AI 웹 접근 제어 솔루션",
     href: "/projects",
   },
 ];

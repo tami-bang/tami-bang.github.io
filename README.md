@@ -40,6 +40,20 @@ npm run dev
 npm run build
 ```
 
+## Repository Workflow
+
+> 이 저장소의 브랜치·커밋·Pull Request 관리 규칙은 2026-06-22부터 적용합니다.
+
+이 저장소는 작업 브랜치와 Pull Request를 사용해 `main`을 항상 배포 가능한 상태로 유지합니다.
+
+- 브랜치: `feature/*`, `fix/*`, `content/*`, `docs/*`, `refactor/*`, `chore/*`
+- 커밋: Conventional Commits (`feat:`, `fix:`, `content:`, `docs:` 등)
+- 커밋 전: ESLint와 Prettier 자동 실행
+- Pull Request: 포맷, ESLint, TypeScript, 프로덕션 빌드 자동 검사
+- `main` 병합 후: GitHub Pages 자동 배포
+
+자세한 작업 순서와 예시는 [CONTRIBUTING.md](./CONTRIBUTING.md)를 참고합니다.
+
 ## Add Blog Posts
 
 GitHub Pages 정적 배포를 사용하므로 별도 관리자 페이지를 두지 않습니다.

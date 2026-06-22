@@ -23,7 +23,9 @@ export default function SectionHeader({
         {eyebrowDescription && (
           <>
             {" : "}
-            <span className="section-eyebrow__description">{eyebrowDescription}</span>
+            <span className="section-eyebrow__description">
+              {eyebrowDescription}
+            </span>
           </>
         )}
       </p>

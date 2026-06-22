@@ -39,7 +39,10 @@ export default function BlogPage() {
       {posts.length === 0 && (
         <section className="empty-panel page-section--reveal-delayed">
           <h2>아직 작성된 글이 없습니다.</h2>
-          <p>src/content/posts 폴더에 공부 기록을 Markdown으로 추가하면 이곳에 표시됩니다.</p>
+          <p>
+            src/content/posts 폴더에 공부 기록을 Markdown으로 추가하면 이곳에
+            표시됩니다.
+          </p>
         </section>
       )}
     </main>

@@ -60,7 +60,8 @@
 .internship-story {
   display: grid;
   gap: clamp(26px, 4vw, 42px);
-  border: 1px solid color-mix(in srgb, var(--brand-accent) 32%, var(--panel-border));
+  border: 1px solid
+    color-mix(in srgb, var(--brand-accent) 32%, var(--panel-border));
   border-radius: var(--radius-large);
   padding: clamp(26px, 5vw, 52px);
   background:

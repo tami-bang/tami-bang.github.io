@@ -40,7 +40,10 @@ function ProjectSummary({ items }: { items: ProjectSummaryItem[] }) {
   );
 }
 
-export default function ProjectCard({ compact = false, project }: ProjectCardProps) {
+export default function ProjectCard({
+  compact = false,
+  project,
+}: ProjectCardProps) {
   const summaryItems = getProjectSummaryItems(project);
 
   return (
@@ -59,12 +62,17 @@ export default function ProjectCard({ compact = false, project }: ProjectCardPro
 
           <p className="project-card__subtitle">{project.subtitle}</p>
 
-          {!compact && <p className="project-card__description">{project.description}</p>}
+          {!compact && (
+            <p className="project-card__description">{project.description}</p>
+          )}
         </section>
 
         {!compact && <ProjectSummary items={summaryItems} />}
 
-        <section className="project-card__stack" aria-label="Project tech stack">
+        <section
+          className="project-card__stack"
+          aria-label="Project tech stack"
+        >
           {project.techStack.slice(0, 5).map((tech) => (
             <span key={tech}>{tech}</span>
           ))}

@@ -63,7 +63,10 @@ function resetGlowPosition(event: PointerEvent) {
     return;
   }
 
-  if (event.relatedTarget instanceof Node && glowCard.contains(event.relatedTarget)) {
+  if (
+    event.relatedTarget instanceof Node &&
+    glowCard.contains(event.relatedTarget)
+  ) {
     return;
   }
 

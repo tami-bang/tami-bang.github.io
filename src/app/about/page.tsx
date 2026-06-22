@@ -4,25 +4,30 @@ import { siteConfig } from "@/lib/site"; // 용도 사이트 공통 링크 정�
 
 export const metadata = {
   title: "About | Tami.log",
-  description: "반복 작업을 데이터, API, 사용자 화면 흐름으로 구조화해 자동화하는 개발자 소개",
+  description:
+    "반복 작업을 데이터, API, 사용자 화면 흐름으로 구조화해 자동화하는 개발자 소개",
 };
 
 const workSteps = [
   {
     title: "반복되는 흐름을 먼저 찾습니다",
-    description: "수동 확인, 반복 판단, 흩어진 기록처럼 자동화할 수 있는 흐름을 먼저 봅니다.",
+    description:
+      "수동 확인, 반복 판단, 흩어진 기록처럼 자동화할 수 있는 흐름을 먼저 봅니다.",
   },
   {
     title: "데이터와 상태를 구조화합니다",
-    description: "입력, 처리, 저장, 결과를 나누어 다시 확인 가능한 데이터 흐름으로 정리합니다.",
+    description:
+      "입력, 처리, 저장, 결과를 나누어 다시 확인 가능한 데이터 흐름으로 정리합니다.",
   },
   {
     title: "API와 저장 구조로 연결합니다",
-    description: "Python, FastAPI, DB, 크롤링을 활용해 반복 작업을 줄이는 서비스 흐름을 만듭니다.",
+    description:
+      "Python, FastAPI, DB, 크롤링을 활용해 반복 작업을 줄이는 서비스 흐름을 만듭니다.",
   },
   {
     title: "결과를 다시 확인할 수 있게 기록합니다",
-    description: "자동화 결과와 한계를 로그, 리포트, 문서로 남겨 다음 개선으로 연결합니다.",
+    description:
+      "자동화 결과와 한계를 로그, 리포트, 문서로 남겨 다음 개선으로 연결합니다.",
   },
 ];
 
@@ -30,17 +35,20 @@ const projectSummaries = [
   {
     name: "JobRadar",
     href: "/projects/jobkorea-job-radar",
-    description: "채용 공고 확인이라는 반복 작업을 수집, 저장, 점수화하고 결과를 보기 쉬운 리포트로 정리했습니다.",
+    description:
+      "채용 공고 확인이라는 반복 작업을 수집, 저장, 점수화하고 결과를 보기 쉬운 리포트로 정리했습니다.",
   },
   {
     name: "GateGuard",
     href: "/projects/gateguard",
-    description: "탐지 이후 판단과 기록이 끊기지 않도록 정책 조회, 보조 판단, 로그 저장, 관리자 화면 흐름을 연결했습니다.",
+    description:
+      "탐지 이후 판단과 기록이 끊기지 않도록 정책 조회, 보조 판단, 로그 저장, 관리자 화면 흐름을 연결했습니다.",
   },
   {
     name: "PCFILTER QA Case Study",
     href: "/projects/pcfilter-qa-case-study",
-    description: "QA 경험을 정체성이 아니라 반복 문제를 발견하고 자동화 후보를 찾는 근거로 정리했습니다.",
+    description:
+      "QA 경험을 정체성이 아니라 반복 문제를 발견하고 자동화 후보를 찾는 근거로 정리했습니다.",
   },
 ];
 
@@ -100,8 +108,8 @@ export default function AboutPage() {
       <section className="about-story page-section--reveal-delayed">
         <div className="about-story__intro">
           <p className="about-story__lead">
-            안녕하세요. 저는 반복되는 작업을 발견하면 데이터, API, 사용자
-            화면 흐름으로 구조화해 자동화하려는 신입 개발자 타미입니다.
+            안녕하세요. 저는 반복되는 작업을 발견하면 데이터, API, 사용자 화면
+            흐름으로 구조화해 자동화하려는 신입 개발자 타미입니다.
           </p>
 
           <p>
@@ -113,12 +121,16 @@ export default function AboutPage() {
           <p>
             AI는 목표 직무가 아니라 검색과 판단 흐름을 보조하는 도구로
             사용합니다. 중심은 Python, FastAPI, DB, 크롤링을 활용해 데이터를
-            정리하고 사용자가 이해할 수 있는 결과 화면과 자동화 흐름을 만드는 일입니다.
+            정리하고 사용자가 이해할 수 있는 결과 화면과 자동화 흐름을 만드는
+            일입니다.
           </p>
         </div>
       </section>
 
-      <section className="about-flow-board page-section--reveal-delayed" aria-labelledby="core-direction-title">
+      <section
+        className="about-flow-board page-section--reveal-delayed"
+        aria-labelledby="core-direction-title"
+      >
         <div className="about-flow-board__header">
           <p className="section-eyebrow">Core Direction</p>
           <h2 id="core-direction-title">문제를 서비스 흐름으로 바꾸는 순서</h2>
@@ -127,7 +139,9 @@ export default function AboutPage() {
         <div className="about-flow-track">
           {directionSteps.map((step, index) => (
             <article className="about-flow-node" key={step.title}>
-              <span>{String(index + 1).padStart(2, "0")} / {step.label}</span>
+              <span>
+                {String(index + 1).padStart(2, "0")} / {step.label}
+              </span>
               <strong>{step.title}</strong>
               <p>{step.detail}</p>
             </article>
@@ -160,7 +174,11 @@ export default function AboutPage() {
 
         <div className="about-project-list">
           {projectSummaries.map((project) => (
-            <Link className="about-project-link" href={project.href} key={project.name}>
+            <Link
+              className="about-project-link"
+              href={project.href}
+              key={project.name}
+            >
               <span>{project.name}</span>
               <p>{project.description}</p>
             </Link>
