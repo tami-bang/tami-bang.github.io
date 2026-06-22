@@ -24,7 +24,8 @@
 .internship-journey__item,
 .project-work-sample-card,
 .project-visual-card,
-.automation-step-card {
+.automation-step-card,
+.roadmap-step {
   --glow-x: 50%;
   --glow-y: 50%;
   position: relative;
@@ -67,7 +68,8 @@
 .internship-journey__item::before,
 .project-work-sample-card::before,
 .project-visual-card::before,
-.automation-step-card::before {
+.automation-step-card::before,
+.roadmap-step::before {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -102,7 +104,8 @@
 .internship-journey__item:hover::before,
 .project-work-sample-card:hover::before,
 .project-visual-card:hover::before,
-.automation-step-card:hover::before {
+.automation-step-card:hover::before,
+.roadmap-step:hover::before {
   opacity: 1;
 }
 
@@ -126,7 +129,8 @@
 .internship-journey__item:hover,
 .project-work-sample-card:hover,
 .project-visual-card:hover,
-.automation-step-card:hover {
+.automation-step-card:hover,
+.roadmap-step:hover {
   transform: translateY(-4px);
   border-color: color-mix(
     in srgb,
@@ -156,7 +160,8 @@
 .internship-journey__item > *,
 .project-work-sample-card > *,
 .project-visual-card > *,
-.automation-step-card > * {
+.automation-step-card > *,
+.roadmap-step > * {
   position: relative;
   z-index: 1;
 }
