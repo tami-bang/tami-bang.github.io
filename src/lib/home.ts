@@ -44,12 +44,14 @@ export const homeSections = {
   },
   projects: {
     eyebrow: "PROJECTS",
-    eyebrowDescription: "데이터 수집, API, 관리자 화면, 리포트로 이어지는 구현 사례를 정리했습니다.",
+    eyebrowDescription:
+      "데이터 수집, API, 관리자 화면, 리포트로 이어지는 구현 사례를 정리했습니다.",
     title: "자동화와 서비스 구현",
   },
   study: {
     eyebrow: "STUDY LOG",
-    eyebrowDescription: "리눅스, 네트워크, C언어, 웹, 파이썬/Django를 프로젝트와 연결해 정리합니다.",
+    eyebrowDescription:
+      "리눅스, 네트워크, C언어, 웹, 파이썬/Django를 프로젝트와 연결해 정리합니다.",
     title: "배운 것을 기록합니다",
   },
 } as const;

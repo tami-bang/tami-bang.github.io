@@ -19,7 +19,9 @@ function validateTemplateState(document) {
   const reasons = [];
   const blocks = Array.isArray(document.blocks) ? document.blocks : [];
   const sectionTitles = new Set(
-    blocks.filter((block) => block.type === "heading").map((block) => block.text),
+    blocks
+      .filter((block) => block.type === "heading")
+      .map((block) => block.text),
   );
 
   for (const title of REQUIRED_SECTIONS) {
@@ -39,8 +41,7 @@ function validateTemplateState(document) {
   if (
     blocks.some(
       (block) =>
-        block.owner === "user" &&
-        String(block.text || "").trim().length > 0,
+        block.owner === "user" && String(block.text || "").trim().length > 0,
     )
   ) {
     reasons.push("User-authored text exists.");
@@ -52,7 +53,4 @@ function validateTemplateState(document) {
   };
 }
 
-export {
-  COMPLETION_MARKER_PREFIX,
-  validateTemplateState,
-};
+export { COMPLETION_MARKER_PREFIX, validateTemplateState };

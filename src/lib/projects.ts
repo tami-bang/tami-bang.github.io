@@ -166,10 +166,14 @@ export const projects: Project[] = [
     featured: true,
     featuredOrder: 2,
     featuredBadge: "Backend Flow",
-    repeatedProblem: "유해 접근 탐지 후 판단과 기록이 운영 흐름으로 이어지지 않는 문제",
-    backendFlow: "패킷 분석 → 정책 조회 → AI 보조 판단 → 로그 저장 → 관리자 확인",
-    automationPoint: "정책 기반 판단과 보조 판단을 연결해 탐지 이후 운영 흐름을 자동화",
-    resultSummary: "탐지, 차단, 기록, 관리자 화면 분석까지 이어지는 서비스 구조 설계",
+    repeatedProblem:
+      "유해 접근 탐지 후 판단과 기록이 운영 흐름으로 이어지지 않는 문제",
+    backendFlow:
+      "패킷 분석 → 정책 조회 → AI 보조 판단 → 로그 저장 → 관리자 확인",
+    automationPoint:
+      "정책 기반 판단과 보조 판단을 연결해 탐지 이후 운영 흐름을 자동화",
+    resultSummary:
+      "탐지, 차단, 기록, 관리자 화면 분석까지 이어지는 서비스 구조 설계",
     problem:
       "유해 사이트가 계속 생성되는 환경에서는 URL 목록만으로 대응하기 어렵고, HTTP 구조 기반 필터링도 한계가 있었습니다. 따라서 URL 자체보다 실제 요청 단위에서 판단하고 운영자가 이후 로그를 확인할 수 있어야 했습니다.",
     solution:
@@ -246,7 +250,8 @@ export const projects: Project[] = [
   {
     slug: "jobkorea-job-radar",
     title: "JobRadar",
-    subtitle: "잡코리아 공고 수집부터 개인 맞춤 매칭 리포트까지 자동화한 채용 데이터 파이프라인",
+    subtitle:
+      "잡코리아 공고 수집부터 개인 맞춤 매칭 리포트까지 자동화한 채용 데이터 파이프라인",
     domain: "Data Automation / Job Search",
     description:
       "잡코리아 채용공고를 수집하고 상세 페이지를 보강한 뒤, 개인 선호 조건 기반 점수화와 CSV/XLSX 리포트 생성을 연결한 Python 크롤링 프로젝트입니다.",
@@ -257,9 +262,12 @@ export const projects: Project[] = [
     featuredOrder: 1,
     featuredBadge: "Automation Core",
     repeatedProblem: "채용 공고를 매번 직접 확인하고 비교하는 반복 작업",
-    backendFlow: "크롤링 → 상세 파싱 → SQLite 저장 → 매칭 점수 계산 → 리포트 생성",
-    automationPoint: "조건에 맞는 공고를 자동으로 선별하고 CSV/XLSX로 보기 쉽게 정리",
-    resultSummary: "반복 탐색 시간을 줄이고 사용자가 비교하기 쉬운 채용 데이터 리포트 흐름을 확보",
+    backendFlow:
+      "크롤링 → 상세 파싱 → SQLite 저장 → 매칭 점수 계산 → 리포트 생성",
+    automationPoint:
+      "조건에 맞는 공고를 자동으로 선별하고 CSV/XLSX로 보기 쉽게 정리",
+    resultSummary:
+      "반복 탐색 시간을 줄이고 사용자가 비교하기 쉬운 채용 데이터 리포트 흐름을 확보",
     problem:
       "채용 사이트에서 관심 직무, 지역, 경력 조건을 매번 수동으로 확인하면 시간이 많이 들고 좋은 공고를 놓치기 쉽습니다. 특히 목록 페이지 정보만으로는 마감일, 기술 스택, 주요 업무를 충분히 비교하기 어렵습니다.",
     solution:
@@ -303,7 +311,8 @@ export const projects: Project[] = [
   {
     slug: "pcfilter-qa-case-study",
     title: "PCFILTER QA Internship",
-    subtitle: "유지보수 및 추가 개발 변경점 검증을 중심으로 한 2개월 QA 인턴 경험",
+    subtitle:
+      "유지보수 및 추가 개발 변경점 검증을 중심으로 한 2개월 QA 인턴 경험",
     domain: "Security Product QA / Workflow Automation",
     description:
       "지란지교에서 QA 인턴으로 근무하며 개발자들이 유지보수하거나 추가 개발한 PCFILTER 변경점에 대해 사용자 화면, 정책 반영, 로그·리포트 일관성을 검증했습니다. 반복되는 문서 작성과 화면 탐색 문제는 자동화 도구와 가이드로 개선했습니다.",
@@ -313,10 +322,14 @@ export const projects: Project[] = [
     featured: true,
     featuredOrder: 3,
     featuredBadge: "Workflow Automation",
-    repeatedProblem: "개발 변경점마다 사용자 흐름, 정책 반영, 로그/리포트 일관성을 반복 확인해야 하는 문제",
-    structuredFlow: "개발 변경점 확인 → QA 시나리오 구성 → 재현·회귀 테스트 → 결과 기록",
-    automationPoint: "반복되는 테스트 문서 초안 생성과 템플릿 안전 검증을 자동화",
-    resultSummary: "유지보수·추가 개발 검증 흐름을 테스트 기록과 재사용 가능한 가이드로 정리",
+    repeatedProblem:
+      "개발 변경점마다 사용자 흐름, 정책 반영, 로그/리포트 일관성을 반복 확인해야 하는 문제",
+    structuredFlow:
+      "개발 변경점 확인 → QA 시나리오 구성 → 재현·회귀 테스트 → 결과 기록",
+    automationPoint:
+      "반복되는 테스트 문서 초안 생성과 템플릿 안전 검증을 자동화",
+    resultSummary:
+      "유지보수·추가 개발 검증 흐름을 테스트 기록과 재사용 가능한 가이드로 정리",
     problem:
       "PCFILTER는 DLP 정보유출방지와 개인정보보호 등 여러 보안 기능이 하나의 에이전트와 관리자 정책으로 연결되는 제품입니다. 개발자들이 유지보수하거나 추가 개발한 변경점은 사용자 화면, 정책 반영, 로그·리포트 기록에 함께 영향을 줄 수 있어 QA 과정에서 기능 단위 확인과 회귀 확인이 모두 필요했습니다.",
     solution:
@@ -371,8 +384,7 @@ export const projects: Project[] = [
         label: "QA Navigation",
         description:
           "사용자 화면, 관리자 정책, 로그/리포트가 떨어져 있어 테스트할 때 같은 경로를 반복해서 찾는 문제가 있었습니다. Notion 페이지로 화면 경로를 정리하고 QA 질문 기준으로 다시 묶었습니다.",
-        why:
-          "새 테스트를 시작할 때 확인 범위를 빠르게 잡고, 정책 변경이 어느 화면과 기록에 영향을 주는지 놓치지 않기 위해 만들었습니다. 이 페이지에는 QA 작업 환경을 구성할 수 있는 스타터 키트 zip도 함께 올려두었습니다.",
+        why: "새 테스트를 시작할 때 확인 범위를 빠르게 잡고, 정책 변경이 어느 화면과 기록에 영향을 주는지 놓치지 않기 위해 만들었습니다. 이 페이지에는 QA 작업 환경을 구성할 수 있는 스타터 키트 zip도 함께 올려두었습니다.",
         details: [
           "정책 반영, 검사 결과, 보호조치, 정보유출방지 흐름을 테스트 목적별로 정리",
           "사용자 화면 확인에서 끝나지 않고 관리자 설정과 로그/리포트 비교까지 연결",
@@ -385,8 +397,7 @@ export const projects: Project[] = [
         label: "MCP Starter Kit",
         description:
           "Notion 화면 네비게이션 페이지에 QA 작업 폴더를 구성할 수 있는 zip을 올려두고, 화면 경로 기준 문서와 MCP 설정, Notion/Jira 연동 자동화 흐름을 함께 묶었습니다.",
-        why:
-          "자연어로 질문해도 Codex가 기준 문서와 업무 맥락을 참고해 어디에서 무엇을 어떻게 확인해야 하는지 안내할 수 있게 하기 위해 만들었습니다.",
+        why: "자연어로 질문해도 Codex가 기준 문서와 업무 맥락을 참고해 어디에서 무엇을 어떻게 확인해야 하는지 안내할 수 있게 하기 위해 만들었습니다.",
         details: [
           "화면 경로 기준 문서, MCP 설정 예시, 자동화 스크립트, 테스트 코드를 하나의 시작 키트로 구성",
           "개인정보 전체검사, USB 차단 정책, 정책 갱신 순서 같은 질문을 실제 QA 절차로 연결",
@@ -399,8 +410,7 @@ export const projects: Project[] = [
         label: "Guide Automation",
         description:
           "이슈 설명을 읽고 테스트 가이드 초안을 만드는 일이 반복되어, 시나리오 후보 생성과 템플릿 보호 흐름을 작은 Node.js 샘플로 정리했습니다.",
-        why:
-          "문서 초안 작성 시간을 줄이고, 사람이 재현 조건과 실제 결과 판단에 더 집중할 수 있게 하기 위해 만들었습니다.",
+        why: "문서 초안 작성 시간을 줄이고, 사람이 재현 조건과 실제 결과 판단에 더 집중할 수 있게 하기 위해 만들었습니다.",
         details: [
           "이슈 요약과 설명에서 QA 대상과 시나리오 후보 추론",
           "사용자가 이미 작성한 문서가 있으면 자동 수정을 막는 템플릿 가드 구현",
@@ -413,8 +423,7 @@ export const projects: Project[] = [
         label: "Workflow Learning",
         description:
           "M-EP Notion, Jira, Jenkins를 접하며 팀의 기록과 개발 흐름을 읽는 법을 익혔고, QA 경험을 개발할 때 참고할 기준으로 정리했습니다.",
-        why:
-          "개발자가 되기 위해 기능 구현 전후에 무엇을 확인해야 하는지, 어떤 기록을 남겨야 하는지, 예외 상황을 어떻게 바라봐야 하는지 배운 내용을 남기기 위해 정리했습니다.",
+        why: "개발자가 되기 위해 기능 구현 전후에 무엇을 확인해야 하는지, 어떤 기록을 남겨야 하는지, 예외 상황을 어떻게 바라봐야 하는지 배운 내용을 남기기 위해 정리했습니다.",
         details: [
           "Notion에서 온보딩, 가이드, 업무 DB, 제품 문서가 연결되는 방식 이해",
           "Jira 티켓의 설명, 재현 조건, 기대 결과를 테스트 시나리오로 바꾸는 연습",
@@ -425,7 +434,8 @@ export const projects: Project[] = [
       },
     ],
     internshipStory: {
-      headline: "테스트를 수행하는 인턴에서, 반복을 줄이는 결과물을 남기는 인턴으로",
+      headline:
+        "테스트를 수행하는 인턴에서, 반복을 줄이는 결과물을 남기는 인턴으로",
       summary:
         "짧은 인턴 기간을 단순한 업무 체험으로 보내기보다, 매일 수행하는 QA 업무에서 불편과 반복을 관찰하고 직접 개선하는 것을 목표로 삼았습니다. 제품을 이해하고 이슈를 재현하는 기본 업무에 충실하면서도, 다음 업무와 다음 사람이 더 수월해질 수 있는 도구와 문서를 만드는 데 시간을 투자했습니다.",
       goals: [

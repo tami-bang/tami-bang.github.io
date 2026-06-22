@@ -20,15 +20,24 @@ function getDisplayDate(post: BlogPost) {
 
 export default function BlogPostList({ posts }: BlogPostListProps) {
   return (
-    <section className="study-list page-section--reveal-delayed" aria-label="공부 기록 목록">
+    <section
+      className="study-list page-section--reveal-delayed"
+      aria-label="공부 기록 목록"
+    >
       {posts.map((post) => (
         <article className="study-list-item" key={post.slug}>
           <div className="study-list-item__main">
-            <Link className="category-pill" href={createCategoryHref(post.category)}>
+            <Link
+              className="category-pill"
+              href={createCategoryHref(post.category)}
+            >
               {post.category}
             </Link>
 
-            <Link className="study-list-item__title" href={createPostHref(post.slug)}>
+            <Link
+              className="study-list-item__title"
+              href={createPostHref(post.slug)}
+            >
               {post.title}
             </Link>
 
@@ -39,7 +48,10 @@ export default function BlogPostList({ posts }: BlogPostListProps) {
             <span>수정</span>
             <time dateTime={getDisplayDate(post)}>{getDisplayDate(post)}</time>
 
-            <Link href={createPostHref(post.slug)} className="study-list-item__link">
+            <Link
+              href={createPostHref(post.slug)}
+              className="study-list-item__link"
+            >
               읽기
             </Link>
           </div>

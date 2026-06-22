@@ -64,5 +64,4 @@
   .about-page {
     gap: clamp(30px, 8vw, 52px);
   }
-
 }

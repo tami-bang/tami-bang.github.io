@@ -24,7 +24,9 @@ export function generateStaticParams() {
 function filterPostsByCategory(categorySlug: string) {
   const posts = getAllPosts();
 
-  return posts.filter((post) => getCategorySlug(post.category) === categorySlug);
+  return posts.filter(
+    (post) => getCategorySlug(post.category) === categorySlug,
+  );
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
@@ -52,7 +54,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             <Link
               aria-current={item.slug === category ? "page" : undefined}
               className={
-                item.slug === category ? "category-link category-link--active" : "category-link"
+                item.slug === category
+                  ? "category-link category-link--active"
+                  : "category-link"
               }
               href={`/blog/category/${item.slug}`}
               key={item.slug}

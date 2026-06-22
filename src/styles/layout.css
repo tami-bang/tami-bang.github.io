@@ -188,7 +188,11 @@
 
 .category-link:hover,
 .category-link--active {
-  border-color: color-mix(in srgb, var(--brand-accent) 35%, var(--panel-border));
+  border-color: color-mix(
+    in srgb,
+    var(--brand-accent) 35%,
+    var(--panel-border)
+  );
   background: color-mix(in srgb, var(--brand-accent) 12%, transparent);
   color: var(--brand-accent);
   transform: translateY(-2px);
@@ -218,11 +222,7 @@
       color-mix(in srgb, var(--brand-accent) 7%, transparent),
       transparent 30%
     ),
-    linear-gradient(
-      180deg,
-      var(--footer-bg-start),
-      var(--footer-bg-end)
-    );
+    linear-gradient(180deg, var(--footer-bg-start), var(--footer-bg-end));
 }
 
 .site-footer__inner {

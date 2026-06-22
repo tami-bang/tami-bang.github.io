@@ -135,7 +135,13 @@ function isBlockEnd(line: string) {
 }
 
 function isCalloutType(value: string): value is CalloutType {
-  return value === "info" || value === "tip" || value === "warning" || value === "note" || value === "success";
+  return (
+    value === "info" ||
+    value === "tip" ||
+    value === "warning" ||
+    value === "note" ||
+    value === "success"
+  );
 }
 
 function isCalloutStart(line: string) {
@@ -217,7 +223,11 @@ function collectParagraphLines(lines: string[], startIndex: number) {
       break;
     }
 
-    if (isHeadingLine(line) || isSubHeadingLine(line) || isSmallHeadingLine(line)) {
+    if (
+      isHeadingLine(line) ||
+      isSubHeadingLine(line) ||
+      isSmallHeadingLine(line)
+    ) {
       break;
     }
 
@@ -383,7 +393,11 @@ function parseListBlock(lines: string[], startIndex: number) {
       break;
     }
 
-    items.push(ordered ? removeOrderedListPrefix(line) : removeMarkdownPrefix(line, "- "));
+    items.push(
+      ordered
+        ? removeOrderedListPrefix(line)
+        : removeMarkdownPrefix(line, "- "),
+    );
     index += 1;
   }
 
@@ -552,7 +566,12 @@ function renderInlineMarkdown(text: string) {
 
     if (linkMatch) {
       return (
-        <a key={`${part}-${index}`} href={linkMatch[2]} target="_blank" rel="noreferrer">
+        <a
+          key={`${part}-${index}`}
+          href={linkMatch[2]}
+          target="_blank"
+          rel="noreferrer"
+        >
           {linkMatch[1]}
         </a>
       );
@@ -562,7 +581,10 @@ function renderInlineMarkdown(text: string) {
   });
 }
 
-function renderHeading(block: Extract<MarkdownBlock, { type: "heading" }>, index: number) {
+function renderHeading(
+  block: Extract<MarkdownBlock, { type: "heading" }>,
+  index: number,
+) {
   if (block.level === 1) {
     return <h1 key={index}>{renderInlineMarkdown(block.content)}</h1>;
   }
@@ -574,7 +596,10 @@ function renderHeading(block: Extract<MarkdownBlock, { type: "heading" }>, index
   return <h3 key={index}>{renderInlineMarkdown(block.content)}</h3>;
 }
 
-function renderParagraph(block: Extract<MarkdownBlock, { type: "paragraph" }>, index: number) {
+function renderParagraph(
+  block: Extract<MarkdownBlock, { type: "paragraph" }>,
+  index: number,
+) {
   return (
     <p key={index}>
       {block.lines.map((line, lineIndex) => (
@@ -587,7 +612,10 @@ function renderParagraph(block: Extract<MarkdownBlock, { type: "paragraph" }>, i
   );
 }
 
-function renderList(block: Extract<MarkdownBlock, { type: "list" }>, index: number) {
+function renderList(
+  block: Extract<MarkdownBlock, { type: "list" }>,
+  index: number,
+) {
   const ListTag = block.ordered ? "ol" : "ul";
 
   return (
@@ -599,7 +627,10 @@ function renderList(block: Extract<MarkdownBlock, { type: "list" }>, index: numb
   );
 }
 
-function renderCode(block: Extract<MarkdownBlock, { type: "code" }>, index: number) {
+function renderCode(
+  block: Extract<MarkdownBlock, { type: "code" }>,
+  index: number,
+) {
   return (
     <div className="markdown-code-block" key={index}>
       <div className="markdown-code-block__header">
@@ -616,7 +647,10 @@ function renderCode(block: Extract<MarkdownBlock, { type: "code" }>, index: numb
   );
 }
 
-function renderDiagram(block: Extract<MarkdownBlock, { type: "diagram" }>, index: number) {
+function renderDiagram(
+  block: Extract<MarkdownBlock, { type: "diagram" }>,
+  index: number,
+) {
   return (
     <div className="markdown-diagram" key={index}>
       {block.lines.map((line, lineIndex) => (
@@ -628,7 +662,10 @@ function renderDiagram(block: Extract<MarkdownBlock, { type: "diagram" }>, index
   );
 }
 
-function renderImage(block: Extract<MarkdownBlock, { type: "image" }>, index: number) {
+function renderImage(
+  block: Extract<MarkdownBlock, { type: "image" }>,
+  index: number,
+) {
   return (
     <figure key={index}>
       <img src={block.src} alt={block.alt} />
@@ -637,14 +674,19 @@ function renderImage(block: Extract<MarkdownBlock, { type: "image" }>, index: nu
   );
 }
 
-function renderTable(block: Extract<MarkdownBlock, { type: "table" }>, index: number) {
+function renderTable(
+  block: Extract<MarkdownBlock, { type: "table" }>,
+  index: number,
+) {
   return (
     <div className="markdown-table-wrap" key={index}>
       <table>
         <thead>
           <tr>
             {block.headers.map((header, headerIndex) => (
-              <th key={`${header}-${headerIndex}`}>{renderInlineMarkdown(header)}</th>
+              <th key={`${header}-${headerIndex}`}>
+                {renderInlineMarkdown(header)}
+              </th>
             ))}
           </tr>
         </thead>
@@ -653,7 +695,9 @@ function renderTable(block: Extract<MarkdownBlock, { type: "table" }>, index: nu
           {block.rows.map((row, rowIndex) => (
             <tr key={`${row.join("-")}-${rowIndex}`}>
               {row.map((cell, cellIndex) => (
-                <td key={`${cell}-${cellIndex}`}>{renderInlineMarkdown(cell)}</td>
+                <td key={`${cell}-${cellIndex}`}>
+                  {renderInlineMarkdown(cell)}
+                </td>
               ))}
             </tr>
           ))}
@@ -663,7 +707,10 @@ function renderTable(block: Extract<MarkdownBlock, { type: "table" }>, index: nu
   );
 }
 
-function renderDetails(block: Extract<MarkdownBlock, { type: "details" }>, index: number) {
+function renderDetails(
+  block: Extract<MarkdownBlock, { type: "details" }>,
+  index: number,
+) {
   return (
     <details key={index}>
       <summary>{renderInlineMarkdown(block.summary)}</summary>
@@ -677,13 +724,21 @@ function renderDetails(block: Extract<MarkdownBlock, { type: "details" }>, index
   );
 }
 
-function renderCallout(block: Extract<MarkdownBlock, { type: "callout" }>, index: number) {
+function renderCallout(
+  block: Extract<MarkdownBlock, { type: "callout" }>,
+  index: number,
+) {
   return (
-    <aside className={`markdown-callout markdown-callout--${block.variant}`} key={index}>
+    <aside
+      className={`markdown-callout markdown-callout--${block.variant}`}
+      key={index}
+    >
       <div className="markdown-callout__rail" />
 
       <div className="markdown-callout__content">
-        <p className="markdown-callout__title">{renderInlineMarkdown(block.title)}</p>
+        <p className="markdown-callout__title">
+          {renderInlineMarkdown(block.title)}
+        </p>
 
         {block.content.map((line, lineIndex) => (
           <p className="markdown-callout__text" key={`${line}-${lineIndex}`}>
@@ -695,8 +750,13 @@ function renderCallout(block: Extract<MarkdownBlock, { type: "callout" }>, index
   );
 }
 
-function renderQuote(block: Extract<MarkdownBlock, { type: "quote" }>, index: number) {
-  return <blockquote key={index}>{renderInlineMarkdown(block.content)}</blockquote>;
+function renderQuote(
+  block: Extract<MarkdownBlock, { type: "quote" }>,
+  index: number,
+) {
+  return (
+    <blockquote key={index}>{renderInlineMarkdown(block.content)}</blockquote>
+  );
 }
 
 function renderDivider(index: number) {
@@ -758,5 +818,9 @@ function renderMarkdownBlock(block: MarkdownBlock, index: number) {
 export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
   const blocks = parseMarkdownBlocks(content);
 
-  return <div className="markdown-content">{blocks.map((block, index) => renderMarkdownBlock(block, index))}</div>;
+  return (
+    <div className="markdown-content">
+      {blocks.map((block, index) => renderMarkdownBlock(block, index))}
+    </div>
+  );
 }

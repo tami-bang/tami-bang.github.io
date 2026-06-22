@@ -28,7 +28,10 @@ function normalizeSlug(slug: string) {
 }
 
 function parseFrontmatterValue(line: string) {
-  return line.replace(/^.*?:\s*/, "").replace(/^["']|["']$/g, "").trim();
+  return line
+    .replace(/^.*?:\s*/, "")
+    .replace(/^["']|["']$/g, "")
+    .trim();
 }
 
 function getMarkdownFileNames() {
@@ -60,7 +63,9 @@ function createFallbackPost(slug: string, rawContent: string): BlogPost {
 }
 
 function parseMarkdownPost(slug: string, rawContent: string): BlogPost {
-  const frontmatterMatch = rawContent.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
+  const frontmatterMatch = rawContent.match(
+    /^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/,
+  );
 
   if (!frontmatterMatch) {
     return createFallbackPost(slug, rawContent);
@@ -80,7 +85,9 @@ function parseMarkdownPost(slug: string, rawContent: string): BlogPost {
     slug,
     title: titleLine ? parseFrontmatterValue(titleLine) : slug,
     description: descriptionLine ? parseFrontmatterValue(descriptionLine) : "",
-    category: categoryLine ? parseFrontmatterValue(categoryLine) : DEFAULT_CATEGORY,
+    category: categoryLine
+      ? parseFrontmatterValue(categoryLine)
+      : DEFAULT_CATEGORY,
     createdAt,
     updatedAt: updatedAtLine ? parseFrontmatterValue(updatedAtLine) : createdAt,
     content,
@@ -105,7 +112,10 @@ export function getPostBySlug(slug: string) {
   ensurePostsDirectory();
 
   const normalizedSlug = normalizeSlug(slug);
-  const filePath = path.join(POSTS_DIRECTORY, `${normalizedSlug}${MARKDOWN_EXTENSION}`);
+  const filePath = path.join(
+    POSTS_DIRECTORY,
+    `${normalizedSlug}${MARKDOWN_EXTENSION}`,
+  );
 
   if (!fs.existsSync(filePath)) {
     return null;

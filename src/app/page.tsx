@@ -2,7 +2,12 @@ import Link from "next/link"; // 용도 사이트 내부 페이지 이동
 import HeroObjectScene from "@/components/HeroObjectScene"; // 용도 히어로 3D 오브젝트 인터랙션 표시
 import ProjectCard from "@/components/ProjectCard"; // 용도 프로젝트 카드 표시
 import SectionHeader from "@/components/SectionHeader"; // 용도 공용 섹션 헤더 표시
-import { homeFocusItems, homeHero, homeSections, workingPatternSteps } from "@/lib/home"; // 용도 홈 화면 콘텐츠 데이터
+import {
+  homeFocusItems,
+  homeHero,
+  homeSections,
+  workingPatternSteps,
+} from "@/lib/home"; // 용도 홈 화면 콘텐츠 데이터
 import { getFeaturedProjects } from "@/lib/projects"; // 용도 대표 프로젝트 데이터 조회
 import { studyCategoryItems } from "@/lib/site"; // 용도 학습 카테고리 데이터 조회
 
@@ -17,18 +22,12 @@ function SpaceDots() {
 }
 
 function HeroTitle() {
-  return (
-    <h1 className="hero-title">
-      {homeHero.titleLines.join(" ")}
-    </h1>
-  );
+  return <h1 className="hero-title">{homeHero.titleLines.join(" ")}</h1>;
 }
 
 function HeroDescription() {
   return (
-    <p className="hero-description">
-      {homeHero.descriptionLines.join(" ")}
-    </p>
+    <p className="hero-description">{homeHero.descriptionLines.join(" ")}</p>
   );
 }
 
@@ -51,7 +50,9 @@ function HeroActions() {
       {homeHero.actions.map((action) => (
         <Link
           className={
-            action.variant === "primary" ? "hero-primary-link" : "hero-github-link"
+            action.variant === "primary"
+              ? "hero-primary-link"
+              : "hero-github-link"
           }
           href={action.href}
           key={action.href}

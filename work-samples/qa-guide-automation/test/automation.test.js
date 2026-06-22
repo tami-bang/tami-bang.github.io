@@ -42,7 +42,9 @@ test("template guard allows an untouched template", () => {
 
 test("template guard blocks user-authored text", () => {
   const result = validateTemplateState(
-    emptyTemplate([{ type: "paragraph", text: "Existing note", owner: "user" }]),
+    emptyTemplate([
+      { type: "paragraph", text: "Existing note", owner: "user" },
+    ]),
   );
 
   assert.equal(result.ok, false);

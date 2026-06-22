@@ -78,7 +78,4 @@ function parseIssue(issue) {
   };
 }
 
-export {
-  inferTargets,
-  parseIssue,
-};
+export { inferTargets, parseIssue };
