@@ -210,7 +210,7 @@
 ================================ */
 .scroll-to-top {
   position: fixed;
-  left: max(20px, env(safe-area-inset-left));
+  right: max(20px, env(safe-area-inset-right));
   bottom: max(22px, env(safe-area-inset-bottom));
   z-index: 45;
   display: grid;
