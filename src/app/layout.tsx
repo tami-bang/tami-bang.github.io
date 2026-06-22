@@ -4,6 +4,7 @@ import Footer from "@/components/Footer"; // 용도 공통 하단 푸터 렌더�
 import GlobalAmbientEffects from "@/components/GlobalAmbientEffects"; // 용도 전역 별/별똥별 배경 효과
 import Header from "@/components/Header"; // 용도 공통 상단 네비게이션 렌더링
 import NeonCardGlow from "@/components/NeonCardGlow"; // 용도 카드 커서 추적 네온 효과 전역 적용
+import ScrollToTopButton from "@/components/ScrollToTopButton"; // 용도 스크롤 후 페이지 상단 이동 버튼 표시
 import { siteConfig } from "@/lib/site"; // 용도 사이트 공통 메타 정보 관리
 import "./globals.css"; // 용도 전역 스타일 적용
 
@@ -39,6 +40,7 @@ export default function RootLayout({
         <NeonCardGlow />
         <Header />
         {children}
+        <ScrollToTopButton />
         <Footer />
       </body>
     </html>
