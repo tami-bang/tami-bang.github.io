@@ -7,6 +7,7 @@ export const siteConfig = {
     email: "vjihyun.bangv@gmail.com",
   },
   navItems: [
+    { label: "로드맵", href: "/roadmap" },
     { label: "공부 기록", href: "/blog" },
     { label: "프로젝트", href: "/projects" },
     { label: "소개", href: "/about" },
