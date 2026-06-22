@@ -276,7 +276,8 @@
   filter: saturate(1.05) contrast(1.04)
     drop-shadow(0 34px 70px rgba(0, 0, 0, 0.34));
   transition: transform 180ms ease-out;
-  animation: object-float-main 8s ease-in-out infinite;
+  animation: object-orbit-main 12s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  will-change: transform, translate, rotate;
 }
 
 .hero-object-depth {
@@ -297,5 +298,7 @@
     rotateY(calc(var(--pointer-x) * -4deg)) rotateZ(12deg) scale(0.76);
   filter: saturate(0.72) contrast(0.82) blur(0.45px);
   transition: transform 240ms ease-out;
-  animation: object-float-depth 11s ease-in-out infinite;
+  animation: object-orbit-depth 15s cubic-bezier(0.45, 0.05, 0.55, 0.95) -4s
+    infinite;
+  will-change: transform, translate, rotate;
 }

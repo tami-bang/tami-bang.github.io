@@ -79,7 +79,7 @@
 
 .roadmap-orbit {
   position: absolute;
-  right: clamp(110px, 15vw, 210px);
+  left: 61%;
   top: clamp(26px, 5vw, 76px);
   width: clamp(120px, 16vw, 190px);
   aspect-ratio: 1;
@@ -464,6 +464,7 @@
     min-height: auto;
   }
   .roadmap-orbit {
+    left: auto;
     right: 3%;
     top: 2%;
     opacity: 0.42;
