@@ -5,7 +5,8 @@
   position: relative;
   overflow: hidden;
   min-height: auto;
-  padding: clamp(42px, 5vw, 76px) var(--layout-padding) clamp(28px, 4vw, 48px);
+  padding: var(--page-start-padding) var(--layout-padding)
+    clamp(28px, 4vw, 48px);
 }
 
 .hero-universe__inner {

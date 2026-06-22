@@ -2,8 +2,9 @@
    Layout Shell
 ================================ */
 .page-shell,
-.project-detail-shell {
-  width: min(calc(100% - var(--section-padding) * 2), var(--section-max-width));
+.project-detail-shell,
+.content-shell {
+  width: min(calc(100% - var(--layout-padding) * 2), var(--layout-max-width));
   margin: 0 auto;
 }
 
@@ -13,9 +14,7 @@
 }
 
 .content-shell {
-  width: min(calc(100% - var(--layout-padding) * 2), var(--layout-max-width));
-  margin: 0 auto;
-  padding-block: clamp(42px, 5vw, 76px) var(--section-gap-large);
+  padding-block: var(--page-start-padding) var(--section-gap-large);
 }
 
 .content-shell .page-section {
@@ -24,11 +23,7 @@
 
 .page-shell,
 .project-detail-shell {
-  padding: clamp(64px, 8vw, 110px) 0 120px;
-}
-
-.project-detail-shell {
-  max-width: 1040px;
+  padding: var(--page-start-padding) 0 var(--section-gap-large);
 }
 
 .page-hero {
