@@ -27,7 +27,8 @@
 }
 
 .page-hero {
-  margin-bottom: clamp(34px, 5vw, 58px);
+  min-height: var(--page-hero-min-height);
+  margin-bottom: var(--page-hero-to-content-gap);
 }
 
 .page-section--projects {

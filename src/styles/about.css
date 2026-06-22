@@ -2,19 +2,20 @@
    About Page
 ================================ */
 .about-page {
+  --about-page-gap: clamp(36px, 5vw, 68px);
   position: relative;
   display: grid;
-  gap: clamp(36px, 5vw, 68px);
+  gap: var(--about-page-gap);
   isolation: isolate;
 }
 
-.about-hero {
+.about-page .about-hero {
   position: relative;
-  margin-bottom: 0;
+  margin-bottom: calc(var(--page-hero-to-content-gap) - var(--about-page-gap));
 }
 
 .about-story {
-  margin-top: clamp(-20px, -1.6vw, -8px);
+  margin-top: 0;
 }
 
 .about-section {
