@@ -292,8 +292,19 @@ export default async function ProjectDetailPage({
       </section>
 
       <section className="project-detail-actions">
+        {project.liveUrl && (
+          <a
+            className="hero-primary-link"
+            href={project.liveUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {project.liveLabel ?? "View Live Demo"}
+          </a>
+        )}
+
         <a
-          className="hero-primary-link"
+          className={project.liveUrl ? "hero-github-link" : "hero-primary-link"}
           href={project.githubUrl}
           target="_blank"
           rel="noreferrer"

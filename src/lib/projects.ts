@@ -57,6 +57,8 @@ export type Project = {
   workSamples?: ProjectWorkSample[];
   githubUrl: string;
   githubLabel?: string;
+  liveUrl?: string;
+  liveLabel?: string;
 };
 
 export const projects: Project[] = [
@@ -254,7 +256,7 @@ export const projects: Project[] = [
       "잡코리아 공고 수집부터 개인 맞춤 매칭 리포트까지 자동화한 채용 데이터 파이프라인",
     domain: "Data Automation / Job Search",
     description:
-      "잡코리아 채용공고를 수집하고 상세 페이지를 보강한 뒤, 개인 선호 조건 기반 점수화와 CSV/XLSX 리포트 생성을 연결한 Python 크롤링 프로젝트입니다.",
+      "저장된 채용공고를 개인 선호 조건으로 점수화하고, FastAPI와 Next.js 대시보드에서 검색·관심공고·지원 상태까지 관리하는 채용 데이터 프로젝트입니다.",
     status: "Personal Automation MVP",
     period: "2026",
     role: "Crawler / Parser / Data Pipeline / Report Automation",
@@ -296,6 +298,8 @@ export const projects: Project[] = [
       "SQLite",
       "Pandas",
       "XLSX XML",
+      "FastAPI",
+      "Next.js",
     ],
     results: [
       "서울, 경기, 인천 중심의 유효 공고를 개인 조건에 맞춰 빠르게 선별할 수 있는 리포트 생성",
@@ -307,6 +311,8 @@ export const projects: Project[] = [
       "개인 자동화 도구도 결과만 보여주는 것보다 왜 추천됐는지 설명할 수 있어야 실제 의사결정에 도움이 됩니다.",
     ],
     githubUrl: "https://github.com/tami-bang/job_crawler",
+    liveUrl: "https://tami-bang.github.io/job_crawler/",
+    liveLabel: "라이브 데모 보기",
   },
   {
     slug: "pcfilter-qa-case-study",
