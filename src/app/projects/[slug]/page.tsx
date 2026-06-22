@@ -198,24 +198,78 @@ export default async function ProjectDetailPage({
 
   return (
     <main className="project-detail-shell">
-      <section className="project-detail-hero page-section--reveal">
-        <Link className="back-link" href="/projects">
-          Back to Projects
-        </Link>
+      <section
+        className={`project-detail-hero page-section--reveal ${
+          project.livePreview ? "project-detail-hero--with-preview" : ""
+        }`}
+      >
+        <div className="project-detail-hero__content">
+          <Link className="back-link" href="/projects">
+            Back to Projects
+          </Link>
 
-        <SectionHeader
-          eyebrow={project.domain}
-          title={project.title}
-          description={project.subtitle}
-        />
+          <SectionHeader
+            eyebrow={project.domain}
+            title={project.title}
+            description={project.subtitle}
+          />
 
-        <div className="project-detail-meta">
-          <span>{project.status}</span>
-          <span>{project.period}</span>
-          <span>{project.role}</span>
+          <div className="project-detail-meta">
+            <span>{project.status}</span>
+            <span>{project.period}</span>
+            <span>{project.role}</span>
+          </div>
+
+          <p className="project-detail-description">{project.description}</p>
         </div>
 
-        <p className="project-detail-description">{project.description}</p>
+        {project.livePreview === "job-radar" && project.liveUrl && (
+          <a
+            className="job-radar-preview"
+            href={project.liveUrl}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="JobRadar 사용해보기"
+          >
+            <header className="job-radar-preview__header">
+              <span>
+                <i /> INTERACTIVE DEMO
+              </span>
+              <b>↗</b>
+            </header>
+
+            <div className="job-radar-preview__stage" aria-hidden="true">
+              <div className="job-radar-preview__orbit">
+                <i />
+                <i />
+                <i />
+                <div>
+                  <strong>92</strong>
+                  <span>MATCH</span>
+                </div>
+              </div>
+
+              <div className="job-radar-preview__stats">
+                <span>
+                  <b>06</b>
+                  <small>JOBS</small>
+                </span>
+                <span>
+                  <b>03</b>
+                  <small>SAVED</small>
+                </span>
+              </div>
+            </div>
+
+            <footer className="job-radar-preview__footer">
+              <div>
+                <strong>JobRadar 사용해보기</strong>
+                <span>검색 · 찜하기 · 메모 · 지원 상태를 눌러보세요</span>
+              </div>
+              <b>CLICK</b>
+            </footer>
+          </a>
+        )}
       </section>
 
       <InternshipStorySection story={project.internshipStory} />

@@ -59,6 +59,7 @@ export type Project = {
   githubLabel?: string;
   liveUrl?: string;
   liveLabel?: string;
+  livePreview?: "job-radar";
 };
 
 export const projects: Project[] = [
@@ -312,7 +313,8 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/tami-bang/job_crawler",
     liveUrl: "https://tami-bang.github.io/job_crawler/",
-    liveLabel: "라이브 데모 보기",
+    liveLabel: "JobRadar 사용해보기 ↗",
+    livePreview: "job-radar",
   },
   {
     slug: "pcfilter-qa-case-study",

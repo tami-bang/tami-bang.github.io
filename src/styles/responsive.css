@@ -169,6 +169,21 @@
     white-space: normal;
   }
 
+  .project-detail-hero--with-preview {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .job-radar-preview {
+    min-height: 390px;
+    border-radius: 28px;
+  }
+
+  .job-radar-preview__orbit {
+    width: 185px;
+    height: 185px;
+  }
+
   .hero-actions,
   .project-detail-actions {
     flex-direction: column;
