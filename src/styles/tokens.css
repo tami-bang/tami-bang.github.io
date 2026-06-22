@@ -54,6 +54,8 @@
   --layout-padding: clamp(20px, 5vw, 64px);
   --section-padding: clamp(16px, 4vw, 48px);
   --page-start-padding: clamp(42px, 5vw, 76px);
+  --page-hero-min-height: clamp(280px, 24vw, 320px);
+  --page-hero-to-content-gap: clamp(36px, 4vw, 48px);
 
   --hero-min-height: clamp(620px, 78vh, 760px);
 
