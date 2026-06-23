@@ -251,12 +251,12 @@ export default async function ProjectDetailPage({
 
               <div className="job-radar-preview__stats">
                 <span>
-                  <b>06</b>
+                  <b>23</b>
                   <small>JOBS</small>
                 </span>
                 <span>
                   <b>03</b>
-                  <small>SAVED</small>
+                  <small>MATCHED</small>
                 </span>
               </div>
             </div>
@@ -264,7 +264,7 @@ export default async function ProjectDetailPage({
             <footer className="job-radar-preview__footer">
               <div>
                 <strong>JobRadar 사용해보기</strong>
-                <span>검색 · 찜하기 · 메모 · 지원 상태를 눌러보세요</span>
+                <span>실제 수집 공고로 검색 · 달력 · 엑셀을 눌러보세요</span>
               </div>
               <b>CLICK</b>
             </footer>
