@@ -1,6 +1,5 @@
 import Link from "next/link"; // 용도 프로젝트, 공부 기록, 외부 연락 링크 이동
 import JourneyTimeline from "@/components/JourneyTimeline";
-import SectionHeader from "@/components/SectionHeader"; // 용도 공통 섹션 헤더 표시
 import { siteConfig } from "@/lib/site"; // 용도 사이트 공통 링크 정보 조회
 
 export const metadata = {
@@ -53,33 +52,30 @@ export default function AboutPage() {
   return (
     <main className="content-shell about-page">
       <section className="page-hero about-hero page-section--reveal">
-        <SectionHeader
-          eyebrow="About"
-          title="UI와 API 흐름을 함께 이해하는 서비스 개발자"
-          description="QA 경험을 통해 반복되는 문제와 수동 검증 흐름을 발견하는 습관을 익혔습니다. 지금은 그 감각을 바탕으로 데이터를 정리하고, API와 화면 흐름을 설계하며, 반복 작업을 자동화하는 개발자로 성장하고 있습니다."
-        />
-      </section>
-
-      <section className="about-story page-section--reveal-delayed">
-        <div className="about-story__intro">
-          <p className="about-story__lead">
-            안녕하세요. 저는 반복되는 작업을 발견하면 데이터, API, 사용자 화면
-            흐름으로 구조화해 자동화하려는 신입 개발자 타미입니다.
-          </p>
-
+        <div className="about-hero__copy">
+          <p className="section-eyebrow">About Me</p>
+          <h1>
+            경험이 흐르고,
+            <br />
+            <span>지금의 내가</span> 되었습니다.
+          </h1>
           <p>
-            QA는 제 정체성이라기보다 문제를 발견하는 시야를 만들어준 경험입니다.
-            수동으로 반복되는 검증과 흩어진 기록을 보며, 반복을 줄이는 구조를
-            만드는 개발에 관심을 갖게 되었습니다.
-          </p>
-
-          <p>
-            AI는 목표 직무가 아니라 검색과 판단 흐름을 보조하는 도구로
-            사용합니다. 중심은 Python, FastAPI, DB, 크롤링을 활용해 데이터를
-            정리하고 사용자가 이해할 수 있는 결과 화면과 자동화 흐름을 만드는
-            일입니다.
+            다양한 경험 속에서 문제를 발견하고,
+            <br />더 나은 방법을 찾는 습관이 지금의 저를 만들었습니다.
           </p>
         </div>
+
+        <aside className="about-hero__quote" aria-label="지금의 한 줄">
+          <span aria-hidden="true">“</span>
+          <p>
+            반복되는 문제를 발견하고,
+            <br />
+            데이터와 흐름으로 바꾸는
+            <br />
+            서비스 개발자 <strong>타미</strong>입니다.
+          </p>
+          <span aria-hidden="true">”</span>
+        </aside>
       </section>
 
       <JourneyTimeline />
