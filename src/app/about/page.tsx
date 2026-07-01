@@ -1,4 +1,5 @@
 import Link from "next/link"; // 용도 프로젝트, 공부 기록, 외부 연락 링크 이동
+import JourneyTimeline from "@/components/JourneyTimeline";
 import SectionHeader from "@/components/SectionHeader"; // 용도 공통 섹션 헤더 표시
 import { siteConfig } from "@/lib/site"; // 용도 사이트 공통 링크 정보 조회
 
@@ -7,29 +8,6 @@ export const metadata = {
   description:
     "반복 작업을 데이터, API, 사용자 화면 흐름으로 구조화해 자동화하는 개발자 소개",
 };
-
-const workSteps = [
-  {
-    title: "반복되는 흐름을 먼저 찾습니다",
-    description:
-      "수동 확인, 반복 판단, 흩어진 기록처럼 자동화할 수 있는 흐름을 먼저 봅니다.",
-  },
-  {
-    title: "데이터와 상태를 구조화합니다",
-    description:
-      "입력, 처리, 저장, 결과를 나누어 다시 확인 가능한 데이터 흐름으로 정리합니다.",
-  },
-  {
-    title: "API와 저장 구조로 연결합니다",
-    description:
-      "Python, FastAPI, DB, 크롤링을 활용해 반복 작업을 줄이는 서비스 흐름을 만듭니다.",
-  },
-  {
-    title: "결과를 다시 확인할 수 있게 기록합니다",
-    description:
-      "자동화 결과와 한계를 로그, 리포트, 문서로 남겨 다음 개선으로 연결합니다.",
-  },
-];
 
 const projectSummaries = [
   {
@@ -63,29 +41,6 @@ const focusAreas = [
   "AI as Tool",
   "Documentation",
 ];
-
-const directionSteps = [
-  {
-    label: "Detect",
-    title: "반복 발견",
-    detail: "수동 확인과 흩어진 기록에서 줄일 일을 찾습니다.",
-  },
-  {
-    label: "Map",
-    title: "흐름 구조화",
-    detail: "입력, 처리, 저장, 결과를 한 흐름으로 나눕니다.",
-  },
-  {
-    label: "Automate",
-    title: "자동화",
-    detail: "API, DB, 크롤링으로 반복 동작을 구현합니다.",
-  },
-  {
-    label: "Ship",
-    title: "서비스 구현",
-    detail: "사용자가 확인할 수 있는 화면과 기록으로 완성합니다.",
-  },
-] as const;
 
 function createGmailComposeUrl(email: string) {
   const subject = encodeURIComponent("Tami.log 포트폴리오 문의");
@@ -127,44 +82,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section
-        className="about-flow-board page-section--reveal-delayed"
-        aria-labelledby="core-direction-title"
-      >
-        <div className="about-flow-board__header">
-          <p className="section-eyebrow">Core Direction</p>
-          <h2 id="core-direction-title">문제를 서비스 흐름으로 바꾸는 순서</h2>
-        </div>
-
-        <div className="about-flow-track">
-          {directionSteps.map((step, index) => (
-            <article className="about-flow-node" key={step.title}>
-              <span>
-                {String(index + 1).padStart(2, "0")} / {step.label}
-              </span>
-              <strong>{step.title}</strong>
-              <p>{step.detail}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="about-section about-section--animated">
-        <div className="about-section__header">
-          <p className="section-eyebrow">How I Work</p>
-          <h2>반복을 줄이는 서비스 흐름을 먼저 생각합니다.</h2>
-        </div>
-
-        <div className="about-process-grid">
-          {workSteps.map((step, index) => (
-            <article className="about-process-card" key={step.title}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <h3>{step.title}</h3>
-              <p>{step.description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
+      <JourneyTimeline />
 
       <section className="about-section about-section--animated">
         <div className="about-section__header">
