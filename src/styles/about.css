@@ -80,15 +80,14 @@
   background:
     radial-gradient(
       circle at 72% 18%,
-      color-mix(in srgb, var(--brand-tertiary) 12%, transparent),
+      color-mix(in srgb, var(--brand-tertiary) 8%, transparent),
       transparent 30%
     ),
     radial-gradient(
       circle at 16% 38%,
-      color-mix(in srgb, var(--brand-accent) 10%, transparent),
+      color-mix(in srgb, var(--brand-accent) 6%, transparent),
       transparent 28%
-    ),
-    linear-gradient(180deg, transparent, rgba(5, 7, 19, 0.3), transparent);
+    );
 }
 
 .journey-board__intro {
@@ -130,10 +129,10 @@
   z-index: -1;
   pointer-events: none;
   background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.35) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.28) 1px, transparent 1px),
     radial-gradient(
       circle,
-      color-mix(in srgb, var(--brand-accent) 32%, transparent) 1px,
+      color-mix(in srgb, var(--brand-accent) 24%, transparent) 1px,
       transparent 1px
     );
   background-position:
@@ -142,7 +141,7 @@
   background-size:
     90px 90px,
     148px 148px;
-  opacity: 0.12;
+  opacity: 0.09;
 }
 
 .journey-board__path {
@@ -166,10 +165,10 @@
 .journey-board__item {
   position: relative;
   display: grid;
-  grid-template-columns: clamp(92px, 12vw, 160px) minmax(220px, 0.62fr) minmax(
-      360px,
-      1.25fr
-    );
+  grid-template-columns:
+    clamp(92px, 12vw, 160px)
+    minmax(220px, 0.62fr)
+    minmax(360px, 1.25fr);
   gap: clamp(18px, 3vw, 40px);
   align-items: center;
   min-height: clamp(148px, 17vw, 215px);
@@ -267,17 +266,32 @@
   word-break: keep-all;
 }
 
+/* 오른쪽 PNG 비주얼 */
 .journey-visual {
   position: relative;
-  min-height: clamp(160px, 18vw, 240px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
   opacity: 0.96;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  overflow: visible;
 }
 
 .journey-visual__image {
   display: block;
-  width: 100%;
-  height: auto;
+  width: min(100%, 560px);
+  height: clamp(150px, 18vw, 230px);
   object-fit: contain;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  filter: drop-shadow(
+    0 0 28px color-mix(in srgb, var(--brand-accent) 8%, transparent)
+  );
 }
 
 .journey-work-style {
@@ -401,7 +415,13 @@
 
   .journey-visual {
     grid-column: 2;
-    min-height: 210px;
+    min-height: 0;
+  }
+
+  .journey-visual__image {
+    width: min(100%, 520px);
+    height: clamp(170px, 30vw, 240px);
+    object-fit: contain;
   }
 
   .journey-board__path {
@@ -440,8 +460,15 @@
 
   .journey-visual {
     grid-column: 1 / -1;
-    min-height: 190px;
     margin-left: 54px;
+    min-height: 0;
+  }
+
+  .journey-visual__image {
+    width: 100%;
+    height: auto;
+    max-height: 220px;
+    object-fit: contain;
   }
 }
 
