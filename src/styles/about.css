@@ -61,6 +61,18 @@
   animation-delay: 1400ms;
 }
 
+.about-journey-image-section {
+  margin-top: clamp(48px, 7vw, 96px);
+}
+
+.about-journey-image {
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  margin: 0 auto;
+}
+
 .about-hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(300px, 0.48fr);
