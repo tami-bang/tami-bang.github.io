@@ -1,15 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type JourneyKind =
-  | "singapore"
-  | "shipping"
-  | "creative"
+  | "plane"
+  | "ship"
+  | "film"
   | "coffee"
   | "cloud"
-  | "security"
-  | "qa";
+  | "code"
+  | "shield";
 
 type JourneyItem = {
   period: string;
@@ -26,7 +26,7 @@ const journeyItems: JourneyItem[] = [
     role: "F&B Server",
     description:
       "낯선 해외에서 다양한 사람들을 만나며 서비스 마인드와 적응력을 배웠습니다.",
-    kind: "singapore",
+    kind: "plane",
   },
   {
     period: "2017.11 ~ 2022.05",
@@ -34,15 +34,15 @@ const journeyItems: JourneyItem[] = [
     role: "수출입 정산, 일본 & 동남아 수출",
     description:
       "수출입 업무를 통해 문서, 데이터, 프로세스의 중요성을 깨닫고 효율적인 업무 흐름을 고민했습니다.",
-    kind: "shipping",
+    kind: "ship",
   },
   {
     period: "2022.08 ~ 2022.11",
     title: "광고콘텐츠제작 훈련 수료",
-    role: "Photoshop, Premiere Pro, After Effects, Illustrator",
+    role: "어도비 포토샵, 프리미어, 애프터이펙트, 일러스트레이터 수료",
     description:
       "어떻게 효과적으로 전달할지 고민하며 콘텐츠 제작과 시각적 표현을 배웠습니다.",
-    kind: "creative",
+    kind: "film",
   },
   {
     period: "2022.11 ~ 2023.02",
@@ -66,7 +66,7 @@ const journeyItems: JourneyItem[] = [
     role: "Web Security Project",
     description:
       "웹 보안 기술과 서비스 개발을 배우며 개발자로서의 역량을 키웠습니다.",
-    kind: "security",
+    kind: "code",
   },
   {
     period: "2026.04 ~ 2026.06",
@@ -74,209 +74,136 @@ const journeyItems: JourneyItem[] = [
     role: "IT 보안 소프트웨어 QA 인턴",
     description:
       "보안 솔루션의 품질을 검증하며 문제를 발견하고 더 나은 서비스를 만드는 과정에 함께했습니다.",
-    kind: "qa",
+    kind: "shield",
   },
 ];
 
-const workChecklist = [
-  "해야 할 일을 먼저 정리합니다.",
-  "먼저 동작하는 최소 기능(MVP)을 만듭니다.",
-  "해결이 필요한 일은 메모해 둡니다.",
-  "한 번 해결한 문제는 문서로 남깁니다.",
-  "반복되는 일은 자동화할 방법을 고민합니다.",
-  "완료한 일은 체크하고 다음 작업으로 넘어갑니다.",
-];
+const coreSteps = [
+  { label: "문제 발견", kind: "search" },
+  { label: "흐름 구조화", kind: "flow" },
+  { label: "자동화", kind: "gear" },
+  { label: "서비스 구현", kind: "screen" },
+  { label: "사용자 가치", kind: "heart" },
+] as const;
 
-function PathIcon({ kind }: { kind: JourneyKind }) {
+function NeonIcon({
+  kind,
+}: {
+  kind: JourneyKind | (typeof coreSteps)[number]["kind"];
+}) {
   return (
-    <svg viewBox="0 0 48 48" aria-hidden="true">
-      {kind === "singapore" && (
-        <>
-          <path d="M42 7 21 28" />
-          <path d="m42 7-8 32-13-11-11 6 6-11L5 10l37-3Z" />
-        </>
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+      {kind === "plane" && (
+        <path d="M55 10 27 38 11 33l8-8L5 16l10-6 27 8 8-8c6-6 10-5 5 0ZM27 38l-4 17 10-13" />
       )}
-      {kind === "shipping" && (
-        <>
-          <path d="M11 28h26l-5 10H16l-5-10Z" />
-          <path d="M17 28V14h14v14" />
-          <path d="M8 39c4 2 7 2 11 0 4-2 7-2 11 0 4 2 7 2 11 0" />
-        </>
+      {kind === "ship" && (
+        <path d="M12 37h40l-8 14H20l-8-14ZM20 37V18h25v19M27 18V10h10v8M9 53c6 3 11 3 17 0s11-3 17 0 11 3 17 0" />
       )}
-      {kind === "creative" && (
-        <>
-          <rect x="9" y="10" width="30" height="28" rx="4" />
-          <path d="M17 10v28M31 10v28M9 19h30M9 29h30" />
-        </>
+      {kind === "film" && (
+        <path d="M14 14h36v36H14zM23 14v36M41 14v36M14 25h36M14 39h36" />
       )}
       {kind === "coffee" && (
-        <>
-          <path d="M18 8c-3 4 3 5 0 9M25 7c-3 4 3 5 0 10M32 8c-3 4 3 5 0 9" />
-          <path d="M13 22h22v5c0 7-5 12-11 12s-11-5-11-12v-5Z" />
-          <path d="M35 24h3a4 4 0 0 1 0 8h-3M11 41h27" />
-        </>
+        <path d="M23 10c-5 6 5 8 0 15M32 8c-5 7 5 8 0 17M41 10c-5 6 5 8 0 15M17 31h31v8c0 10-7 17-16 17s-15-7-15-17v-8ZM48 34h4a6 6 0 0 1 0 12h-4M14 58h38" />
       )}
       {kind === "cloud" && (
-        <path d="M16 35h20a8 8 0 0 0 0-16 12 12 0 0 0-23-2 9 9 0 0 0 3 18Z" />
+        <path d="M20 47h29a11 11 0 0 0 0-22 17 17 0 0 0-33-3A13 13 0 0 0 20 47Z" />
       )}
-      {kind === "security" && (
-        <>
-          <path d="M13 18 5 24l8 6M35 18l8 6-8 6M28 12l-8 24" />
-        </>
+      {kind === "code" && (
+        <path d="m22 22-12 10 12 10M42 22l12 10-12 10M36 16 28 48" />
       )}
-      {kind === "qa" && (
-        <>
-          <path d="M24 6 38 12v11c0 10-6 16-14 19-8-3-14-9-14-19V12l14-6Z" />
-          <path d="m18 24 4 4 8-9" />
-        </>
+      {kind === "shield" && (
+        <path d="M32 7 51 15v16c0 14-8 23-19 28-11-5-19-14-19-28V15l19-8ZM23 32l6 6 13-16" />
+      )}
+      {kind === "search" && (
+        <path d="M28 44a16 16 0 1 1 0-32 16 16 0 0 1 0 32ZM40 40l13 13" />
+      )}
+      {kind === "flow" && (
+        <path d="M30 10h18v14H30zM10 40h18v14H10zM38 40h18v14H38zM39 24v8H19v8M39 32h8v8" />
+      )}
+      {kind === "gear" && (
+        <path d="M32 22a10 10 0 1 0 0 20 10 10 0 0 0 0-20ZM32 8v8M32 48v8M8 32h8M48 32h8M15 15l6 6M43 43l6 6M49 15l-6 6M21 43l-6 6" />
+      )}
+      {kind === "screen" && <path d="M10 14h44v30H10zM25 54h14M32 44v10" />}
+      {kind === "heart" && (
+        <path d="M32 54S11 41 11 24c0-8 5-14 13-14 5 0 8 3 8 3s3-3 8-3c8 0 13 6 13 14 0 17-21 30-21 30Z" />
       )}
     </svg>
   );
 }
 
-function VisualIcon({ kind }: { kind: JourneyKind }) {
-  return (
-    <svg viewBox="0 0 220 150" aria-hidden="true">
-      {kind === "singapore" && (
-        <>
-          <path
-            className="visual-line"
-            d="M16 86C70 22 96 118 144 48c18-26 36-31 60-24"
-          />
-          <path
-            className="visual-main"
-            d="m80 32 78 18-54 25-18 38-12-6 5-30-45-14 9-9 43 2-18-17 12-7Z"
-          />
-          <path
-            className="visual-soft"
-            d="M42 124h136M72 124V76h23v48M104 124V64h25v60M140 124V84h18v40"
-          />
-        </>
-      )}
-      {kind === "shipping" && (
-        <>
-          <path
-            className="visual-map"
-            d="M18 64c28-26 62-28 96-14 32 13 53-9 86 5M28 100c46-13 75 17 117 5 28-8 41 4 57 16"
-          />
-          <path className="visual-line" d="M38 94C82 62 126 112 174 72" />
-          <path
-            className="visual-main"
-            d="M52 92h112l-14 28H66L52 92ZM70 72h72v20H70zM85 55h42v17H85z"
-          />
-        </>
-      )}
-      {kind === "creative" && (
-        <>
-          <path className="visual-line" d="M24 112c50-40 112-42 172-4" />
-          <rect
-            className="visual-app visual-app--ps"
-            x="36"
-            y="38"
-            width="38"
-            height="38"
-            rx="7"
-          />
-          <rect
-            className="visual-app visual-app--pr"
-            x="82"
-            y="24"
-            width="38"
-            height="38"
-            rx="7"
-          />
-          <rect
-            className="visual-app visual-app--ae"
-            x="128"
-            y="38"
-            width="38"
-            height="38"
-            rx="7"
-          />
-          <rect
-            className="visual-app visual-app--ai"
-            x="174"
-            y="24"
-            width="38"
-            height="38"
-            rx="7"
-          />
-        </>
-      )}
-      {kind === "coffee" && (
-        <>
-          <path
-            className="visual-soft"
-            d="M82 46c-10-18 13-18 3-34M112 46c-10-18 13-18 3-34M142 46c-10-18 13-18 3-34"
-          />
-          <path
-            className="visual-main"
-            d="M56 66h100v22c0 30-23 50-50 50S56 118 56 88V66Z"
-          />
-          <path
-            className="visual-soft"
-            d="M156 74h14a18 18 0 0 1 0 36h-14M46 140h126"
-          />
-          <path className="visual-line" d="M72 82c24 14 47 14 70 0" />
-        </>
-      )}
-      {kind === "cloud" && (
-        <>
-          <path
-            className="visual-main"
-            d="M66 82h92a28 28 0 0 0-4-56 42 42 0 0 0-80-7A32 32 0 0 0 66 82Z"
-          />
-          <path
-            className="visual-soft"
-            d="M82 110h72v28H82zM104 82v28M128 82v28"
-          />
-          <path className="visual-line" d="M28 124h54M154 124h42M118 138v10" />
-        </>
-      )}
-      {kind === "security" && (
-        <>
-          <path
-            className="visual-soft"
-            d="M28 38h72v70H28zM118 38h74v70h-74zM42 56h42M42 72h28M132 56h42M132 72h30"
-          />
-          <path
-            className="visual-main"
-            d="M110 52 158 72v34c0 38-21 62-48 76-27-14-48-38-48-76V72l48-20Z"
-          />
-          <path className="visual-line" d="m88 104 16 16 31-42" />
-        </>
-      )}
-      {kind === "qa" && (
-        <>
-          <path
-            className="visual-soft"
-            d="M34 34h152v86H34zM92 120h36v20M76 140h68"
-          />
-          <circle className="visual-main" cx="134" cy="82" r="34" />
-          <path className="visual-soft" d="m158 106 34 34" />
-          <path className="visual-line" d="m118 80 12 12 24-29" />
-        </>
-      )}
-    </svg>
-  );
-}
-
-function VisualPanel({ item }: { item: JourneyItem }) {
-  const appLabels = item.kind === "creative" ? ["Ps", "Pr", "Ae", "Ai"] : [];
-
+function Visual({ kind }: { kind: JourneyKind }) {
   return (
     <div
-      className={`journey-visual journey-visual--${item.kind}`}
+      className={`reference-visual reference-visual--${kind}`}
       aria-hidden="true"
     >
-      <span className="journey-visual__halo" />
-      <span className="journey-visual__scan" />
-      <VisualIcon kind={item.kind} />
-      {appLabels.length > 0 && (
-        <div className="journey-visual__apps">
-          {appLabels.map((label) => (
+      <span className="reference-visual__glow" />
+      <span className="reference-visual__ground" />
+
+      {kind === "plane" && (
+        <>
+          <div className="visual-skyline">
+            <span className="visual-skyline__mbs" />
+            <span className="visual-skyline__merlion" />
+            <span className="visual-skyline__wheel" />
+            <span className="visual-skyline__city" />
+          </div>
+        </>
+      )}
+
+      {kind === "ship" && (
+        <>
+          <svg className="visual-map" viewBox="0 0 520 250">
+            <path d="M25 88c80-54 134-18 216-24 78-6 98-55 246-14" />
+            <path d="M42 158c76-18 108 32 180 18 70-14 96 18 236 16" />
+            <path
+              className="visual-map__route"
+              d="M48 148C142 80 262 195 370 104c42-35 75-28 112-2"
+            />
+          </svg>
+          <div className="visual-ship">
+            <span />
+          </div>
+        </>
+      )}
+
+      {kind === "film" && (
+        <div className="visual-adobe">
+          {["Ps", "Pr", "Ae", "Ai"].map((label) => (
             <span key={label}>{label}</span>
           ))}
+        </div>
+      )}
+
+      {kind === "coffee" && (
+        <div className="visual-coffee-photo">
+          <span className="visual-coffee-photo__cup" />
+          <span className="visual-coffee-photo__machine" />
+          <span className="visual-coffee-photo__handle" />
+        </div>
+      )}
+
+      {kind === "cloud" && (
+        <div className="visual-cloud">
+          <span className="visual-cloud__cloud" />
+          <span className="visual-cloud__server" />
+          <span className="visual-cloud__grid" />
+        </div>
+      )}
+
+      {kind === "code" && (
+        <div className="visual-security">
+          <span className="visual-security__screen visual-security__screen--one" />
+          <span className="visual-security__screen visual-security__screen--two" />
+          <span className="visual-security__shield" />
+        </div>
+      )}
+
+      {kind === "shield" && (
+        <div className="visual-qa">
+          <span className="visual-qa__monitor" />
+          <span className="visual-qa__lens" />
+          <span className="visual-qa__check" />
         </div>
       )}
     </div>
@@ -285,12 +212,8 @@ function VisualPanel({ item }: { item: JourneyItem }) {
 
 export default function JourneyTimeline() {
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const checkRefs = useRef<(HTMLLIElement | null)[]>([]);
   const [visibleItems, setVisibleItems] = useState<Set<number>>(
     () => new Set([0]),
-  );
-  const [checkedItems, setCheckedItems] = useState<Set<number>>(
-    () => new Set(),
   );
 
   useEffect(() => {
@@ -308,24 +231,7 @@ export default function JourneyTimeline() {
           return next;
         });
       },
-      { rootMargin: "0px 0px -14% 0px", threshold: 0.22 },
-    );
-
-    const checkObserver = new IntersectionObserver(
-      (entries) => {
-        setCheckedItems((current) => {
-          const next = new Set(current);
-
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              next.add(Number((entry.target as HTMLElement).dataset.index));
-            }
-          });
-
-          return next;
-        });
-      },
-      { rootMargin: "0px 0px -18% 0px", threshold: 0.35 },
+      { rootMargin: "0px 0px -12% 0px", threshold: 0.22 },
     );
 
     itemRefs.current.forEach((item) => {
@@ -334,42 +240,29 @@ export default function JourneyTimeline() {
       }
     });
 
-    checkRefs.current.forEach((item) => {
-      if (item) {
-        checkObserver.observe(item);
-      }
-    });
-
     return () => {
       itemObserver.disconnect();
-      checkObserver.disconnect();
     };
   }, []);
 
   return (
-    <section className="journey-board" aria-labelledby="journey-board-title">
-      <div className="journey-board__intro">
-        <p className="section-eyebrow">Journey Storyboard</p>
-        <h2 id="journey-board-title">경험이 쌓여, 지금의 저를 만들었습니다.</h2>
-        <p>
-          사람, 업무, 데이터, 시스템을 이해하는 과정이 하나의 흐름으로 이어져
-          서비스 개발이라는 방향이 되었습니다.
-        </p>
-      </div>
+    <section
+      className="reference-journey"
+      aria-label="경험이 흐르는 커리어 스토리"
+    >
+      <svg
+        className="reference-journey__path"
+        viewBox="0 0 180 1260"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path d="M92 0C154 72 26 130 90 205C158 285 22 340 90 420C158 500 24 555 92 636C158 716 24 774 92 854C158 936 22 990 90 1072C154 1152 28 1200 92 1260" />
+      </svg>
 
-      <div className="journey-board__canvas">
-        <svg
-          className="journey-board__path"
-          viewBox="0 0 150 1160"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          <path d="M76 8C132 82 18 128 78 198C134 264 22 306 76 378C130 448 22 492 78 562C134 632 20 678 76 748C130 820 20 864 78 934C134 1004 24 1050 76 1152" />
-        </svg>
-
+      <div className="reference-journey__items">
         {journeyItems.map((item, index) => (
           <div
-            className="journey-board__item"
+            className="reference-journey__item"
             data-visible={visibleItems.has(index)}
             data-index={index}
             key={`${item.period}-${item.title}`}
@@ -377,47 +270,33 @@ export default function JourneyTimeline() {
               itemRefs.current[index] = element;
             }}
           >
-            <div className="journey-board__icon">
-              <PathIcon kind={item.kind} />
+            <div className="reference-journey__icon">
+              <NeonIcon kind={item.kind} />
             </div>
 
-            <article className="journey-board__text">
+            <article className="reference-journey__text">
               <span>{item.period}</span>
               <h3>{item.title}</h3>
               <strong>{item.role}</strong>
               <p>{item.description}</p>
             </article>
 
-            <VisualPanel item={item} />
+            <Visual kind={item.kind} />
           </div>
         ))}
       </div>
 
-      <section
-        className="journey-work-style"
-        aria-labelledby="journey-work-title"
-      >
-        <div>
-          <p className="section-eyebrow">My Core</p>
-          <h2 id="journey-work-title">저는 이렇게 일합니다</h2>
-        </div>
-
-        <ul className="journey-checklist">
-          {workChecklist.map((item, index) => (
-            <li
-              data-checked={checkedItems.has(index)}
-              data-index={index}
-              key={item}
-              ref={(element) => {
-                checkRefs.current[index] = element;
-              }}
-              style={{ "--check-delay": `${index * 90}ms` } as CSSProperties}
-            >
-              <span className="journey-checklist__box" aria-hidden="true" />
-              <span className="journey-checklist__text">{item}</span>
-            </li>
+      <section className="reference-core" aria-label="My Core">
+        <p>My Core</p>
+        <div className="reference-core__track">
+          {coreSteps.map((step, index) => (
+            <div className="reference-core__item" key={step.label}>
+              <NeonIcon kind={step.kind} />
+              <span>{step.label}</span>
+              {index < coreSteps.length - 1 && <b aria-hidden="true">»</b>}
+            </div>
           ))}
-        </ul>
+        </div>
       </section>
     </section>
   );
