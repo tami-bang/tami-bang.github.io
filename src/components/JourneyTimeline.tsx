@@ -8,91 +8,85 @@ import {
   type CSSProperties,
 } from "react";
 
-type JourneyIcon =
-  | "plane"
-  | "ship"
-  | "film"
+type SceneKind =
+  | "singapore"
+  | "shipping"
+  | "creative"
   | "coffee"
   | "cloud"
-  | "shield"
-  | "bug";
+  | "security"
+  | "qa";
 
-type JourneyItem = {
+type JourneyScene = {
   period: string;
   title: string;
   role: string;
-  description: string[];
+  summary: string;
   keywords: string[];
-  icon: JourneyIcon;
+  kind: SceneKind;
 };
 
-const journeyItems: JourneyItem[] = [
+const journeyScenes: JourneyScene[] = [
   {
     period: "2016.02 ~ 2017.02",
     title: "싱가포르 콩코드 호텔",
     role: "F&B Server",
-    description: [
+    summary:
       "낯선 환경에서 다양한 사람들과 일하며 새로운 환경에 빠르게 적응하는 법과 서비스 마인드를 배웠습니다.",
-    ],
     keywords: ["적응력", "서비스 마인드"],
-    icon: "plane",
+    kind: "singapore",
   },
   {
     period: "2017.11 ~ 2022.05",
     title: "범주해운",
     role: "수출입 정산, 일본·동남아 수출",
-    description: [
-      "문서, 일정, 데이터, 프로세스가 맞물려 돌아가는 업무를 경험했습니다.",
-      "반복되는 업무를 보며 더 효율적인 방법과 체계를 고민하기 시작했습니다.",
-    ],
+    summary:
+      "문서, 일정, 데이터, 프로세스가 맞물려 돌아가는 업무를 경험했고 반복되는 업무를 보며 더 효율적인 체계를 고민하기 시작했습니다.",
     keywords: ["프로세스", "체계화", "데이터"],
-    icon: "ship",
+    kind: "shipping",
   },
   {
     period: "2022.08 ~ 2022.11",
     title: "광고콘텐츠제작 과정 수료",
-    role: "Design & Motion Tools",
-    description: [
-      "Photoshop, Premiere Pro, After Effects, Illustrator를 배우며 정보를 어떻게 보여주고 전달할지 고민하는 습관을 얻었습니다.",
-    ],
+    role: "Photoshop, Premiere Pro, After Effects, Illustrator",
+    summary:
+      "정보를 어떻게 보여주고 전달할지 고민하며 콘텐츠를 사용자 관점에서 바라보는 습관을 얻었습니다.",
     keywords: ["전달", "표현", "사용자 관점"],
-    icon: "film",
+    kind: "creative",
   },
   {
     period: "2022.11 ~ 2023.02",
     title: "커피바리스타 2급 취득",
     role: "Barista Certificate",
-    description: ["작은 디테일 하나가 사용자 경험을 바꾼다는 것을 배웠습니다."],
+    summary: "작은 디테일 하나가 사용자 경험을 바꾼다는 것을 배웠습니다.",
     keywords: ["디테일", "경험"],
-    icon: "coffee",
+    kind: "coffee",
   },
   {
     period: "2025.07 ~ 2025.08",
     title: "클라우드 운영자 과정 수료",
     role: "Cloud Operation",
-    description: ["서비스가 동작하는 기반과 시스템의 흐름에 대해 배웠습니다."],
+    summary: "서비스가 동작하는 기반과 시스템의 흐름에 대해 배웠습니다.",
     keywords: ["인프라", "시스템"],
-    icon: "cloud",
+    kind: "cloud",
   },
   {
     period: "2025.09 ~ 2026.04",
     title: "KDT - AI 기반 웹 접근제어 보안 솔루션 구축",
     role: "Web Security Project",
-    description: [
+    summary:
       "웹 보안과 서비스 개발을 배우며 개발자로서의 방향성을 구체화했습니다.",
-    ],
     keywords: ["보안", "개발", "서비스"],
-    icon: "shield",
+    kind: "security",
   },
   {
     period: "2026.04 ~ 2026.06",
     title: "지란지교데이터",
     role: "IT 보안 소프트웨어 QA 인턴",
-    description: [
+    summary:
       "문제 발견, 재현, 로그 분석, 문서화 과정을 경험하며 품질의 중요성을 배웠습니다.",
-    ],
     keywords: ["문제 해결", "문서화", "품질"],
-    icon: "bug",
+    kind: "qa",
   },
 ];
 
@@ -105,159 +99,226 @@ const workChecklist = [
   "완료한 일은 체크하고 다음 작업으로 넘어갑니다.",
 ];
 
-function JourneyIconGraphic({ icon }: { icon: JourneyIcon }) {
-  if (icon === "plane") {
-    return (
-      <svg viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M42 7 21 28" />
-        <path d="m42 7-8 32-13-11-11 6 6-11L5 10l37-3Z" />
-      </svg>
-    );
-  }
-
-  if (icon === "ship") {
-    return (
-      <svg viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M11 28h26l-5 10H16l-5-10Z" />
-        <path d="M17 28V14h14v14" />
-        <path d="M21 14V8h6v6" />
-        <path d="M8 39c4 2 7 2 11 0 4-2 7-2 11 0 4 2 7 2 11 0" />
-      </svg>
-    );
-  }
-
-  if (icon === "film") {
-    return (
-      <svg viewBox="0 0 48 48" aria-hidden="true">
-        <rect x="9" y="10" width="30" height="28" rx="4" />
-        <path d="M17 10v28M31 10v28M9 19h30M9 29h30" />
-      </svg>
-    );
-  }
-
-  if (icon === "coffee") {
-    return (
-      <svg viewBox="0 0 48 48" aria-hidden="true">
-        <path
-          className="journey-icon__steam journey-icon__steam--one"
-          d="M18 8c-3 4 3 5 0 9"
-        />
-        <path
-          className="journey-icon__steam journey-icon__steam--two"
-          d="M25 7c-3 4 3 5 0 10"
-        />
-        <path
-          className="journey-icon__steam journey-icon__steam--three"
-          d="M32 8c-3 4 3 5 0 9"
-        />
-        <path d="M13 22h22v5c0 7-5 12-11 12s-11-5-11-12v-5Z" />
-        <path d="M35 24h3a4 4 0 0 1 0 8h-3" />
-        <path d="M11 41h27" />
-      </svg>
-    );
-  }
-
-  if (icon === "cloud") {
-    return (
-      <svg viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M16 35h20a8 8 0 0 0 0-16 12 12 0 0 0-23-2 9 9 0 0 0 3 18Z" />
-      </svg>
-    );
-  }
-
-  if (icon === "shield") {
-    return (
-      <svg viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M24 6 38 12v11c0 10-6 16-14 19-8-3-14-9-14-19V12l14-6Z" />
-        <path d="m18 24 4 4 8-9" />
-      </svg>
-    );
-  }
-
+function SingaporeScene() {
   return (
-    <svg viewBox="0 0 48 48" aria-hidden="true">
-      <path d="M16 18h16v14a8 8 0 0 1-16 0V18Z" />
-      <path d="M20 18v-4a4 4 0 0 1 8 0v4" />
-      <path d="M11 23h5M32 23h5M10 32h6M32 32h6M14 41l4-4M34 41l-4-4" />
-      <path className="journey-icon__bug-eye" d="M21 25h.1M27 25h.1" />
-    </svg>
+    <>
+      <div className="story-plane" aria-hidden="true">
+        <svg viewBox="0 0 180 120">
+          <path d="M160 18 76 78 40 65 58 52 18 33 37 24l60 18 42-30c12-8 26-5 21 6Z" />
+          <path d="M77 78 68 110l19-24" />
+          <path d="M94 65 128 96l11-9-29-35" />
+        </svg>
+      </div>
+
+      <svg
+        className="story-flight-path"
+        viewBox="0 0 720 420"
+        aria-hidden="true"
+      >
+        <path d="M20 320C160 160 260 390 382 215 488 64 570 156 694 72" />
+      </svg>
+
+      <div className="story-singapore-skyline" aria-hidden="true">
+        <span className="story-mbs" />
+        <span className="story-tower story-tower--one" />
+        <span className="story-tower story-tower--two" />
+        <span className="story-wheel" />
+        <span className="story-merlion" />
+      </div>
+    </>
+  );
+}
+
+function ShippingScene() {
+  return (
+    <>
+      <svg className="story-world-map" viewBox="0 0 900 470" aria-hidden="true">
+        <path d="M88 176c54-42 124-58 200-40 44 10 82 8 126-16 70-38 150-22 220 14 48 24 92 24 150 9 42-11 82 6 96 42" />
+        <path d="M132 268c70-20 124-10 173 31 45 37 112 36 170 7 74-37 156-24 216 20 44 31 83 36 142 15" />
+        <path
+          className="story-route"
+          d="M188 250C322 178 455 333 596 230c66-48 115-42 184 6"
+        />
+        <circle cx="188" cy="250" r="7" />
+        <circle cx="596" cy="230" r="7" />
+        <circle cx="780" cy="236" r="7" />
+      </svg>
+
+      <div className="story-ship" aria-hidden="true">
+        <span className="story-ship__stack story-ship__stack--one" />
+        <span className="story-ship__stack story-ship__stack--two" />
+        <span className="story-ship__stack story-ship__stack--three" />
+        <span className="story-ship__bridge" />
+        <span className="story-ship__hull" />
+      </div>
+    </>
+  );
+}
+
+function CreativeScene() {
+  return (
+    <>
+      <div className="story-orbit" aria-hidden="true" />
+      <div className="story-adobe-grid" aria-label="Adobe creative tools">
+        {["Ps", "Pr", "Ae", "Ai"].map((tool) => (
+          <span
+            className={`story-adobe story-adobe--${tool.toLowerCase()}`}
+            key={tool}
+          >
+            {tool}
+          </span>
+        ))}
+      </div>
+      <div className="story-edit-timeline" aria-hidden="true">
+        <span />
+        <span />
+        <span />
+        <span />
+      </div>
+    </>
+  );
+}
+
+function CoffeeScene() {
+  return (
+    <>
+      <div className="story-coffee-bar" aria-hidden="true">
+        <span className="story-cup">
+          <span className="story-steam story-steam--one" />
+          <span className="story-steam story-steam--two" />
+          <span className="story-steam story-steam--three" />
+          <span className="story-latte" />
+        </span>
+        <span className="story-portafilter" />
+        <span className="story-counter" />
+      </div>
+    </>
+  );
+}
+
+function CloudScene() {
+  return (
+    <>
+      <div className="story-cloud-network" aria-hidden="true">
+        <span className="story-cloud-shape" />
+        <span className="story-server story-server--one" />
+        <span className="story-server story-server--two" />
+        <span className="story-server story-server--three" />
+        <span className="story-network-line story-network-line--one" />
+        <span className="story-network-line story-network-line--two" />
+        <span className="story-network-dot story-network-dot--one" />
+        <span className="story-network-dot story-network-dot--two" />
+        <span className="story-network-dot story-network-dot--three" />
+      </div>
+    </>
+  );
+}
+
+function SecurityScene() {
+  return (
+    <>
+      <div className="story-code-wall" aria-hidden="true">
+        {Array.from({ length: 18 }, (_, index) => (
+          <span key={index} />
+        ))}
+      </div>
+      <div className="story-shield" aria-hidden="true">
+        <svg viewBox="0 0 220 260">
+          <path d="M110 14 190 48v66c0 68-34 108-80 130-46-22-80-62-80-130V48l80-34Z" />
+          <path d="m75 132 26 27 48-62" />
+        </svg>
+      </div>
+    </>
+  );
+}
+
+function QaScene() {
+  return (
+    <>
+      <div className="story-qa-desk" aria-hidden="true">
+        <span className="story-monitor story-monitor--main" />
+        <span className="story-monitor story-monitor--left" />
+        <span className="story-monitor story-monitor--right" />
+        <span className="story-magnifier" />
+        <span className="story-checkmark" />
+      </div>
+    </>
+  );
+}
+
+function SceneVisual({ kind }: { kind: SceneKind }) {
+  return (
+    <div className={`journey-scene__visual journey-scene__visual--${kind}`}>
+      <div className="journey-scene__stars" aria-hidden="true" />
+      {kind === "singapore" && <SingaporeScene />}
+      {kind === "shipping" && <ShippingScene />}
+      {kind === "creative" && <CreativeScene />}
+      {kind === "coffee" && <CoffeeScene />}
+      {kind === "cloud" && <CloudScene />}
+      {kind === "security" && <SecurityScene />}
+      {kind === "qa" && <QaScene />}
+    </div>
   );
 }
 
 export default function JourneyTimeline() {
   const sectionRef = useRef<HTMLElement>(null);
-  const cardRefs = useRef<(HTMLLIElement | null)[]>([]);
+  const sceneRefs = useRef<(HTMLElement | null)[]>([]);
   const checkRefs = useRef<(HTMLLIElement | null)[]>([]);
-  const [progress, setProgress] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [visibleCards, setVisibleCards] = useState<Set<number>>(
-    () => new Set(),
+  const [visibleScenes, setVisibleScenes] = useState<Set<number>>(
+    () => new Set([0]),
   );
   const [checkedItems, setCheckedItems] = useState<Set<number>>(
     () => new Set(),
   );
+
   const glowStyle = useMemo(
     () =>
       ({
-        "--journey-mouse-x": "50%",
-        "--journey-mouse-y": "20%",
+        "--story-mouse-x": "50%",
+        "--story-mouse-y": "20%",
       }) as CSSProperties,
     [],
   );
 
   useEffect(() => {
-    const section = sectionRef.current;
-
-    if (!section) {
-      return;
-    }
-
-    const updateScrollState = () => {
-      const rect = section.getBoundingClientRect();
-      const viewportHeight = window.innerHeight || 1;
-      const rawProgress =
-        (viewportHeight * 0.58 - rect.top) /
-        Math.max(rect.height - viewportHeight * 0.3, 1);
-      const nextProgress = Math.min(Math.max(rawProgress, 0), 1);
-
-      setProgress(nextProgress);
-
-      let nextActiveIndex = 0;
+    const updateActiveScene = () => {
+      const viewportCenter = (window.innerHeight || 1) / 2;
+      let nextActive = 0;
       let closestDistance = Number.POSITIVE_INFINITY;
-      const viewportCenter = viewportHeight / 2;
 
-      cardRefs.current.forEach((card, index) => {
-        if (!card) {
+      sceneRefs.current.forEach((scene, index) => {
+        if (!scene) {
           return;
         }
 
-        const cardRect = card.getBoundingClientRect();
-        const cardCenter = cardRect.top + cardRect.height / 2;
-        const distance = Math.abs(cardCenter - viewportCenter);
+        const rect = scene.getBoundingClientRect();
+        const distance = Math.abs(rect.top + rect.height / 2 - viewportCenter);
 
         if (distance < closestDistance) {
           closestDistance = distance;
-          nextActiveIndex = index;
+          nextActive = index;
         }
       });
 
-      setActiveIndex(nextActiveIndex);
+      setActiveIndex(nextActive);
     };
 
-    updateScrollState();
-    window.addEventListener("scroll", updateScrollState, { passive: true });
-    window.addEventListener("resize", updateScrollState);
+    updateActiveScene();
+    window.addEventListener("scroll", updateActiveScene, { passive: true });
+    window.addEventListener("resize", updateActiveScene);
 
     return () => {
-      window.removeEventListener("scroll", updateScrollState);
-      window.removeEventListener("resize", updateScrollState);
+      window.removeEventListener("scroll", updateActiveScene);
+      window.removeEventListener("resize", updateActiveScene);
     };
   }, []);
 
   useEffect(() => {
-    const cardObserver = new IntersectionObserver(
+    const sceneObserver = new IntersectionObserver(
       (entries) => {
-        setVisibleCards((current) => {
+        setVisibleScenes((current) => {
           const next = new Set(current);
 
           entries.forEach((entry) => {
@@ -269,7 +330,7 @@ export default function JourneyTimeline() {
           return next;
         });
       },
-      { rootMargin: "0px 0px -18% 0px", threshold: 0.18 },
+      { rootMargin: "-12% 0px -18% 0px", threshold: 0.28 },
     );
 
     const checkObserver = new IntersectionObserver(
@@ -286,12 +347,12 @@ export default function JourneyTimeline() {
           return next;
         });
       },
-      { rootMargin: "0px 0px -22% 0px", threshold: 0.35 },
+      { rootMargin: "0px 0px -18% 0px", threshold: 0.35 },
     );
 
-    cardRefs.current.forEach((card) => {
-      if (card) {
-        cardObserver.observe(card);
+    sceneRefs.current.forEach((scene) => {
+      if (scene) {
+        sceneObserver.observe(scene);
       }
     });
 
@@ -302,7 +363,7 @@ export default function JourneyTimeline() {
     });
 
     return () => {
-      cardObserver.disconnect();
+      sceneObserver.disconnect();
       checkObserver.disconnect();
     };
   }, []);
@@ -320,82 +381,73 @@ export default function JourneyTimeline() {
 
     const rect = section.getBoundingClientRect();
     section.style.setProperty(
-      "--journey-mouse-x",
+      "--story-mouse-x",
       `${((event.clientX - rect.left) / rect.width) * 100}%`,
     );
     section.style.setProperty(
-      "--journey-mouse-y",
+      "--story-mouse-y",
       `${((event.clientY - rect.top) / rect.height) * 100}%`,
     );
   };
 
   return (
     <section
-      className="journey-timeline"
+      className="journey-documentary"
       ref={sectionRef}
-      style={
-        {
-          ...glowStyle,
-          "--journey-progress": `${progress * 100}%`,
-        } as CSSProperties
-      }
+      style={glowStyle}
       onPointerMove={handlePointerMove}
-      aria-labelledby="journey-timeline-title"
+      aria-labelledby="journey-documentary-title"
     >
-      <div className="journey-timeline__header">
-        <p className="section-eyebrow">Journey Timeline</p>
-        <h2 id="journey-timeline-title">
+      <div className="journey-documentary__intro">
+        <p className="section-eyebrow">Interactive Career Documentary</p>
+        <h2 id="journey-documentary-title">
           경험이 쌓여, 지금의 저를 만들었습니다.
         </h2>
         <p>
-          사람, 업무, 데이터, 그리고 시스템을 이해하는 과정을 지나 서비스
-          개발자가 되었습니다.
+          사람, 업무, 데이터, 그리고 시스템을 이해하는 장면들을 지나 서비스
+          개발자가 되었습니다. 스크롤하며 제 커리어가 하나의 여정처럼 이어지는
+          흐름을 따라가 보세요.
         </p>
       </div>
 
-      <ol className="journey-timeline__list">
-        {journeyItems.map((item, index) => (
-          <li
-            className="journey-timeline__item"
+      <div className="journey-documentary__progress" aria-hidden="true">
+        {journeyScenes.map((scene, index) => (
+          <span data-active={activeIndex === index} key={`${scene.kind}-dot`} />
+        ))}
+      </div>
+
+      <div className="journey-story">
+        {journeyScenes.map((scene, index) => (
+          <article
+            className={`journey-scene journey-scene--${scene.kind}`}
             data-active={activeIndex === index}
-            data-visible={visibleCards.has(index)}
+            data-visible={visibleScenes.has(index)}
             data-index={index}
-            key={`${item.period}-${item.title}`}
+            key={`${scene.period}-${scene.title}`}
             ref={(element) => {
-              cardRefs.current[index] = element;
+              sceneRefs.current[index] = element;
             }}
           >
-            <div className="journey-timeline__marker" aria-hidden="true">
-              <span>{String(index + 1).padStart(2, "0")}</span>
-            </div>
+            <SceneVisual kind={scene.kind} />
 
-            <article className={`journey-card journey-card--${item.icon}`}>
-              <div className="journey-card__icon">
-                <JourneyIconGraphic icon={item.icon} />
-              </div>
+            <div className="journey-scene__caption">
+              <span className="journey-scene__number">
+                Scene {String(index + 1).padStart(2, "0")}
+              </span>
+              <span className="journey-scene__period">{scene.period}</span>
+              <h3>{scene.title}</h3>
+              <strong>{scene.role}</strong>
+              <p>{scene.summary}</p>
 
-              <div className="journey-card__content">
-                <span className="journey-card__period">{item.period}</span>
-                <h3>{item.title}</h3>
-                <strong>{item.role}</strong>
-
-                {item.description.map((line) => (
-                  <p key={line}>{line}</p>
+              <div className="journey-scene__keywords" aria-label="핵심 키워드">
+                {scene.keywords.map((keyword) => (
+                  <span key={keyword}>{keyword}</span>
                 ))}
-
-                <div
-                  className="journey-card__keywords"
-                  aria-label="핵심 키워드"
-                >
-                  {item.keywords.map((keyword) => (
-                    <span key={keyword}>{keyword}</span>
-                  ))}
-                </div>
               </div>
-            </article>
-          </li>
+            </div>
+          </article>
         ))}
-      </ol>
+      </div>
 
       <section
         className="journey-work-style"
