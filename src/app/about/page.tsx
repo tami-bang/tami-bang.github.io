@@ -51,32 +51,6 @@ function createGmailComposeUrl(email: string) {
 export default function AboutPage() {
   return (
     <main className="content-shell about-page">
-      <section className="page-hero about-hero page-section--reveal">
-        <div className="about-hero__copy">
-          <h1>
-            경험이 흐르고,
-            <br />
-            <span>지금의 내가</span> 되었습니다.
-          </h1>
-          <p>
-            다양한 경험 속에서 문제를 발견하고,
-            <br />더 나은 방법을 찾는 습관이 지금의 저를 만들었습니다.
-          </p>
-        </div>
-
-        <aside className="about-hero__quote" aria-label="지금의 한 줄">
-          <span aria-hidden="true">“</span>
-          <p>
-            반복되는 문제를 발견하고,
-            <br />
-            데이터와 흐름으로 바꾸는
-            <br />
-            서비스 개발자 <strong>타미</strong>입니다.
-          </p>
-          <span aria-hidden="true">”</span>
-        </aside>
-      </section>
-
       <JourneyTimeline />
 
       <section className="about-section about-section--animated">

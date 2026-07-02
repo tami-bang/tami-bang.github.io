@@ -71,10 +71,6 @@
   isolation: isolate;
 }
 
-.journey-board__eyebrow {
-  margin: 0;
-}
-
 .journey-board__intro {
   max-width: 920px;
 }
