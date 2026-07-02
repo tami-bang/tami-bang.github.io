@@ -46,8 +46,8 @@ const journeyItems: JourneyItem[] = [
     kind: "shipping",
     visualSrc: "/images/범주해운.png",
     visualAlt: "컨테이너선과 물류 경로 비주얼",
-    visualWidth: 1536,
-    visualHeight: 1024,
+    visualWidth: 1774,
+    visualHeight: 887,
   },
   {
     period: "2022.08 ~ 2022.11",
@@ -178,7 +178,7 @@ function VisualPanel({ item }: { item: JourneyItem }) {
         alt={item.visualAlt}
         width={item.visualWidth}
         height={item.visualHeight}
-        className="journey-visual__image"
+        className="journeyVisualImage"
         sizes="(max-width: 720px) 100vw, (max-width: 980px) calc(100vw - 126px), 58vw"
       />
     </div>
@@ -249,16 +249,10 @@ export default function JourneyTimeline() {
   }, []);
 
   return (
-    <section className="journey-board" aria-labelledby="journey-board-title">
-      <div className="journey-board__intro">
-        <p className="section-eyebrow">Journey Storyboard</p>
-        <h2 id="journey-board-title">경험이 쌓여, 지금의 저를 만들었습니다.</h2>
-        <p>
-          사람, 업무, 데이터, 시스템을 이해하는 과정이 하나의 흐름으로 이어져
-          서비스 개발이라는 방향이 되었습니다.
-        </p>
-      </div>
-
+    <section
+      className="journey-board"
+      aria-label="경험이 쌓여 지금의 저를 만든 여정"
+    >
       <div className="journey-board__canvas">
         <svg
           className="journey-board__path"
