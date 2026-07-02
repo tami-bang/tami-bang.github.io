@@ -58,8 +58,8 @@ const journeyItems: JourneyItem[] = [
     kind: "creative",
     visualSrc: "/images/광고콘텐츠제작.png",
     visualAlt: "광고콘텐츠 제작 도구와 그래픽 비주얼",
-    visualWidth: 1672,
-    visualHeight: 941,
+    visualWidth: 1658,
+    visualHeight: 949,
   },
   {
     period: "2022.11 ~ 2023.02",
@@ -253,6 +253,10 @@ export default function JourneyTimeline() {
       className="journey-board"
       aria-label="경험이 쌓여 지금의 저를 만든 여정"
     >
+      <p className="section-eyebrow journey-board__eyebrow">
+        Journey Storyboard
+      </p>
+
       <div className="journey-board__canvas">
         <svg
           className="journey-board__path"

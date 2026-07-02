@@ -53,7 +53,6 @@ export default function AboutPage() {
     <main className="content-shell about-page">
       <section className="page-hero about-hero page-section--reveal">
         <div className="about-hero__copy">
-          <p className="section-eyebrow">About Me</p>
           <h1>
             경험이 흐르고,
             <br />
