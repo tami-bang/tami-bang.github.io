@@ -67,8 +67,12 @@
 .journey-board {
   position: relative;
   display: grid;
-  gap: clamp(22px, 4vw, 42px);
+  gap: clamp(16px, 3vw, 28px);
   isolation: isolate;
+}
+
+.journey-board__eyebrow {
+  margin: 0;
 }
 
 .journey-board__intro {
