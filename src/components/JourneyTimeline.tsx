@@ -249,13 +249,15 @@ export default function JourneyTimeline() {
   }, []);
 
   return (
-    <section
-      className="journey-board"
-      aria-label="경험이 쌓여 지금의 저를 만든 여정"
-    >
-      <p className="section-eyebrow journey-board__eyebrow">
-        Journey Storyboard
-      </p>
+    <section className="journey-board" aria-labelledby="journey-board-title">
+      <div className="journey-board__intro">
+        <p className="section-eyebrow">Journey Storyboard</p>
+        <h2 id="journey-board-title">경험이 쌓여, 지금의 저를 만들었습니다.</h2>
+        <p>
+          사람, 업무, 데이터, 시스템을 이해하는 과정이 하나의 흐름으로 이어져
+          서비스 개발이라는 방향이 되었습니다.
+        </p>
+      </div>
 
       <div className="journey-board__canvas">
         <svg
