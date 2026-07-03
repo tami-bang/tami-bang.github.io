@@ -5,7 +5,7 @@ import "../../styles/roadmap.css";
 export const metadata = {
   title: "Project Roadmap | Tami.log",
   description:
-    "문제 정의부터 운영과 회고까지, 프로젝트를 완성하는 Tami의 25단계 개발 로드맵",
+    "아이디어를 동작하는 서비스 흐름으로 연결하는 Tami의 개발 로드맵",
 };
 
 export default function RoadmapPage() {
@@ -14,14 +14,10 @@ export default function RoadmapPage() {
       <RoadmapMotion />
       <section className="roadmap-hero page-hero page-section--reveal">
         <div className="roadmap-hero__copy">
-          <p className="section-eyebrow">Project Playbook · v1.0</p>
+          <p className="section-eyebrow">Project Playbook</p>
           <h1>
-            아이디어를 <span>운영 가능한 서비스</span>로.
+            아이디어를 <span>동작하는 서비스 흐름</span>으로.
           </h1>
-          <p>
-            문제 정의부터 설계, 구현, 검증, 배포와 회고까지. 프로젝트마다 놓치지
-            않고 따라갈 저만의 25단계 작업 기준입니다.
-          </p>
         </div>
 
         <div className="roadmap-hero__stats" aria-label="로드맵 요약">

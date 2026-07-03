@@ -13,6 +13,7 @@ export default function RoadmapMotion() {
     );
     let frame = 0;
     let revealedPhaseIndex = -1;
+    let canRevealPhases = false;
 
     const revealPhasesInOrder = () => {
       const marker = window.innerHeight * 0.76;
@@ -53,7 +54,9 @@ export default function RoadmapMotion() {
         link.toggleAttribute("data-active", link.hash === `#${activeId}`);
       });
 
-      revealPhasesInOrder();
+      if (canRevealPhases) {
+        revealPhasesInOrder();
+      }
     };
 
     const onScroll = () => {
@@ -62,6 +65,10 @@ export default function RoadmapMotion() {
     };
 
     updateProgress();
+    const revealTimer = window.setTimeout(() => {
+      canRevealPhases = true;
+      updateProgress();
+    }, 1500);
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
 
@@ -69,6 +76,7 @@ export default function RoadmapMotion() {
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      window.clearTimeout(revealTimer);
       root.style.removeProperty("--roadmap-progress");
     };
   }, []);
