@@ -44,8 +44,12 @@
 
 .roadmap-hero .section-eyebrow {
   margin: 0 0 clamp(14px, 1.5vw, 21px);
+  color: var(--brand-accent);
   font-size: clamp(0.72rem, 1vw, 0.92rem);
   line-height: 1.75;
+  text-shadow:
+    0 0 14px color-mix(in srgb, var(--brand-accent) 44%, transparent),
+    0 0 34px color-mix(in srgb, var(--brand-accent) 18%, transparent);
 }
 
 .roadmap-hero h1 {

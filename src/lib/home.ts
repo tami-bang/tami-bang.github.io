@@ -1,15 +1,15 @@
 export const homeHero = {
-  eyebrow: "서비스 자동화 개발자",
-  titleLines: ["반복되는 문제를 자동화하고,", "서비스로 구현합니다."],
+  eyebrow: "미감 있는 자동화 개발자",
+  titleLines: ["감각 있게 만들고,", "반복은 자동화합니다."],
   descriptionLines: [],
   actions: [
     { href: "/projects", label: "프로젝트 보기", variant: "primary" },
     { href: "/blog", label: "기록 보기", variant: "secondary" },
   ],
   signals: [
-    { label: "Find", value: "불편 발견" },
-    { label: "Build", value: "자동화 구현" },
-    { label: "Ship", value: "서비스 흐름" },
+    { label: "Sense", value: "미감 있는 구현" },
+    { label: "Auto", value: "반복 자동화" },
+    { label: "Vibe", value: "바이브코딩" },
   ],
 } as const;
 

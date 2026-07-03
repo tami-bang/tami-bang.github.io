@@ -6,7 +6,7 @@
   overflow: hidden;
   min-height: auto;
   padding: 0;
-  margin-bottom: var(--section-gap-medium);
+  margin-bottom: clamp(18px, 2.8vw, 38px);
 }
 
 .home-page .hero-universe {
@@ -29,7 +29,7 @@
 .hero-universe__content {
   position: relative;
   width: 100%;
-  min-height: clamp(520px, 58vw, 660px);
+  min-height: clamp(390px, 44vw, 520px);
   display: block;
 }
 
@@ -61,11 +61,15 @@
   display: grid;
   gap: clamp(0.08em, 0.4vw, 0.14em);
   margin: 0;
+  color: var(--brand-accent);
   font-family: var(--font-display);
   font-size: clamp(2.6rem, 4vw, 4.05rem);
   font-weight: 950;
   line-height: 0.98;
   letter-spacing: -0.075em;
+  text-shadow:
+    0 0 18px color-mix(in srgb, var(--brand-accent) 28%, transparent),
+    0 0 42px color-mix(in srgb, var(--brand-accent) 14%, transparent);
   word-break: keep-all;
 }
 
@@ -265,11 +269,11 @@
   --pointer-x: 0;
   --pointer-y: 0;
   position: absolute;
-  top: 4%;
-  right: clamp(16px, 5vw, 84px);
+  top: 20%;
+  right: clamp(-14px, 4vw, 64px);
   z-index: 2;
-  width: min(38vw, 520px);
-  min-height: clamp(330px, 36vw, 520px);
+  width: min(34vw, 470px);
+  min-height: clamp(300px, 32vw, 460px);
   isolation: isolate;
   perspective: 900px;
   transform-style: preserve-3d;
@@ -279,9 +283,9 @@
 .hero-object-main {
   position: absolute;
   right: 0;
-  top: 8%;
+  top: 12%;
   z-index: 3;
-  width: clamp(250px, 28vw, 410px);
+  width: clamp(230px, 25vw, 380px);
   height: auto;
   object-fit: contain;
   opacity: 0.98;
