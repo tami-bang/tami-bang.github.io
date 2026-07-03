@@ -186,17 +186,16 @@
 }
 
 .category-strip {
-  overflow-x: auto;
-  flex-wrap: nowrap;
+  overflow: visible;
+  flex-wrap: wrap;
   margin-top: var(--section-header-to-content-gap);
-  padding: 8px 30px 14px 8px;
-  scroll-padding-inline: 8px 30px;
+  padding: 8px 0 0;
+  scroll-padding-inline: 0;
   scrollbar-width: none;
 }
 
 .category-strip::after {
-  content: "";
-  flex: 0 0 18px;
+  content: none;
 }
 
 .category-strip::-webkit-scrollbar {

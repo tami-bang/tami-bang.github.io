@@ -15,8 +15,7 @@
 
 @media (max-width: 960px) {
   .hero-universe__content {
-    grid-template-columns: minmax(0, 1fr) minmax(200px, 0.42fr);
-    gap: clamp(28px, 5vw, 64px);
+    min-height: clamp(500px, 70vw, 620px);
   }
 
   .hero-title {
@@ -140,8 +139,7 @@
   }
 
   .hero-universe__content {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    min-height: auto;
   }
 
   .hero-title {
@@ -202,7 +200,12 @@
   }
 
   .hero-object-scene {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
     min-height: 250px;
+    margin-top: 28px;
   }
 
   .hero-object-main {
