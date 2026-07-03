@@ -152,6 +152,10 @@
     white-space: normal;
   }
 
+  .journey-board__intro p:last-child {
+    white-space: normal;
+  }
+
   .hero-description {
     margin-top: 18px;
     font-size: 0.98rem;

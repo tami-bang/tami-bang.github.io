@@ -88,12 +88,13 @@
 }
 
 .journey-board__intro p:last-child {
-  max-width: 720px;
+  max-width: none;
   margin: 18px 0 0;
   color: var(--muted);
   font-size: clamp(1rem, 1.4vw, 1.12rem);
   line-height: 1.8;
   word-break: keep-all;
+  white-space: nowrap;
 }
 
 .journey-board__canvas {

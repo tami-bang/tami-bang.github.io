@@ -12,6 +12,26 @@ export default function RoadmapMotion() {
       document.querySelectorAll<HTMLAnchorElement>(".roadmap-index a"),
     );
     let frame = 0;
+    let revealedPhaseIndex = -1;
+
+    const revealPhasesInOrder = () => {
+      const marker = window.innerHeight * 0.76;
+      const nextIndex = phases.reduce((visibleIndex, phase, index) => {
+        return phase.getBoundingClientRect().top <= marker
+          ? index
+          : visibleIndex;
+      }, -1);
+
+      if (nextIndex <= revealedPhaseIndex) {
+        return;
+      }
+
+      for (let index = revealedPhaseIndex + 1; index <= nextIndex; index += 1) {
+        phases[index]?.setAttribute("data-visible", "");
+      }
+
+      revealedPhaseIndex = nextIndex;
+    };
 
     const updateProgress = () => {
       const page = document.querySelector<HTMLElement>(".roadmap-page");
@@ -32,6 +52,8 @@ export default function RoadmapMotion() {
       navLinks.forEach((link) => {
         link.toggleAttribute("data-active", link.hash === `#${activeId}`);
       });
+
+      revealPhasesInOrder();
     };
 
     const onScroll = () => {
@@ -39,24 +61,12 @@ export default function RoadmapMotion() {
       frame = requestAnimationFrame(updateProgress);
     };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting)
-            entry.target.setAttribute("data-visible", "");
-        });
-      },
-      { rootMargin: "0px 0px -12%", threshold: 0.08 },
-    );
-
-    phases.forEach((phase) => observer.observe(phase));
     updateProgress();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
 
     return () => {
       cancelAnimationFrame(frame);
-      observer.disconnect();
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
       root.style.removeProperty("--roadmap-progress");

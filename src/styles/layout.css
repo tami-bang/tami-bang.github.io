@@ -17,6 +17,13 @@
   padding-block: var(--page-start-padding) var(--page-end-padding);
 }
 
+.home-page {
+  width: min(
+    calc(100% - var(--layout-padding) * 2),
+    var(--home-layout-max-width)
+  );
+}
+
 .scroll-progress-glow {
   position: fixed;
   top: 0;
@@ -65,7 +72,7 @@
 
 .page-section--study {
   margin-top: var(--section-gap-medium);
-  padding-bottom: 110px;
+  padding-bottom: 0;
 }
 
 /* ================================
@@ -182,14 +189,14 @@
   overflow-x: auto;
   flex-wrap: nowrap;
   margin-top: var(--section-header-to-content-gap);
-  padding: 6px 14px 12px 6px;
-  scroll-padding-inline: 6px 14px;
+  padding: 8px 30px 14px 8px;
+  scroll-padding-inline: 8px 30px;
   scrollbar-width: none;
 }
 
 .category-strip::after {
   content: "";
-  flex: 0 0 1px;
+  flex: 0 0 18px;
 }
 
 .category-strip::-webkit-scrollbar {
