@@ -58,6 +58,7 @@
 
   .hero-universe {
     padding: 0;
+    margin-bottom: var(--section-gap-medium);
   }
 
   .hero-universe__inner {

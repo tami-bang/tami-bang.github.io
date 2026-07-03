@@ -6,6 +6,7 @@
   overflow: hidden;
   min-height: auto;
   padding: 0;
+  margin-bottom: clamp(44px, 5vw, 72px);
 }
 
 .hero-universe__inner {
@@ -15,14 +16,14 @@
   min-height: clamp(360px, 42vw, 520px);
   margin: 0 auto;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .hero-universe__content {
   width: 100%;
   display: grid;
   grid-template-columns: minmax(360px, 0.96fr) minmax(280px, 0.64fr);
-  align-items: center;
+  align-items: start;
   gap: clamp(36px, 6vw, 86px);
 }
 
@@ -30,6 +31,7 @@
   position: relative;
   z-index: 4;
   max-width: 720px;
+  padding-top: clamp(8px, 1.4vw, 18px);
 }
 
 .section-eyebrow {
