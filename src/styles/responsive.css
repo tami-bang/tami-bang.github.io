@@ -272,7 +272,8 @@
   }
 
   .page-section--reveal,
-  .page-section--reveal-delayed {
+  .page-section--reveal-delayed,
+  body > main {
     opacity: 1;
     transform: none;
   }
