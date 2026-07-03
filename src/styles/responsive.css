@@ -20,11 +20,11 @@
 
   .hero-universe__content {
     grid-template-columns: minmax(0, 0.94fr) minmax(220px, 0.58fr);
-    gap: clamp(40px, 7vw, 92px);
+    gap: clamp(28px, 5vw, 64px);
   }
 
   .hero-title {
-    font-size: clamp(3rem, 9vw, 5.4rem);
+    font-size: clamp(2.5rem, 7vw, 4.4rem);
   }
 
   .hero-object-scene {
@@ -57,8 +57,7 @@
   }
 
   .hero-universe {
-    padding-top: 52px;
-    padding-bottom: 32px;
+    padding: 0;
   }
 
   .hero-universe__inner {
@@ -141,7 +140,7 @@
   }
 
   .hero-universe {
-    padding-inline: 20px;
+    padding-inline: 0;
   }
 
   .hero-universe__content {
@@ -150,7 +149,7 @@
   }
 
   .hero-title {
-    font-size: clamp(2.55rem, 12vw, 4rem);
+    font-size: clamp(2.25rem, 10vw, 3.5rem);
   }
 
   .hero-description {

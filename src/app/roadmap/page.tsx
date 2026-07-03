@@ -12,7 +12,7 @@ export default function RoadmapPage() {
   return (
     <main className="content-shell roadmap-page">
       <RoadmapMotion />
-      <section className="roadmap-hero page-section--reveal">
+      <section className="roadmap-hero page-hero page-section--reveal">
         <div className="roadmap-hero__copy">
           <p className="section-eyebrow">Project Playbook · v1.0</p>
           <h1>
