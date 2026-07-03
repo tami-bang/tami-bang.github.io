@@ -17,6 +17,34 @@
   padding-block: var(--page-start-padding) var(--section-gap-large);
 }
 
+.scroll-progress-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 80;
+  width: 100%;
+  height: 3px;
+  pointer-events: none;
+}
+
+.scroll-progress-glow::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--brand-accent) 78%, #ffffff 12%),
+    var(--brand-accent)
+  );
+  box-shadow:
+    0 0 16px color-mix(in srgb, var(--brand-accent) 64%, transparent),
+    0 0 34px color-mix(in srgb, var(--brand-accent) 28%, transparent);
+  transform: scaleX(var(--scroll-progress, 0));
+  transform-origin: left;
+}
+
 .content-shell .page-section {
   width: 100%;
 }

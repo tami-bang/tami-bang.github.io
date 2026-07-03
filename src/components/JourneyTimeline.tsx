@@ -191,9 +191,9 @@ export default function JourneyTimeline() {
   const [visibleItems, setVisibleItems] = useState<Set<number>>(
     () => new Set([0]),
   );
-  const [checkedItems, setCheckedItems] = useState<Set<number>>(
-    () => new Set(),
-  );
+  const [visibleChecklistItems, setVisibleChecklistItems] = useState<
+    Set<number>
+  >(() => new Set());
 
   useEffect(() => {
     const itemObserver = new IntersectionObserver(
@@ -215,7 +215,7 @@ export default function JourneyTimeline() {
 
     const checkObserver = new IntersectionObserver(
       (entries) => {
-        setCheckedItems((current) => {
+        setVisibleChecklistItems((current) => {
           const next = new Set(current);
 
           entries.forEach((entry) => {
@@ -249,7 +249,10 @@ export default function JourneyTimeline() {
   }, []);
 
   return (
-    <section className="journey-board" aria-labelledby="journey-board-title">
+    <section
+      className="journey-board page-section--reveal"
+      aria-labelledby="journey-board-title"
+    >
       <div className="journey-board__intro">
         <p className="section-eyebrow">Journey Storyboard</p>
         <h2 id="journey-board-title">경험이 쌓여, 지금의 저를 만들었습니다.</h2>
@@ -307,8 +310,12 @@ export default function JourneyTimeline() {
         <ul className="journey-checklist">
           {workChecklist.map((item, index) => (
             <li
-              data-checked={checkedItems.has(index)}
+              data-checked={
+                visibleChecklistItems.has(index) &&
+                index === workChecklist.length - 1
+              }
               data-index={index}
+              data-visible={visibleChecklistItems.has(index)}
               key={item}
               ref={(element) => {
                 checkRefs.current[index] = element;
