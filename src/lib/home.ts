@@ -1,13 +1,10 @@
 export const homeHero = {
   eyebrow: "서비스 자동화 개발자",
   titleLines: ["반복되는 문제를 자동화하고,", "서비스로 구현합니다."],
-  descriptionLines: [
-    "자동화 도구부터 웹 서비스까지,",
-    "문제를 발견하고 해결하는 과정을 기록합니다.",
-  ],
+  descriptionLines: [],
   actions: [
     { href: "/projects", label: "프로젝트 보기", variant: "primary" },
-    { href: "/blog", label: "공부 기록 보기", variant: "secondary" },
+    { href: "/blog", label: "기록 보기", variant: "secondary" },
   ],
   signals: [
     { label: "Find", value: "불편 발견" },
@@ -40,19 +37,16 @@ export const homeSections = {
     eyebrow: "WORKFLOW",
     eyebrowDescription:
       "작은 개선이라도 입력, 처리, 저장, 화면에 보이는 결과까지 이어지는 구조로 생각합니다.",
-    title: "문제를 흐름으로 정리합니다",
   },
   projects: {
     eyebrow: "PROJECTS",
     eyebrowDescription:
       "데이터 수집, API, 관리자 화면, 리포트로 이어지는 구현 사례를 정리했습니다.",
-    title: "자동화와 서비스 구현",
   },
   study: {
     eyebrow: "STUDY LOG",
     eyebrowDescription:
       "리눅스, 네트워크, C언어, 웹, 파이썬/Django를 프로젝트와 연결해 정리합니다.",
-    title: "배운 것을 기록합니다",
   },
 } as const;
 

@@ -16,9 +16,7 @@ export default function RoadmapPage() {
         <div className="roadmap-hero__copy">
           <p className="section-eyebrow">Project Playbook · v1.0</p>
           <h1>
-            아이디어를
-            <br />
-            <span>운영 가능한 서비스</span>로.
+            아이디어를 <span>운영 가능한 서비스</span>로.
           </h1>
           <p>
             문제 정의부터 설계, 구현, 검증, 배포와 회고까지. 프로젝트마다 놓치지

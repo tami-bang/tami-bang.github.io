@@ -1,11 +1,11 @@
 ---
-title: "Python, Django 공부 기록"
+title: "Python, Django"
 description: "Python 데이터 처리, requests와 BeautifulSoup 크롤링, Django 관리자 웹, 머신러닝 API 연결 흐름을 정리한 학습 기록"
 category: "파이썬/Django"
 createdAt: "2026-06-11"
 ---
 
-# Python, Django 공부 기록
+# Python, Django
 
 Python은 이번 프로젝트에서 가장 넓게 쓰이는 언어다.
 

@@ -1,7 +1,7 @@
 type SectionHeaderProps = {
   eyebrow: string;
   eyebrowDescription?: string;
-  title: string;
+  title?: string;
   description?: string;
   align?: "left" | "center";
 };
@@ -29,7 +29,7 @@ export default function SectionHeader({
           </>
         )}
       </p>
-      <h1>{title}</h1>
+      {title && <h1>{title}</h1>}
 
       {description && <p>{description}</p>}
     </div>

@@ -43,7 +43,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     <main className="content-shell">
       <section className="page-hero page-section--reveal">
         <h1>{categoryLabel}</h1>
-        <p>공부 기록에서 해당 과목으로 정리한 글입니다.</p>
+        <p>해당 과목으로 정리한 글입니다.</p>
 
         <div className="category-strip">
           <Link href="/blog" className="category-link">

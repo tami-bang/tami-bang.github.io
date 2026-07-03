@@ -1,11 +1,11 @@
 ---
-title: "Network 기초 공부 기록"
+title: "Network 기초"
 description: "IP, subnet mask, gateway, DNS, switch, router를 웹 접근 제어 프로젝트 관점에서 정리한 네트워크 학습 기록"
 category: "네트워크"
 createdAt: "2026-06-11"
 ---
 
-# Network 기초 공부 기록
+# Network 기초
 
 웹 접근 제어 시스템을 만들기 위해서는 요청이 네트워크 안에서 어떻게 이동하는지 이해해야 한다.
 

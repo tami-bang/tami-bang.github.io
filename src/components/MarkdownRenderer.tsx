@@ -600,16 +600,9 @@ function renderParagraph(
   block: Extract<MarkdownBlock, { type: "paragraph" }>,
   index: number,
 ) {
-  return (
-    <p key={index}>
-      {block.lines.map((line, lineIndex) => (
-        <span key={`${line}-${lineIndex}`}>
-          {renderInlineMarkdown(line)}
-          {lineIndex < block.lines.length - 1 && <br />}
-        </span>
-      ))}
-    </p>
-  );
+  const paragraph = block.lines.join(" ");
+
+  return <p key={index}>{renderInlineMarkdown(paragraph)}</p>;
 }
 
 function renderList(
