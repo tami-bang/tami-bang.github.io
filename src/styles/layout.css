@@ -14,7 +14,7 @@
 }
 
 .content-shell {
-  padding-block: var(--page-start-padding) var(--section-gap-large);
+  padding-block: var(--page-start-padding) var(--page-end-padding);
 }
 
 .scroll-progress-glow {
@@ -51,7 +51,7 @@
 
 .page-shell,
 .project-detail-shell {
-  padding: var(--page-start-padding) 0 var(--section-gap-large);
+  padding: var(--page-start-padding) 0 var(--page-end-padding);
 }
 
 .page-hero {
@@ -182,8 +182,14 @@
   overflow-x: auto;
   flex-wrap: nowrap;
   margin-top: var(--section-header-to-content-gap);
-  padding: 4px 4px 10px;
+  padding: 6px 14px 12px 6px;
+  scroll-padding-inline: 6px 14px;
   scrollbar-width: none;
+}
+
+.category-strip::after {
+  content: "";
+  flex: 0 0 1px;
 }
 
 .category-strip::-webkit-scrollbar {
@@ -211,6 +217,7 @@
   border-radius: 16px;
   color: var(--foreground);
   background: transparent;
+  outline-offset: 3px;
   transition:
     background 160ms ease,
     transform 160ms ease,
@@ -218,6 +225,7 @@
 }
 
 .category-link:hover,
+.category-link:focus-visible,
 .category-link--active {
   border-color: color-mix(
     in srgb,
