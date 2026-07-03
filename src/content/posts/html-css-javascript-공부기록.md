@@ -1,11 +1,11 @@
 ---
-title: "HTML, CSS, JavaScript 공부 기록"
+title: "HTML, CSS, JavaScript"
 description: "웹 화면 구조, 스타일, DOM, JavaScript 이벤트를 관리자 UI 구현 관점에서 정리한 프론트엔드 기초 학습 기록"
 category: "HTML/CSS/JS"
 createdAt: "2026-06-11"
 ---
 
-# HTML, CSS, JavaScript 공부 기록
+# HTML, CSS, JavaScript
 
 HTML, CSS, JavaScript는 웹 화면을 만드는 기본 기술이다.
 

@@ -62,6 +62,10 @@ function createFallbackPost(slug: string, rawContent: string): BlogPost {
   };
 }
 
+function stripFirstHeading(content: string) {
+  return content.replace(/^# .*(?:\r?\n){1,2}/, "");
+}
+
 function parseMarkdownPost(slug: string, rawContent: string): BlogPost {
   const frontmatterMatch = rawContent.match(
     /^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/,
@@ -72,7 +76,7 @@ function parseMarkdownPost(slug: string, rawContent: string): BlogPost {
   }
 
   const frontmatter = frontmatterMatch[1];
-  const content = frontmatterMatch[2];
+  const content = stripFirstHeading(frontmatterMatch[2]);
 
   const titleLine = getFrontmatterLine(frontmatter, "title");
   const descriptionLine = getFrontmatterLine(frontmatter, "description");

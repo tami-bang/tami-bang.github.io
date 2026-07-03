@@ -89,7 +89,7 @@ export default function AboutPage() {
       <section className="about-contact-panel about-section--animated">
         <div>
           <p className="section-eyebrow">Contact</p>
-          <h2>자동화와 서비스 구현 프로젝트를 계속 다듬고 있습니다.</h2>
+          <h2>프로젝트를 계속 다듬고 있습니다.</h2>
           <p>
             GitHub에는 코드와 실행 방법을, 블로그에는 자동화와 UI/API 연결
             과정에서 배운 내용을 정리합니다. 이 포트폴리오 자체도 일관된 화면

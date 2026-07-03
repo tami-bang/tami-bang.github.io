@@ -5,7 +5,7 @@ import { getAllPosts } from "@/lib/post"; // 용도 로컬 Markdown 게시글 �
 import { studyCategoryItems } from "@/lib/site"; // 용도 공부 카테고리 URL 생성
 
 export const metadata = {
-  title: "공부 기록 | Tami.log",
+  title: "Study Log | Tami.log",
   description: "개발 공부 과정에서 배운 내용을 과목별로 정리합니다.",
 };
 
@@ -17,7 +17,7 @@ export default function BlogPage() {
       <section className="page-hero page-section--reveal">
         <SectionHeader
           eyebrow="Study Log"
-          title="공부 기록을 과목별로 정리합니다."
+          title="과목별로 정리합니다."
           description="리눅스, 네트워크, C언어, HTML/CSS/JS, 파이썬/Django처럼 배운 내용을 주제별로 나누고, 프로젝트와 연결되는 개념은 함께 기록합니다."
         />
 
@@ -39,10 +39,7 @@ export default function BlogPage() {
       {posts.length === 0 && (
         <section className="empty-panel page-section--reveal-delayed">
           <h2>아직 작성된 글이 없습니다.</h2>
-          <p>
-            src/content/posts 폴더에 공부 기록을 Markdown으로 추가하면 이곳에
-            표시됩니다.
-          </p>
+          <p>src/content/posts 폴더에 Markdown을 추가하면 이곳에 표시됩니다.</p>
         </section>
       )}
     </main>

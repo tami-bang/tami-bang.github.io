@@ -26,6 +26,10 @@ function HeroTitle() {
 }
 
 function HeroDescription() {
+  if (homeHero.descriptionLines.length === 0) {
+    return null;
+  }
+
   return (
     <p className="hero-description">{homeHero.descriptionLines.join(" ")}</p>
   );
@@ -95,7 +99,6 @@ function WorkingPatternSection() {
       <SectionHeader
         eyebrow={section.eyebrow}
         eyebrowDescription={section.eyebrowDescription}
-        title={section.title}
       />
 
       <div className="automation-pattern-grid">
@@ -120,7 +123,6 @@ function FeaturedProjectsSection() {
       <SectionHeader
         eyebrow={section.eyebrow}
         eyebrowDescription={section.eyebrowDescription}
-        title={section.title}
       />
 
       <div className="project-story-grid">
@@ -140,7 +142,6 @@ function FeaturedPostsSection() {
       <SectionHeader
         eyebrow={section.eyebrow}
         eyebrowDescription={section.eyebrowDescription}
-        title={section.title}
       />
 
       <div className="home-study-hub">

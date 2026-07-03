@@ -1,11 +1,11 @@
 ---
-title: "Linux 기초 공부 기록"
+title: "Linux 기초"
 description: "서버 환경에서 프로젝트를 실행하기 위해 정리한 Linux 기본 개념, 명령어, 권한, 프로세스, 네트워크 확인 흐름"
 category: "리눅스"
 createdAt: "2026-06-11"
 ---
 
-# Linux 기초 공부 기록
+# Linux 기초
 
 Linux는 웹 서비스, 보안 솔루션, 배포 환경을 다룰 때 기본이 되는 운영체제다.
 
