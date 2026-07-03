@@ -22,7 +22,13 @@ function SpaceDots() {
 }
 
 function HeroTitle() {
-  return <h1 className="hero-title">{homeHero.titleLines.join(" ")}</h1>;
+  return (
+    <h1 className="hero-title">
+      {homeHero.titleLines.map((line) => (
+        <span key={line}>{line}</span>
+      ))}
+    </h1>
+  );
 }
 
 function HeroDescription() {
@@ -70,7 +76,7 @@ function HeroActions() {
 
 function HeroSection() {
   return (
-    <section className="hero-universe page-section--reveal">
+    <section className="hero-universe page-hero page-section page-section--reveal">
       <SpaceDots />
 
       <div className="hero-universe__inner">
@@ -177,7 +183,7 @@ function FeaturedPostsSection() {
 
 export default function Home() {
   return (
-    <main className="home-page">
+    <main className="content-shell home-page">
       <HeroSection />
       <WorkingPatternSection />
       <FeaturedProjectsSection />
