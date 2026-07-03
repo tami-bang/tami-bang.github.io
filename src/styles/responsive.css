@@ -15,7 +15,7 @@
 
 @media (max-width: 960px) {
   .hero-universe__content {
-    min-height: clamp(500px, 70vw, 620px);
+    min-height: clamp(390px, 58vw, 520px);
   }
 
   .hero-title {
@@ -23,7 +23,7 @@
   }
 
   .hero-object-scene {
-    min-height: clamp(300px, 44vw, 400px);
+    min-height: clamp(280px, 38vw, 360px);
   }
 
   .hero-object-main {
