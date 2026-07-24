@@ -103,8 +103,8 @@ export const roadmapPhases: RoadmapPhase[] = [
     label: "Build",
     title: "기반을 만들고 병렬로 구현합니다",
     description:
-      "모두가 같은 기준에서 개발할 수 있는 환경을 만든 뒤, 독립적인 트랙으로 나누어 속도를 냅니다.",
-    range: "12—13",
+      "모두가 같은 기준에서 개발할 수 있는 환경을 만든 뒤, 독립적인 트랙과 AI 협업 흐름으로 나누어 속도를 냅니다.",
+    range: "12—14",
     steps: [
       {
         number: 12,
@@ -133,6 +133,16 @@ export const roadmapPhases: RoadmapPhase[] = [
           },
         ],
       },
+      {
+        number: 14,
+        title: "바이브코딩 Build & Ship",
+        items: [
+          "3 Layer 컨텍스트 관리: 프로젝트 맥락, 작업 지시, 검증 기준 분리",
+          "AI 에이전트 연동: Antigravity 기반 구현 흐름 실습",
+          "외부 액션 자동화: n8n/Zapier로 데이터와 알림 흐름 확장",
+          "Gogisise 구축 사례: 아이디어 도출 → UI/UX 설계 → AI 파이프라인 연동 → Vercel 배포",
+        ],
+      },
     ],
   },
   {
@@ -141,36 +151,45 @@ export const roadmapPhases: RoadmapPhase[] = [
     title: "검증하고 안전하게 배포합니다",
     description:
       "작은 단위부터 실제 사용자 흐름까지 확인하고, 자동화된 파이프라인을 거쳐 운영 환경에 전달합니다.",
-    range: "14—21",
+    range: "15—22",
     steps: [
       {
-        number: 14,
+        number: 15,
         title: "단위 테스트",
         items: ["함수 테스트", "서비스 테스트", "유틸 테스트"],
       },
       {
-        number: 15,
+        number: 16,
         title: "통합 테스트",
         items: ["Frontend ↔ Backend", "Backend ↔ DB", "외부 연동 검증"],
       },
-      { number: 16, title: "E2E 테스트", items: ["실제 사용자 시나리오 검증"] },
+      { number: 17, title: "E2E 테스트", items: ["실제 사용자 시나리오 검증"] },
       {
-        number: 17,
+        number: 18,
         title: "성능 테스트",
         items: ["부하 테스트", "응답속도 측정", "병목 분석"],
       },
       {
-        number: 18,
+        number: 19,
         title: "보안 테스트",
         items: ["인증", "권한", "SQL Injection", "XSS", "CSRF", "취약점 점검"],
       },
       {
-        number: 19,
+        number: 20,
         title: "CI/CD 구축",
-        items: ["Build", "Test", "Deploy 자동화"],
+        items: [
+          "Build",
+          "Test",
+          "Deploy 자동화",
+          "Vercel 기반 모바일 웹 배포 파이프라인",
+        ],
       },
-      { number: 20, title: "스테이징 배포", items: ["운영 전 검증"] },
-      { number: 21, title: "운영 배포", items: ["Production 배포"] },
+      { number: 21, title: "스테이징 배포", items: ["운영 전 검증"] },
+      {
+        number: 22,
+        title: "운영 배포",
+        items: ["Production 배포", "Gogisise 최종 시연 및 라이브 데모 확인"],
+      },
     ],
   },
   {
@@ -179,25 +198,25 @@ export const roadmapPhases: RoadmapPhase[] = [
     title: "운영하며 배우고 개선합니다",
     description:
       "배포를 끝이 아닌 관찰의 시작으로 보고, 장애와 피드백을 다음 제품 개선으로 연결합니다.",
-    range: "22—25",
+    range: "23—26",
     steps: [
       {
-        number: 22,
+        number: 23,
         title: "모니터링 구축",
         items: ["로그 수집", "에러 추적", "서버 모니터링", "알림 시스템"],
       },
       {
-        number: 23,
+        number: 24,
         title: "장애 대응",
         items: ["장애 대응 절차", "백업 정책", "롤백 전략"],
       },
       {
-        number: 24,
+        number: 25,
         title: "운영 및 유지보수",
         items: ["버그 수정", "기능 개선", "성능 개선", "보안 업데이트"],
       },
       {
-        number: 25,
+        number: 26,
         title: "문서화 및 회고",
         items: ["README", "API 문서", "트러블슈팅", "회고", "발표자료"],
       },

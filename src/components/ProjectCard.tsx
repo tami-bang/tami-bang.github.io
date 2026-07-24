@@ -45,6 +45,7 @@ export default function ProjectCard({
   project,
 }: ProjectCardProps) {
   const summaryItems = getProjectSummaryItems(project);
+  const cardTags = project.cardTags ?? [];
 
   return (
     <article className="project-card">
@@ -52,8 +53,14 @@ export default function ProjectCard({
         <header className="project-card__top">
           <p className="section-eyebrow">{project.domain}</p>
           <div className="project-card__badges">
-            {project.featuredBadge && <span>{project.featuredBadge}</span>}
-            <span>{project.status}</span>
+            {cardTags.length > 0 ? (
+              cardTags.map((tag) => <span key={tag}>{tag}</span>)
+            ) : (
+              <>
+                {project.featuredBadge && <span>{project.featuredBadge}</span>}
+                <span>{project.status}</span>
+              </>
+            )}
           </div>
         </header>
 
@@ -73,7 +80,7 @@ export default function ProjectCard({
           className="project-card__stack"
           aria-label="Project tech stack"
         >
-          {project.techStack.slice(0, 5).map((tech) => (
+          {project.techStack.slice(0, 6).map((tech) => (
             <span key={tech}>{tech}</span>
           ))}
         </section>

@@ -10,7 +10,8 @@ type JourneyKind =
   | "coffee"
   | "cloud"
   | "security"
-  | "qa";
+  | "qa"
+  | "vibe";
 
 type JourneyItem = {
   period: string;
@@ -109,6 +110,18 @@ const journeyItems: JourneyItem[] = [
     visualWidth: 1672,
     visualHeight: 941,
   },
+  {
+    period: "2026.07.06 ~ 2026.07.20",
+    title: "경기도일자리재단 바이브코딩 개발자 과정",
+    role: "미래융합전문교육 단기특강 훈련생 (총 60시간 완성)",
+    description:
+      "생성형 AI 및 LLM(Gemini Pro) 기반 개발 기법을 익히고, UI/UX 설계부터 데이터 수집/파이프라인 구축, Vercel 배포까지 Gogisise 서비스를 직접 제작·구현한 경험입니다.",
+    kind: "vibe",
+    visualSrc: "/images/hero-main.png",
+    visualAlt: "바이브코딩 개발자 과정과 Gogisise 서비스 구현 비주얼",
+    visualWidth: 2048,
+    visualHeight: 2048,
+  },
 ];
 
 const workChecklist = [
@@ -161,6 +174,13 @@ function PathIcon({ kind }: { kind: JourneyKind }) {
         <>
           <path d="M24 6 38 12v11c0 10-6 16-14 19-8-3-14-9-14-19V12l14-6Z" />
           <path d="m18 24 4 4 8-9" />
+        </>
+      )}
+      {kind === "vibe" && (
+        <>
+          <path d="M10 13h28v18H10z" />
+          <path d="M17 39h14M21 31l-2 8M27 31l2 8" />
+          <path d="m18 21 4 4 8-8" />
         </>
       )}
     </svg>

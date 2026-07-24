@@ -15,6 +15,9 @@ export const siteConfig = {
 };
 
 export const studyCategoryItems = [
+  { label: "AI 활용", slug: "ai-as-tool" },
+  { label: "바이브코딩", slug: "vibe-coding" },
+  { label: "LLM/프롬프팅", slug: "llm-prompting" },
   { label: "백엔드/API", slug: "backend-api" },
   { label: "파이썬/Django", slug: "python" },
   { label: "리눅스", slug: "linux" },
@@ -24,7 +27,6 @@ export const studyCategoryItems = [
   { label: "자동화", slug: "automation" },
   { label: "데이터 파이프라인", slug: "data-pipeline" },
   { label: "QA", slug: "qa-insight" },
-  { label: "AI 활용", slug: "ai-as-tool" },
 ];
 
 export const studyCategories = studyCategoryItems.map(
@@ -52,6 +54,13 @@ export function isValidCategorySlug(categorySlug: string) {
 }
 
 export const featuredPosts = [
+  {
+    title: "Gemini Pro와 LLM 모델 선정",
+    description:
+      "바이브코딩 과정에서 앱 개발 로직 초안을 만들 때 사용한 LLM 활용 기준을 정리합니다.",
+    category: "LLM/프롬프팅",
+    href: "/blog",
+  },
   {
     title: "API는 프론트와 백엔드를 어떻게 연결할까?",
     description:

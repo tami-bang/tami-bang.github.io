@@ -45,19 +45,19 @@ export const homeSections = {
   projects: {
     eyebrow: "PROJECTS",
     eyebrowDescription:
-      "데이터 수집, API, 관리자 화면, 리포트로 이어지는 구현 사례를 정리했습니다.",
+      "Gogisise처럼 아이디어, 데이터 수집, API, 모바일 UI, 배포까지 이어지는 구현 사례를 정리했습니다.",
   },
   study: {
     eyebrow: "STUDY LOG",
     eyebrowDescription:
-      "리눅스, 네트워크, C언어, 웹, 파이썬/Django를 프로젝트와 연결해 정리합니다.",
+      "AI 활용, 바이브코딩, LLM/프롬프팅, 웹, 파이썬/Django를 프로젝트와 연결해 정리합니다.",
   },
 } as const;
 
 export const homeFocusItems = [
-  "UI와 API 흐름",
-  "데이터 자동화",
-  "크롤링 파이프라인",
-  "결과 화면 설계",
-  "AI 도구 활용",
+  "바이브코딩",
+  "LLM/프롬프팅",
+  "모바일 UI/UX",
+  "데이터 파이프라인",
+  "Vercel 배포",
 ] as const;
