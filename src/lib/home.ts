@@ -1,15 +1,19 @@
 export const homeHero = {
-  eyebrow: "미감 있는 자동화 개발자",
-  titleLines: ["감각 있게 만들고,", "반복은 자동화합니다."],
-  descriptionLines: [],
+  eyebrow: "UX와 자동화를 함께 다루는 개발자",
+  titleLines: ["불필요한 반복은 줄이고,", "사용자 경험의 밀도는", "높입니다."],
+  descriptionLines: ["Automating the Repetitive, Refining the Experience."],
   actions: [
-    { href: "/projects", label: "프로젝트 보기", variant: "primary" },
-    { href: "/blog", label: "기록 보기", variant: "secondary" },
+    { href: "#projects", label: "프로젝트 보기", variant: "primary" },
+    {
+      href: "https://github.com/tami-bang",
+      label: "GitHub",
+      variant: "secondary",
+    },
   ],
   signals: [
-    { label: "Sense", value: "미감 있는 구현" },
-    { label: "Auto", value: "반복 자동화" },
-    { label: "Vibe", value: "바이브코딩" },
+    { label: "[AUTOMATION]", value: "비효율의 자동화" },
+    { label: "[UX & UI]", value: "디테일 중심의 구현" },
+    { label: "[FULL-STACK]", value: "끝까지 책임지는 배포" },
   ],
 } as const;
 
