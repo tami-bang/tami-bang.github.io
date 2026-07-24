@@ -30,6 +30,18 @@ createdAt: "2026-07-20"
 
 Gogisise에서도 데이터 수집, 저장, API 제공, 화면 표시가 이어지는 구조를 생각할 때 이 관점이 도움이 됐다.
 
+```text
+금천미트 도매 사이트
+→ Python Crawler
+→ NestJS Crawler API
+→ Prisma
+→ Supabase
+→ NestJS Market API
+→ React 모바일 UI
+```
+
+특히 크롤러는 Supabase에 직접 쓰지 않고 `POST /crawler/category-tree`, `POST /crawler/ingest`, `POST /crawler/finalize`를 통해 BE에 전달하도록 나눴다. 이 덕분에 상품 UPSERT, 일별 가격 UPSERT, RawRecord 저장, ACTIVE/INACTIVE 상태 동기화 같은 책임을 BE 한 곳에서 관리할 수 있었다.
+
 ## 배운 점
 
 자동화는 모든 것을 기계에 맡기는 일이 아니다. 반복되는 흐름은 자동화하고, 판단이 필요한 지점은 사람이 확인할 수 있게 남기는 균형이 중요하다.

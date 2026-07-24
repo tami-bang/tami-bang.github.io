@@ -13,7 +13,7 @@ const projectSummaries = [
     name: "Gogisise (고기시세)",
     href: "/projects/gogisise",
     description:
-      "AI 및 LLM 개발 도구를 활용하여 기획부터 모바일 최적화 UI, 데이터 크롤링, Vercel 실시간 배포까지 완성한 축산물 시세 모니터링 서비스입니다.",
+      "AI 및 LLM 개발 도구를 활용하여 기획부터 모바일 최적화 UI, NestJS API, Python 크롤러, Supabase 가격 이력 저장, Vercel 배포까지 완성한 축산물 시세 모니터링 서비스입니다.",
   },
   {
     name: "JobRadar",
