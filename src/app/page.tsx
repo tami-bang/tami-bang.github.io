@@ -32,13 +32,13 @@ function HeroTitle() {
 }
 
 function HeroDescription() {
-  if (homeHero.descriptionLines.length === 0) {
+  const description = homeHero.descriptionLines.join(" ");
+
+  if (description.length === 0) {
     return null;
   }
 
-  return (
-    <p className="hero-description">{homeHero.descriptionLines.join(" ")}</p>
-  );
+  return <p className="hero-description">{description}</p>;
 }
 
 function HeroSignals() {
@@ -125,7 +125,10 @@ function FeaturedProjectsSection() {
   const section = homeSections.projects;
 
   return (
-    <section className="page-section page-section--projects page-section--reveal">
+    <section
+      className="page-section page-section--projects page-section--reveal"
+      id="projects"
+    >
       <SectionHeader
         eyebrow={section.eyebrow}
         eyebrowDescription={section.eyebrowDescription}
