@@ -5,6 +5,7 @@ import SectionHeader from "@/components/SectionHeader"; // 용도 공통 섹션 
 import { getProjectBySlug, getProjectSlugs } from "@/lib/projects"; // 용도 프로젝트 상세 데이터 조회
 import type {
   InternshipStory,
+  ProjectRepository,
   ProjectWorkSample,
   ProjectVisualHighlight,
 } from "@/lib/projects"; // 용도 포트폴리오 시각 자료 및 인턴십 스토리 타입 참조
@@ -164,6 +165,58 @@ function ProjectWorkSamplesSection({
   );
 }
 
+function ProjectRepositorySection({
+  repositories,
+}: {
+  repositories?: ProjectRepository[];
+}) {
+  if (!repositories || repositories.length === 0) {
+    return null;
+  }
+
+  return (
+    <section className="project-detail-section project-repository-section page-section--reveal">
+      <div className="project-repository-section__header">
+        <p className="section-eyebrow">Repository Architecture</p>
+        <h2>4개 레포지토리로 분리한 서비스 구조</h2>
+        <p>
+          화면, API, 데이터 수집, 데이터베이스를 독립된 책임 단위로 나누어
+          구현과 배포 흐름을 명확히 정리했습니다.
+        </p>
+      </div>
+
+      <div className="project-repository-grid">
+        {repositories.map((repository) => (
+          <article className="project-repository-card" key={repository.name}>
+            <header>
+              <span>{repository.label}</span>
+              <h3>{repository.name}</h3>
+            </header>
+
+            <p>{repository.role}</p>
+
+            <div
+              className="project-repository-card__stack"
+              aria-label={`${repository.name} 기술 스택`}
+            >
+              {repository.stack.map((tech) => (
+                <span key={tech}>{tech}</span>
+              ))}
+            </div>
+
+            <footer>
+              <small>{repository.deployment}</small>
+              <a href={repository.url} target="_blank" rel="noreferrer">
+                GitHub Repo
+              </a>
+            </footer>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export function generateStaticParams() {
   return getProjectSlugs().map((slug) => ({
     slug,
@@ -221,6 +274,19 @@ export default async function ProjectDetailPage({
           </div>
 
           <p className="project-detail-description">{project.description}</p>
+
+          {project.liveUrl && (
+            <div className="project-detail-hero__actions">
+              <a
+                className="hero-primary-link"
+                href={project.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {project.liveLabel ?? "View Live Demo"}
+              </a>
+            </div>
+          )}
         </div>
 
         {project.livePreview === "job-radar" && project.liveUrl && (
@@ -274,6 +340,7 @@ export default async function ProjectDetailPage({
 
       <InternshipStorySection story={project.internshipStory} />
       <ProjectWorkSamplesSection samples={project.workSamples} />
+      <ProjectRepositorySection repositories={project.repositories} />
 
       <section className="project-detail-section project-detail-grid page-section--reveal-delayed">
         <article className="project-detail-card">

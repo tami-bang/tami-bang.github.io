@@ -28,6 +28,15 @@ export type ProjectWorkSample = {
   link?: string;
 };
 
+export type ProjectRepository = {
+  name: string;
+  label: string;
+  role: string;
+  stack: string[];
+  deployment: string;
+  url: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -55,6 +64,7 @@ export type Project = {
   visualHighlights?: ProjectVisualHighlight[];
   internshipStory?: InternshipStory;
   workSamples?: ProjectWorkSample[];
+  repositories?: ProjectRepository[];
   githubUrl: string;
   githubLabel?: string;
   liveUrl?: string;
@@ -63,6 +73,92 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: "gogisise",
+    title: "고기시세",
+    subtitle:
+      "축산물 시세를 모바일에서 빠르게 확인하는 실시간 가격 정보 웹 서비스",
+    domain: "Mobile Web Service / Price Data Platform",
+    description:
+      "React 모바일 UI, Spring Boot API, Python 크롤러, MySQL 스키마를 분리한 4개 레포지토리 기반 프로젝트입니다. Vercel에 프론트엔드를 배포해 실제 사용 가능한 모바일 전용 웹 서비스로 완성했습니다.",
+    status: "Live Service",
+    period: "2026",
+    role: "Frontend / Backend API / Crawler / Database Design",
+    problem:
+      "축산물 가격 정보는 여러 화면과 데이터 출처에 흩어져 있어 모바일에서 빠르게 확인하고 비교하기 어렵습니다. 사용자가 매번 직접 검색하지 않아도 최신 시세 흐름을 간결하게 볼 수 있는 서비스 구조가 필요했습니다.",
+    solution:
+      "모바일 전용 React 화면, Spring Boot API 서버, Python 기반 시세 수집 크롤러, MySQL 스키마와 마이그레이션을 역할별 레포지토리로 분리했습니다. 수집된 데이터를 API로 제공하고, 프론트엔드는 Vercel에 배포해 라이브 데모로 바로 확인할 수 있게 구성했습니다.",
+    architecture: [
+      "Python Crawler가 축산물 시세 데이터를 주기적으로 수집",
+      "수집 데이터를 정규화해 MySQL 스키마에 저장",
+      "Spring Boot API 서버가 모바일 화면에 필요한 시세 데이터를 조회 및 가공",
+      "React 기반 FE가 모바일 전용 UI로 가격 정보와 서비스 화면을 제공",
+      "FE는 Vercel에 배포되어 실제 라이브 데모로 접근 가능",
+    ],
+    highlights: [
+      "FE, BE, Crawler, DB를 독립 레포지토리로 분리해 책임과 배포 단위를 명확히 구성",
+      "모바일 사용성을 우선해 작은 화면에서 핵심 가격 정보를 빠르게 확인하는 UI 구현",
+      "크롤러와 API 서버를 분리해 데이터 수집 실패와 사용자 화면 장애 범위를 분리",
+      "MySQL 스키마와 마이그레이션을 별도 관리해 데이터 구조 변경 이력을 추적 가능",
+      "Vercel 배포 완료 상태의 실제 서비스 URL을 포트폴리오에서 바로 연결",
+    ],
+    techStack: [
+      "React",
+      "Vercel",
+      "Spring Boot",
+      "Java",
+      "Python",
+      "MySQL",
+      "REST API",
+    ],
+    results: [
+      "모바일 전용 웹 UI부터 API, 크롤러, DB까지 서비스 전체 흐름을 4개 레포지토리로 구현",
+      "프론트엔드를 Vercel에 배포해 포트폴리오 방문자가 실제 서비스 화면을 바로 확인 가능",
+      "데이터 수집, 저장, 조회, 화면 표시 흐름을 분리해 유지보수와 확장 기준을 확보",
+    ],
+    retrospective: [
+      "실서비스 형태로 배포해 보며 화면 구현뿐 아니라 데이터 수집, API 계약, DB 변경 관리가 함께 맞물려야 한다는 점을 확인했습니다.",
+      "작은 모바일 서비스라도 레포지토리별 책임을 분리하면 장애 지점과 개선 범위를 더 명확하게 판단할 수 있었습니다.",
+    ],
+    repositories: [
+      {
+        name: "gogisise_FE",
+        label: "Frontend",
+        role: "React 기반 모바일 Web UI 구현 및 Vercel 배포",
+        stack: ["React", "Mobile Web", "Vercel"],
+        deployment: "Vercel 배포 완료",
+        url: "https://github.com/tami-bang/gogisise_FE",
+      },
+      {
+        name: "gogisise_BE",
+        label: "Backend",
+        role: "Spring Boot 기반 시세 조회 API 서버 구현 및 배포",
+        stack: ["Spring Boot", "Java", "REST API"],
+        deployment: "API 서버 구현 및 배포",
+        url: "https://github.com/tami-bang/gogisise_BE",
+      },
+      {
+        name: "gogisise_crawler",
+        label: "Crawler",
+        role: "Python 기반 축산물 시세 데이터 수집 크롤러",
+        stack: ["Python", "Crawler", "Data Parsing"],
+        deployment: "시세 데이터 수집 파이프라인 구현",
+        url: "https://github.com/tami-bang/gogisise_crawler",
+      },
+      {
+        name: "gogisise_DB",
+        label: "Database",
+        role: "MySQL 데이터베이스 스키마 및 마이그레이션 관리",
+        stack: ["MySQL", "Schema", "Migration"],
+        deployment: "DB 스키마 및 변경 이력 관리",
+        url: "https://github.com/tami-bang/gogisise_DB",
+      },
+    ],
+    githubUrl: "https://github.com/tami-bang/gogisise_FE",
+    githubLabel: "View Frontend Repo",
+    liveUrl: "https://gogisise-fe.vercel.app/",
+    liveLabel: "Live Demo (Vercel)",
+  },
   {
     slug: "health-ai-search-api",
     title: "Health AI Search API",
