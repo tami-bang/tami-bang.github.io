@@ -7,13 +7,15 @@ createdAt: "2026-07-20"
 
 # [배포/DevOps] Vercel 환경에서의 모바일 웹 서비스 최종 배포 및 결과물 시연
 
-Gogisise는 로컬에서 동작하는 코드로 끝내지 않고, Vercel에 배포해 실제 URL로 접근 가능한 모바일 웹 서비스로 완성했다.
+Gogisise는 로컬에서 동작하는 코드로 끝내지 않고, React/TypeScript FE와 NestJS BE를 Vercel 환경에 연결해 실제 URL로 접근 가능한 모바일 웹 서비스로 완성했다.
 
 ## 배포 전 확인한 항목
 
 - 모바일 화면에서 주요 UI가 깨지지 않는지
-- API 연결 주소와 환경변수가 올바른지
+- FE의 API 연결 주소와 BE의 Supabase 환경변수가 올바른지
 - 빈 데이터, 로딩, 오류 상태가 표시되는지
+- ACTIVE 상품과 최근 7일 priceHistory가 API 응답으로 내려오는지
+- 가격이 없는 날짜를 보간하지 않고 “없음”으로 표시하는지
 - 배포된 URL에서 실제 서비스 흐름을 시연할 수 있는지
 - GitHub 레포지토리와 배포 결과가 포트폴리오에서 연결되는지
 
@@ -23,10 +25,11 @@ Gogisise는 로컬에서 동작하는 코드로 끝내지 않고, Vercel에 배�
 
 ```text
 GitHub Repository
-→ Vercel 프로젝트 연결
-→ 환경변수 설정
+→ FE / BE Vercel 프로젝트 연결
+→ Supabase URL과 key 등 환경변수 설정
 → Production Build
-→ 배포 URL 확인
+→ Market API와 Crawler API 동작 확인
+→ 배포 URL과 모바일 화면 확인
 → 모바일 브라우저에서 최종 시연
 ```
 
