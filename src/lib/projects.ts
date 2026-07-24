@@ -49,6 +49,7 @@ export type Project = {
   featured?: boolean;
   featuredOrder?: number;
   featuredBadge?: string;
+  cardTags?: string[];
   repeatedProblem?: string;
   backendFlow?: string;
   structuredFlow?: string;
@@ -75,19 +76,30 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "gogisise",
-    title: "고기시세",
-    subtitle:
-      "축산물 시세를 모바일에서 빠르게 확인하는 실시간 가격 정보 웹 서비스",
+    title: "Gogisise",
+    subtitle: "축산물 시세를 모니터링하는 모바일 전용 실시간 가격 정보 서비스",
     domain: "Mobile Web Service / Price Data Platform",
     description:
-      "React 모바일 UI, Spring Boot API, Python 크롤러, MySQL 스키마를 분리한 4개 레포지토리 기반 프로젝트입니다. Vercel에 프론트엔드를 배포해 실제 사용 가능한 모바일 전용 웹 서비스로 완성했습니다.",
+      "바이브코딩 개발자 과정을 통해 기획·구현된 서비스입니다. Python 크롤러, Spring Boot REST API, MySQL DB, React 기반 모바일 UI를 완전히 분리 설계하여 Vercel 및 클라우드 환경에 실제 배포를 완료했습니다.",
     status: "Live Service",
     period: "2026",
     role: "Frontend / Backend API / Crawler / Database Design",
+    featured: true,
+    featuredOrder: 1,
+    featuredBadge: "Vibe Coding MVP",
+    cardTags: ["MOBILE WEB SERVICE", "PRICE DATA PLATFORM", "VIBE CODING MVP"],
+    repeatedProblem:
+      "흩어진 축산물 시세 데이터를 모바일에서 빠르게 확인하기 어려운 문제",
+    backendFlow:
+      "Python 크롤러 → MySQL 저장 → Spring Boot REST API → React 모바일 UI",
+    automationPoint:
+      "시세 데이터 수집과 화면 표시 흐름을 역할별 레포지토리로 분리",
+    resultSummary:
+      "기획, UI/UX, 데이터 파이프라인, API, Vercel 배포까지 완성한 모바일 서비스",
     problem:
       "축산물 가격 정보는 여러 화면과 데이터 출처에 흩어져 있어 모바일에서 빠르게 확인하고 비교하기 어렵습니다. 사용자가 매번 직접 검색하지 않아도 최신 시세 흐름을 간결하게 볼 수 있는 서비스 구조가 필요했습니다.",
     solution:
-      "모바일 전용 React 화면, Spring Boot API 서버, Python 기반 시세 수집 크롤러, MySQL 스키마와 마이그레이션을 역할별 레포지토리로 분리했습니다. 수집된 데이터를 API로 제공하고, 프론트엔드는 Vercel에 배포해 라이브 데모로 바로 확인할 수 있게 구성했습니다.",
+      "경기도일자리재단 바이브코딩 개발자 과정에서 Gemini Pro 기반 기획과 구현 흐름을 활용해 모바일 전용 React 화면, Spring Boot API 서버, Python 기반 시세 수집 크롤러, MySQL 스키마와 마이그레이션을 역할별 레포지토리로 분리했습니다. 수집된 데이터를 API로 제공하고, 프론트엔드는 Vercel에 배포해 라이브 데모로 바로 확인할 수 있게 구성했습니다.",
     architecture: [
       "Python Crawler가 축산물 시세 데이터를 주기적으로 수집",
       "수집 데이터를 정규화해 MySQL 스키마에 저장",
@@ -96,6 +108,7 @@ export const projects: Project[] = [
       "FE는 Vercel에 배포되어 실제 라이브 데모로 접근 가능",
     ],
     highlights: [
+      "바이브코딩 개발자 과정 최종 시연/배포 프로젝트로 기획부터 라이브 배포까지 완성",
       "FE, BE, Crawler, DB를 독립 레포지토리로 분리해 책임과 배포 단위를 명확히 구성",
       "모바일 사용성을 우선해 작은 화면에서 핵심 가격 정보를 빠르게 확인하는 UI 구현",
       "크롤러와 API 서버를 분리해 데이터 수집 실패와 사용자 화면 장애 범위를 분리",
@@ -112,11 +125,13 @@ export const projects: Project[] = [
       "REST API",
     ],
     results: [
+      "경기도일자리재단 미래융합전문교육 바이브코딩 개발자 과정에서 60시간 동안 최종 시연 가능한 서비스로 구현",
       "모바일 전용 웹 UI부터 API, 크롤러, DB까지 서비스 전체 흐름을 4개 레포지토리로 구현",
       "프론트엔드를 Vercel에 배포해 포트폴리오 방문자가 실제 서비스 화면을 바로 확인 가능",
       "데이터 수집, 저장, 조회, 화면 표시 흐름을 분리해 유지보수와 확장 기준을 확보",
     ],
     retrospective: [
+      "Gemini Pro와 AI 개발 도구를 활용해 아이디어 도출, UI/UX 설계, 구현 우선순위 정리, 배포 검증을 빠르게 반복했습니다.",
       "실서비스 형태로 배포해 보며 화면 구현뿐 아니라 데이터 수집, API 계약, DB 변경 관리가 함께 맞물려야 한다는 점을 확인했습니다.",
       "작은 모바일 서비스라도 레포지토리별 책임을 분리하면 장애 지점과 개선 범위를 더 명확하게 판단할 수 있었습니다.",
     ],
@@ -263,7 +278,7 @@ export const projects: Project[] = [
     period: "2026",
     role: "Packet Engine / Backend / Admin Flow / AI Integration",
     featured: true,
-    featuredOrder: 2,
+    featuredOrder: 3,
     featuredBadge: "Backend Flow",
     repeatedProblem:
       "유해 접근 탐지 후 판단과 기록이 운영 흐름으로 이어지지 않는 문제",
@@ -358,7 +373,7 @@ export const projects: Project[] = [
     period: "2026",
     role: "Crawler / Parser / Data Pipeline / Report Automation",
     featured: true,
-    featuredOrder: 1,
+    featuredOrder: 2,
     featuredBadge: "Automation Core",
     repeatedProblem: "채용 공고를 매번 직접 확인하고 비교하는 반복 작업",
     backendFlow:
@@ -424,7 +439,7 @@ export const projects: Project[] = [
     period: "2026.04.27 - 2026.06.19",
     role: "QA Testing / Regression Check / Documentation Automation",
     featured: true,
-    featuredOrder: 3,
+    featuredOrder: 4,
     featuredBadge: "Workflow Automation",
     repeatedProblem:
       "개발 변경점마다 사용자 흐름, 정책 반영, 로그/리포트 일관성을 반복 확인해야 하는 문제",

@@ -18,7 +18,7 @@ export default function BlogPage() {
         <SectionHeader
           eyebrow="Study Log"
           title="과목별로 정리합니다."
-          description="리눅스, 네트워크, C언어, HTML/CSS/JS, 파이썬/Django처럼 배운 내용을 주제별로 나누고, 프로젝트와 연결되는 개념은 함께 기록합니다."
+          description="AI 활용, 바이브코딩, LLM/프롬프팅, 리눅스, 네트워크, C언어, HTML/CSS/JS, 파이썬/Django처럼 배운 내용을 주제별로 나누고, 프로젝트와 연결되는 개념은 함께 기록합니다."
         />
 
         <div className="category-strip">
