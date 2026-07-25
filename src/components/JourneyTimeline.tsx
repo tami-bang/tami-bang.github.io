@@ -117,10 +117,10 @@ const journeyItems: JourneyItem[] = [
     description:
       "생성형 AI 및 LLM(Gemini Pro) 기반 개발 기법을 익히고, UI/UX 설계부터 Python 크롤러, NestJS API, Supabase 가격 이력 저장, Vercel 배포까지 Gogisise 서비스를 직접 제작·구현한 경험입니다.",
     kind: "vibe",
-    visualSrc: "/images/hero-main.png",
+    visualSrc: "/images/바이브코딩.png",
     visualAlt: "바이브코딩 개발자 과정과 Gogisise 서비스 구현 비주얼",
-    visualWidth: 2048,
-    visualHeight: 2048,
+    visualWidth: 1381,
+    visualHeight: 1139,
   },
 ];
 
