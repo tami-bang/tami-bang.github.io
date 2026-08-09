@@ -76,7 +76,7 @@ function HeroActions() {
 
 function HeroSection() {
   return (
-    <section className="hero-universe page-hero page-section--reveal site-column">
+    <section className="hero-universe page-hero page-section--reveal">
       <SpaceDots />
 
       <div className="hero-universe__inner">
@@ -187,9 +187,8 @@ function FeaturedPostsSection() {
 export default function Home() {
   return (
     <main className="home-page-root">
-      <HeroSection />
-
       <div className="home-page site-column">
+        <HeroSection />
         <WorkingPatternSection />
         <FeaturedProjectsSection />
         <FeaturedPostsSection />
