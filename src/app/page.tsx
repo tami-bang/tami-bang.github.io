@@ -186,11 +186,14 @@ function FeaturedPostsSection() {
 
 export default function Home() {
   return (
-    <main className="content-shell home-page">
+    <main className="home-page-root">
       <HeroSection />
-      <WorkingPatternSection />
-      <FeaturedProjectsSection />
-      <FeaturedPostsSection />
+
+      <div className="home-page">
+        <WorkingPatternSection />
+        <FeaturedProjectsSection />
+        <FeaturedPostsSection />
+      </div>
     </main>
   );
 }

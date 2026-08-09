@@ -9,11 +9,6 @@
   margin-bottom: clamp(18px, 2.8vw, 38px);
 }
 
-.home-page .hero-universe {
-  width: min(100%, var(--layout-max-width));
-  margin-inline: auto;
-}
-
 .hero-universe__inner {
   position: relative;
   z-index: 2;
