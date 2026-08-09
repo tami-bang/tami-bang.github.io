@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/site"; // 용도 사이트 공통 설정 조�
 export default function Header() {
   return (
     <header className="site-header">
-      <nav className="site-header__nav">
+      <nav className="site-header__nav site-column">
         <Link href="/" className="site-logo">
           {siteConfig.name}
           <span>.log</span>
