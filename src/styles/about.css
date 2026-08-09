@@ -24,7 +24,7 @@
 }
 
 .about-section__header {
-  max-width: 840px;
+  max-width: none;
 }
 
 .about-section__header h2,
@@ -36,6 +36,7 @@
   line-height: 1.02;
   letter-spacing: -0.07em;
   word-break: keep-all;
+  text-wrap: balance;
 }
 
 .about-section--animated {
@@ -72,7 +73,7 @@
 }
 
 .journey-board__intro {
-  max-width: 920px;
+  max-width: none;
 }
 
 .journey-board__intro h2,
@@ -80,11 +81,12 @@
   margin: 0;
   color: var(--foreground);
   font-family: var(--font-display);
-  font-size: clamp(2.25rem, 5vw, 4.7rem);
+  font-size: clamp(2.25rem, 4.4vw, 4.2rem);
   font-weight: 950;
   line-height: 1;
   letter-spacing: -0.07em;
   word-break: keep-all;
+  text-wrap: balance;
 }
 
 .journey-board__intro p:last-child {
@@ -94,7 +96,7 @@
   font-size: clamp(1rem, 1.4vw, 1.12rem);
   line-height: 1.8;
   word-break: keep-all;
-  white-space: nowrap;
+  text-wrap: pretty;
 }
 
 .journey-board__canvas {

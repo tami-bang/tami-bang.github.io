@@ -182,6 +182,31 @@
   padding: clamp(24px, 4vw, 42px);
 }
 
+/* 카드의 열 크기는 유지하되 긴 제목과 URL이 경계를 밀어내지 않게 한다. */
+.project-card,
+.post-card-large,
+.study-card,
+.about-card,
+.empty-panel,
+.project-detail-card,
+.project-work-sample-card,
+.roadmap-step {
+  min-width: 0;
+}
+
+.project-card :is(h2, h3, p, li, a),
+.post-card-large :is(h2, h3, p, li, a),
+.study-card :is(h2, h3, p, li, a),
+.about-card :is(h2, h3, p, li, a),
+.empty-panel :is(h2, h3, p, li, a),
+.project-detail-card :is(h2, h3, p, li, a),
+.project-work-sample-card :is(h2, h3, p, li, a),
+.roadmap-step :is(h2, h3, p, li, a) {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
 .post-card-large h2,
 .study-card h2,
 .about-card h2,
