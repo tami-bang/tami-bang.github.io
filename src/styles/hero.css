@@ -318,3 +318,13 @@
     infinite;
   will-change: transform, translate, rotate;
 }
+
+@media (min-width: 1200px) {
+  .hero-universe {
+    overflow: visible;
+  }
+
+  .hero-object-scene {
+    right: clamp(-220px, -10vw, -120px);
+  }
+}
