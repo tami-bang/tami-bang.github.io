@@ -237,16 +237,6 @@
 }
 
 @media (max-width: 560px) {
-  .page-section,
-  .page-shell,
-  .project-detail-shell {
-    width: min(calc(100% - 32px), var(--section-max-width));
-  }
-
-  .content-shell {
-    width: min(calc(100% - 32px), var(--layout-max-width));
-  }
-
   .scroll-to-top {
     right: max(16px, env(safe-area-inset-right));
     bottom: max(16px, env(safe-area-inset-bottom));
