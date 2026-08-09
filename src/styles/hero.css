@@ -10,16 +10,14 @@
 }
 
 .home-page .hero-universe {
-  width: 100vw;
-  max-width: none;
-  margin-left: calc((100% - 100vw) / 2);
-  padding-inline: var(--layout-padding);
+  width: min(100%, var(--layout-max-width));
+  margin-inline: auto;
 }
 
 .hero-universe__inner {
   position: relative;
   z-index: 2;
-  width: min(100%, var(--layout-max-width));
+  width: 100%;
   min-height: auto;
   margin: 0 auto;
   display: flex;
