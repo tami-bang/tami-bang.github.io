@@ -22,13 +22,7 @@ function SpaceDots() {
 }
 
 function HeroTitle() {
-  return (
-    <h1 className="hero-title">
-      {homeHero.titleLines.map((line) => (
-        <span key={line}>{line}</span>
-      ))}
-    </h1>
-  );
+  return <h1 className="hero-title">{homeHero.title}</h1>;
 }
 
 function HeroDescription() {

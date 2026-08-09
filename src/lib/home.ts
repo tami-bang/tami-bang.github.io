@@ -1,7 +1,7 @@
 export const homeHero = {
-  eyebrow: "UX와 자동화를 함께 다루는 개발자",
-  titleLines: ["불필요한 반복은 줄이고,", "사용자 경험의 밀도는", "높입니다."],
-  descriptionLines: ["Automating the Repetitive, Refining the Experience."],
+  eyebrow: "제품 흐름을 설계하는 개발자",
+  title: "불필요한 반복은 줄이고, 사용자 경험의 밀도는 높입니다.",
+  descriptionLines: [],
   actions: [
     { href: "#projects", label: "프로젝트 보기", variant: "primary" },
     {

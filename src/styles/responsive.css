@@ -145,10 +145,6 @@
     font-size: clamp(2.18rem, 9vw, 3.2rem);
   }
 
-  .hero-title span {
-    white-space: normal;
-  }
-
   .journey-board__intro p:last-child {
     white-space: normal;
   }
