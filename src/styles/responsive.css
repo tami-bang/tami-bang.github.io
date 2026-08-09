@@ -107,7 +107,6 @@
 
 @media (max-width: 720px) {
   .site-header__nav {
-    width: min(calc(100% - 32px), var(--layout-max-width));
     align-items: flex-start;
     flex-direction: column;
   }
