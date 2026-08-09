@@ -17,6 +17,13 @@
   padding-block: var(--page-start-padding) var(--page-end-padding);
 }
 
+.home-page {
+  width: min(
+    calc(100% - var(--layout-padding) * 2),
+    var(--home-layout-max-width)
+  );
+}
+
 .scroll-progress-glow {
   position: fixed;
   top: 0;
