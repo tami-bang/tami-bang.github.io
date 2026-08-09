@@ -247,6 +247,19 @@
   mix-blend-mode: screen;
 }
 
+.journeyVisualImage--light {
+  display: none;
+  mix-blend-mode: normal;
+}
+
+html[data-theme="light"] .journeyVisualImage--dark {
+  display: none;
+}
+
+html[data-theme="light"] .journeyVisualImage--light {
+  display: block;
+}
+
 .journey-work-style {
   position: relative;
   z-index: 1;
