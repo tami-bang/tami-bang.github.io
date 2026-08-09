@@ -21,6 +21,11 @@
   padding-block: var(--page-start-padding) var(--page-end-padding);
 }
 
+.home-page-root > .hero-universe {
+  width: min(calc(100% - var(--layout-padding) * 2), var(--layout-max-width));
+  margin-inline: auto;
+}
+
 .home-page {
   width: min(
     calc(100% - var(--layout-padding) * 2),

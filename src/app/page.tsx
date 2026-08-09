@@ -76,7 +76,7 @@ function HeroActions() {
 
 function HeroSection() {
   return (
-    <section className="hero-universe page-hero page-section page-section--reveal">
+    <section className="hero-universe page-hero page-section--reveal">
       <SpaceDots />
 
       <div className="hero-universe__inner">
