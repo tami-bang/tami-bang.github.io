@@ -66,7 +66,7 @@ export type Project = {
   internshipStory?: InternshipStory;
   workSamples?: ProjectWorkSample[];
   repositories?: ProjectRepository[];
-  githubUrl: string;
+  githubUrl?: string;
   githubLabel?: string;
   liveUrl?: string;
   liveLabel?: string;
@@ -183,6 +183,77 @@ export const projects: Project[] = [
     githubLabel: "View Frontend Repo",
     liveUrl: "https://gogisise-fe.vercel.app/",
     liveLabel: "Live Demo (Vercel)",
+  },
+  {
+    slug: "bonaedream-website-maintenance",
+    title: "보내드림 웹사이트 유지보수",
+    subtitle:
+      "22개 개선 요청을 분석하고 구현·검증·결과 보고까지 이틀 만에 완료한 실무 의뢰",
+    domain: "Website Maintenance / Client Work",
+    description:
+      "경기도일자리재단 보내드림 활동가로 참여해 기존 쇼핑몰의 카테고리, 이미지, 배너, 링크, 검색, 상품 상세, 게시판 영역을 개선했습니다. 요청 22건 중 21건을 수정하고, 브라우저 정책상 구현할 수 없는 1건은 기술적 이유와 현실적인 대안을 문서화했습니다.",
+    status: "Client Work · Completed",
+    period: "2026 · 2 Days",
+    role: "Requirement Analysis / Website Maintenance / Verification",
+    featured: true,
+    featuredOrder: 5,
+    featuredBadge: "Real Client Work",
+    cardTags: ["CLIENT WORK", "MAINTENANCE", "2-DAY DELIVERY"],
+    repeatedProblem:
+      "오래된 쇼핑몰의 잘못된 콘텐츠, 끊어진 링크, 화면 정렬과 게시판 오류가 사용자 경험을 저해하는 문제",
+    structuredFlow:
+      "22개 요청 분석 → 유형별 분류 → 수정·기능 구현 → PC·모바일 검증 → 결과 보고",
+    automationPoint:
+      "단순 수정과 기능·호환성 검토를 분리해 짧은 일정에서도 누락 없이 처리할 수 있는 점검 흐름 구성",
+    resultSummary:
+      "21개 항목 수정 완료, 1개 브라우저 제약 분석 및 대안 안내, 이틀 내 의뢰 완료",
+    problem:
+      "기존 쇼핑몰에는 잘못된 카테고리명과 상품 이미지, 누락된 링크, 깨진 고객센터 정렬, 소스 코드가 노출되는 게시판 등 서로 다른 유형의 문제가 함께 존재했습니다. 전달받은 자료는 22개 슬라이드로 구성되어 있어 각 요청의 수정 범위와 완료 기준을 빠르게 파악하고, PC와 모바일 화면에 일관되게 반영해야 했습니다.",
+    solution:
+      "슬라이드별 요청을 콘텐츠, 이미지·배너, 화면 구성, 링크·기능, 검색 경험, 오류 수정으로 분류한 뒤 관련 화면을 묶어 작업했습니다. 구현 후에는 링크 이동, 레이아웃, 재검색 흐름, 게시판 표시와 모바일 적용 상태를 확인했습니다. 사이트가 즐겨찾기를 직접 등록해 달라는 요청은 현재 브라우저 보안 정책상 구현할 수 없다고 판단해 기존 상태를 유지하고 Ctrl+D 사용을 대안으로 안내했습니다.",
+    architecture: [
+      "22개 슬라이드의 요청 내용과 대상 화면 확인",
+      "콘텐츠, 이미지·배너, 레이아웃, 링크·기능, 검색, 오류로 작업 유형 분류",
+      "오탈자와 카테고리명 수정 및 상품 이미지·배너 교체",
+      "BEST 영역, 고객센터, 상품문의, 공지사항 레이아웃 정리",
+      "이용안내, 배너, 카카오톡 상담 링크와 재검색 기능 연결",
+      "상품 상세와 게시판의 표시 오류 및 소스 코드 노출 문제 수정",
+      "PC·모바일 화면과 사용자 이동 흐름 검증",
+      "완료 21건과 기술 제약 1건의 사유·대안을 구분해 결과 보고",
+    ],
+    highlights: [
+      "슬라이드 기반 요구사항을 작업 유형과 검증 기준으로 재구성",
+      "카테고리명, 오탈자, 상품명과 상세 내용 등 콘텐츠 정확성 개선",
+      "상품 이미지 교체와 배너 추가 후 목적 페이지까지 링크 연결",
+      "Product Search 영역을 정리하고 결과 화면에서 다시 검색할 수 있는 흐름 구현",
+      "상품문의, 공지사항, 고객센터 영역의 배치와 정렬 정상화",
+      "공지사항과 게시판에서 내부 소스 코드가 사용자에게 노출되는 오류 해결",
+      "카카오톡 상담 버튼을 실제 상담페이지로 연결해 사용자 이동 흐름 복구",
+      "구현 불가능한 요청은 브라우저 제약을 확인하고 사용 가능한 대안까지 제시",
+    ],
+    techStack: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Legacy Web",
+      "Responsive Web",
+      "Cross-browser Verification",
+    ],
+    results: [
+      "총 22개 요청 중 21개 콘텐츠·화면·기능·오류 수정 완료",
+      "즐겨찾기 직접 등록 요청 1건은 현재 브라우저 정책상 불가능한 이유와 Ctrl+D 대안을 안내",
+      "PC와 모바일에서 동일한 변경 내용과 주요 링크 이동을 확인",
+      "요청 분석부터 구현, 검증, 완료 보고까지 이틀 안에 마무리",
+      "경기도일자리재단 보내드림 활동가 첫 실무 의뢰 완료",
+    ],
+    retrospective: [
+      "기존 서비스 유지보수에서는 새 기능을 많이 만드는 것보다 현재 구조와 변경 영향을 빠르게 파악하는 일이 먼저였습니다.",
+      "작은 문구나 이미지 수정도 링크, 주변 레이아웃, 모바일 화면까지 함께 확인해야 완료라고 판단할 수 있었습니다.",
+      "구현할 수 없는 요청도 단순히 불가하다고 답하기보다 기술적 근거와 현실적인 대안을 함께 전달해야 신뢰할 수 있는 결과 보고가 됩니다.",
+      "짧은 일정일수록 요청을 유형별로 구조화하고 완료 기준을 기록하는 방식이 누락을 줄이는 데 효과적이었습니다.",
+    ],
+    liveUrl: "https://apply.jobaba.net/bsns/bsnsDetailView.do?bsnsSeq=5697",
+    liveLabel: "보내드림 사업 안내 ↗",
   },
   {
     slug: "health-ai-search-api",

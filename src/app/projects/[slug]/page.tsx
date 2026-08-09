@@ -424,14 +424,18 @@ export default async function ProjectDetailPage({
           </a>
         )}
 
-        <a
-          className={project.liveUrl ? "hero-github-link" : "hero-primary-link"}
-          href={project.githubUrl}
-          target="_blank"
-          rel="noreferrer"
-        >
-          {project.githubLabel ?? "View GitHub"}
-        </a>
+        {project.githubUrl && (
+          <a
+            className={
+              project.liveUrl ? "hero-github-link" : "hero-primary-link"
+            }
+            href={project.githubUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {project.githubLabel ?? "View GitHub"}
+          </a>
+        )}
 
         <Link className="hero-github-link" href="/blog">
           Read Study Log
