@@ -3,7 +3,7 @@
 ================================ */
 .page-hero,
 .project-detail-hero {
-  max-width: 860px;
+  max-width: none;
   margin-bottom: var(--page-hero-to-content-gap);
 }
 
@@ -17,7 +17,7 @@
 
 .project-detail-hero__content {
   min-width: 0;
-  max-width: 780px;
+  max-width: 100%;
 }
 
 .job-radar-preview {
@@ -353,11 +353,12 @@
   max-width: none;
   margin: 10px 0 0;
   color: var(--foreground);
-  font-size: clamp(2rem, 4.8vw, 4.8rem);
+  font-size: clamp(2rem, 4vw, 4rem);
   font-weight: 950;
   line-height: 1.04;
   letter-spacing: -0.07em;
   word-break: keep-all;
+  text-wrap: balance;
 }
 
 .internship-story__header > p {
@@ -434,7 +435,7 @@
 }
 
 .project-work-samples__header {
-  max-width: 860px;
+  max-width: none;
 }
 
 .project-work-samples__header h2 {
@@ -445,6 +446,7 @@
   line-height: 1.04;
   letter-spacing: 0;
   word-break: keep-all;
+  text-wrap: balance;
 }
 
 .project-work-samples__header p:not(.section-eyebrow) {
@@ -518,7 +520,7 @@
 }
 
 .project-repository-section__header {
-  max-width: 860px;
+  max-width: none;
 }
 
 .project-repository-section__header h2 {
@@ -529,6 +531,7 @@
   line-height: 1.04;
   letter-spacing: 0;
   word-break: keep-all;
+  text-wrap: balance;
 }
 
 .project-repository-section__header p:not(.section-eyebrow) {
@@ -637,7 +640,7 @@
 }
 
 .project-visual-section__header {
-  max-width: 820px;
+  max-width: none;
 }
 
 .project-visual-section__header h2 {
@@ -648,6 +651,7 @@
   line-height: 1.02;
   letter-spacing: -0.07em;
   word-break: keep-all;
+  text-wrap: balance;
 }
 
 .project-visual-section__header p:not(.section-eyebrow) {
