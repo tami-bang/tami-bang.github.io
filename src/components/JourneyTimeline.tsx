@@ -21,6 +21,7 @@ type JourneyItem = {
   description: string;
   kind: JourneyKind;
   visualSrc: string;
+  visualLightSrc: string;
   visualAlt: string;
   visualWidth: number;
   visualHeight: number;
@@ -35,6 +36,7 @@ const journeyItems: JourneyItem[] = [
       "낯선 해외에서 다양한 사람들을 만나며 서비스 마인드와 적응력을 배웠습니다.",
     kind: "singapore",
     visualSrc: "/images/싱가폴.png",
+    visualLightSrc: "/images/싱가폴-light.webp",
     visualAlt: "싱가포르 스카이라인과 비행기 비주얼",
     visualWidth: 1536,
     visualHeight: 1024,
@@ -47,6 +49,7 @@ const journeyItems: JourneyItem[] = [
       "수출입 업무를 통해 문서, 데이터, 프로세스의 중요성을 깨닫고 효율적인 업무 흐름을 고민했습니다.",
     kind: "shipping",
     visualSrc: "/images/범주해운.png",
+    visualLightSrc: "/images/범주해운-light.webp",
     visualAlt: "컨테이너선과 물류 경로 비주얼",
     visualWidth: 1774,
     visualHeight: 887,
@@ -59,6 +62,7 @@ const journeyItems: JourneyItem[] = [
       "어떻게 효과적으로 전달할지 고민하며 콘텐츠 제작과 시각적 표현을 배웠습니다.",
     kind: "creative",
     visualSrc: "/images/광고콘텐츠제작.png",
+    visualLightSrc: "/images/광고콘텐츠제작-light.webp",
     visualAlt: "광고콘텐츠 제작 도구와 그래픽 비주얼",
     visualWidth: 1658,
     visualHeight: 949,
@@ -71,6 +75,7 @@ const journeyItems: JourneyItem[] = [
       "커피를 배우며 작은 디테일이 경험을 완성한다는 것을 느꼈습니다.",
     kind: "coffee",
     visualSrc: "/images/바리스타.png",
+    visualLightSrc: "/images/바리스타-light.webp",
     visualAlt: "바리스타와 커피 경험 비주얼",
     visualWidth: 1536,
     visualHeight: 1024,
@@ -83,6 +88,7 @@ const journeyItems: JourneyItem[] = [
       "클라우드 환경과 인프라 운영을 배우며 서비스가 동작하는 기반을 이해했습니다.",
     kind: "cloud",
     visualSrc: "/images/클라우드 운영자.png",
+    visualLightSrc: "/images/클라우드-운영자-light.webp",
     visualAlt: "클라우드와 서버 인프라 비주얼",
     visualWidth: 1672,
     visualHeight: 941,
@@ -95,6 +101,7 @@ const journeyItems: JourneyItem[] = [
       "웹 보안 기술과 서비스 개발을 배우며 개발자로서의 역량을 키웠습니다.",
     kind: "security",
     visualSrc: "/images/보안솔루션구축.png",
+    visualLightSrc: "/images/보안솔루션구축-light.webp",
     visualAlt: "보안 솔루션 구축 비주얼",
     visualWidth: 1672,
     visualHeight: 941,
@@ -107,6 +114,7 @@ const journeyItems: JourneyItem[] = [
       "보안 솔루션의 품질을 검증하며 문제를 발견하고 더 나은 서비스를 만드는 과정에 함께했습니다.",
     kind: "qa",
     visualSrc: "/images/지란지교QA인턴.png",
+    visualLightSrc: "/images/지란지교QA인턴-light.webp",
     visualAlt: "QA 검증과 보안 소프트웨어 품질 비주얼",
     visualWidth: 1672,
     visualHeight: 941,
@@ -119,6 +127,7 @@ const journeyItems: JourneyItem[] = [
       "생성형 AI 및 LLM(Gemini Pro) 기반 개발 기법을 익히고, UI/UX 설계부터 Python 크롤러, NestJS API, Supabase 가격 이력 저장, Vercel 배포까지 Gogisise 서비스를 직접 제작·구현한 경험입니다.",
     kind: "vibe",
     visualSrc: "/images/바이브코딩.png",
+    visualLightSrc: "/images/바이브코딩-light.webp",
     visualAlt: "바이브코딩 개발자 과정과 Gogisise 서비스 구현 비주얼",
     visualWidth: 1381,
     visualHeight: 1139,
@@ -131,6 +140,7 @@ const journeyItems: JourneyItem[] = [
       "Photoshop으로 카테고리와 배너 이미지를 제작·보정하고, Cafe24에 다시 업로드해 파일명과 스킨 경로를 연결했습니다. 불필요한 HTML 영역은 주석 처리하고 링크와 문구를 정리해 23장 분량의 요청서를 이틀 안에 반영했습니다.",
     kind: "cafe24",
     visualSrc: "/images/생담-카페24-유지보수.png",
+    visualLightSrc: "/images/생담-카페24-유지보수-light.webp",
     visualAlt:
       "Photoshop 이미지 제작과 Cafe24 자사몰 스킨 유지보수 작업을 표현한 비주얼",
     visualWidth: 1672,
@@ -219,7 +229,15 @@ function VisualPanel({ item }: { item: JourneyItem }) {
         alt={item.visualAlt}
         width={item.visualWidth}
         height={item.visualHeight}
-        className="journeyVisualImage"
+        className="journeyVisualImage journeyVisualImage--dark"
+        sizes="(max-width: 720px) 100vw, (max-width: 980px) calc(100vw - 126px), 58vw"
+      />
+      <Image
+        src={item.visualLightSrc}
+        alt=""
+        width={item.visualWidth}
+        height={item.visualHeight}
+        className="journeyVisualImage journeyVisualImage--light"
         sizes="(max-width: 720px) 100vw, (max-width: 980px) calc(100vw - 126px), 58vw"
       />
     </div>
