@@ -10,6 +10,12 @@ export const metadata = {
 
 const projectSummaries = [
   {
+    name: "생담 자사몰 콘텐츠·스킨 유지보수",
+    href: "/projects/saengdam-website-maintenance",
+    description:
+      "보내드림 활동가로 참여해 Photoshop으로 카테고리·배너 이미지를 제작하고, Cafe24 스킨의 이미지 경로와 문구·링크를 정리해 23장 분량의 요청을 이틀 안에 반영했습니다.",
+  },
+  {
     name: "Gogisise (고기시세)",
     href: "/projects/gogisise",
     description:

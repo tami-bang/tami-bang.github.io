@@ -11,7 +11,8 @@ type JourneyKind =
   | "cloud"
   | "security"
   | "qa"
-  | "vibe";
+  | "vibe"
+  | "cafe24";
 
 type JourneyItem = {
   period: string;
@@ -122,6 +123,19 @@ const journeyItems: JourneyItem[] = [
     visualWidth: 1381,
     visualHeight: 1139,
   },
+  {
+    period: "2026.08 · 2일",
+    title: "경기도일자리재단 보내드림 활동가",
+    role: "생담 자사몰 콘텐츠·Cafe24 스킨 유지보수",
+    description:
+      "Photoshop으로 카테고리와 배너 이미지를 제작·보정하고, Cafe24에 다시 업로드해 파일명과 스킨 경로를 연결했습니다. 불필요한 HTML 영역은 주석 처리하고 링크와 문구를 정리해 23장 분량의 요청서를 이틀 안에 반영했습니다.",
+    kind: "cafe24",
+    visualSrc: "/images/생담-카페24-유지보수.png",
+    visualAlt:
+      "Photoshop 이미지 제작과 Cafe24 자사몰 스킨 유지보수 작업을 표현한 비주얼",
+    visualWidth: 1672,
+    visualHeight: 941,
+  },
 ];
 
 const workChecklist = [
@@ -181,6 +195,13 @@ function PathIcon({ kind }: { kind: JourneyKind }) {
           <path d="M10 13h28v18H10z" />
           <path d="M17 39h14M21 31l-2 8M27 31l2 8" />
           <path d="m18 21 4 4 8-8" />
+        </>
+      )}
+      {kind === "cafe24" && (
+        <>
+          <rect x="8" y="10" width="32" height="26" rx="3" />
+          <path d="M8 17h32M16 17v19M21 23h12M21 28h12" />
+          <path d="m30 7 5 5M28 14l7-7 4 4-7 7-5 1 1-5Z" />
         </>
       )}
     </svg>
