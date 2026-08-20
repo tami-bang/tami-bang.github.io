@@ -56,7 +56,7 @@ export type Project = {
   automationPoint?: string;
   resultSummary?: string;
   problem: string;
-  solution: string;
+  solution: string | string[];
   architecture: string[];
   highlights: string[];
   techStack: string[];
@@ -85,7 +85,7 @@ export const projects: Project[] = [
     period: "2026",
     role: "Frontend / Backend API / Crawler / Database Design",
     featured: true,
-    featuredOrder: 1,
+    featuredOrder: 3,
     featuredBadge: "Vibe Coding MVP",
     cardTags: ["MOBILE WEB SERVICE", "PRICE DATA PLATFORM", "VIBE CODING MVP"],
     repeatedProblem:
@@ -188,17 +188,17 @@ export const projects: Project[] = [
     slug: "saengdam-website-maintenance",
     title: "생담 자사몰 콘텐츠·스킨 유지보수",
     subtitle:
-      "첫 작업 완료 후 같은 의뢰처에서 다시 요청받아 PC·모바일 화면까지 개선한 Cafe24 유지보수 사례",
+      "첫 작업 완료 후 경기도일자리재단에서 같은 자사몰의 두 번째 수정 요청을 받아 PC·모바일 화면까지 개선한 Cafe24 유지보수 사례",
     domain: "Cafe24 Storefront / Visual Content Maintenance",
     description:
-      "경기도일자리재단 보내드림 활동가로 참여해 생활용품 자사몰 ‘생활을 담다, 생담’의 첫 유지보수 작업을 완료한 뒤 두 번째 의뢰를 받았습니다. 첫 작업에서는 Photoshop 이미지 제작과 Cafe24 스킨 정리를, 재의뢰에서는 카테고리 확장 구조와 PC·모바일 화면 오류 수정을 맡았습니다.",
+      "경기도일자리재단 보내드림 활동가로 참여해 생활용품 자사몰 ‘생활을 담다, 생담’의 첫 유지보수 작업을 완료한 뒤, 같은 자사몰의 두 번째 수정 요청을 받았습니다. 첫 작업에서는 Photoshop 이미지 제작과 Cafe24 스킨 정리를, 두 번째 작업에서는 카테고리 확장 구조와 PC·모바일 화면 오류 수정을 맡았습니다.",
     status: "Client Work · Completed",
-    period: "2026 · Repeat Client",
+    period: "2026 · 두 번째 의뢰",
     role: "Photoshop Asset Design / Cafe24 Skin Editing / Verification",
     featured: true,
-    featuredOrder: 5,
+    featuredOrder: 2,
     featuredBadge: "Real Client Work",
-    cardTags: ["REPEAT CLIENT", "CAFE24", "MAINTENANCE"],
+    cardTags: ["두 번째 의뢰", "CAFE24", "MAINTENANCE"],
     repeatedProblem:
       "첫 콘텐츠 정비 이후에도 카테고리가 늘어날 때 레이아웃이 깨지고 PC·모바일 화면에 오류가 남는 문제",
     structuredFlow:
@@ -206,11 +206,13 @@ export const projects: Project[] = [
     automationPoint:
       "카테고리 수가 늘어나도 1·2·3줄로 확장되도록 구조를 정리하고 PC와 모바일에 동일한 기준 적용",
     resultSummary:
-      "첫 의뢰 완료 후 같은 기관에서 두 번째 의뢰를 받아 자사몰 유지보수 경험을 연속 사례로 확장",
+      "첫 작업 완료 후 경기도일자리재단에서 같은 자사몰의 두 번째 수정 요청을 받아 유지보수 경험을 연속 사례로 확장",
     problem:
       "첫 의뢰 당시 생담 자사몰에는 판매 품목과 맞지 않는 이미지, 잘못된 명칭·링크, 불필요한 스킨 영역이 남아 있었습니다. 작업 완료 후 받은 두 번째 의뢰에서는 카테고리가 추가되면 메인과 전체 카테고리 영역이 깨지는 문제, 버튼 서식 불일치와 고객센터 음영 오류를 PC와 모바일에서 함께 해결해야 했습니다.",
-    solution:
-      "첫 작업에서는 Photoshop으로 카테고리 이미지와 배너를 제작해 Cafe24에 업로드하고 이미지 경로·문구·링크를 교체했습니다. 제거 대상 HTML은 되돌릴 수 있도록 주석 처리했습니다. 두 번째 작업에서는 카테고리 개수에 따라 1줄에서 2·3줄로 자연스럽게 확장되도록 메인과 전체 카테고리 구조를 함께 수정하고, 상담 버튼의 글자 크기·폰트와 고객센터 회색 음영 오류를 정리한 뒤 모바일에도 같은 기준을 적용했습니다.",
+    solution: [
+      "첫 번째 작업에서는 Photoshop으로 카테고리 이미지와 배너를 제작해 Cafe24에 업로드하고 이미지 경로·문구·링크를 교체했습니다. 제거 대상 HTML은 되돌릴 수 있도록 주석 처리했습니다.",
+      "두 번째 작업에서는 카테고리 개수에 따라 1줄에서 2·3줄로 자연스럽게 확장되도록 메인과 전체 카테고리 구조를 함께 수정했습니다. 상담 버튼의 글자 크기·폰트와 고객센터 회색 음영 오류를 정리한 뒤 모바일에도 같은 기준을 적용했습니다.",
+    ],
     architecture: [
       "23개 슬라이드의 요청 내용과 대상 화면 확인",
       "카테고리 이미지와 배너 소스를 Photoshop으로 제작·보정",
@@ -236,7 +238,7 @@ export const projects: Project[] = [
       "이용안내와 카카오톡 버튼의 링크 경로 수정",
       "모바일 상품별 카테고리 이미지와 명칭 교체",
       "구현 불가능한 요청은 브라우저 제약을 확인하고 사용 가능한 대안까지 제시",
-      "첫 작업 완료 후 동일 의뢰처의 두 번째 자사몰 수정 요청 수임",
+      "첫 작업 완료 후 경기도일자리재단에서 같은 자사몰의 두 번째 수정 요청을 받음",
       "카테고리 추가 시 메인과 전체 카테고리가 2·3줄로 확장되도록 레이아웃 개선",
       "상담 버튼 서식을 기존 고객센터 UI와 통일하고 회색 음영 오류 수정",
       "두 번째 요청의 모든 수정 사항을 모바일 화면에도 동일하게 반영·확인",
@@ -255,7 +257,7 @@ export const projects: Project[] = [
       "Photoshop으로 제작·보정한 카테고리와 배너 이미지를 Cafe24 PC·모바일 스킨에 반영",
       "주석 처리와 경로·문구 수정으로 기존 스킨을 보존하면서 요청 화면 정리",
       "재검색·초기화, 이용안내 링크, 카카오톡 상담과 게시판 화면의 정상 동작 확인",
-      "첫 의뢰의 결과를 바탕으로 같은 의뢰처에서 두 번째 자사몰 유지보수 요청 수임",
+      "첫 작업 완료 후 경기도일자리재단에서 같은 자사몰의 두 번째 수정 요청을 받음",
       "추가 카테고리에도 대응하는 PC·모바일 레이아웃과 고객센터 화면 오류 개선",
     ],
     retrospective: [
@@ -264,7 +266,7 @@ export const projects: Project[] = [
       "기존 스킨 코드는 바로 삭제하기보다 주석 처리해 문제가 생겼을 때 되돌릴 수 있도록 작업했습니다.",
       "이미지 파일명과 업로드 경로가 어긋나면 화면에 바로 반영되지 않기 때문에 에셋 이름과 소스 경로를 함께 관리하는 것이 중요했습니다.",
       "구현할 수 없는 요청도 단순히 불가하다고 답하기보다 기술적 근거와 현실적인 대안을 함께 전달해야 신뢰할 수 있는 결과 보고가 됩니다.",
-      "첫 작업을 완료한 뒤 같은 의뢰처에서 다시 요청을 받으며, 정확한 반영과 검증·보고 과정이 다음 의뢰로 이어질 수 있다는 점을 경험했습니다.",
+      "첫 작업을 완료한 뒤 경기도일자리재단에서 같은 자사몰의 두 번째 수정 요청을 받으며, 정확한 반영과 검증·보고 과정이 다음 의뢰로 이어질 수 있다는 점을 경험했습니다.",
     ],
     liveUrl: "https://livingbox.kr/",
     liveLabel: "수정한 생담 자사몰 보기 ↗",
@@ -373,7 +375,7 @@ export const projects: Project[] = [
     period: "2026",
     role: "Packet Engine / Backend / Admin Flow / AI Integration",
     featured: true,
-    featuredOrder: 3,
+    featuredOrder: 4,
     featuredBadge: "Backend Flow",
     repeatedProblem:
       "유해 접근 탐지 후 판단과 기록이 운영 흐름으로 이어지지 않는 문제",
@@ -468,7 +470,7 @@ export const projects: Project[] = [
     period: "2026",
     role: "Crawler / Parser / Data Pipeline / Report Automation",
     featured: true,
-    featuredOrder: 2,
+    featuredOrder: 1,
     featuredBadge: "Automation Core",
     repeatedProblem: "채용 공고를 매번 직접 확인하고 비교하는 반복 작업",
     backendFlow:
@@ -534,7 +536,7 @@ export const projects: Project[] = [
     period: "2026.04.27 - 2026.06.19",
     role: "QA Testing / Regression Check / Documentation Automation",
     featured: true,
-    featuredOrder: 4,
+    featuredOrder: 5,
     featuredBadge: "Workflow Automation",
     repeatedProblem:
       "개발 변경점마다 사용자 흐름, 정책 반영, 로그/리포트 일관성을 반복 확인해야 하는 문제",

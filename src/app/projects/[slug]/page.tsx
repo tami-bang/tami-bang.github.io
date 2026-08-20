@@ -350,7 +350,14 @@ export default async function ProjectDetailPage({
 
         <article className="project-detail-card">
           <h2>Solution</h2>
-          <p>{project.solution}</p>
+          <div className="project-detail-solution">
+            {(Array.isArray(project.solution)
+              ? project.solution
+              : [project.solution]
+            ).map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
         </article>
       </section>
 
