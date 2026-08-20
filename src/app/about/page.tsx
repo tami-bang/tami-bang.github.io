@@ -13,7 +13,7 @@ const projectSummaries = [
     name: "생담 자사몰 콘텐츠·스킨 유지보수",
     href: "/projects/saengdam-website-maintenance",
     description:
-      "보내드림 활동가로 참여해 Photoshop으로 카테고리·배너 이미지를 제작하고, Cafe24 스킨의 이미지 경로와 문구·링크를 정리해 23장 분량의 요청을 이틀 안에 반영했습니다.",
+      "보내드림 활동가로 첫 자사몰 유지보수를 완료한 뒤 같은 의뢰처에서 두 번째 요청을 받았습니다. 이미지·스킨 정리에 이어 카테고리 확장 구조와 PC·모바일 화면 오류를 개선했습니다.",
   },
   {
     name: "Gogisise (고기시세)",
