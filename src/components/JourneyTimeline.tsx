@@ -133,11 +133,11 @@ const journeyItems: JourneyItem[] = [
     visualHeight: 1139,
   },
   {
-    period: "2026.08 · 재의뢰",
+    period: "2026.08 · 두 번째 의뢰",
     title: "경기도일자리재단 보내드림 활동가",
     role: "생담 자사몰 콘텐츠·Cafe24 스킨 유지보수",
     description:
-      "첫 자사몰 유지보수 완료 후 같은 의뢰처에서 두 번째 요청을 받았습니다. Photoshop 이미지 제작과 Cafe24 스킨 정리에 이어, 추가 카테고리에도 깨지지 않는 PC·모바일 레이아웃과 고객센터 화면 오류를 개선했습니다.",
+      "첫 자사몰 유지보수 완료 후 경기도일자리재단에서 같은 자사몰의 두 번째 수정 요청을 받았습니다. Photoshop 이미지 제작과 Cafe24 스킨 정리에 이어, 추가 카테고리에도 깨지지 않는 PC·모바일 레이아웃과 고객센터 화면 오류를 개선했습니다.",
     kind: "cafe24",
     visualSrc: "/images/생담-카페24-유지보수.png",
     visualLightSrc: "/images/생담-카페24-유지보수-light.webp",

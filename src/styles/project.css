@@ -308,6 +308,11 @@
   margin: 0;
 }
 
+.project-detail-solution {
+  display: grid;
+  gap: 20px;
+}
+
 .project-detail-card--wide,
 .about-card--wide {
   grid-column: 1 / -1;
