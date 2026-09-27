@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import ScrollRevealText from "@/components/ScrollRevealText";
+import { aboutIntroduction } from "@/lib/home";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 
 type JourneyKind =
@@ -48,7 +50,7 @@ const journeyItems: JourneyItem[] = [
     description:
       "수출입 업무를 통해 문서, 데이터, 프로세스의 중요성을 깨닫고 효율적인 업무 흐름을 고민했습니다.",
     kind: "shipping",
-    visualSrc: "/images/범주해운.png",
+    visualSrc: "/images/범주해운.png",
     visualLightSrc: "/images/범주해운-light.webp",
     visualAlt: "컨테이너선과 물류 경로 비주얼",
     visualWidth: 1774,
@@ -308,17 +310,11 @@ export default function JourneyTimeline() {
   }, []);
 
   return (
-    <section
-      className="journey-board page-section--reveal"
-      aria-labelledby="journey-board-title"
-    >
+    <section className="journey-board" aria-labelledby="journey-board-title">
       <div className="journey-board__intro">
         <p className="section-eyebrow">Journey Storyboard</p>
         <h2 id="journey-board-title">경험이 쌓여, 지금의 저를 만들었습니다.</h2>
-        <p>
-          사람, 업무, 데이터, 시스템을 이해하는 과정이 하나의 흐름으로 이어져
-          서비스 개발이라는 방향이 되었습니다.
-        </p>
+        <ScrollRevealText phrases={aboutIntroduction} />
       </div>
 
       <div className="journey-board__canvas">

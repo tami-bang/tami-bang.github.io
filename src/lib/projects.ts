@@ -37,7 +37,16 @@ export type ProjectRepository = {
   url: string;
 };
 
+export const projectKindLabels = {
+  client: "CLIENT WORK",
+  personal: "PERSONAL PROJECT",
+  education: "EDUCATION PROJECT",
+  internship: "INTERNSHIP",
+} as const;
+
 export type Project = {
+  kind: keyof typeof projectKindLabels;
+  cover?: ProjectVisualHighlight;
   slug: string;
   title: string;
   subtitle: string;
@@ -76,6 +85,14 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "gogisise",
+    kind: "education",
+    cover: {
+      title: "개발 과정 일러스트",
+      imageSrc: "/images/바이브코딩-light.webp",
+      alt: "Gogisise를 제작한 바이브코딩 개발 과정을 표현한 기존 일러스트",
+      width: 1672,
+      height: 941,
+    },
     title: "Gogisise",
     subtitle: "축산물 시세를 모니터링하는 모바일 전용 실시간 가격 정보 서비스",
     domain: "Mobile Web Service / Price Data Platform",
@@ -186,6 +203,14 @@ export const projects: Project[] = [
   },
   {
     slug: "saengdam-website-maintenance",
+    kind: "client",
+    cover: {
+      title: "유지보수 작업 일러스트",
+      imageSrc: "/images/생담-카페24-유지보수-light.webp",
+      alt: "생담 Cafe24 콘텐츠와 스킨 유지보수 작업을 표현한 기존 일러스트",
+      width: 1672,
+      height: 941,
+    },
     title: "생담 자사몰 콘텐츠·스킨 유지보수",
     subtitle:
       "첫 작업 완료 후 경기도일자리재단에서 같은 자사몰의 두 번째 수정 요청을 받아 PC·모바일 화면까지 개선한 Cafe24 유지보수 사례",
@@ -273,6 +298,7 @@ export const projects: Project[] = [
   },
   {
     slug: "health-ai-search-api",
+    kind: "personal",
     title: "Health AI Search API",
     subtitle: "Retrieval-first 의료 정보 검색 및 응급도 판단 API",
     domain: "Backend/API / Healthcare Search",
@@ -366,6 +392,7 @@ export const projects: Project[] = [
   },
   {
     slug: "gateguard",
+    kind: "education",
     title: "GateGuard",
     subtitle: "AI 기반 웹 접근 제어 보안 솔루션",
     domain: "Security / Network",
@@ -460,6 +487,7 @@ export const projects: Project[] = [
   },
   {
     slug: "jobkorea-job-radar",
+    kind: "personal",
     title: "JobRadar",
     subtitle:
       "잡코리아 공고 수집부터 개인 맞춤 매칭 리포트까지 자동화한 채용 데이터 파이프라인",
@@ -526,6 +554,14 @@ export const projects: Project[] = [
   },
   {
     slug: "pcfilter-qa-case-study",
+    kind: "internship",
+    cover: {
+      title: "QA 업무 일러스트",
+      imageSrc: "/images/지란지교QA인턴-light.webp",
+      alt: "보안 소프트웨어 QA 검증 업무를 표현한 기존 일러스트",
+      width: 1672,
+      height: 941,
+    },
     title: "PCFILTER QA Internship",
     subtitle:
       "유지보수 및 추가 개발 변경점 검증을 중심으로 한 2개월 QA 인턴 경험",
@@ -720,4 +756,26 @@ export function getProjectBySlug(slug: string) {
 
 export function getProjectSlugs() {
   return projects.map((project) => project.slug);
+}
+
+// 기존 이미지의 실제 용도를 표시해 일러스트/발표 자료를 화면 캡처로 오인하지 않게 합니다.
+export function getProjectCover(
+  project: Project,
+): ProjectVisualHighlight | undefined {
+  if (project.cover) return project.cover;
+  const visual = project.visualHighlights?.[0];
+  return visual
+    ? { ...visual, title: `설계 자료 / ${visual.title}` }
+    : undefined;
+}
+
+export function getMarqueeVisuals() {
+  return projects.flatMap((project) =>
+    (project.visualHighlights ?? []).slice(0, 3).map((visual) => ({
+      ...visual,
+      title: `설계 자료 / ${visual.title}`,
+      slug: project.slug,
+      projectTitle: project.title,
+    })),
+  );
 }

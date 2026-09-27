@@ -21,6 +21,7 @@
     "*.{css,json,md,yml,yaml}": "prettier --write"
   },
   "dependencies": {
+    "framer-motion": "^13.4.4",
     "next": "16.2.9",
     "react": "19.2.4",
     "react-dom": "19.2.4",
