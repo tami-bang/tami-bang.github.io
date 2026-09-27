@@ -17,3 +17,4 @@
 @import "../styles/markdown.css"; /* 마크다운 렌더링 스타일 */
 @import "../styles/animations.css"; /* 화면 진입 애니메이션 */
 @import "../styles/responsive.css"; /* 반응형 스타일 */
+@import "../styles/editorial.css"; /* 에디토리얼 홈, 프로젝트와 About 인터랙션 */

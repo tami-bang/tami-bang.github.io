@@ -1,21 +1,15 @@
 export const homeHero = {
-  eyebrow: "제품 흐름을 설계하는 개발자",
-  title: "불필요한 반복은 줄이고, 사용자 경험의 밀도는 높입니다.",
-  descriptionLines: [],
-  actions: [
-    { href: "#projects", label: "프로젝트 보기", variant: "primary" },
-    {
-      href: "https://github.com/tami-bang",
-      label: "GitHub",
-      variant: "secondary",
-    },
-  ],
-  signals: [
-    { label: "[AUTOMATION]", value: "비효율의 자동화" },
-    { label: "[UX & UI]", value: "디테일 중심의 구현" },
-    { label: "[FULL-STACK]", value: "끝까지 책임지는 배포" },
-  ],
+  identity: "TAMI.LOG",
+  greeting: "HI, I'M",
+  name: "JIHYUN",
 } as const;
+
+export const aboutIntroduction = [
+  "사람, 업무, 데이터, 시스템을",
+  "이해하는 과정이",
+  "하나의 흐름으로 이어져",
+  "서비스 개발이라는 방향이 되었습니다.",
+];
 
 export const workingPatternSteps = [
   {

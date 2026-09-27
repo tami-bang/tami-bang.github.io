@@ -62,10 +62,10 @@ function createGmailComposeUrl(email: string) {
 
 export default function AboutPage() {
   return (
-    <main className="content-shell about-page">
+    <main className="content-shell about-page editorial-page">
       <JourneyTimeline />
 
-      <section className="about-section about-section--animated">
+      <section className="about-section">
         <div className="about-section__header">
           <p className="section-eyebrow">What I Build</p>
           <h2>문제 해결과 자동화를 통해 만들어낸 프로젝트입니다.</h2>
@@ -85,7 +85,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="about-section about-section--animated">
+      <section className="about-section">
         <div className="about-section__header">
           <p className="section-eyebrow">Current Focus</p>
           <h2>지금은 자동화와 UI/API 연결 흐름에 집중합니다.</h2>
@@ -98,7 +98,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="about-contact-panel about-section--animated">
+      <section className="about-contact-panel">
         <div>
           <p className="section-eyebrow">Contact</p>
           <h2>프로젝트를 계속 다듬고 있습니다.</h2>
