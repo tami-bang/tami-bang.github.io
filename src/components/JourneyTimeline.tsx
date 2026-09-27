@@ -50,7 +50,7 @@ const journeyItems: JourneyItem[] = [
     description:
       "수출입 업무를 통해 문서, 데이터, 프로세스의 중요성을 깨닫고 효율적인 업무 흐름을 고민했습니다.",
     kind: "shipping",
-    visualSrc: "/images/범주해운.png",
+    visualSrc: "/images/범주해운.png",
     visualLightSrc: "/images/범주해운-light.webp",
     visualAlt: "컨테이너선과 물류 경로 비주얼",
     visualWidth: 1774,
