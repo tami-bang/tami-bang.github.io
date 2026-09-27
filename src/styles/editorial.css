@@ -1451,3 +1451,31 @@ html .roadmap-page.editorial-subpage .roadmap-index a[data-active] {
     gap: 10px;
   }
 }
+
+/* Keep every two-digit step number intact at the existing display size. */
+.roadmap-page.editorial-subpage .roadmap-step__heading {
+  grid-template-columns: minmax(2ch, 80px) minmax(0, 1fr);
+}
+.roadmap-page.editorial-subpage .roadmap-step__heading > span {
+  min-width: 2ch;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+  flex-shrink: 0;
+}
+
+.about-page.editorial-subpage .journey-board__intro h2 {
+  font-size: clamp(1.575rem, 3.08vw, 2.94rem);
+  line-height: 1.4;
+}
+.about-page.editorial-subpage .journey-board__intro .scroll-reveal-text {
+  max-width: 900px;
+  font-size: clamp(1.19rem, 2.8vw, 2.8rem);
+  line-height: 1.65;
+}
+
+@media (max-width: 720px) {
+  .roadmap-page.editorial-subpage .roadmap-step__heading {
+    grid-template-columns: minmax(2ch, 52px) minmax(0, 1fr);
+  }
+}
