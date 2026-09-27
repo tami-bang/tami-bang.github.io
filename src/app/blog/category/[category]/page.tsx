@@ -1,3 +1,4 @@
+import EditorialPageHeader from "@/components/EditorialPageHeader";
 import Link from "next/link"; // 용도 블로그 목록과 게시글 상세 페이지 이동
 import { notFound } from "next/navigation"; // 용도 잘못된 카테고리 404 처리
 import BlogPostList from "@/components/BlogPostList"; // 용도 공부 기록 목록형 표시
@@ -40,10 +41,14 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const filteredPosts = filterPostsByCategory(category);
 
   return (
-    <main className="content-shell">
-      <section className="page-hero page-section--reveal">
-        <h1>{categoryLabel}</h1>
-        <p>해당 과목으로 정리한 글입니다.</p>
+    <main className="content-shell editorial-page editorial-subpage editorial-study-page">
+      <section className="page-hero">
+        <EditorialPageHeader
+          eyebrow="STUDY / NOTES & ARCHIVE"
+          title={categoryLabel}
+          detail
+          description="해당 과목으로 정리한 글입니다."
+        />
 
         <div className="category-strip">
           <Link href="/blog" className="category-link">
@@ -70,7 +75,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       <BlogPostList posts={filteredPosts} />
 
       {filteredPosts.length === 0 && (
-        <section className="empty-panel page-section--reveal-delayed">
+        <section className="empty-panel">
           <h2>해당 카테고리에 작성된 글이 없습니다.</h2>
         </section>
       )}

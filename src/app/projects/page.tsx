@@ -1,3 +1,4 @@
+import EditorialPageHeader from "@/components/EditorialPageHeader";
 import ProjectStack from "@/components/ProjectStack";
 import { getFeaturedProjects, projects } from "@/lib/projects";
 
@@ -15,12 +16,12 @@ export default function ProjectsPage() {
   ];
 
   return (
-    <main className="editorial-page editorial-shell editorial-projects-page">
-      <header className="editorial-projects-intro">
-        <p className="editorial-label">TAMI.LOG / WORK INDEX</p>
-        <h1>
-          PROJECTS<span>({String(projects.length).padStart(2, "0")})</span>
-        </h1>
+    <main className="editorial-page editorial-shell editorial-subpage editorial-projects-page">
+      <EditorialPageHeader
+        eyebrow="PROJECTS / SELECTED WORK"
+        title="PROJECTS"
+        count={String(projects.length).padStart(2, "0")}
+      >
         <div>
           <h2>반복 작업을 서비스 흐름으로 바꾼 프로젝트</h2>
           <p>
@@ -29,7 +30,7 @@ export default function ProjectsPage() {
             흐름, 사용자에게 보이는 결과, 구현 역할을 중심으로 정리했습니다.
           </p>
         </div>
-      </header>
+      </EditorialPageHeader>
       <section aria-label="프로젝트 목록">
         <ProjectStack projects={ordered} />
       </section>

@@ -1,3 +1,4 @@
+import EditorialPageHeader from "@/components/EditorialPageHeader";
 import Link from "next/link"; // 용도 프로젝트, 공부 기록, 외부 연락 링크 이동
 import JourneyTimeline from "@/components/JourneyTimeline";
 import { siteConfig } from "@/lib/site"; // 용도 사이트 공통 링크 정보 조회
@@ -62,7 +63,8 @@ function createGmailComposeUrl(email: string) {
 
 export default function AboutPage() {
   return (
-    <main className="content-shell about-page editorial-page">
+    <main className="content-shell about-page editorial-page editorial-subpage">
+      <EditorialPageHeader eyebrow="ABOUT / PROFILE & JOURNEY" title="ABOUT" />
       <JourneyTimeline />
 
       <section className="about-section">

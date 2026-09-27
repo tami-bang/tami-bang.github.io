@@ -1,7 +1,7 @@
+import EditorialPageHeader from "@/components/EditorialPageHeader";
 import Image from "next/image"; // 용도 프로젝트 시각 자료 이미지 최적화 렌더링
 import Link from "next/link"; // 용도 사이트 내부 및 외부 링크 이동
 import { notFound } from "next/navigation"; // 용도 존재하지 않는 프로젝트 접근 처리
-import SectionHeader from "@/components/SectionHeader"; // 용도 공통 섹션 헤더 표시
 import { getProjectBySlug, getProjectSlugs } from "@/lib/projects"; // 용도 프로젝트 상세 데이터 조회
 import type {
   InternshipStory,
@@ -26,7 +26,7 @@ function ProjectVisualHighlights({
   }
 
   return (
-    <section className="project-detail-section page-section--reveal">
+    <section className="project-detail-section">
       <div className="project-visual-section">
         <div className="project-visual-section__header">
           <p className="section-eyebrow">Visual Highlights</p>
@@ -62,7 +62,7 @@ function InternshipStorySection({ story }: { story?: InternshipStory }) {
   }
 
   return (
-    <section className="project-detail-section internship-story page-section--reveal">
+    <section className="project-detail-section internship-story">
       <header className="internship-story__header">
         <div>
           <p className="section-eyebrow">Internship Story</p>
@@ -124,7 +124,7 @@ function ProjectWorkSamplesSection({
   }
 
   return (
-    <section className="project-detail-section project-work-samples page-section--reveal">
+    <section className="project-detail-section project-work-samples">
       <div className="project-work-samples__header">
         <p className="section-eyebrow">Work Samples</p>
         <h2>인턴 기간에 남긴 구체 산출물</h2>
@@ -175,7 +175,7 @@ function ProjectRepositorySection({
   }
 
   return (
-    <section className="project-detail-section project-repository-section page-section--reveal">
+    <section className="project-detail-section project-repository-section">
       <div className="project-repository-section__header">
         <p className="section-eyebrow">Repository Architecture</p>
         <h2>4개 레포지토리로 분리한 서비스 구조</h2>
@@ -250,9 +250,9 @@ export default async function ProjectDetailPage({
   }
 
   return (
-    <main className="project-detail-shell">
+    <main className="project-detail-shell editorial-page editorial-subpage editorial-project-detail">
       <section
-        className={`project-detail-hero page-section--reveal ${
+        className={`project-detail-hero ${
           project.livePreview ? "project-detail-hero--with-preview" : ""
         }`}
       >
@@ -261,7 +261,8 @@ export default async function ProjectDetailPage({
             Back to Projects
           </Link>
 
-          <SectionHeader
+          <EditorialPageHeader
+            detail
             eyebrow={project.domain}
             title={project.title}
             description={project.subtitle}
@@ -342,7 +343,7 @@ export default async function ProjectDetailPage({
       <ProjectWorkSamplesSection samples={project.workSamples} />
       <ProjectRepositorySection repositories={project.repositories} />
 
-      <section className="project-detail-section project-detail-grid page-section--reveal-delayed">
+      <section className="project-detail-section project-detail-grid">
         <article className="project-detail-card">
           <h2>Problem</h2>
           <p>{project.problem}</p>
@@ -361,7 +362,7 @@ export default async function ProjectDetailPage({
         </article>
       </section>
 
-      <section className="project-detail-section page-section--reveal">
+      <section className="project-detail-section">
         <article className="project-detail-card project-detail-card--wide">
           <h2>Architecture Flow</h2>
 
@@ -375,7 +376,7 @@ export default async function ProjectDetailPage({
 
       <ProjectVisualHighlights highlights={project.visualHighlights} />
 
-      <section className="project-detail-section project-detail-grid page-section--reveal">
+      <section className="project-detail-section project-detail-grid">
         <article className="project-detail-card">
           <h2>Technical Highlights</h2>
 
@@ -397,7 +398,7 @@ export default async function ProjectDetailPage({
         </article>
       </section>
 
-      <section className="project-detail-section project-detail-grid page-section--reveal">
+      <section className="project-detail-section project-detail-grid">
         <article className="project-detail-card">
           <h2>Results</h2>
 

@@ -20,10 +20,7 @@ function getDisplayDate(post: BlogPost) {
 
 export default function BlogPostList({ posts }: BlogPostListProps) {
   return (
-    <section
-      className="study-list page-section--reveal-delayed"
-      aria-label="공부 기록 목록"
-    >
+    <section className="study-list" aria-label="공부 기록 목록">
       {posts.map((post) => (
         <article className="study-list-item" key={post.slug}>
           <div className="study-list-item__main">
