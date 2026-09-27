@@ -1465,13 +1465,13 @@ html .roadmap-page.editorial-subpage .roadmap-index a[data-active] {
 }
 
 .about-page.editorial-subpage .journey-board__intro h2 {
-  font-size: clamp(1.575rem, 3.08vw, 2.94rem);
+  font-size: clamp(1.5rem, 2.3vw, 2.2rem);
   line-height: 1.4;
 }
 .about-page.editorial-subpage .journey-board__intro .scroll-reveal-text {
-  max-width: 900px;
-  font-size: clamp(1.19rem, 2.8vw, 2.8rem);
-  line-height: 1.65;
+  max-width: 820px;
+  font-size: clamp(1.08rem, 1.9vw, 1.8rem);
+  line-height: 1.7;
 }
 
 @media (max-width: 720px) {
