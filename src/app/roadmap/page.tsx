@@ -1,3 +1,4 @@
+import EditorialPageHeader from "@/components/EditorialPageHeader";
 import { roadmapPhases } from "@/lib/roadmap";
 import RoadmapMotion from "@/components/RoadmapMotion";
 import "../../styles/roadmap.css";
@@ -10,15 +11,15 @@ export const metadata = {
 
 export default function RoadmapPage() {
   return (
-    <main className="content-shell roadmap-page">
+    <main className="content-shell editorial-page editorial-subpage roadmap-page">
       <RoadmapMotion />
-      <section className="roadmap-hero page-hero page-section--reveal">
-        <div className="roadmap-hero__copy">
-          <p className="section-eyebrow">Project Playbook</p>
-          <h1>
-            아이디어를 <span>동작하는 서비스 흐름</span>으로.
-          </h1>
-        </div>
+      <section className="roadmap-hero page-hero">
+        <EditorialPageHeader eyebrow="ROADMAP / LEARNING PATH" title="ROADMAP">
+          <p className="editorial-label">Project Playbook</p>
+          <p className="editorial-page-header__description">
+            아이디어를 동작하는 서비스 흐름으로.
+          </p>
+        </EditorialPageHeader>
 
         <div className="roadmap-hero__stats" aria-label="로드맵 요약">
           <div>
@@ -34,18 +35,9 @@ export default function RoadmapPage() {
             <span>Service</span>
           </div>
         </div>
-
-        <div className="roadmap-orbit" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-        </div>
       </section>
 
-      <nav
-        className="roadmap-index page-section--reveal-delayed"
-        aria-label="로드맵 단계 바로가기"
-      >
+      <nav className="roadmap-index" aria-label="로드맵 단계 바로가기">
         {roadmapPhases.map((phase, index) => (
           <a href={`#${phase.id}`} key={phase.id}>
             <span>{String(index + 1).padStart(2, "0")}</span>

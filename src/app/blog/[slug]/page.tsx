@@ -1,3 +1,4 @@
+import EditorialPageHeader from "@/components/EditorialPageHeader";
 import Link from "next/link"; // 용도 블로그 목록 페이지 이동
 import { notFound } from "next/navigation"; // 용도 존재하지 않는 게시글 404 처리
 import MarkdownRenderer from "@/components/MarkdownRenderer"; // 용도 Markdown 본문 렌더링
@@ -26,19 +27,22 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   return (
-    <main className="content-shell">
+    <main className="content-shell editorial-page editorial-subpage editorial-article-page">
       <Link href="/blog" className="back-link">
         ← 목록으로 돌아가기
       </Link>
 
-      <article className="blog-detail-card page-section--reveal">
-        <p className="category-pill">{post.category}</p>
-
-        <h1 className="blog-detail-title">{post.title}</h1>
-
-        <p className="blog-detail-description">{post.description}</p>
-
-        <p className="blog-detail-date">{post.createdAt}</p>
+      <article className="blog-detail-card">
+        <EditorialPageHeader
+          eyebrow={post.category}
+          title={post.title}
+          description={post.description}
+          detail
+        >
+          <p className="editorial-article-date">
+            <time dateTime={post.createdAt}>{post.createdAt}</time>
+          </p>
+        </EditorialPageHeader>
 
         <MarkdownRenderer content={post.content} />
       </article>
