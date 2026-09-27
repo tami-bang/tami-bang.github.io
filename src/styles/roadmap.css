@@ -375,7 +375,10 @@
   place-items: center;
   flex: 0 0 44px;
   width: 44px;
+  min-width: 44px;
   height: 44px;
+  white-space: nowrap;
+  word-break: keep-all;
   border: 1px solid color-mix(in srgb, var(--brand-accent) 35%, transparent);
   border-radius: 14px;
   color: var(--brand-accent);
