@@ -31,7 +31,7 @@ export default function ProjectStackItem({
     if (!indexStack || !sheet.current) return;
     const element = sheet.current;
     const update = () => {
-      const peek = window.innerWidth < 1000 ? 14 : 20;
+      const peek = window.innerWidth < 1000 ? 26 : 30;
       setFitsViewport(
         element.offsetHeight + 96 + index * peek + 24 <= window.innerHeight,
       );

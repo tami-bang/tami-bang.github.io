@@ -7,7 +7,7 @@ type BlogPostListProps = {
 };
 
 function createPostHref(slug: string) {
-  return `/blog/${slug}`;
+  return `/blog/${encodeURIComponent(slug.normalize("NFC"))}`;
 }
 
 function createCategoryHref(category: string) {

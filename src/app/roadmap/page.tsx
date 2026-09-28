@@ -47,7 +47,10 @@ export default function RoadmapPage() {
         {roadmapPhases.map((phase, index) => (
           <a href={`#${phase.id}`} key={phase.id}>
             <span>{String(index + 1).padStart(2, "0")}</span>
-            {phase.label}
+            <span className="roadmap-index__label">{phase.label}</span>
+            <span className="roadmap-index__progress" aria-hidden="true">
+              <span />
+            </span>
           </a>
         ))}
       </nav>
@@ -69,16 +72,6 @@ export default function RoadmapPage() {
                 <p className="roadmap-phase__description">
                   {phase.description}
                 </p>
-                <div
-                  className="roadmap-phase__progress"
-                  role="progressbar"
-                  aria-label={`Phase ${String(phaseIndex + 1).padStart(2, "0")} 진행률`}
-                  aria-valuemin={0}
-                  aria-valuemax={100}
-                  aria-valuenow={0}
-                >
-                  <span />
-                </div>
               </header>
 
               <div className="roadmap-phase__steps">
@@ -125,11 +118,14 @@ export default function RoadmapPage() {
       </div>
 
       <section className="roadmap-note">
-        <span>One more thing</span>
-        <p>
-          순서는 기준이지만, 프로젝트는 늘 살아 있습니다. 필요한 단계는 앞뒤로
-          오가며 검증하고 기록합니다.
-        </p>
+        <p className="section-eyebrow">END NOTE</p>
+        <div className="roadmap-note__content">
+          <h2>끝맺음말.</h2>
+          <p className="roadmap-note__lead">순서는 기준일 뿐입니다.</p>
+          <p className="roadmap-note__body">
+            필요한 단계는 다시 돌아가 검증하고 기록합니다.
+          </p>
+        </div>
       </section>
     </main>
   );

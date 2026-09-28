@@ -20,11 +20,9 @@ export default function ProjectsPage() {
       <EditorialPageHeader
         eyebrow="PROJECTS / SELECTED WORK"
         title="PROJECTS"
-        count={String(projects.length).padStart(2, "0")}
       >
         <div>
           <h2>SELECT A PROJECT</h2>
-          <p>관심 있는 작업을 골라 상세 내용을 확인하세요.</p>
         </div>
       </EditorialPageHeader>
       <section aria-label="프로젝트 목록">
