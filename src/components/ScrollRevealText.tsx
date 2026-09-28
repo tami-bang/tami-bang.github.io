@@ -20,7 +20,7 @@ function RevealPhrase({
   const opacity = useTransform(
     progress,
     [index / count, (index + 1) / count],
-    [0.4, 1],
+    [0.55, 1],
   );
   return <m.span style={{ opacity: animate ? opacity : 1 }}>{text} </m.span>;
 }
