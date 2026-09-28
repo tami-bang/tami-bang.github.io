@@ -17,7 +17,8 @@ export default function RoadmapPage() {
         <EditorialPageHeader eyebrow="ROADMAP / LEARNING PATH" title="ROADMAP">
           <p className="editorial-label">Project Playbook</p>
           <p className="editorial-page-header__description">
-            아이디어를 동작하는 서비스 흐름으로.
+            아이디어를 동작하는 서비스 흐름으로. 기획부터 운영까지, 다음
+            프로젝트에서 넓혀 갈 역량을 정리합니다.
           </p>
         </EditorialPageHeader>
 

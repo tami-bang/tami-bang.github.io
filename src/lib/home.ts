@@ -26,7 +26,7 @@ export const workingPatternSteps = [
   },
   {
     title: "결과 확인",
-    description: "결과를 다시 확인할 수 있게 로그와 문서로 남깁니다.",
+    description: "결과를 로그와 문서로 남기고, 다시 확인하며 개선합니다.",
   },
 ] as const;
 
@@ -34,7 +34,7 @@ export const homeSections = {
   workflow: {
     eyebrow: "WORKFLOW",
     eyebrowDescription:
-      "작은 개선이라도 입력, 처리, 저장, 화면에 보이는 결과까지 이어지는 구조로 생각합니다.",
+      "낯선 업무를 이해하고, 직접 만들고, 기록을 남겨 다음 개선으로 이어갑니다.",
   },
   projects: {
     eyebrow: "PROJECTS",

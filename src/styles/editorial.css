@@ -1,3 +1,21 @@
+/* Role-based type and rhythm, scoped to the existing editorial surfaces. */
+.editorial-page {
+  --type-hero: clamp(5rem, 22.5vw, 350px);
+  --type-display: clamp(3.1rem, 12.8vw, 12rem);
+  --type-page-title: clamp(2.15rem, 4.7vw, 4.7rem);
+  --type-section-display: clamp(2.4rem, 6.5vw, 6rem);
+  --type-section-title: clamp(1.5rem, 2.3vw, 2.2rem);
+  --type-item-title: clamp(1.35rem, 2.4vw, 2.15rem);
+  --type-body: clamp(0.95rem, 1.1vw, 1.05rem);
+  --type-label: 0.72rem;
+  --type-caption: 0.68rem;
+  --type-intro: clamp(1.08rem, 1.9vw, 1.8rem);
+  --leading-body: 1.85;
+  --reading-width: 780px;
+  --editorial-page-gap: clamp(48px, 6vw, 88px);
+  --editorial-section-gap: clamp(40px, 5vw, 72px);
+}
+
 /* Editorial surfaces keep the existing theme tokens and route structure. */
 body:has(.editorial-page) {
   overflow-x: clip;
@@ -78,7 +96,7 @@ body:has(.editorial-page)
 .editorial-label {
   margin: 0;
   font-family: var(--font-label);
-  font-size: 0.72rem;
+  font-size: var(--type-label);
   font-weight: 500;
   letter-spacing: 0.09em;
   line-height: 1.6;
@@ -155,7 +173,7 @@ html:not([data-theme="light"]) .hero-mascot[data-mascot="cat"] img {
   margin: clamp(24px, 4vh, 64px) 0;
   font-family: var(--font-display);
   font-weight: 650;
-  font-size: clamp(5rem, 22.5vw, 350px);
+  font-size: var(--type-hero);
   line-height: 0.83;
   letter-spacing: -0.075em;
 }
@@ -205,7 +223,7 @@ html:not([data-theme="light"]) .hero-mascot[data-mascot="cat"] img {
 .editorial-section__header h2 {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 6.5vw, 6rem);
+  font-size: var(--type-section-display);
   font-weight: 550;
   line-height: 0.98;
   letter-spacing: -0.06em;
@@ -328,7 +346,7 @@ html:not([data-theme="light"]) .hero-mascot[data-mascot="cat"] img {
   justify-content: space-between;
   gap: 16px;
   padding: 12px 4px 0;
-  font-size: 0.68rem;
+  font-size: var(--type-caption);
 }
 
 .project-marquee__frame strong {
@@ -382,7 +400,7 @@ html:not([data-theme="light"]) .hero-mascot[data-mascot="cat"] img {
 
 .editorial-workflow h3 {
   margin: 0;
-  font-size: clamp(1.5rem, 3vw, 2.7rem);
+  font-size: var(--type-item-title);
   font-weight: 550;
   letter-spacing: -0.05em;
 }
@@ -523,7 +541,7 @@ html:not([data-theme="light"]) .hero-mascot[data-mascot="cat"] img {
 .editorial-project__visual figcaption {
   padding-top: 12px;
   color: var(--muted);
-  font-size: 0.68rem;
+  font-size: var(--type-caption);
 }
 
 .editorial-project__flow {
@@ -897,8 +915,6 @@ body:has(.editorial-page) .scroll-progress-glow::before {
 
 /* Shared subpage language; Home and its interactions retain their own rules. */
 .editorial-subpage {
-  --editorial-page-gap: clamp(48px, 6vw, 88px);
-  --editorial-section-gap: clamp(40px, 5vw, 72px);
   padding-block: var(--page-start-padding) var(--page-end-padding);
   overflow-wrap: anywhere;
 }
@@ -912,7 +928,7 @@ body:has(.editorial-page) .scroll-progress-glow::before {
 .editorial-page-header > .editorial-label {
   color: var(--muted);
   text-transform: uppercase;
-  font-size: 0.72rem;
+  font-size: var(--type-label);
   line-height: 1.6;
   margin: 0;
 }
@@ -920,14 +936,14 @@ body:has(.editorial-page) .scroll-progress-glow::before {
 .editorial-subpage .editorial-page-header h1 {
   margin: 30px 0;
   color: var(--foreground);
-  font: 550 clamp(3.1rem, 12.8vw, 12rem)/1 var(--font-display);
+  font: 550 var(--type-display)/1 var(--font-display);
   letter-spacing: -0.065em;
   word-break: normal;
   text-wrap: balance;
 }
 
 .editorial-subpage .editorial-page-header--detail h1 {
-  font-size: clamp(2.15rem, 4.7vw, 4.7rem);
+  font-size: var(--type-page-title);
   line-height: 1.16;
   letter-spacing: -0.045em;
   word-break: keep-all;
@@ -1179,7 +1195,7 @@ body:has(.editorial-page) .scroll-progress-glow::before {
   font: 0.75rem var(--font-label);
 }
 .editorial-article-page .markdown-content {
-  max-width: 780px;
+  max-width: var(--reading-width);
   margin: var(--editorial-section-gap) 0 0;
   overflow-wrap: anywhere;
 }
@@ -1309,10 +1325,15 @@ body:has(.editorial-page) .scroll-progress-glow::before {
 }
 .roadmap-page.editorial-subpage .roadmap-step__heading {
   display: grid;
-  grid-template-columns: 80px minmax(0, 1fr);
+  grid-template-columns: minmax(80px, max-content) minmax(0, 1fr);
   gap: 24px;
 }
 .roadmap-page.editorial-subpage .roadmap-step__heading > span {
+  min-width: 2ch;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+  flex-shrink: 0;
   display: block;
   width: auto;
   height: auto;
@@ -1322,7 +1343,7 @@ body:has(.editorial-page) .scroll-progress-glow::before {
 }
 .roadmap-page.editorial-subpage .roadmap-step h3 {
   margin: 0;
-  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  font-size: var(--type-item-title);
   line-height: 1.4;
   letter-spacing: -0.04em;
 }
@@ -1405,7 +1426,7 @@ html .roadmap-page.editorial-subpage .roadmap-index a[data-active] {
   gap: 16px;
 }
 .editorial-study-page .study-list-item__title {
-  font-size: clamp(1.35rem, 2.4vw, 2.15rem);
+  font-size: var(--type-item-title);
   line-height: 1.4;
   letter-spacing: -0.04em;
 }
@@ -1425,7 +1446,7 @@ html .roadmap-page.editorial-subpage .roadmap-index a[data-active] {
 }
 .editorial-study-page .study-list-item__meta {
   padding-top: 2px;
-  font-size: 0.72rem;
+  font-size: var(--type-label);
 }
 @media (max-width: 720px) {
   .roadmap-page.editorial-subpage .roadmap-step {
@@ -1433,7 +1454,7 @@ html .roadmap-page.editorial-subpage .roadmap-index a[data-active] {
     row-gap: 24px;
   }
   .roadmap-page.editorial-subpage .roadmap-step__heading {
-    grid-template-columns: 52px minmax(0, 1fr);
+    grid-template-columns: minmax(52px, max-content) minmax(0, 1fr);
     gap: 16px;
   }
   .roadmap-page.editorial-subpage .roadmap-tracks {
@@ -1452,30 +1473,61 @@ html .roadmap-page.editorial-subpage .roadmap-index a[data-active] {
   }
 }
 
-/* Keep every two-digit step number intact at the existing display size. */
-.roadmap-page.editorial-subpage .roadmap-step__heading {
-  grid-template-columns: minmax(2ch, 80px) minmax(0, 1fr);
-}
-.roadmap-page.editorial-subpage .roadmap-step__heading > span {
-  min-width: 2ch;
-  white-space: nowrap;
-  overflow-wrap: normal;
-  word-break: normal;
-  flex-shrink: 0;
-}
-
 .about-page.editorial-subpage .journey-board__intro h2 {
-  font-size: clamp(1.5rem, 2.3vw, 2.2rem);
+  font-size: var(--type-section-title);
   line-height: 1.4;
 }
 .about-page.editorial-subpage .journey-board__intro .scroll-reveal-text {
   max-width: 820px;
-  font-size: clamp(1.08rem, 1.9vw, 1.8rem);
+  font-size: var(--type-intro);
   line-height: 1.7;
 }
 
-@media (max-width: 720px) {
-  .roadmap-page.editorial-subpage .roadmap-step__heading {
-    grid-template-columns: minmax(2ch, 52px) minmax(0, 1fr);
+/* Reading text follows one rhythm; displays keep their existing scale. */
+.editorial-page
+  :is(
+    .editorial-workflow p,
+    .editorial-page-header__description,
+    .editorial-projects-page .editorial-page-header > div p,
+    .study-list-item__main p,
+    .project-detail-description
+  ) {
+  font-size: var(--type-body);
+  line-height: var(--leading-body);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+.editorial-subpage.about-page
+  :is(
+    .about-section__header h2,
+    .about-contact-panel h2,
+    .journey-work-style h2
+  ),
+.editorial-subpage .roadmap-phase__header h2 {
+  font-size: var(--type-section-title);
+  line-height: 1.4;
+}
+.editorial-subpage .editorial-page-header__description {
+  max-width: var(--reading-width);
+}
+.editorial-page-header__count {
+  white-space: nowrap;
+}
+.editorial-page
+  :is(
+    .editorial-section__header,
+    .editorial-project__header,
+    .editorial-workflow > li
+  )
+  > * {
+  min-width: 0;
+}
+@media (min-width: 721px) and (max-width: 999px) {
+  .editorial-section__header {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.7fr);
+    gap: 28px;
+  }
+  .editorial-subpage .roadmap-index {
+    top: 90px;
   }
 }
