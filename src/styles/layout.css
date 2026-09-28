@@ -334,7 +334,10 @@
   position: absolute;
   z-index: 0;
   top: clamp(76px, 9vw, 112px);
-  left: max(var(--section-padding), calc((100% - var(--section-max-width)) / 2));
+  left: max(
+    var(--section-padding),
+    calc((100% - var(--section-max-width)) / 2)
+  );
   width: min(55vw, 46.5rem);
   overflow: hidden;
   color: var(--foreground);

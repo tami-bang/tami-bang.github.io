@@ -13,7 +13,11 @@ export default function FooterReveal() {
 
     const footer = document.querySelector<HTMLElement>(".site-footer");
     const content = footer?.querySelector<HTMLElement>(".site-footer__inner");
-    if (!footer || !content || content.getBoundingClientRect().top < window.innerHeight) {
+    if (
+      !footer ||
+      !content ||
+      content.getBoundingClientRect().top < window.innerHeight
+    ) {
       return;
     }
 

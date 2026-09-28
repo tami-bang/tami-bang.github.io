@@ -17,10 +17,7 @@ export default function ProjectsPage() {
 
   return (
     <main className="editorial-page editorial-shell editorial-subpage editorial-projects-page">
-      <EditorialPageHeader
-        eyebrow="PROJECTS / SELECTED WORK"
-        title="PROJECTS"
-      >
+      <EditorialPageHeader eyebrow="PROJECTS / SELECTED WORK" title="PROJECTS">
         <div>
           <h2>SELECT A PROJECT</h2>
         </div>
