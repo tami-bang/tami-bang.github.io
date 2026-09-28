@@ -15,10 +15,7 @@ export default function BlogPage() {
   return (
     <main className="content-shell editorial-page editorial-subpage editorial-study-page">
       <section className="page-hero">
-        <EditorialPageHeader
-          eyebrow="STUDY / NOTES & ARCHIVE"
-          title="STUDY"
-        />
+        <EditorialPageHeader eyebrow="STUDY / NOTES & ARCHIVE" title="STUDY" />
 
         <div className="category-strip">
           {studyCategoryItems.map((category) => (
