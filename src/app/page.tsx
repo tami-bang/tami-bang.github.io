@@ -1,4 +1,5 @@
 import Link from "next/link";
+import HomeIntro from "@/components/HomeIntro";
 import HeroMascot from "@/components/HeroMascot";
 import ProjectMarquee from "@/components/ProjectMarquee";
 import ProjectStack from "@/components/ProjectStack";
@@ -8,6 +9,7 @@ import { getFeaturedProjects, getMarqueeVisuals } from "@/lib/projects";
 export default function Home() {
   return (
     <main className="editorial-page editorial-home">
+      <HomeIntro />
       <section
         className="editorial-hero editorial-shell"
         aria-labelledby="hero-title"
