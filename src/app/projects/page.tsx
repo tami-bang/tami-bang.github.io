@@ -23,12 +23,8 @@ export default function ProjectsPage() {
         count={String(projects.length).padStart(2, "0")}
       >
         <div>
-          <h2>반복 작업을 서비스 흐름으로 바꾼 프로젝트</h2>
-          <p>
-            수동 확인, 반복 판단, 흩어진 데이터를 구조화하고 자동화하는 과정에
-            집중한 프로젝트입니다. 각 프로젝트는 문제를 발견한 지점, 데이터/API
-            흐름, 사용자에게 보이는 결과, 구현 역할을 중심으로 정리했습니다.
-          </p>
+          <h2>SELECT A PROJECT</h2>
+          <p>관심 있는 작업을 골라 상세 내용을 확인하세요.</p>
         </div>
       </EditorialPageHeader>
       <section aria-label="프로젝트 목록">

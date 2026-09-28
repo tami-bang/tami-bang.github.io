@@ -2,16 +2,8 @@ import Link from "next/link";
 import HeroMascot from "@/components/HeroMascot";
 import ProjectMarquee from "@/components/ProjectMarquee";
 import ProjectStack from "@/components/ProjectStack";
-import ScrollRevealText from "@/components/ScrollRevealText";
-import {
-  aboutIntroduction,
-  homeFocusItems,
-  homeHero,
-  homeSections,
-  workingPatternSteps,
-} from "@/lib/home";
+import { homeHero, workingPatternSteps } from "@/lib/home";
 import { getFeaturedProjects, getMarqueeVisuals } from "@/lib/projects";
-import { studyCategoryItems } from "@/lib/site";
 
 export default function Home() {
   return (
@@ -43,7 +35,6 @@ export default function Home() {
       >
         <div className="editorial-section__header">
           <h2 id="workflow-title">WORKFLOW</h2>
-          <p>{homeSections.workflow.eyebrowDescription}</p>
         </div>
         <ol className="editorial-workflow">
           {workingPatternSteps.map((step, index) => (
@@ -70,13 +61,12 @@ export default function Home() {
             PROJECTS
           </h2>
           <div>
-            <p>{homeSections.projects.eyebrowDescription}</p>
             <Link className="editorial-link" href="/projects">
               전체 프로젝트 <span aria-hidden="true">↗</span>
             </Link>
           </div>
         </div>
-        <ProjectStack projects={getFeaturedProjects()} />
+        <ProjectStack projects={getFeaturedProjects().slice(0, 2)} preview />
       </section>
 
       <section
@@ -86,48 +76,9 @@ export default function Home() {
         <h2 className="editorial-label" id="about-title">
           ABOUT / JIHYUN
         </h2>
-        <ScrollRevealText phrases={aboutIntroduction} />
         <Link className="editorial-link" href="/about">
           About & Journey <span aria-hidden="true">↗</span>
         </Link>
-      </section>
-
-      <section
-        className="editorial-section editorial-shell editorial-study"
-        aria-labelledby="study-title"
-      >
-        <div className="editorial-section__header">
-          <h2 id="study-title">STUDY LOG</h2>
-          <p>{homeSections.study.eyebrowDescription}</p>
-        </div>
-        <div className="editorial-study__body">
-          <div>
-            <p className="editorial-label">카테고리</p>
-            <div className="editorial-study__links">
-              {studyCategoryItems.map((category, index) => (
-                <Link
-                  href={`/blog/category/${category.slug}`}
-                  key={category.slug}
-                >
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  {category.label}
-                  <span aria-hidden="true">↗</span>
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div className="editorial-study__focus">
-            <p className="editorial-label">현재 관심사</p>
-            <ul>
-              {homeFocusItems.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-            <Link className="editorial-link" href="/blog">
-              기록 읽기 <span aria-hidden="true">↗</span>
-            </Link>
-          </div>
-        </div>
       </section>
     </main>
   );

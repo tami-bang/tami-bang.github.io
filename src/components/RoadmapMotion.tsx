@@ -13,7 +13,6 @@ export default function RoadmapMotion() {
     );
     let frame = 0;
     let revealedPhaseIndex = -1;
-    let canRevealPhases = false;
 
     const revealPhasesInOrder = () => {
       const marker = window.innerHeight * 0.76;
@@ -47,16 +46,28 @@ export default function RoadmapMotion() {
       let activeId = phases[0]?.id;
 
       phases.forEach((phase) => {
-        if (phase.getBoundingClientRect().top <= marker) activeId = phase.id;
+        const rect = phase.getBoundingClientRect();
+        if (rect.top <= marker) activeId = phase.id;
+
+        const progress = phase.querySelector<HTMLElement>(
+          ".roadmap-phase__progress",
+        );
+        const phaseProgress = Math.min(
+          Math.max((marker - rect.top) / Math.max(phase.offsetHeight, 1), 0),
+          1,
+        );
+        progress?.style.setProperty("--phase-progress", String(phaseProgress));
+        progress?.setAttribute(
+          "aria-valuenow",
+          String(Math.round(phaseProgress * 100)),
+        );
       });
 
       navLinks.forEach((link) => {
         link.toggleAttribute("data-active", link.hash === `#${activeId}`);
       });
 
-      if (canRevealPhases) {
-        revealPhasesInOrder();
-      }
+      revealPhasesInOrder();
     };
 
     const onScroll = () => {
@@ -65,10 +76,6 @@ export default function RoadmapMotion() {
     };
 
     updateProgress();
-    const revealTimer = window.setTimeout(() => {
-      canRevealPhases = true;
-      updateProgress();
-    }, 1500);
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
 
@@ -76,7 +83,6 @@ export default function RoadmapMotion() {
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
-      window.clearTimeout(revealTimer);
       root.style.removeProperty("--roadmap-progress");
     };
   }, []);

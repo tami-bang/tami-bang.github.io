@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import ScrollRevealText from "@/components/ScrollRevealText";
-import { aboutIntroduction } from "@/lib/home";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 
 type JourneyKind =
@@ -151,11 +149,9 @@ const journeyItems: JourneyItem[] = [
 ];
 
 const workChecklist = [
-  "해야 할 일을 먼저 정리합니다.",
-  "먼저 동작하는 최소 기능(MVP)을 만듭니다.",
+  "해야 할 일을 정리하고 동작하는 최소 기능(MVP)을 만듭니다.",
   "해결이 필요한 일은 메모해 둡니다.",
-  "한 번 해결한 문제는 문서로 남깁니다.",
-  "반복되는 일은 자동화할 방법을 고민합니다.",
+  "해결한 문제는 문서로 남기고 반복 작업의 자동화를 고민합니다.",
   "완료한 일은 체크하고 다음 작업으로 넘어갑니다.",
 ];
 
@@ -314,7 +310,6 @@ export default function JourneyTimeline() {
       <div className="journey-board__intro">
         <p className="section-eyebrow">Journey Storyboard</p>
         <h2 id="journey-board-title">경험이 쌓여, 지금의 저를 만들었습니다.</h2>
-        <ScrollRevealText phrases={aboutIntroduction} />
       </div>
 
       <div className="journey-board__canvas">

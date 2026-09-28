@@ -511,6 +511,15 @@ html:not([data-theme="light"]) .hero-mascot[data-mascot="cat"] img {
   word-break: keep-all;
 }
 
+.editorial-project__role {
+  max-width: 40rem;
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
 .editorial-project__tech {
   display: flex;
   flex-wrap: wrap;
@@ -742,7 +751,8 @@ html:not([data-theme="light"]) .hero-mascot[data-mascot="cat"] img {
   }
 
   .editorial-project__visual,
-  .editorial-project__flow {
+  .editorial-project__flow,
+  .editorial-project__index-visual {
     grid-row: 1;
   }
 
@@ -1241,13 +1251,6 @@ body:has(.editorial-page) .scroll-progress-glow::before {
   text-decoration: underline;
   text-underline-offset: 5px;
 }
-.editorial-subpage
-  :is(.roadmap-phase__header, .roadmap-phase__line, .roadmap-step) {
-  opacity: 1;
-  clip-path: none;
-  transform: none;
-  transition: none;
-}
 .editorial-subpage .roadmap-phase__header h2 {
   font-weight: 550;
   line-height: 1.15;
@@ -1566,6 +1569,41 @@ html .roadmap-page.editorial-subpage .roadmap-index a[data-active] {
 .project-stack--index .editorial-project__header h2 {
   font-size: clamp(1.6rem, 3vw, 2.7rem);
 }
+.project-stack--index .editorial-project__copy h3 {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.project-stack--index .editorial-project__role {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.editorial-project__index-visual {
+  display: grid;
+  align-content: space-between;
+  min-height: 200px;
+  padding: clamp(22px, 4vw, 42px);
+  border: 1px solid var(--panel-border);
+  background: var(--media-surface);
+}
+.editorial-project__index-visual > p:last-child {
+  display: -webkit-box;
+  max-width: 34rem;
+  margin: 32px 0 0;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  line-height: 1.65;
+  word-break: keep-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+.project-stack--index .editorial-project__visual img {
+  max-height: 270px;
+}
 @media (min-width: 768px) and (min-height: 700px) and (prefers-reduced-motion: no-preference) {
   .project-stack--index .project-stack__item[data-stackable="true"] {
     position: sticky;
@@ -1585,13 +1623,32 @@ html .roadmap-page.editorial-subpage .roadmap-index a[data-active] {
     gap: 24px;
   }
   .project-stack--index
-    :is(.editorial-project__visual, .editorial-project__flow) {
+    :is(
+      .editorial-project__visual,
+      .editorial-project__flow,
+      .editorial-project__index-visual
+    ) {
     grid-row: auto;
   }
 }
 .project-stack--index:has(:focus-visible) .project-stack__item {
   position: relative;
   top: auto;
+}
+
+.project-stack--preview .project-stack__item {
+  position: relative;
+  top: auto;
+  padding-bottom: 52px;
+}
+.project-stack--preview .project-stack__item:last-child {
+  padding-bottom: 0;
+}
+.project-stack--preview .editorial-project__copy h3 {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 /* About retains the display and storyboard; only the reading tier changes. */
