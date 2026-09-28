@@ -32,7 +32,7 @@ export default function ProjectsPage() {
         </div>
       </EditorialPageHeader>
       <section aria-label="프로젝트 목록">
-        <ProjectStack projects={ordered} />
+        <ProjectStack projects={ordered} indexStack />
       </section>
     </main>
   );
