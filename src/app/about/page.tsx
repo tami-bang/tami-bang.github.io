@@ -112,16 +112,16 @@ export default function AboutPage() {
         </div>
 
         <div className="about-contact-actions">
-          <Link className="hero-primary-link" href="/projects">
+          <Link className="about-contact-primary" href="/projects">
             View Projects
           </Link>
 
-          <Link className="hero-github-link" href="/blog">
+          <Link className="about-contact-secondary" href="/blog">
             Read Study Log
           </Link>
 
           <a
-            className="hero-github-link"
+            className="about-contact-tertiary"
             href={siteConfig.links.github}
             target="_blank"
             rel="noreferrer"
@@ -130,7 +130,7 @@ export default function AboutPage() {
           </a>
 
           <a
-            className="hero-github-link"
+            className="about-contact-tertiary"
             href={createGmailComposeUrl(siteConfig.links.email)}
             target="_blank"
             rel="noreferrer"

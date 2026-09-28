@@ -8,17 +8,34 @@ import {
   type Project,
 } from "@/lib/projects";
 
-export default function ProjectStack({ projects }: { projects: Project[] }) {
+export default function ProjectStack({
+  projects,
+  indexStack = false,
+}: {
+  projects: Project[];
+  indexStack?: boolean;
+}) {
   return (
     <EditorialMotion>
-      <div className="project-stack" role="list">
+      <div
+        className={`project-stack${indexStack ? " project-stack--index" : ""}`}
+        role="list"
+      >
         {projects.map((project, index) => {
           const cover = getProjectCover(project);
           return (
             <ProjectStackItem
               key={project.slug}
               last={index === projects.length - 1}
+              indexStack={indexStack}
+              index={index}
             >
+              {indexStack && (
+                <div className="project-sheet__tab" aria-hidden="true">
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <span>{project.title}</span>
+                </div>
+              )}
               <header className="editorial-project__header">
                 <span className="editorial-project__index">
                   {String(index + 1).padStart(2, "0")}
