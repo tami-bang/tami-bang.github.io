@@ -21,7 +21,31 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: siteConfig.title,
-  description: siteConfig.description,
+  metadataBase: new URL("https://tami-bang.github.io"),
+  description: "방지현의 프로젝트와 경험을 기록한 포트폴리오",
+  openGraph: {
+    type: "website",
+    title: "Tami.log",
+    description: "방지현의 프로젝트와 경험을 기록한 포트폴리오",
+    url: "https://tami-bang.github.io/",
+    siteName: "Tami.log",
+    locale: "ko_KR",
+    images: [
+      {
+        url: "/images/tami-log-og.png",
+        width: 1200,
+        height: 630,
+        alt: "Tami.log 포트폴리오 고양이 마스코트",
+        type: "image/png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tami.log",
+    description: "방지현의 프로젝트와 경험을 기록한 포트폴리오",
+    images: ["/images/tami-log-og.png"],
+  },
 };
 
 export default function RootLayout({
