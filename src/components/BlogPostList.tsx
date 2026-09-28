@@ -40,15 +40,7 @@ export default function BlogPostList({ posts }: BlogPostListProps) {
           </div>
 
           <div className="study-list-item__meta">
-            <span>수정</span>
             <time dateTime={getDisplayDate(post)}>{getDisplayDate(post)}</time>
-
-            <Link
-              href={createPostHref(post.slug)}
-              className="study-list-item__link"
-            >
-              읽기
-            </Link>
           </div>
         </article>
       ))}

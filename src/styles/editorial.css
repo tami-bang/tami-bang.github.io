@@ -122,7 +122,7 @@ body:has(.editorial-page)
 .hero-mascot {
   position: absolute;
   z-index: 1;
-  left: calc(52% + 36px);
+  left: calc(52% + 86px);
   top: calc(35% - 20px);
   width: var(--hero-mascot-size, clamp(280px, 25vw, 360px));
   aspect-ratio: 3 / 2;
@@ -1892,4 +1892,21 @@ html .roadmap-page.editorial-subpage .roadmap-index a[data-active] {
   max-height: none;
   object-fit: cover;
   object-position: center;
+}
+
+@media (min-width: 1000px) {
+  .project-stack--index .editorial-project__sheet {
+    padding-block: 28px 0;
+  }
+}
+
+.editorial-study-page .study-list-item__title::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+}
+
+.editorial-study-page .study-list-item__main .category-pill {
+  position: relative;
+  z-index: 1;
 }
