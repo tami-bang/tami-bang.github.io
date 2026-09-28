@@ -14,10 +14,7 @@ export default function FooterReveal() {
     const footer = document.querySelector<HTMLElement>(".site-footer");
     const scene = footer?.querySelector<HTMLElement>(".site-footer__scene");
     const hill = scene?.querySelector<SVGElement>(".site-footer__hill");
-    if (!footer || !scene || !hill) {
-      return;
-    }
-
+    if (!footer || !scene || !hill) return;
     if (hill.getBoundingClientRect().top < window.innerHeight) return;
 
     scene.setAttribute("data-enter-pending", "");
