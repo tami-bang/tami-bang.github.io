@@ -89,14 +89,8 @@
   text-wrap: balance;
 }
 
-.journey-board__intro p:last-child {
-  max-width: none;
-  margin: 18px 0 0;
-  color: var(--muted);
-  font-size: clamp(1rem, 1.4vw, 1.12rem);
-  line-height: 1.8;
-  word-break: keep-all;
-  text-wrap: pretty;
+.journey-board__intro .section-eyebrow {
+  margin: 0;
 }
 
 .journey-board__canvas {
@@ -114,14 +108,15 @@
   width: clamp(86px, 10vw, 132px);
   height: calc(100% - 36px);
   fill: none;
-  stroke: var(--brand-accent);
-  stroke-dasharray: 10 15;
+  stroke: var(--panel-border);
   stroke-linecap: round;
-  stroke-width: 2.2;
-  opacity: 0.72;
-  filter: drop-shadow(
-    0 0 14px color-mix(in srgb, var(--brand-accent) 62%, transparent)
-  );
+  stroke-width: 2;
+}
+
+.journey-board__path-progress {
+  stroke: var(--brand-accent);
+  stroke-dasharray: 1;
+  stroke-dashoffset: calc(1 - var(--journey-progress, 0));
 }
 
 .journey-board__item {
@@ -135,17 +130,14 @@
   align-items: center;
   min-height: clamp(148px, 17vw, 215px);
   opacity: 0;
-  filter: blur(10px);
-  transform: translate3d(0, 38px, 0);
+  transform: translate3d(0, 10px, 0);
   transition:
-    opacity 620ms cubic-bezier(0.22, 1, 0.36, 1),
-    filter 620ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 320ms ease,
+    transform 320ms ease;
 }
 
 .journey-board__item[data-visible="true"] {
   opacity: 1;
-  filter: blur(0);
   transform: translate3d(0, 0, 0);
 }
 
@@ -158,9 +150,6 @@
   width: clamp(62px, 8vw, 96px);
   height: clamp(62px, 8vw, 96px);
   color: var(--brand-accent);
-  filter: drop-shadow(
-    0 0 18px color-mix(in srgb, var(--brand-accent) 74%, transparent)
-  );
 }
 
 .journey-board__icon::after {
@@ -171,10 +160,12 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
+  background: var(--panel-border);
+  transition: background-color 240ms ease;
+}
+
+.journey-board__item[data-visible="true"] .journey-board__icon::after {
   background: var(--brand-accent);
-  box-shadow:
-    0 0 14px var(--brand-accent),
-    0 0 30px color-mix(in srgb, var(--brand-accent) 56%, transparent);
 }
 
 .journey-board__icon svg {
@@ -401,6 +392,10 @@ html[data-theme="light"] .journeyVisualImage--light {
     left: 20px;
   }
 
+  .journey-board__item {
+    transition-duration: 240ms;
+  }
+
   .journey-work-style {
     grid-template-columns: 1fr;
   }
@@ -445,6 +440,11 @@ html[data-theme="light"] .journeyVisualImage--light {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .journey-board__item {
+    opacity: 1;
+    transform: none;
+  }
+
   .journey-board__item,
   .journey-checklist li,
   .journey-checklist__box,

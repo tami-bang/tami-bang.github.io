@@ -42,6 +42,13 @@ function getMarkdownFileNames() {
     .filter((fileName) => fileName.endsWith(MARKDOWN_EXTENSION));
 }
 
+function getMarkdownPostFiles() {
+  return getMarkdownFileNames().map((fileName) => ({
+    fileName,
+    slug: getSlugFromFileName(fileName),
+  }));
+}
+
 function getSlugFromFileName(fileName: string) {
   return fileName.replace(/\.md$/, "").normalize("NFC");
 }
@@ -98,8 +105,10 @@ function parseMarkdownPost(slug: string, rawContent: string): BlogPost {
   };
 }
 
-function readPostFile(fileName: string) {
-  const slug = getSlugFromFileName(fileName);
+function readPostFile({
+  fileName,
+  slug,
+}: ReturnType<typeof getMarkdownPostFiles>[number]) {
   const filePath = path.join(POSTS_DIRECTORY, fileName);
   const rawContent = fs.readFileSync(filePath, "utf-8");
 
@@ -107,9 +116,13 @@ function readPostFile(fileName: string) {
 }
 
 export function getAllPosts() {
-  return getMarkdownFileNames()
+  return getMarkdownPostFiles()
     .map(readPostFile)
     .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+}
+
+export function getAllPostSlugs() {
+  return getMarkdownPostFiles().map(({ slug }) => slug);
 }
 
 export function getPostBySlug(slug: string) {

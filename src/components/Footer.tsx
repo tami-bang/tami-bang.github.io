@@ -1,4 +1,6 @@
 import Link from "next/link"; // 용도 사이트 내부 페이지 이동
+import FooterMascot from "@/components/FooterMascot";
+import FooterReveal from "@/components/FooterReveal";
 import { siteConfig, studyCategoryItems } from "@/lib/site"; // 용도 사이트 설정 및 카테고리 조회
 
 const footerStudyLinks = studyCategoryItems.slice(0, 4);
@@ -34,11 +36,13 @@ function EmailIcon() {
 export default function Footer() {
   return (
     <footer className="site-footer">
+      <FooterReveal />
       <div className="site-footer__inner">
         <section className="site-footer__brand" aria-label="사이트 소개">
           <Link href="/" className="site-footer__logo">
             Tami<span>.log</span>
           </Link>
+          <FooterMascot />
         </section>
 
         <nav className="site-footer__nav" aria-label="푸터 메뉴">

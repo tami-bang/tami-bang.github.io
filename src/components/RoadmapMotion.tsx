@@ -4,7 +4,6 @@ import { useEffect } from "react";
 
 export default function RoadmapMotion() {
   useEffect(() => {
-    const root = document.documentElement;
     const phases = Array.from(
       document.querySelectorAll<HTMLElement>(".roadmap-phase"),
     );
@@ -34,37 +33,35 @@ export default function RoadmapMotion() {
     };
 
     const updateProgress = () => {
-      const page = document.querySelector<HTMLElement>(".roadmap-page");
-      if (!page) return;
-
-      const rect = page.getBoundingClientRect();
-      const travel = Math.max(page.offsetHeight - window.innerHeight, 1);
-      const progress = Math.min(Math.max(-rect.top / travel, 0), 1);
-      root.style.setProperty("--roadmap-progress", String(progress));
-
       const marker = window.innerHeight * 0.38;
       let activeId = phases[0]?.id;
+      let activeIndex = 0;
+      const phaseProgresses = Array<number>(phases.length).fill(0);
 
-      phases.forEach((phase) => {
+      phases.forEach((phase, index) => {
         const rect = phase.getBoundingClientRect();
-        if (rect.top <= marker) activeId = phase.id;
+        if (rect.top <= marker) {
+          activeId = phase.id;
+          activeIndex = index;
+        }
 
-        const progress = phase.querySelector<HTMLElement>(
-          ".roadmap-phase__progress",
-        );
         const phaseProgress = Math.min(
           Math.max((marker - rect.top) / Math.max(phase.offsetHeight, 1), 0),
           1,
         );
-        progress?.style.setProperty("--phase-progress", String(phaseProgress));
-        progress?.setAttribute(
-          "aria-valuenow",
-          String(Math.round(phaseProgress * 100)),
-        );
+        phaseProgresses[index] = phaseProgress;
       });
 
-      navLinks.forEach((link) => {
+      navLinks.forEach((link, index) => {
         link.toggleAttribute("data-active", link.hash === `#${activeId}`);
+        link.toggleAttribute("data-complete", index < activeIndex);
+        const progress =
+          index < activeIndex
+            ? 1
+            : index === activeIndex
+              ? phaseProgresses[index]
+              : 0;
+        link.style.setProperty("--phase-progress", String(progress));
       });
 
       revealPhasesInOrder();
@@ -83,13 +80,8 @@ export default function RoadmapMotion() {
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
-      root.style.removeProperty("--roadmap-progress");
     };
   }, []);
 
-  return (
-    <div className="roadmap-progress" aria-hidden="true">
-      <span />
-    </div>
-  );
+  return null;
 }

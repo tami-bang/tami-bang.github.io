@@ -700,9 +700,7 @@ html:not([data-theme="light"]) .hero-mascot[data-mascot="cat"] img {
 }
 
 .editorial-page .journey-board__item {
-  opacity: 1;
   filter: none;
-  transform: none;
 }
 
 .editorial-page
@@ -1109,8 +1107,8 @@ body:has(.editorial-page) .scroll-progress-glow::before {
 
 .editorial-projects-page .editorial-page-header > div {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
 }
 .editorial-projects-page .editorial-page-header h2 {
   max-width: 420px;
@@ -1537,27 +1535,41 @@ html .roadmap-page.editorial-subpage .roadmap-index a[data-active] {
 
 /* Only the project archive uses indexed sheets; Home keeps its original stack. */
 .project-stack--index {
-  --sheet-peek: 20px;
+  --sheet-peek: 30px;
 }
 .project-stack--index .project-stack__item {
   position: relative;
   top: auto;
+  isolation: isolate;
   padding-bottom: 40px;
 }
 .project-stack--index .project-stack__item:last-child {
   padding-bottom: 0;
 }
 .project-stack--index .editorial-project {
+  border: 0;
+  padding: 0;
+  background: var(--background);
+}
+.project-stack--index .editorial-project__sheet {
   border: 1px solid var(--panel-border);
-  border-radius: 6px;
-  padding: 0 clamp(20px, 3vw, 40px) 32px;
+  border-radius: 4px;
+  padding: 0 clamp(20px, 3vw, 40px) 28px;
+  background: var(--background);
 }
 .project-sheet__tab {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
-  gap: 16px;
-  height: 20px;
-  margin-bottom: 24px;
+  gap: 12px;
+  height: 30px;
+  margin-bottom: 12px;
+  padding-inline: 10px;
+  border-top: 1px solid var(--panel-border);
+  border-bottom: 1px solid var(--panel-border);
+  border-radius: 2px;
+  background: var(--background);
   color: var(--muted);
   font: 0.62rem/1 var(--font-label);
 }
@@ -1569,13 +1581,13 @@ html .roadmap-page.editorial-subpage .roadmap-index a[data-active] {
 .project-stack--index .editorial-project__header h2 {
   font-size: clamp(1.6rem, 3vw, 2.7rem);
 }
-.project-stack--index .editorial-project__copy h3 {
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+.project-stack--index .editorial-project__header {
+  margin-bottom: 24px;
 }
-.project-stack--index .editorial-project__role {
+.project-stack--index .editorial-project__category {
+  display: none;
+}
+.project-stack--index .editorial-project__copy h3 {
   display: -webkit-box;
   overflow: hidden;
   -webkit-box-orient: vertical;
@@ -1604,6 +1616,23 @@ html .roadmap-page.editorial-subpage .roadmap-index a[data-active] {
 .project-stack--index .editorial-project__visual img {
   max-height: 270px;
 }
+.project-stack--index .editorial-project__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 6px;
+  margin: 18px 0 auto;
+  color: var(--muted);
+  font-size: 0.66rem;
+  line-height: 1.7;
+}
+.project-stack--index .editorial-project__tech li + li::before {
+  content: "·";
+  margin-right: 6px;
+  color: var(--muted);
+}
+.project-stack--index .editorial-link {
+  margin-top: 18px;
+}
 @media (min-width: 768px) and (min-height: 700px) and (prefers-reduced-motion: no-preference) {
   .project-stack--index .project-stack__item[data-stackable="true"] {
     position: sticky;
@@ -1612,11 +1641,14 @@ html .roadmap-page.editorial-subpage .roadmap-index a[data-active] {
 }
 @media (min-width: 768px) and (max-width: 999px) {
   .project-stack--index {
-    --sheet-peek: 14px;
+    --sheet-peek: 26px;
   }
   .project-stack--index .project-sheet__tab {
-    height: 14px;
+    height: 26px;
     font-size: 0.56rem;
+  }
+  .project-stack--index .editorial-project__sheet {
+    padding-bottom: 24px;
   }
   .project-stack--index .editorial-project__body {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -1634,6 +1666,14 @@ html .roadmap-page.editorial-subpage .roadmap-index a[data-active] {
 .project-stack--index:has(:focus-visible) .project-stack__item {
   position: relative;
   top: auto;
+}
+
+@media (min-width: 768px) and (min-height: 700px) and (prefers-reduced-motion: no-preference) {
+  .project-stack--index::after {
+    display: block;
+    height: clamp(120px, 18vh, 170px);
+    content: "";
+  }
 }
 
 .project-stack--preview .project-stack__item {

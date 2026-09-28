@@ -155,6 +155,9 @@ const workChecklist = [
   "완료한 일은 체크하고 다음 작업으로 넘어갑니다.",
 ];
 
+const journeyPath =
+  "M76 8C132 82 18 128 78 198C134 264 22 306 76 378C130 448 22 492 78 562C134 632 20 678 76 748C130 820 20 864 78 934C134 1004 24 1050 76 1152";
+
 function PathIcon({ kind }: { kind: JourneyKind }) {
   return (
     <svg viewBox="0 0 48 48" aria-hidden="true">
@@ -243,6 +246,7 @@ function VisualPanel({ item }: { item: JourneyItem }) {
 }
 
 export default function JourneyTimeline() {
+  const canvasRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const checkRefs = useRef<(HTMLLIElement | null)[]>([]);
   const [visibleItems, setVisibleItems] = useState<Set<number>>(
@@ -251,6 +255,7 @@ export default function JourneyTimeline() {
   const [visibleChecklistItems, setVisibleChecklistItems] = useState<
     Set<number>
   >(() => new Set());
+  const [journeyProgress, setJourneyProgress] = useState(0);
 
   useEffect(() => {
     const itemObserver = new IntersectionObserver(
@@ -299,27 +304,68 @@ export default function JourneyTimeline() {
       }
     });
 
+    let progressFrame = 0;
+    const updateProgress = () => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+
+      const rect = canvas.getBoundingClientRect();
+      const start = window.scrollY + rect.top + 18;
+      const end = window.scrollY + rect.bottom - 18;
+      const readingPoint = window.scrollY + window.innerHeight * 0.58;
+      const progress = Math.min(
+        Math.max((readingPoint - start) / Math.max(end - start, 1), 0),
+        1,
+      );
+
+      setJourneyProgress(progress);
+    };
+
+    const scheduleProgressUpdate = () => {
+      cancelAnimationFrame(progressFrame);
+      progressFrame = requestAnimationFrame(updateProgress);
+    };
+
+    updateProgress();
+    window.addEventListener("scroll", scheduleProgressUpdate, {
+      passive: true,
+    });
+    window.addEventListener("resize", scheduleProgressUpdate);
+
     return () => {
       itemObserver.disconnect();
       checkObserver.disconnect();
+      cancelAnimationFrame(progressFrame);
+      window.removeEventListener("scroll", scheduleProgressUpdate);
+      window.removeEventListener("resize", scheduleProgressUpdate);
     };
   }, []);
 
   return (
     <section className="journey-board" aria-labelledby="journey-board-title">
       <div className="journey-board__intro">
-        <p className="section-eyebrow">Journey Storyboard</p>
-        <h2 id="journey-board-title">경험이 쌓여, 지금의 저를 만들었습니다.</h2>
+        <p className="section-eyebrow" id="journey-board-title">
+          Journey Storyboard
+        </p>
       </div>
 
-      <div className="journey-board__canvas">
+      <div
+        className="journey-board__canvas"
+        ref={canvasRef}
+        style={{ "--journey-progress": journeyProgress } as CSSProperties}
+      >
         <svg
           className="journey-board__path"
           viewBox="0 0 150 1160"
           preserveAspectRatio="none"
           aria-hidden="true"
         >
-          <path d="M76 8C132 82 18 128 78 198C134 264 22 306 76 378C130 448 22 492 78 562C134 632 20 678 76 748C130 820 20 864 78 934C134 1004 24 1050 76 1152" />
+          <path className="journey-board__path-base" d={journeyPath} />
+          <path
+            className="journey-board__path-progress"
+            d={journeyPath}
+            pathLength={1}
+          />
         </svg>
 
         {journeyItems.map((item, index) => (
