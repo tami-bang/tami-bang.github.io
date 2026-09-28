@@ -151,7 +151,7 @@
 .roadmap-index {
   position: sticky;
   top: 104px;
-  z-index: 49;
+  z-index: 51;
   isolation: isolate;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
