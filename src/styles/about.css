@@ -124,8 +124,8 @@
   display: grid;
   grid-template-columns:
     clamp(92px, 12vw, 160px)
-    minmax(220px, 0.62fr)
-    minmax(360px, 1.25fr);
+    minmax(350px, 1.8fr)
+    minmax(300px, 0.7fr);
   gap: clamp(18px, 3vw, 40px);
   align-items: center;
   min-height: clamp(148px, 17vw, 215px);
@@ -181,7 +181,7 @@
 .journey-board__text {
   position: relative;
   z-index: 2;
-  max-width: 430px;
+  max-width: none;
 }
 
 .journey-board__text span {

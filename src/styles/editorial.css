@@ -478,7 +478,7 @@ html:not([data-theme="light"]) .hero-mascot[data-mascot="cat"] img {
 
 .editorial-project__body {
   display: grid;
-  grid-template-columns: 0.7fr 1fr;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
   gap: clamp(24px, 4vw, 64px);
 }
 
@@ -486,6 +486,8 @@ html:not([data-theme="light"]) .hero-mascot[data-mascot="cat"] img {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 100%;
+  min-width: 0;
 }
 
 .editorial-project__category {
@@ -495,12 +497,15 @@ html:not([data-theme="light"]) .hero-mascot[data-mascot="cat"] img {
 }
 
 .editorial-project__copy h3 {
+  width: 100%;
+  min-width: 0;
   margin: 0;
   font-size: clamp(1.05rem, 1.6vw, 1.4rem);
   line-height: 1.55;
   font-weight: 500;
   letter-spacing: -0.03em;
   word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .editorial-project__description {
@@ -525,7 +530,7 @@ html:not([data-theme="light"]) .hero-mascot[data-mascot="cat"] img {
   flex-wrap: wrap;
   gap: 6px 14px;
   padding: 0;
-  margin: auto 0 18px;
+  margin: 18px 0 0;
   list-style: none;
   color: var(--text-soft);
   font: 0.68rem/1.8 var(--font-label);
@@ -1086,7 +1091,11 @@ body:has(.editorial-page) .scroll-progress-glow::before {
   margin-bottom: 36px;
 }
 .editorial-study-page .editorial-page-header {
-  margin-bottom: 24px;
+  margin-bottom: 12px;
+  padding-bottom: 18px;
+}
+.editorial-study-page .editorial-page-header h1 {
+  margin-bottom: 0;
 }
 .editorial-subpage .study-list {
   gap: 0;
@@ -1286,6 +1295,9 @@ body:has(.editorial-page) .scroll-progress-glow::before {
 @media (max-width: 720px) {
   .editorial-subpage .editorial-page-header h1 {
     margin-block: 24px;
+  }
+  .editorial-study-page .editorial-page-header h1 {
+    margin-bottom: 0;
   }
   .editorial-page-header__count {
     margin-left: 10px;
@@ -1610,7 +1622,7 @@ html .roadmap-page.editorial-subpage .roadmap-index a[data-active] {
   display: flex;
   flex-wrap: wrap;
   gap: 0 6px;
-  margin: 18px 0 auto;
+  margin: 18px 0 0;
   color: var(--muted);
   font-size: 0.66rem;
   line-height: 1.7;
@@ -1676,6 +1688,12 @@ html .roadmap-page.editorial-subpage .roadmap-index a[data-active] {
 }
 .project-stack--preview .editorial-project__copy h3 {
   overflow: visible;
+}
+.project-stack--preview .editorial-project__tech {
+  margin: 18px 0 0;
+}
+.project-stack--preview .editorial-link {
+  margin-top: 18px;
 }
 
 /* About retains the display and storyboard; only the reading tier changes. */

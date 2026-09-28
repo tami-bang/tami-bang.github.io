@@ -15,15 +15,7 @@ export default function BlogPage() {
   return (
     <main className="content-shell editorial-page editorial-subpage editorial-study-page">
       <section className="page-hero">
-        <EditorialPageHeader
-          eyebrow="STUDY / NOTES & ARCHIVE"
-          title="STUDY"
-          description="AI 활용, 바이브코딩, LLM/프롬프팅, 리눅스, 네트워크, C언어, HTML/CSS/JS, 파이썬/Django처럼 배운 내용을 주제별로 나누고, 프로젝트와 연결되는 개념은 함께 기록합니다."
-        >
-          <p className="editorial-page-header__subtitle">
-            배운 내용을 기록하고, 다음 구현에 다시 꺼내 씁니다.
-          </p>
-        </EditorialPageHeader>
+        <EditorialPageHeader eyebrow="STUDY / NOTES & ARCHIVE" title="STUDY" />
 
         <div className="category-strip">
           {studyCategoryItems.map((category) => (
