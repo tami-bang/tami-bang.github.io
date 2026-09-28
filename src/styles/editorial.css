@@ -1884,7 +1884,8 @@ html .roadmap-page.editorial-subpage .roadmap-index a[data-active] {
 }
 
 .project-stack--index
-  :is(.editorial-project__visual, .editorial-project__index-visual) img {
+  :is(.editorial-project__visual, .editorial-project__index-visual)
+  img {
   display: block;
   width: 100%;
   height: 100%;
