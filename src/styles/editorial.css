@@ -20,8 +20,6 @@
 body:has(.editorial-page) {
   overflow-x: clip;
   background: var(--background);
-  user-select: text;
-  -webkit-user-select: text;
 }
 
 body:has(.editorial-page)::before,
@@ -1229,19 +1227,7 @@ body:has(.editorial-page) .scroll-progress-glow::before {
   margin: 0;
 }
 .editorial-subpage .roadmap-hero .editorial-page-header {
-  margin-bottom: 28px;
-}
-.editorial-subpage .roadmap-hero__stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-}
-.editorial-subpage .roadmap-hero__stats div {
-  padding: 12px 24px 12px 0;
-  background: transparent;
+  margin-bottom: 0;
 }
 .editorial-subpage .roadmap-index {
   border-radius: 0;
@@ -1499,7 +1485,6 @@ html .roadmap-page.editorial-subpage .roadmap-index a[data-active] {
     .editorial-workflow p,
     .editorial-page-header__description,
     .editorial-projects-page .editorial-page-header > div p,
-    .study-list-item__main p,
     .project-detail-description
   ) {
   font-size: var(--type-body);

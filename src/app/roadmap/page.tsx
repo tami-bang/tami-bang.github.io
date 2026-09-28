@@ -3,11 +3,6 @@ import { roadmapPhases } from "@/lib/roadmap";
 import RoadmapMotion from "@/components/RoadmapMotion";
 import "../../styles/roadmap.css";
 
-const totalSteps = roadmapPhases.reduce(
-  (total, phase) => total + phase.steps.length,
-  0,
-);
-
 export const metadata = {
   title: "Project Roadmap | Tami.log",
   description:
@@ -21,26 +16,7 @@ export default function RoadmapPage() {
       <section className="roadmap-hero page-hero">
         <EditorialPageHeader eyebrow="ROADMAP / LEARNING PATH" title="ROADMAP">
           <p className="editorial-label">Project Playbook</p>
-          <p className="editorial-page-header__description">
-            아이디어를 동작하는 서비스 흐름으로. 기획부터 운영까지, 다음
-            프로젝트에서 넓혀 갈 역량을 정리합니다.
-          </p>
         </EditorialPageHeader>
-
-        <div className="roadmap-hero__stats" aria-label="로드맵 요약">
-          <div>
-            <strong>{String(totalSteps).padStart(2, "0")}</strong>
-            <span>Steps</span>
-          </div>
-          <div>
-            <strong>{String(roadmapPhases.length).padStart(2, "0")}</strong>
-            <span>Phases</span>
-          </div>
-          <div>
-            <strong>01</strong>
-            <span>Service</span>
-          </div>
-        </div>
       </section>
 
       <nav className="roadmap-index" aria-label="로드맵 단계 바로가기">
@@ -69,9 +45,6 @@ export default function RoadmapPage() {
                 </div>
                 <p className="section-eyebrow">{phase.label}</p>
                 <h2>{phase.title}</h2>
-                <p className="roadmap-phase__description">
-                  {phase.description}
-                </p>
               </header>
 
               <div className="roadmap-phase__steps">

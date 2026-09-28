@@ -1,4 +1,3 @@
-import Link from "next/link"; // 용도 사이트 내부 페이지 이동
 import FooterMascot from "@/components/FooterMascot";
 import FooterReveal from "@/components/FooterReveal";
 import { siteConfig } from "@/lib/site"; // 용도 사이트 설정 조회
@@ -20,41 +19,54 @@ export default function Footer() {
   return (
     <footer className="site-footer">
       <FooterReveal />
-      <div className="site-footer__inner">
-        <section className="site-footer__composition" aria-label="Tami.log">
-          <span className="site-footer__wordmark" aria-hidden="true">
-            TAMI.LOG
-          </span>
-          <Link href="/" className="site-footer__logo">
-            Tami<span>.log</span>
-          </Link>
-          <FooterMascot />
-        </section>
+      <div className="site-footer__scene">
+        <svg
+          className="site-footer__hill"
+          viewBox="0 0 1440 60"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            className="site-footer__hill-fill"
+            d="M0 60C300 60 420 24 720 24s420 36 720 36V0H0Z"
+          />
+          <path
+            className="site-footer__hill-edge"
+            d="M0 60C300 60 420 24 720 24s420 36 720 36"
+          />
+        </svg>
+        <div className="site-footer__inner">
+          <section className="site-footer__composition" aria-label="Tami.log">
+            <span className="site-footer__wordmark">TAMI.LOG</span>
+          </section>
 
-        <nav className="site-footer__links" aria-label="연락처">
-          <a
-            href={siteConfig.links.github}
-            target="_blank"
-            rel="noreferrer"
-            className="site-footer__contact"
-          >
-            GitHub <span aria-hidden="true">↗</span>
-          </a>
+          <nav className="site-footer__links" aria-label="연락처">
+            <a
+              href={siteConfig.links.github}
+              target="_blank"
+              rel="noreferrer"
+              className="site-footer__contact"
+            >
+              GitHub <span aria-hidden="true">↗</span>
+            </a>
 
-          <a
-            href={createGmailComposeUrl(siteConfig.links.email)}
-            target="_blank"
-            rel="noreferrer"
-            className="site-footer__contact"
-          >
-            Email <span aria-hidden="true">↗</span>
-          </a>
-        </nav>
+            <a
+              href={createGmailComposeUrl(siteConfig.links.email)}
+              target="_blank"
+              rel="noreferrer"
+              className="site-footer__contact"
+            >
+              Email <span aria-hidden="true">↗</span>
+            </a>
 
-        <div className="site-footer__bottom">
-          <p>
-            © {getCurrentYear()} {siteConfig.name}. Built with Next.js.
-          </p>
+            <FooterMascot />
+          </nav>
+
+          <div className="site-footer__bottom">
+            <p>
+              © {getCurrentYear()} {siteConfig.name}. Built with Next.js.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

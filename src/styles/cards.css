@@ -317,14 +317,6 @@
   transform: translateX(4px);
 }
 
-.study-list-item__main p {
-  max-width: 780px;
-  margin: 0;
-  color: var(--text-soft);
-  line-height: 1.7;
-  word-break: keep-all;
-}
-
 .study-list-item__meta {
   display: grid;
   justify-items: end;

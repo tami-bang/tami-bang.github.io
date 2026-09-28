@@ -37,8 +37,6 @@ export default function BlogPostList({ posts }: BlogPostListProps) {
             >
               {post.title}
             </Link>
-
-            <p>{post.description}</p>
           </div>
 
           <div className="study-list-item__meta">
