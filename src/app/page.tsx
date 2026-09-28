@@ -14,9 +14,6 @@ export default function Home() {
         className="editorial-hero editorial-shell"
         aria-labelledby="hero-title"
       >
-        <p className="editorial-label editorial-hero__identity">
-          {homeHero.identity}
-        </p>
         <div className="editorial-hero__composition">
           <h1 id="hero-title" className="editorial-hero__title">
             <span>{homeHero.greeting}</span> <span>{homeHero.name}</span>
