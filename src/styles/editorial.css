@@ -109,8 +109,8 @@ body:has(.editorial-page)
   padding-block: clamp(32px, 5vh, 64px) 32px;
 }
 
-.editorial-hero__identity {
-  color: var(--muted);
+.editorial-home .editorial-hero__composition {
+  margin-block: auto;
 }
 
 .editorial-hero__composition {
@@ -1868,4 +1868,28 @@ html .roadmap-page.editorial-subpage .roadmap-index a[data-active] {
 
 .project-stack--index .editorial-project__screen img {
   max-height: 270px;
+}
+
+.project-stack--index
+  :is(.editorial-project__visual, .editorial-project__index-visual) {
+  width: 100%;
+  max-width: 100%;
+  height: clamp(200px, 22vw, 270px);
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  align-self: center;
+  justify-self: center;
+}
+
+.project-stack--index
+  :is(.editorial-project__visual, .editorial-project__index-visual)
+  img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: cover;
+  object-position: center;
 }
