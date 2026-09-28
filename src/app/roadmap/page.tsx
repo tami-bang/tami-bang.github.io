@@ -3,6 +3,11 @@ import { roadmapPhases } from "@/lib/roadmap";
 import RoadmapMotion from "@/components/RoadmapMotion";
 import "../../styles/roadmap.css";
 
+const totalSteps = roadmapPhases.reduce(
+  (total, phase) => total + phase.steps.length,
+  0,
+);
+
 export const metadata = {
   title: "Project Roadmap | Tami.log",
   description:
@@ -24,11 +29,11 @@ export default function RoadmapPage() {
 
         <div className="roadmap-hero__stats" aria-label="로드맵 요약">
           <div>
-            <strong>25</strong>
+            <strong>{String(totalSteps).padStart(2, "0")}</strong>
             <span>Steps</span>
           </div>
           <div>
-            <strong>05</strong>
+            <strong>{String(roadmapPhases.length).padStart(2, "0")}</strong>
             <span>Phases</span>
           </div>
           <div>
@@ -50,53 +55,70 @@ export default function RoadmapPage() {
       <div className="roadmap-phases">
         {roadmapPhases.map((phase, phaseIndex) => (
           <section className="roadmap-phase" id={phase.id} key={phase.id}>
-            <header className="roadmap-phase__header">
-              <div className="roadmap-phase__meta">
-                <span>Phase {String(phaseIndex + 1).padStart(2, "0")}</span>
-                <strong>{phase.range}</strong>
-              </div>
-              <div>
+            <div className="roadmap-phase__scene">
+              <header className="roadmap-phase__header">
+                <div className="roadmap-phase__meta">
+                  <span>Phase {String(phaseIndex + 1).padStart(2, "0")}</span>
+                  <strong>{String(phaseIndex + 1).padStart(2, "0")}</strong>
+                  <span className="roadmap-phase__range">
+                    Steps {phase.range}
+                  </span>
+                </div>
                 <p className="section-eyebrow">{phase.label}</p>
                 <h2>{phase.title}</h2>
-                <p>{phase.description}</p>
-              </div>
-            </header>
-
-            <div className="roadmap-phase__line" aria-hidden="true">
-              <span />
-            </div>
-
-            <div className="roadmap-step-grid">
-              {phase.steps.map((step) => (
-                <article
-                  className={`roadmap-step${step.tracks ? " roadmap-step--wide" : ""}`}
-                  key={step.number}
+                <p className="roadmap-phase__description">
+                  {phase.description}
+                </p>
+                <div
+                  className="roadmap-phase__progress"
+                  role="progressbar"
+                  aria-label={`Phase ${String(phaseIndex + 1).padStart(2, "0")} 진행률`}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                  aria-valuenow={0}
                 >
-                  <div className="roadmap-step__heading">
-                    <span>{String(step.number).padStart(2, "0")}</span>
-                    <h3>{step.title}</h3>
-                  </div>
+                  <span />
+                </div>
+              </header>
 
-                  {step.items.length > 0 && (
-                    <ul>
-                      {step.items.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  )}
+              <div className="roadmap-phase__steps">
+                <div className="roadmap-phase__line" aria-hidden="true">
+                  <span />
+                </div>
 
-                  {step.tracks && (
-                    <div className="roadmap-tracks">
-                      {step.tracks.map((track) => (
-                        <div key={track.name}>
-                          <strong>{track.name}</strong>
-                          <p>{track.items.join(" · ")}</p>
+                <div className="roadmap-step-grid">
+                  {phase.steps.map((step) => (
+                    <article
+                      className={`roadmap-step${step.tracks ? " roadmap-step--wide" : ""}`}
+                      key={step.number}
+                    >
+                      <div className="roadmap-step__heading">
+                        <span>{String(step.number).padStart(2, "0")}</span>
+                        <h3>{step.title}</h3>
+                      </div>
+
+                      {step.items.length > 0 && (
+                        <ul>
+                          {step.items.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      )}
+
+                      {step.tracks && (
+                        <div className="roadmap-tracks">
+                          {step.tracks.map((track) => (
+                            <div key={track.name}>
+                              <strong>{track.name}</strong>
+                              <p>{track.items.join(" · ")}</p>
+                            </div>
+                          ))}
                         </div>
-                      ))}
-                    </div>
-                  )}
-                </article>
-              ))}
+                      )}
+                    </article>
+                  ))}
+                </div>
+              </div>
             </div>
           </section>
         ))}

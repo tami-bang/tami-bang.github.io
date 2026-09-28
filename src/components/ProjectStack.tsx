@@ -11,14 +11,16 @@ import {
 export default function ProjectStack({
   projects,
   indexStack = false,
+  preview = false,
 }: {
   projects: Project[];
   indexStack?: boolean;
+  preview?: boolean;
 }) {
   return (
     <EditorialMotion>
       <div
-        className={`project-stack${indexStack ? " project-stack--index" : ""}`}
+        className={`project-stack${indexStack ? " project-stack--index" : ""}${preview ? " project-stack--preview" : ""}`}
         role="list"
       >
         {projects.map((project, index) => {
@@ -54,9 +56,14 @@ export default function ProjectStack({
                     {project.domain}
                   </p>
                   <h3>{project.subtitle}</h3>
-                  <p className="editorial-project__description">
-                    {project.description}
-                  </p>
+                  {indexStack && (
+                    <p className="editorial-project__role">{project.role}</p>
+                  )}
+                  {!indexStack && !preview && (
+                    <p className="editorial-project__description">
+                      {project.description}
+                    </p>
+                  )}
                   <ul
                     className="editorial-project__tech"
                     aria-label="핵심 기술"
@@ -84,6 +91,11 @@ export default function ProjectStack({
                     />
                     <figcaption>{cover.title}</figcaption>
                   </figure>
+                ) : indexStack || preview ? (
+                  <div className="editorial-project__index-visual">
+                    <p className="editorial-label">{project.status}</p>
+                    <p>{project.resultSummary ?? project.subtitle}</p>
+                  </div>
                 ) : (
                   <div className="editorial-project__flow">
                     <p className="editorial-label">
