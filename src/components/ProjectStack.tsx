@@ -8,6 +8,36 @@ import {
   type Project,
 } from "@/lib/projects";
 
+const workScreens: Record<
+  string,
+  { imageSrc: string; alt: string; width: number; height: number }
+> = {
+  "jobkorea-job-radar": {
+    imageSrc: "/images/jobradar-home-preview-hq.png",
+    alt: "JobRadar 실제 화면",
+    width: 1912,
+    height: 813,
+  },
+  "saengdam-website-maintenance": {
+    imageSrc: "/images/saengdam-home-preview-full-height-hq.png",
+    alt: "생담 자사몰 실제 화면",
+    width: 1892,
+    height: 1164,
+  },
+  gogisise: {
+    imageSrc: "/images/gogisise-two-screens-warning-removed.png",
+    alt: "고기시세 모바일 UI 두 화면",
+    width: 1822,
+    height: 1562,
+  },
+  "pcfilter-qa-case-study": {
+    imageSrc: "/pcfilter-internship-preview.png",
+    alt: "QA 인턴 업무 대상인 PCFILTER 제품 화면",
+    width: 1604,
+    height: 1108,
+  },
+};
+
 export default function ProjectStack({
   projects,
   indexStack = false,
@@ -24,6 +54,14 @@ export default function ProjectStack({
         role="list"
       >
         {projects.map((project, index) => {
+          const workScreen =
+            indexStack ||
+            (preview &&
+              ["jobkorea-job-radar", "saengdam-website-maintenance"].includes(
+                project.slug,
+              ))
+              ? workScreens[project.slug]
+              : undefined;
           const cover = getProjectCover(project);
 
           return (
@@ -81,7 +119,23 @@ export default function ProjectStack({
                       프로젝트 자세히 보기 <span aria-hidden="true">↗</span>
                     </Link>
                   </div>
-                  {cover ? (
+                  {workScreen ? (
+                    <figure
+                      className={
+                        cover
+                          ? "editorial-project__visual"
+                          : "editorial-project__index-visual editorial-project__screen"
+                      }
+                    >
+                      <Image
+                        src={workScreen.imageSrc}
+                        alt={workScreen.alt}
+                        width={workScreen.width}
+                        height={workScreen.height}
+                        sizes="(max-width: 999px) 90vw, 58vw"
+                      />
+                    </figure>
+                  ) : cover ? (
                     <figure className="editorial-project__visual">
                       <Image
                         src={cover.imageSrc}
