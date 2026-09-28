@@ -12,32 +12,32 @@ export default function FooterReveal() {
     }
 
     const footer = document.querySelector<HTMLElement>(".site-footer");
-    const content = footer?.querySelector<HTMLElement>(".site-footer__inner");
-    if (
-      !footer ||
-      !content ||
-      content.getBoundingClientRect().top < window.innerHeight
-    ) {
+    if (!footer || footer.getBoundingClientRect().top < window.innerHeight) {
       return;
     }
 
-    content.setAttribute("data-enter-pending", "");
+    footer.setAttribute("data-enter-pending", "");
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;
 
-        content.removeAttribute("data-enter-pending");
+        footer.removeAttribute("data-enter-pending");
+        footer.setAttribute("data-entering", "");
         observer.disconnect();
       },
       { threshold: 0.12 },
     );
 
+    const finishEntrance = () => footer.removeAttribute("data-entering");
+    footer.addEventListener("animationend", finishEntrance, { once: true });
     observer.observe(footer);
 
     return () => {
       observer.disconnect();
-      content.removeAttribute("data-enter-pending");
+      footer.removeEventListener("animationend", finishEntrance);
+      footer.removeAttribute("data-enter-pending");
+      footer.removeAttribute("data-entering");
     };
   }, []);
 
