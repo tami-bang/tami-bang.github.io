@@ -27,7 +27,7 @@ export default function FooterMascot() {
         alt=""
         width={900}
         height={600}
-        sizes="(max-width: 720px) 96px, 140px"
+        sizes="(max-width: 720px) 76px, 96px"
         draggable={false}
       />
     </div>

@@ -39,6 +39,17 @@ body {
   -webkit-user-select: none;
 }
 
+body * {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body :is(input, textarea, select, [contenteditable="true"]),
+body [contenteditable="true"] * {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
 body::before {
   position: fixed;
   inset: 0;
@@ -226,6 +237,7 @@ svg {
   user-select: none;
   -webkit-user-select: none;
   -webkit-user-drag: none;
+  user-drag: none;
 }
 
 a,

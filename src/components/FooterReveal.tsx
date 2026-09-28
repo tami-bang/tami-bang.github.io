@@ -12,32 +12,39 @@ export default function FooterReveal() {
     }
 
     const footer = document.querySelector<HTMLElement>(".site-footer");
-    if (!footer || footer.getBoundingClientRect().top < window.innerHeight) {
+    const scene = footer?.querySelector<HTMLElement>(".site-footer__scene");
+    const hill = scene?.querySelector<SVGElement>(".site-footer__hill");
+    if (!footer || !scene || !hill) {
       return;
     }
 
-    footer.setAttribute("data-enter-pending", "");
+    if (hill.getBoundingClientRect().top < window.innerHeight) return;
 
+    scene.setAttribute("data-enter-pending", "");
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;
 
-        footer.removeAttribute("data-enter-pending");
-        footer.setAttribute("data-entering", "");
+        scene.removeAttribute("data-enter-pending");
+        scene.setAttribute("data-entering", "");
         observer.disconnect();
       },
-      { threshold: 0.12 },
+      { threshold: 0 },
     );
 
-    const finishEntrance = () => footer.removeAttribute("data-entering");
-    footer.addEventListener("animationend", finishEntrance, { once: true });
-    observer.observe(footer);
+    const finishEntrance = () => {
+      scene.removeAttribute("data-entering");
+      scene.setAttribute("data-entered", "");
+    };
+    scene.addEventListener("animationend", finishEntrance, { once: true });
+    observer.observe(hill);
 
     return () => {
       observer.disconnect();
-      footer.removeEventListener("animationend", finishEntrance);
-      footer.removeAttribute("data-enter-pending");
-      footer.removeAttribute("data-entering");
+      scene.removeEventListener("animationend", finishEntrance);
+      scene.removeAttribute("data-enter-pending");
+      scene.removeAttribute("data-entering");
+      scene.removeAttribute("data-entered");
     };
   }, []);
 

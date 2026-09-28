@@ -12,10 +12,18 @@ export default function ScrollToTopButton() {
       setIsVisible(window.scrollY > SHOW_BUTTON_AFTER);
     }
 
+    function preventContextMenu(event: MouseEvent) {
+      event.preventDefault();
+    }
+
     updateVisibility();
     window.addEventListener("scroll", updateVisibility, { passive: true });
+    document.addEventListener("contextmenu", preventContextMenu);
 
-    return () => window.removeEventListener("scroll", updateVisibility);
+    return () => {
+      window.removeEventListener("scroll", updateVisibility);
+      document.removeEventListener("contextmenu", preventContextMenu);
+    };
   }, []);
 
   function scrollToTop() {
